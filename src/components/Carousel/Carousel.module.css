@@ -1,0 +1,12 @@
+.carousel {
+  overflow: hidden;
+  padding: 10px;
+}
+.carousel .inner {
+  white-space: nowrap;
+  transition: transform 1s;
+  flex-direction: row;
+  display: flex;
+}
+
+/*# sourceMappingURL=Carousel.module.css.map */

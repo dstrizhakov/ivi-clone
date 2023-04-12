@@ -1,0 +1,14 @@
+.carousel {
+  overflow: hidden;
+  padding: 10px;
+  .inner {
+    white-space: nowrap;
+    transition: transform 1s;
+    flex-direction: row;
+    display: flex;
+
+  }
+}
+
+
+

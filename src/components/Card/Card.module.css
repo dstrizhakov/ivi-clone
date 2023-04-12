@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  width: 20%;
+  aspect-ratio: 13/20;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px;
+}
+.card .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.card .img .imgContainer {
+  width: 100%;
+}
+.card .img .imgContainer img {
+  border-radius: 8px;
+}
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*# sourceMappingURL=Card.module.css.map */
