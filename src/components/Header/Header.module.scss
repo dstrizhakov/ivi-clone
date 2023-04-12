@@ -30,23 +30,6 @@
     }
   }
 }
-.button {
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  height: 32px;
-  border: 1px solid #ea003d;
-  border-radius: 8px;
-  padding: 7px 11px;
-  background-color: #ea003d;
-  transition: all 0.3s ease 0s;
-  &:hover {
-    background-color: #ff1352;
-    border-color: #ff1352;
-  }
-}
 
 .alerts {
   &__button {
