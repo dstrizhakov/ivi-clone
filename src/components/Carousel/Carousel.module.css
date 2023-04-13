@@ -1,0 +1,41 @@
+.carousel {
+  overflow: hidden;
+}
+.carousel .viewportInner {
+  white-space: nowrap;
+  transition: transform 1s;
+  flex-direction: row;
+  display: flex;
+}
+.carousel .arrow {
+  z-index: 15;
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 32px;
+  top: 25%;
+}
+.carousel .arrow button {
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  border: 0;
+  color: white;
+  background-color: transparent;
+}
+.carousel .arrow button:disabled {
+  color: transparent;
+}
+.carousel .arrow.left {
+  transition: 0.3s;
+  position: absolute;
+  right: 10%;
+}
+.carousel .arrow.right {
+  position: absolute;
+  left: 10%;
+}
+
+/*# sourceMappingURL=Carousel.module.css.map */

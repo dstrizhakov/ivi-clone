@@ -1,3 +1,21 @@
+.search {
+  cursor: pointer;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  opacity: 0.5;
+  transition: all 0.3s ease 0s;
+  z-index: 10;
+}
+.search:hover {
+  opacity: 1;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
 .modal {
   z-index: 99;
   position: fixed;
@@ -12,10 +30,10 @@
 
 .body {
   margin-top: 60px;
-  & h3 {
-    font-size: 40px;
-    margin-bottom: 40px;
-  }
+}
+.body h3 {
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
 .cross {
@@ -25,14 +43,14 @@
   top: 30px;
   width: 50px;
   height: 50px;
-  &:hover {
-    animation: skew-animation 0.8s;
-  }
+}
+.cross:hover {
+  animation: skew-animation 1s infinite;
 }
 
 .cross::before,
 .cross::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -59,26 +77,26 @@
   background-color: #d9d7e0;
   color: #1f1b2e;
   border-radius: 4px;
-  & input {
-    width: 100%;
-    padding: 8px 10px;
-    background-color: #d9d7e0;
-    border-radius: 4px;
-    outline: 0;
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 500;
-  }
-  &__icon {
-    cursor: pointer;
-    margin: 0 5px;
-    color: #1f1b2e;
-    opacity: 0.5;
-    transition: all 0.3s ease 0s;
-    &:hover {
-      opacity: 1;
-    }
-  }
+}
+.input input {
+  width: 100%;
+  padding: 8px 10px;
+  background-color: #d9d7e0;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.input__icon {
+  cursor: pointer;
+  margin: 0 5px;
+  color: #1f1b2e;
+  opacity: 0.5;
+  transition: all 0.3s ease 0s;
+}
+.input__icon:hover {
+  opacity: 1;
 }
 
 @keyframes skew-animation {
@@ -115,3 +133,5 @@
     transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
   }
 }
+
+/*# sourceMappingURL=Search.module.css.map */
