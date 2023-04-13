@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .user {
   flex: 0 0 40px;
   &__button {
@@ -44,7 +46,7 @@
     left: 0;
     width: 100%;
     height: 300px;
-    background-color: #160b1e;
+    background-color: $color-alert-background;
     display: flex;
     flex-direction: column;
     align-items: center;
