@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="ru">
       <Head>
         <meta name="description" content="online cinema service" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <body>
         <Main />
