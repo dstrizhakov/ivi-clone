@@ -1,6 +1,5 @@
-'use client';
 import React, { useState } from 'react';
-import styles from './Carousel.module.css';
+import styles from './Carousel.module.scss';
 import Card from '../Card/Card';
 import { iMovie } from '@/components/Card/Card.props';
 import { Htag } from '@/components/Htag/Htag';
@@ -17,8 +16,8 @@ const arr = [
   { id: 7, name: '7' },
   { id: 8, name: '8' },
   { id: 9, name: '9' },
-  { id: 10, name: '10' },
-  { id: 11, name: '11' },
+  { id: 10, name: 'longlonglonglong' },
+  { id: 11, name: 'shortshort' },
   { id: 12, name: '12' },
   { id: 13, name: '13' },
   { id: 14, name: '14' },
@@ -27,10 +26,10 @@ const arr = [
   { id: 17, name: '17' },
 ];
 
-const cards: iMovie[] = [...arr.splice(0, 16), { id: 0, name: 'show all' }]; //16 можно вынести в пропсы и задавать количество при вызове компонента
-const width = 5; //переделать под динамичский рассчет
+const cards: iMovie[] = [...arr.splice(0, 16), { id: 0, name: 'show all' }];
+const width = 5;
 
-export const Carousel: React.FC<CarouselProps> = ({ children, ...props }) => {
+export const Carousel: React.FC<CarouselProps> = ({ children, amount = 16, ...props }) => {
   const [start, setStart] = useState(0);
 
   const next = () => {
@@ -54,11 +53,12 @@ export const Carousel: React.FC<CarouselProps> = ({ children, ...props }) => {
             <Card card={card} key={card.id} />
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <button onClick={() => prev()} disabled={start <= 0}>
+        <div className={styles.arrows}>
+          <button className={styles.arrow} onClick={() => prev()} disabled={start <= 0}>
             &lt;
           </button>
           <button
+            className={styles.arrow}
             onClick={() => next()}
             disabled={
               start >= Math.floor(cards.length / width) - 1 + (cards.length % width) / width

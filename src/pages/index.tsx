@@ -7,8 +7,6 @@ const Home: FC = () => {
       <Head>
         <title>Главная</title>
       </Head>
-
-      <h1>Главная страница</h1>
     </>
   );
 };
