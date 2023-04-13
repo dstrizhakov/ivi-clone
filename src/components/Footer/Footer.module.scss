@@ -1,0 +1,136 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  padding: 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.48);
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  p {
+    color: rgba(255, 255, 255, 0.48);
+  }
+}
+
+.list {
+  max-width: 310px;
+  display: grid;
+}
+
+.listTitle {
+  display: block;
+  color: $color-main;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.link {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  transition: all 0.4s;
+  &:hover {
+    color: $color-main;
+    cursor: pointer;
+  }
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  max-width: 200px;
+  button {
+    padding: 0;
+  }
+}
+
+.button {
+  width: 196px;
+}
+
+.certLink {
+  background-image: linear-gradient(-45deg, #c447ff, #ea003d);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.askLink {
+  color: $color-main;
+  transition: all 0.4s;
+  &:hover {
+    color: rgba(255, 255, 255, 0.72);
+  }
+}
+
+.widget {
+  width: 104px;
+  height: 104px;
+  border-radius: 20px;
+  -webkit-box-pack: center;
+  background: linear-gradient(180deg, #a869f0 0%, #a869f0 100%);
+  box-shadow: 0 0 104px #a869f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  &:before {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    transform: rotate(77grad);
+    top: 49px;
+    left: 20px;
+    border: 3px solid #a869f0;
+  }
+  &__icon {
+    width: 56px;
+    height: 56px;
+    color: $color-main;
+  }
+  &__descr {
+    text-align: center;
+    color: #a5a1b2;
+  }
+}
+
+.footerItem {
+  padding: 48px 0;
+  display: grid;
+  gap: 32px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  button {
+    padding: 0 12px;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  span {
+    color: rgba(255, 255, 255, 0.72);
+    display: block;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 500;
+  }
+}
