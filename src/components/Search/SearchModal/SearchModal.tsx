@@ -1,29 +1,21 @@
 import React, { FC, useState } from 'react';
-import styles from './Search.module.scss';
-import { FaSearch } from 'react-icons/fa';
+import styles from './SearchModal.module.scss';
 import { CgClose } from 'react-icons/cg';
 import { IoSearchOutline } from 'react-icons/io5';
+import { SearchModalProps } from './SearchModal.props';
 
-const Search: FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }) => {
   const [query, setQuery] = useState<string>();
 
-  // const handleClick = (): void => {
-  //   setIsOpen((prev) => !prev);
-  // };
   const clearQuery = (): void => {
     setQuery('');
   };
 
   return (
     <>
-      <div className={styles.search} onClick={() => setIsOpen(true)}>
-        <FaSearch className={styles.icon} />
-        <span>Поиск</span>
-      </div>
       {isOpen && (
         <div className={styles.modal}>
-          <span className={styles.cross} onClick={() => setIsOpen(false)}></span>
+          <span className={styles.cross} onClick={() => closeSearch()}></span>
           <div className={styles.body}>
             <h3>Поиск</h3>
             <div className={styles.input}>
@@ -41,4 +33,4 @@ const Search: FC = () => {
   );
 };
 
-export default Search;
+export default SearchModal;
