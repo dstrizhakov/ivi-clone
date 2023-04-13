@@ -1,21 +1,3 @@
-.search {
-  cursor: pointer;
-  margin: 0 10px;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  opacity: 0.5;
-  transition: all 0.3s ease 0s;
-  z-index: 10;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.icon {
-  margin-right: 5px;
-}
-
 .modal {
   z-index: 99;
   position: fixed;
@@ -44,7 +26,7 @@
   width: 50px;
   height: 50px;
   &:hover {
-    animation: skew-animation 1s infinite;
+    animation: skew-animation 0.8s;
   }
 }
 
