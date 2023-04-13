@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .modal {
   z-index: 99;
   position: fixed;
@@ -25,7 +27,10 @@
   top: 30px;
   width: 50px;
   height: 50px;
+  opacity: 0.5;
+  transition: 0.3s;
   &:hover {
+    opacity: 1;
     animation: skew-animation 0.8s;
   }
 }
@@ -41,7 +46,7 @@
   margin: auto;
   width: 2px;
   height: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: $color-main;
 }
 
 .cross::before {
@@ -56,13 +61,13 @@
   width: 70vw;
   display: flex;
   align-items: center;
-  background-color: #d9d7e0;
-  color: #1f1b2e;
+  background-color: $color-input;
+  color: $color-input-text;
   border-radius: 4px;
   & input {
     width: 100%;
     padding: 8px 10px;
-    background-color: #d9d7e0;
+    background-color: $color-input;
     border-radius: 4px;
     outline: 0;
     font-size: 15px;
@@ -72,46 +77,11 @@
   &__icon {
     cursor: pointer;
     margin: 0 5px;
-    color: #1f1b2e;
+    color: $color-input-text;
     opacity: 0.5;
     transition: all 0.3s ease 0s;
     &:hover {
       opacity: 1;
     }
-  }
-}
-
-@keyframes skew-animation {
-  11.1% {
-    -webkit-transform: none;
-    transform: none;
-  }
-  22.2% {
-    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
-    transform: skewX(-12.5deg) skewY(-12.5deg);
-  }
-  33.3% {
-    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
-    transform: skewX(6.25deg) skewY(6.25deg);
-  }
-  44.4% {
-    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
-    transform: skewX(-3.125deg) skewY(-3.125deg);
-  }
-  55.5% {
-    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
-    transform: skewX(1.5625deg) skewY(1.5625deg);
-  }
-  66.6% {
-    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
-    transform: skewX(-0.78125deg) skewY(-0.78125deg);
-  }
-  77.7% {
-    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
-    transform: skewX(0.390625deg) skewY(0.390625deg);
-  }
-  88.8% {
-    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
-    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
   }
 }
