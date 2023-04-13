@@ -8,8 +8,8 @@
     opacity: 0.5;
     border: 1px solid white;
     border-radius: 3px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     padding: 7px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -35,17 +35,18 @@
   }
   &__content {
     flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 100%;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // flex-direction: column;
   }
   &__body {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 300px;
+    height: 360px;
     background-color: $color-alert-background;
     display: flex;
     flex-direction: column;
@@ -71,5 +72,33 @@
   }
   & p {
     opacity: 0.5;
+  }
+}
+
+.content {
+  &__row {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+  }
+  &__actions {
+    flex: 0 0 70%;
+    border-right: 1px solid rgba(255, 255, 255, 0.449);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  &__auth {
+    height: 100%;
+    margin-left: 15px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__nowrap {
+    white-space: nowrap;
   }
 }
