@@ -16,6 +16,7 @@ export const Default: Story = {
     card: {
       id: 1,
       name: 'card name',
+      img: 'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85',
     },
   },
 };

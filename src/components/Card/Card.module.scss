@@ -1,25 +1,67 @@
+$time: .3s;
+
 .card {
-  display: flex;
-  width: 20%;
-  aspect-ratio: 13/20;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  padding-top: 40px;
   margin: 10px;
-  .img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    .imgContainer {
+  .imageSection {
+    max-width: 234px;
+    max-height: 360px;
+    position: relative;
+    background: #232323;
+    border-radius: 8px;
+    overflow: hidden;
+    .props {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
       width: 100%;
-      img {
-        border-radius: 8px;
+      height: 100%;
+      text-align: center;
+      transition: $time;
+      z-index: 90;
+      .btns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 10px 8px;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
+
   &:hover {
-    background-color: rgba(black, 0.1);
+    .imageSection{
+      transition: $time;
+      transform: scale(1.03) translateY(-2%);
+      .props {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(black, 0.8);
+        .btns, .info {
+          transition: $time;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    .textSection {
+      p {
+        transition: $time;
+        color: white
+      }
+    }
   }
 }
-

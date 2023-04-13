@@ -1,31 +1,45 @@
 .carousel {
   overflow: hidden;
-  padding: 10px;
-  .inner {
-    white-space: nowrap;
-    transition: transform 1s;
-    flex-direction: row;
-    display: flex;
-  }
-  .arrows {
-    display: flex;
-    justify-content: space-between;
+  //display: grid;
+  //grid-template-columns: repeat(3, 1fr);
+  //grid-column-gap: 20px;
+  //row-gap: 20px;
+  .viewport {
+    &Inner{
+      white-space: nowrap;
+      transition: transform 1s;
+      flex-direction: row;
+      display: flex;
+    }
   }
   .arrow {
+    z-index: 15;
+    padding: 15px;
     position: relative;
-    top: -250px;
     cursor: pointer;
     font-weight: 400;
     font-style: normal;
     font-size: 32px;
     line-height: 32px;
-    speak: none;
-    border: 0;
-    background-color: transparent;
-    color: white;
-
-    &:disabled{
-      color: transparent;
+    top: 25%;
+    button {
+      transition: .2s ease-in-out;
+      cursor: pointer;
+      border: 0;
+      color: white;
+      background-color: transparent;
+      &:disabled{
+        color: transparent;
+      }
+    }
+    &.left {
+      transition: .3s;
+      position: absolute;
+      right: 10%;
+    }
+    &.right {
+      position: absolute;
+      left: 10%;
     }
   }
 }

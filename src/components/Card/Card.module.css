@@ -1,26 +1,62 @@
 .card {
-  display: flex;
-  width: 20%;
-  aspect-ratio: 13/20;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  padding-top: 40px;
   margin: 10px;
 }
-.card .img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-.card .img .imgContainer {
-  width: 100%;
-}
-.card .img .imgContainer img {
+.card .imageSection {
+  max-width: 234px;
+  max-height: 360px;
+  position: relative;
+  background: #232323;
   border-radius: 8px;
+  overflow: hidden;
 }
-.card:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+.card .imageSection .props {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: 0.3s;
+  z-index: 90;
+}
+.card .imageSection .props .btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 10px 8px;
+  opacity: 0;
+  visibility: hidden;
+}
+.card .imageSection .props .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+}
+.card:hover .imageSection {
+  transition: 0.3s;
+  transform: scale(1.03) translateY(-2%);
+}
+.card:hover .imageSection .props {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.card:hover .imageSection .props .btns, .card:hover .imageSection .props .info {
+  transition: 0.3s;
+  opacity: 1;
+  visibility: visible;
+}
+.card:hover .textSection p {
+  transition: 0.3s;
+  color: white;
 }
 
 /*# sourceMappingURL=Card.module.css.map */

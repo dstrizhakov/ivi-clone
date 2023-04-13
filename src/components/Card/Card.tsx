@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './Card.module.scss';
 import { CardProps } from './Card.props';
 import { P } from '@/components/P/P';
 import Link from 'next/link';
+import { Button } from '@/components/Button/Button';
 
-const Card: React.FC<CardProps> = ({ card, ...props }) => {
+const Card: FC<CardProps> = ({ card, ...props }) => {
   return (
-    <Link href={'#'}>
-      <div className={styles.card} {...props}>
-        <div className={styles.img}>
-          <div className={styles.imgContainer}>
-            <img
-              src="https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85"
-              alt={card.name}
-            />
+    <div className={styles.card} {...props}>
+      <Link href={'/'}>
+        <div className={styles.imageSection}>
+          <img src={card.img} alt={card.name} />
+          <div className={styles.props}>
+            <div className={styles.btns}>
+              <Button>svg</Button>
+              <Button>svg</Button>
+              <Button>svg</Button>
+              <Button>svg</Button>
+            </div>
+            <div className={styles.info}>
+              <span>2020, США, Детективы</span>
+              <span>93 минуты</span>
+            </div>
           </div>
         </div>
-        <P>{card.name.length > 15 ? `${card.name.slice(0, 15)}...` : card.name}</P>
-        <P>Бесплатно</P>
-      </div>
-    </Link>
+        <div className={styles.textSection}>
+          <P>{card.name.length > 15 ? `${card.name.slice(0, 15)}...` : card.name}</P>
+        </div>
+      </Link>
+    </div>
   );
 };
 

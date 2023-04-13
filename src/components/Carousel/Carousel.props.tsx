@@ -1,7 +1,4 @@
-import { ReactNode } from 'react';
-
 export interface CarouselProps {
-  children: ReactNode;
-  amount: number;
+  title: string;
   //arr: iMovie[]; from back
 }

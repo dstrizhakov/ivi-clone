@@ -14,6 +14,6 @@ type Story = StoryObj<CarouselProps>;
 
 export const Default: Story = {
   args: {
-    children: 'text',
+    title: 'title',
   },
 };
