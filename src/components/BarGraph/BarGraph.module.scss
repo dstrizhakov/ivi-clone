@@ -1,0 +1,14 @@
+@import "src/styles/variables";
+
+.bar {
+  width: 100%;
+  background-color: rgba(126,121,143,.32);
+  height: 4px;
+  border-radius: 2px;
+  margin: 1px;
+  &Value {
+    background-color: $color-accent;
+    height: 5px;
+    border-radius: 2px;
+  }
+}
