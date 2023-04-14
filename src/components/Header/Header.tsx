@@ -6,7 +6,6 @@ import { Button } from '../Button/Button';
 import SearchButton from '../Search/SearchButton/SearchButton';
 import SearchModal from '../Search/SearchModal/SearchModal';
 import Alerts from '../Alerts/Alerts';
-import { BiUser } from 'react-icons/bi';
 import User from '../User/User';
 
 const Header: FC = () => {
