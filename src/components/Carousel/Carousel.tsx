@@ -63,14 +63,14 @@ export const Carousel: FC<CarouselProps> = ({ title, ...props }) => {
           ))}
         </div>
         <span className={styles.arrow}>
-          <div className={styles.right}>
+          <div className={styles.left}>
             <Button size={'L'} onClick={() => prev()} disabled={start <= 0}>
               <MdArrowBackIosNew size={'Large'} />
             </Button>
           </div>
         </span>
         <span className={styles.arrow}>
-          <div className={styles.left}>
+          <div className={styles.right}>
             <Button
               size={'L'}
               onClick={() => next()}

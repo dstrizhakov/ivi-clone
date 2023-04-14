@@ -2,11 +2,12 @@
 
 .carouselBlock {
   user-select: none;
-  margin: 20px 0;
+  margin: 20px 50px;
+  overflow: hidden;
 }
 
 .carousel {
-  overflow: hidden;
+  width: 100%;
   .viewport {
     white-space: nowrap;
     transition: transform 1s;
@@ -33,14 +34,15 @@
       }
     }
     .left {
-      bottom: -50%;
+      top: -25vh;
       position: absolute;
+      left: 0;
 
     }
     .right {
-      bottom: -50%;
+      top: -25vh;
       position: absolute;
-      right: 100%;
+      right: 0;
     }
   }
 }

@@ -49,22 +49,22 @@ const Card: FC<CardProps> = ({ card, ...props }) => {
             </div>
             <div className={styles.info}>
               <div className={styles.ratings}>
-                <div className={styles.ratingsModule}>
-                  7,7
-                  <div className={styles.graphs}>
-                    <BarGraph width={80} baseWidth={'25px'} />
-                    <BarGraph width={73} baseWidth={'25px'} />
-                    <BarGraph width={62} baseWidth={'25px'} />
-                    <BarGraph width={98} baseWidth={'25px'} />
-                  </div>
-                </div>
-                <div>
-                  <span>criteria</span>
-                  <BarGraph width={67} baseWidth={'150%'} />
+                7,7
+                <div className={styles.graphs}>
+                  <BarGraph width={80} />
+                  <BarGraph width={73} />
+                  <BarGraph width={62} />
+                  <BarGraph width={98} />
                 </div>
               </div>
-              <div>years, country, genre,</div>
-              <div>duration</div>
+              <div className={styles.singleGraph}>
+                <span>criteria</span>
+                <BarGraph width={67} />
+              </div>
+              <div>
+                <div>years, country, genre,</div>
+                <div>duration</div>
+              </div>
             </div>
           </div>
         </div>
