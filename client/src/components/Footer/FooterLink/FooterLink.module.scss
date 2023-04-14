@@ -1,0 +1,30 @@
+.link {
+  padding-top: 8px;
+  padding-bottom: 4px;
+  max-width: 120px;
+  flex-basis: 100%;
+  text-align: center;
+  color: #a5a1b2;
+  position: relative;
+  &__active {
+    color: white;
+
+    &:before {
+      content: '';
+      width: 60px;
+      height: 100px;
+      top: 0;
+      left: 30px;
+      display: block;
+      background-position-y: -60px;
+      background-repeat: no-repeat;
+      position: absolute;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 65%);
+    }
+  }
+}
+.title {
+  display: block;
+  font-size: 10px;
+  line-height: 12px;
+}

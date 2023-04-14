@@ -1,0 +1,44 @@
+@import "src/styles/variables";
+
+.carousel__block {
+  user-select: none;
+  margin: 20px 50px;
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  .viewport {
+    margin: 20px;
+    white-space: nowrap;
+    transition: transform 1s;
+    flex-direction: row;
+    display: flex;
+  }
+}
+.arrow {
+  display: flex;
+  z-index: 15;
+  position: relative;
+  top: 30%;
+  button {
+    transition: $time ease-in-out;
+    &:disabled{
+      display: none;
+    }
+    &:active {
+      transform: scale(0.5);
+      transition: $time ease-in-out;
+    }
+  }
+  .left {
+    top: -30vh;
+    position: absolute;
+    left: 0;
+  }
+  .right {
+    top: -30vh;
+    position: absolute;
+    right: 0;
+  }
+}

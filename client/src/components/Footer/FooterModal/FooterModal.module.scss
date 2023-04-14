@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss';
+
+.modal {
+  background: $color-background;
+  display: block;
+  width: 100%;
+  padding: 70px 34px;
+  position: absolute;
+  z-index: 1000;
+  button {
+    font-weight: 500;
+  }
+}
+.menuItem {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 34px 0;
+  display: grid;
+  gap: 24px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 24px;
+}
+.social {
+  justify-content: start;
+  button {
+    padding: 0;
+  }
+}
+.button {
+  justify-content: start;
+  gap: 15px;
+  svg {
+    color: #7e798f;
+    width: 20px;
+    height: 20px;
+  }
+}
+.buttonSubscribe {
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    box-shadow: 0 2px 8px rgba(234, 0, 61, 0.8);
+    background-color: #ea003d;
+    width: 10px;
+    height: 10px;
+    top: 8px;
+    right: 8px;
+    border-radius: 50%;
+  }
+}

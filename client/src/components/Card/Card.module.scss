@@ -1,0 +1,114 @@
+@import "src/styles/variables";
+
+.card {
+  cursor: pointer;
+  padding-top: 15px;
+  font-size: 0.6rem;
+  color: #d9d7e0;
+  .imageSection {
+    img {
+      height: 20vh;
+    }
+    max-width: 234px;
+    max-height: 360px;
+    position: relative;
+    background: #232323;
+    border-radius: 8px;
+    overflow: hidden;
+    .props {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: $time-main;
+      z-index: 90;
+      opacity: 0;
+      visibility: hidden;
+      .btns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 4px 8px;
+      }
+      .info {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 0 10px;
+        &__text {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .ratings {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-start;
+          .graphs {
+            display: flex;
+            min-width: 25px;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+  .textSection {
+    p {
+      font-size: 0.8rem;
+      transition: $time-main;
+    }
+  }
+  .singleGraph {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+  }
+  &:hover {
+    .imageSection{
+      transition: $time-main;
+      transform: scale(1.03) translateY(-1%);
+      .props {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(black, 0.85);
+        opacity: 1;
+        visibility: visible;
+        transition: $time-main;
+      }
+    }
+    .textSection {
+      p {
+        transition: $time-main;
+        color: white
+      }
+    }
+  }
+  &:active {
+    transition: $time-main ease-in-out;
+    transform: scale(0.98);
+  }
+  button {
+    background-color: transparent!important;
+    padding: 0;
+    max-height: 20px;
+    margin: 0;
+    svg {
+      stroke-width: 0!important;
+    }
+  }
+}
+
+.mirrored {
+  transform: scale(-1, 1)
+}
