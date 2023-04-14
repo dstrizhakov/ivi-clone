@@ -19,6 +19,7 @@ export const Button = ({
           [styles.square]: appearance == 'square',
           [styles.circle]: appearance == 'circle',
           [styles.red]: appearance == 'red',
+          [styles.transparent]: appearance == 'transparent',
         },
         {
           [styles.S]: size == 'S',

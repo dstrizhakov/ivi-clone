@@ -19,7 +19,6 @@ const meta: Meta<iButton> = {
 export default meta;
 type Story = StoryObj<iButton>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Red: Story = {
   args: {
     appearance: 'red',
