@@ -1,0 +1,23 @@
+.footerMobile {
+  background-color: rgba(31, 27, 46, 0.88);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  display: none;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1160px) {
+  .footerMobile {
+    display: block;
+  }
+}
