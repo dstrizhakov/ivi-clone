@@ -13,28 +13,28 @@ type Story = StoryObj<BarGraphProps>;
 
 export const Percent25: Story = {
   args: {
-    baseWidth: '300px',
+    baseWidth: '100%',
     width: 25,
   },
 };
 
 export const Percent50: Story = {
   args: {
-    baseWidth: '300px',
+    baseWidth: '100%',
     width: 50,
   },
 };
 
 export const Percent75: Story = {
   args: {
-    baseWidth: '300px',
+    baseWidth: '100%',
     width: 75,
   },
 };
 
 export const Percent100: Story = {
   args: {
-    baseWidth: '300px',
+    baseWidth: '100%',
     width: 100,
   },
 };

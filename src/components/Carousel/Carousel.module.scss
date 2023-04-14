@@ -1,47 +1,47 @@
+@import "src/styles/variables";
+
+.carouselBlock {
+  user-select: none;
+  margin: 20px 0;
+}
+
 .carousel {
   overflow: hidden;
-  //display: grid;
-  //grid-template-columns: repeat(3, 1fr);
-  //grid-column-gap: 20px;
-  //row-gap: 20px;
   .viewport {
-    &Inner{
-      white-space: nowrap;
-      transition: transform 1s;
-      flex-direction: row;
-      display: flex;
-    }
+    white-space: nowrap;
+    transition: transform 1s;
+    flex-direction: row;
+    display: flex;
   }
   .arrow {
+    display: flex;
     z-index: 15;
+    border: 0;
     position: relative;
     cursor: pointer;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 32px;
-    line-height: 32px;
     top: 30%;
     button {
-      transition: .2s ease-in-out;
-      cursor: pointer;
-      border: 0;
+      transition: $time ease-in-out;
       color: white;
       background-color: transparent;
       &:disabled{
-        color: transparent;
+        display: none;
+      }
+      &:active {
+        transform: scale(0.5);
+        transition: $time ease-in-out;
       }
     }
-    &.left {
-      transition: .3s;
+    .left {
+      bottom: -50%;
       position: absolute;
-      right: 10%;
+
     }
-    &.right {
+    .right {
+      bottom: -50%;
       position: absolute;
-      left: 10%;
+      right: 100%;
     }
   }
 }
-
-
 

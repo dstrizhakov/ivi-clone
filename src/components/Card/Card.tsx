@@ -10,12 +10,13 @@ import { IoColorWandOutline } from 'react-icons/io5';
 import { AiOutlineStar } from 'react-icons/ai';
 import { AiFillStar } from 'react-icons/ai';
 import { MdBlock } from 'react-icons/md';
+import BarGraph from '@/components/BarGraph/BarGraph';
 
 const Card: FC<CardProps> = ({ card, ...props }) => {
   const [starred, setStarred] = useState<boolean>(false);
   const [booked, setBooked] = useState<boolean>(false);
   const book = () => {
-    setBooked((starred) => !starred);
+    setBooked((booked) => !booked);
   };
   const finder = () => {
     console.log('find similar');
@@ -47,8 +48,23 @@ const Card: FC<CardProps> = ({ card, ...props }) => {
               </Button>
             </div>
             <div className={styles.info}>
-              <span>2020, США, Детективы</span>
-              <span>93 минуты</span>
+              <div className={styles.ratings}>
+                <div className={styles.ratingsModule}>
+                  7,7
+                  <div className={styles.graphs}>
+                    <BarGraph width={80} baseWidth={'25px'} />
+                    <BarGraph width={73} baseWidth={'25px'} />
+                    <BarGraph width={62} baseWidth={'25px'} />
+                    <BarGraph width={98} baseWidth={'25px'} />
+                  </div>
+                </div>
+                <div>
+                  <span>criteria</span>
+                  <BarGraph width={67} baseWidth={'150%'} />
+                </div>
+              </div>
+              <div>years, country, genre,</div>
+              <div>duration</div>
             </div>
           </div>
         </div>
