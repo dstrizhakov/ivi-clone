@@ -3,9 +3,7 @@ $color-main: #ffffff;
 $color-input: #d9d7e0;
 $color-input-text: #1f1b2e;
 $color-alert-background: #160b1e;
-$color-accent: #ea003d;
-
-$time: .3s;
+$time-main: all 0.3s ease 0s;
 
 @keyframes skew-animation {
   11.1% {

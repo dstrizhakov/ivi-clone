@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .search {
   cursor: pointer;
   margin-left: 20px;
@@ -5,7 +7,7 @@
   align-items: center;
   font-size: 14px;
   opacity: 0.5;
-  transition: all 0.3s ease 0s;
+  transition: $time-main;
   z-index: 10;
   &:hover {
     opacity: 1;
