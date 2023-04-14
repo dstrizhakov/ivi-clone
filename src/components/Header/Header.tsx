@@ -7,6 +7,9 @@ import SearchButton from '../Search/SearchButton/SearchButton';
 import SearchModal from '../Search/SearchModal/SearchModal';
 import Alerts from '../Alerts/Alerts';
 import User from '../User/User';
+import Submenu from '../Submenu/Submenu';
+import { HiOutlineBellAlert } from 'react-icons/hi2';
+import { BiUser } from 'react-icons/bi';
 
 const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -19,7 +22,7 @@ const Header: FC = () => {
             <div className={styles.body}>
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src="iviLogo.svg" alt="logo" width={80} height={40} />
+                  <Image src="iviLogo.svg" alt="logo" width={100} height={50} />
                 </Link>
               </div>
               <div className={styles.menu}>
@@ -31,13 +34,13 @@ const Header: FC = () => {
                     <Link href="/">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="/">Фильмы</Link>
+                    <Submenu title="Фильмы">Фильмы</Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="/">Сериалы</Link>
+                    <Submenu title="Сериалы">Сериалы</Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="/">Мультфильмы</Link>
+                    <Submenu title="Мультфильмы">Мультфильмы</Submenu>
                   </li>
                 </ul>
               </div>
@@ -46,8 +49,13 @@ const Header: FC = () => {
               </Button>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
-            <Alerts />
-            <User />
+            <Submenu icon={HiOutlineBellAlert}>
+              <Alerts />
+            </Submenu>
+            <Submenu icon={BiUser} outline>
+              <User />
+            </Submenu>
+            {/* <User /> */}
           </div>
         </div>
       </header>

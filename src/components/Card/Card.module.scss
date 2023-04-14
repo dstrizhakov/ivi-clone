@@ -3,6 +3,9 @@
 .card {
   padding-top: 15px;
   .imageSection {
+    img {
+      z-index: 80;
+    }
     max-width: 234px;
     max-height: 360px;
     position: relative;

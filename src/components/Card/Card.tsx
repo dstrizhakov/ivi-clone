@@ -29,45 +29,47 @@ const Card: FC<CardProps> = ({ card, ...props }) => {
   };
   return (
     <div className={styles.card} {...props}>
-      <Link href={'/'}>
-        <div className={styles.imageSection}>
+      <div className={styles.imageSection}>
+        <Link href={'/'}>
           <img src={card.img} alt={card.name} />
-          <div className={styles.props}>
-            <div className={styles.btns}>
-              <Button size={'L'} onClick={() => book()}>
-                {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
-              </Button>
-              <Button size={'L'} onClick={() => finder()}>
-                <IoColorWandOutline className={styles.mirrored} />
-              </Button>
-              <Button size={'L'} onClick={() => star()}>
-                {starred ? <AiFillStar /> : <AiOutlineStar />}
-              </Button>
-              <Button size={'L'} onClick={() => block()}>
-                <MdBlock />
-              </Button>
+        </Link>
+        <div className={styles.props}>
+          <div className={styles.btns}>
+            <Button size={'L'} onClick={() => book()}>
+              {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
+            </Button>
+            <Button size={'L'} onClick={() => finder()}>
+              <IoColorWandOutline className={styles.mirrored} />
+            </Button>
+            <Button size={'L'} onClick={() => star()}>
+              {starred ? <AiFillStar /> : <AiOutlineStar />}
+            </Button>
+            <Button size={'L'} onClick={() => block()}>
+              <MdBlock />
+            </Button>
+          </div>
+          <div className={styles.info}>
+            <div className={styles.ratings}>
+              7,7
+              <div className={styles.graphs}>
+                <BarGraph width={80} />
+                <BarGraph width={73} />
+                <BarGraph width={62} />
+                <BarGraph width={98} />
+              </div>
             </div>
-            <div className={styles.info}>
-              <div className={styles.ratings}>
-                7,7
-                <div className={styles.graphs}>
-                  <BarGraph width={80} />
-                  <BarGraph width={73} />
-                  <BarGraph width={62} />
-                  <BarGraph width={98} />
-                </div>
-              </div>
-              <div className={styles.singleGraph}>
-                <span>criteria</span>
-                <BarGraph width={67} />
-              </div>
-              <div>
-                <div>years, country, genre,</div>
-                <div>duration</div>
-              </div>
+            <div className={styles.singleGraph}>
+              <span>criteria</span>
+              <BarGraph width={67} />
+            </div>
+            <div>
+              <div>years, country, genre,</div>
+              <div>duration</div>
             </div>
           </div>
         </div>
+      </div>
+      <Link href={'/'}>
         <div className={styles.textSection}>
           <P>{card.name.length > 15 ? `${card.name.slice(0, 15)}...` : card.name}</P>
         </div>

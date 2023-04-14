@@ -11,21 +11,24 @@
   justify-content: space-between;
   align-items: center;
   min-height: 72px;
-  z-index: 10;
   background-color: transparent;
 }
 
 .logo {
-  margin-right: 20px;
+  margin-right: 10px;
+  z-index: 10;
 }
 
 .menu {
   flex: 1 1 auto;
   &__list {
     display: flex;
+    align-items: center;
   }
   &__item a {
-    margin-right: 10px;
+    position: relative;
+    z-index: 10;
+    margin-left: 10px;
     padding: 5px 0;
     color: rgb(255, 255, 255);
     opacity: 0.5;
@@ -33,6 +36,8 @@
     line-height: 20px;
     font-weight: 500;
     transition: opacity 0.3s ease 0s;
+    & a {
+    }
     &:hover {
       opacity: 1;
     }
