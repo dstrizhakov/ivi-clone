@@ -50,39 +50,47 @@ export const Carousel: FC<CarouselProps> = ({ title, ...props }) => {
   };
 
   return (
-    <div className={styles.carouselBlock} {...props}>
-      <Link href={'/'}>
-        <Htag tag={'h4'} style={{ display: 'flex', alignItems: 'center' }}>
-          {title} <MdArrowForwardIos />
-        </Htag>
-      </Link>
-      <div className={styles.carousel}>
-        <div className={styles.viewport} style={{ transform: `translateX(-${start * 100}%)` }}>
-          {cards.map((card) => (
-            <Card card={card} key={card.id} />
-          ))}
+    <div>
+      <div className={styles.carousel__block} {...props}>
+        <Link href={'/'}>
+          <Htag tag={'h4'} style={{ display: 'flex', alignItems: 'center' }}>
+            {title} <MdArrowForwardIos />
+          </Htag>
+        </Link>
+        <div className={styles.carousel}>
+          <div className={styles.viewport} style={{ transform: `translateX(-${start * 100}%)` }}>
+            {cards.map((card) => (
+              <Card card={card} key={card.id} />
+            ))}
+          </div>
         </div>
-        <span className={styles.arrow}>
-          <div className={styles.left}>
-            <Button size={'L'} onClick={() => prev()} disabled={start <= 0}>
-              <MdArrowBackIosNew size={'Large'} />
-            </Button>
-          </div>
-        </span>
-        <span className={styles.arrow}>
-          <div className={styles.right}>
-            <Button
-              size={'L'}
-              onClick={() => next()}
-              disabled={
-                start >= Math.floor(cards.length / width) - 1 + (cards.length % width) / width
-              }
-            >
-              <MdArrowForwardIos size={'Large'} />
-            </Button>
-          </div>
-        </span>
       </div>
+      <span className={styles.arrow}>
+        <div className={styles.left}>
+          <Button
+            size={'L'}
+            onClick={() => prev()}
+            disabled={start <= 0}
+            appearance={'transparent'}
+          >
+            <MdArrowBackIosNew size={'Large'} />
+          </Button>
+        </div>
+      </span>
+      <span className={styles.arrow}>
+        <div className={styles.right}>
+          <Button
+            size={'L'}
+            appearance={'transparent'}
+            onClick={() => next()}
+            disabled={
+              start >= Math.floor(cards.length / width) - 1 + (cards.length % width) / width
+            }
+          >
+            <MdArrowForwardIos size={'Large'} />
+          </Button>
+        </div>
+      </span>
     </div>
   );
 };

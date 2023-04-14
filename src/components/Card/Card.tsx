@@ -62,7 +62,7 @@ const Card: FC<CardProps> = ({ card, ...props }) => {
               <span>criteria</span>
               <BarGraph width={67} />
             </div>
-            <div>
+            <div className={styles.info__text}>
               <div>years, country, genre,</div>
               <div>duration</div>
             </div>

@@ -1,10 +1,13 @@
 @import "src/styles/variables";
 
 .card {
+  cursor: pointer;
   padding-top: 15px;
+  font-size: 0.6rem;
+  color: #d9d7e0;
   .imageSection {
     img {
-      z-index: 80;
+      height: 20vh;
     }
     max-width: 234px;
     max-height: 360px;
@@ -30,7 +33,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-        padding: 10px 20px;
+        padding: 4px 8px;
       }
       .info {
         height: 100%;
@@ -38,7 +41,12 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: flex-start;
-        padding: 0 40px 20px;
+        padding: 0 10px;
+        &__text {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+        }
         .ratings {
           width: 100%;
           display: flex;
@@ -52,6 +60,12 @@
           }
         }
       }
+    }
+  }
+  .textSection {
+    p {
+      font-size: 0.8rem;
+      transition: $time;
     }
   }
   .singleGraph {
@@ -87,6 +101,7 @@
   button {
     background-color: transparent!important;
     padding: 0;
+    max-height: 20px;
     margin: 0;
     svg {
       stroke-width: 0!important;
