@@ -13,7 +13,7 @@
     z-index: 10;
     opacity: 0.5;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+    transition: $time-main;
     & img {
       padding: 5px;
     }
@@ -36,7 +36,7 @@
     height: 45px;
     padding: 9px;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+    transition: $time-main;
     & img {
       padding: 5px;
     }
@@ -81,7 +81,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);
     z-index: 1;
-    transition: all 0.3s ease 0s;
+    transition: $time-main;
     &:hover {
       opacity: 1;
       visibility: visible;

@@ -1,3 +1,4 @@
+@import '../../styles/variables.scss';
 .row {
   display: flex;
   justify-content: space-between;
@@ -35,9 +36,7 @@
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
-    transition: opacity 0.3s ease 0s;
-    & a {
-    }
+    transition: $time-main;
     &:hover {
       opacity: 1;
     }
