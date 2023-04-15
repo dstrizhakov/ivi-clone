@@ -55,7 +55,6 @@ const Header: FC = () => {
             <Submenu icon={BiUser} outline>
               <User />
             </Submenu>
-            {/* <User /> */}
           </div>
         </div>
       </header>
