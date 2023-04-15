@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './User.module.scss';
 import { Button } from '../../Button/Button';
-import LinkCard from '../../LinkCard/LinkCard';
+import LinkCard from '@/components/Header/LinkCard/LinkCard';
 import { BiMoviePlay } from 'react-icons/bi';
 
 const User: FC = () => {
