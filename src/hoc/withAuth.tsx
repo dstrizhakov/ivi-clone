@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import React from 'react';
 
 const withAuth = <T extends object>(WrappedComponent: React.ComponentType<T>) => {
   const AuthComponent = (props: T) => {

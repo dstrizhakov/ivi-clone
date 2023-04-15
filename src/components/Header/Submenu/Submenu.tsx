@@ -26,5 +26,4 @@ const Submenu: FC<SubmenuProps> = ({ icon, title, outline, children }) => {
     </div>
   );
 };
-
 export default Submenu;

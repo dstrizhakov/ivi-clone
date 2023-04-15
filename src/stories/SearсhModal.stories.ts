@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SearchModalProps } from '@/components/Search/SearchModal/SearchModal.props';
-import SearchModal from '@/components/Search/SearchModal/SearchModal';
+import { SearchModalProps } from '@/components/Header/Search/SearchModal/SearchModal.props';
+import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
 
 const meta: Meta<SearchModalProps> = {
   title: 'Main/Search/SearchModal',

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { FC, useState } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
-import SearchButton from '../Search/SearchButton/SearchButton';
-import SearchModal from '../Search/SearchModal/SearchModal';
-import Alerts from '../Alerts/Alerts';
-import User from '../User/User';
-import Submenu from '../Submenu/Submenu';
+import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
+import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
+import Alerts from '@/components/Header/Alerts/Alerts';
+import User from '@/components/Header/User/User';
+import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { BiUser } from 'react-icons/bi';
 
