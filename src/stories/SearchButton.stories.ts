@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SearchButton from '@/components/Search/SearchButton/SearchButton';
-import { SearchButtonProps } from '@/components/Search/SearchButton/SearchButton.props';
+import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
+import { SearchButtonProps } from '@/components/Header/Search/SearchButton/SearchButton.props';
 
 const meta: Meta<SearchButtonProps> = {
   title: 'Main/Search/SearchButton',
