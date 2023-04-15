@@ -36,6 +36,7 @@
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
+    white-space: nowrap;
     transition: $time-main;
     &:hover {
       opacity: 1;
