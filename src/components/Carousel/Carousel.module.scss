@@ -4,16 +4,24 @@
   user-select: none;
   margin: 20px 50px;
   overflow: hidden;
+  .title {
+    display: flex;
+    align-items: center;
+  }
+  .card {
+    padding-top: 15px;
+    padding-right: 20px;
+  }
 }
 
 .carousel {
   width: 100%;
   .viewport {
     margin: 20px;
+    display: flex;
     white-space: nowrap;
     transition: transform 1s;
     flex-direction: row;
-    display: flex;
   }
 }
 .arrow {
@@ -22,22 +30,22 @@
   position: relative;
   top: 30%;
   button {
-    transition: $time ease-in-out;
+    transition: $time-main;
     &:disabled{
       display: none;
     }
     &:active {
       transform: scale(0.5);
-      transition: $time ease-in-out;
+      transition: $time-main;
     }
   }
   .left {
-    top: -30vh;
+    top: -20vh;
     position: absolute;
     left: 0;
   }
   .right {
-    top: -30vh;
+    top: -20vh;
     position: absolute;
     right: 0;
   }

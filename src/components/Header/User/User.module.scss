@@ -1,0 +1,49 @@
+@import '../../../styles/variables';
+
+.content {
+  &__row {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+  }
+  &__actions {
+    padding-right: 20px;
+    flex: 1 1 auto;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  &__auth {
+    flex: 0 0 340px;
+    margin-left: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr 1fr;
+    justify-items: start;
+    justify-content: center;
+  }
+  &__nowrap {
+    white-space: nowrap;
+    padding: 0 30px;
+    width: 100%;
+  }
+  &__btn {
+width: 100%;
+  }
+  &__links {
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    & a {
+      opacity: 0.5;
+      margin-top: 10px;
+      transition: $time-main;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
