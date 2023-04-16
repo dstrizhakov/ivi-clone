@@ -23,9 +23,8 @@
 
 .list {
   display: flex;
-  flex-wrap: wrap;
   &__item {
-    margin-top: 24px;
+    margin-top: 12px;
     margin-right: 24px;
     width: 256px;
   }
@@ -38,9 +37,25 @@
     display: block;
     font-weight: 400;
     transition: $time-main;
+    margin-bottom: 12px;
     &:hover {
       cursor: pointer;
-      color: white;
+      color: $color-main;
     }
+  }
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  ul {
+    margin: 0;
+  }
+}
+
+@media (max-width: $mobile) {
+  .list {
+    flex-wrap: wrap;
   }
 }

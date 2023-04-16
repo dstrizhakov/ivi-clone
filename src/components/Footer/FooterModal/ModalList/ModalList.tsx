@@ -5,6 +5,8 @@ import styles from './ModalList.module.scss';
 import { ModalListProps } from './ModalList.props';
 import { P } from '@/components/P/P';
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
+import { ILink } from '@/types/types';
+import { movieCategories } from '@/mock/MovieCategories';
 
 const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
   const [isListOpen, setIsListOpen] = useState<boolean>(false);
@@ -49,22 +51,42 @@ const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
             <ul className={styles.list}>
               <li className={styles.list__item}>
                 <P className={styles.list__title}>Жанры</P>
-                <ul className={styles.list__link}>links</ul>
+                {movieCategories?.genres &&
+                  movieCategories?.genres.map((item: ILink) => (
+                    <Link className={styles.list__link} key={item.title} href={item.link}>
+                      {item.title}
+                    </Link>
+                  ))}
               </li>
-              <li className={styles.list__item}>
+              <li className={styles.flex}>
                 <ul>
-                  <li>
+                  <li className={styles.list__item}>
                     <P className={styles.list__title}>Страны</P>
-                    <ul className={styles.list__link}>links</ul>
+                    {movieCategories?.countries &&
+                      movieCategories?.countries.map((item: ILink) => (
+                        <Link className={styles.list__link} key={item.title} href={item.link}>
+                          {item.title}
+                        </Link>
+                      ))}
                   </li>
                   <li className={styles.list__item}>
                     <P className={styles.list__title}>Годы</P>
-                    <ul className={styles.list__link}>links</ul>
+                    {movieCategories?.years &&
+                      movieCategories?.years.map((item: ILink) => (
+                        <Link className={styles.list__link} key={item.title} href={item.link}>
+                          {item.title}
+                        </Link>
+                      ))}
                   </li>
                 </ul>
-              </li>
-              <li className={styles.list__item}>
-                <ul className={styles.list__link}>links</ul>
+                <div className={styles.list__item}>
+                  {movieCategories?.collections &&
+                    movieCategories?.collections.map((item: ILink) => (
+                      <Link className={styles.list__link} key={item.title} href={item.link}>
+                        {item.title}
+                      </Link>
+                    ))}
+                </div>
               </li>
             </ul>
           </>

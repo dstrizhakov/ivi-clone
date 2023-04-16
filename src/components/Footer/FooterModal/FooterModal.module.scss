@@ -2,7 +2,7 @@
 
 .modal {
   background: $color-background;
-  // display: block;
+  display: none;
   width: 100%;
   padding: 70px 34px;
   position: absolute;
@@ -101,5 +101,11 @@
   justify-content: start;
   button {
     padding: 0;
+  }
+}
+
+@media (max-width: $pc) {
+  .modal {
+    display: block;
   }
 }
