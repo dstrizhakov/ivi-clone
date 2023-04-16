@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { FC, useState } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
-import SearchButton from '../Search/SearchButton/SearchButton';
-import SearchModal from '../Search/SearchModal/SearchModal';
-import Alerts from '../Alerts/Alerts';
-import User from '../User/User';
-import Submenu from '../Submenu/Submenu';
+import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
+import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
+import Alerts from '@/components/Header/Alerts/Alerts';
+import User from '@/components/Header/User/User';
+import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { BiUser } from 'react-icons/bi';
+import logo from '@/../public/iviLogo.svg';
 
 const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -22,7 +23,7 @@ const Header: FC = () => {
             <div className={styles.body}>
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src="iviLogo.svg" alt="logo" width={100} height={50} />
+                  <Image src={logo} alt="logo" width={100} height={50} />
                 </Link>
               </div>
               <div className={styles.menu}>
@@ -49,13 +50,15 @@ const Header: FC = () => {
               </Button>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
-            <Submenu icon={HiOutlineBellAlert}>
+            <Submenu
+              icon={HiOutlineBellAlert}
+              route={'https://www.ivi.ru/profile/pull_notifications'}
+            >
               <Alerts />
             </Submenu>
-            <Submenu icon={BiUser} outline>
+            <Submenu icon={BiUser} route={'/profile'} outline>
               <User />
             </Submenu>
-            {/* <User /> */}
           </div>
         </div>
       </header>
