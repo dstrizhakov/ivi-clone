@@ -10,6 +10,7 @@ import User from '@/components/Header/User/User';
 import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { BiUser } from 'react-icons/bi';
+import Categories from './Categories/Categories';
 
 const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -34,7 +35,9 @@ const Header: FC = () => {
                     <Link href="/">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Фильмы">Фильмы</Submenu>
+                    <Submenu title="Фильмы">
+                      <Categories />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
                     <Submenu title="Сериалы">Сериалы</Submenu>

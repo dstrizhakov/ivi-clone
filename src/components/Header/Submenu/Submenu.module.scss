@@ -58,6 +58,7 @@
     z-index: 10;
   }
   &__content {
+    width: 100%;
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
@@ -70,6 +71,7 @@
     left: 0;
     width: 100%;
     min-height: 300px;
+    max-height: 500px;
     background-color: $color-submenu-background;
     display: flex;
     flex-direction: column;

@@ -27,15 +27,19 @@
     grid-template-rows: 1fr 1fr;
     justify-items: start;
     justify-content: center;
+    @media (max-width: $pc) {
+      flex: 0 0 30%;
+    }
   }
   &__nowrap {
     white-space: nowrap;
     padding: 0 30px;
     width: 100%;
+    @media (max-width: $pc) {
+      padding: 0;
+    }
   }
-  &__btn {
-    width: 100%;
-  }
+
   &__links {
     align-self: end;
     display: flex;
