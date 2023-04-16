@@ -11,6 +11,7 @@ import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { BiUser } from 'react-icons/bi';
 import Categories from './Categories/Categories';
+import { movieCategories } from '../../mock/MovieCategories';
 
 const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -36,14 +37,33 @@ const Header: FC = () => {
                   </li>
                   <li className={styles.menu__item}>
                     <Submenu title="Фильмы">
-                      <Categories />
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы">Сериалы</Submenu>
+                    <Submenu title="Сериалы">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы">Мультфильмы</Submenu>
+                    <Submenu title="Мультфильмы">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                 </ul>
               </div>
