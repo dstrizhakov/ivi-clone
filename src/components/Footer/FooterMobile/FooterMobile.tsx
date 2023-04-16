@@ -25,13 +25,27 @@ const FooterMobile: FC = () => {
             title={'Поиск'}
             href={isSearchOpen ? '/' : '/?search'}
             icon={BiSearch}
-            openModal={isSearchOpen ? () => setIsSearchOpen(false) : () => setIsSearchOpen(true)}
+            openModal={
+              isSearchOpen
+                ? () => setIsSearchOpen(false)
+                : () => {
+                    setIsSearchOpen(true);
+                    setIsModalOpen(false);
+                  }
+            }
           />
           <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
           <FooterLink
             title={isModalOpen ? 'Закрыть' : 'Ещё'}
             href={isModalOpen ? '/' : '/?navigation'}
-            openModal={isModalOpen ? () => setIsModalOpen(false) : () => setIsModalOpen(true)}
+            openModal={
+              isModalOpen
+                ? () => setIsModalOpen(false)
+                : () => {
+                    setIsModalOpen(true);
+                    setIsSearchOpen(false);
+                  }
+            }
             icon={isModalOpen ? IoCloseOutline : HiDotsHorizontal}
           />
         </div>

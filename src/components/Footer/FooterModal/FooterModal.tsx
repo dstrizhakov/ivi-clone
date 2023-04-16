@@ -78,7 +78,6 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
             <ModalList title={'О нас'} icon={BiInfoCircle}>
               <div className={styles.list}>
                 <Link href={'https://corp.ivi.ru/'} className={styles.listLink}>
-                  {' '}
                   О компании
                 </Link>
                 <Link
@@ -87,23 +86,18 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
                 >
                   Вакансии
                 </Link>
-
                 <Link href={'https://www.ivi.ru/pages/beta/'} className={styles.listLink}>
                   Программа бета-тестирования
                 </Link>
-
                 <Link href={'https://www.ivi.ru/info/partners'} className={styles.listLink}>
                   Информация для партнёров
                 </Link>
-
                 <Link href={'https://corp.ivi.ru/advertisers/'} className={styles.listLink}>
                   Размещение рекламы
                 </Link>
-
                 <Link href={'https://www.ivi.ru/info/agreement'} className={styles.listLink}>
                   Пользовательское соглашение
                 </Link>
-
                 <Link href={'https://www.ivi.ru/info/confidential'} className={styles.listLink}>
                   Политика конфиденциальности
                 </Link>
