@@ -10,7 +10,8 @@ import User from '@/components/Header/User/User';
 import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { BiUser } from 'react-icons/bi';
-import logo from '@/../public/iviLogo.svg';
+import Categories from './Categories/Categories';
+import { movieCategories } from '@/mock/MovieCategories';
 
 const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -23,7 +24,7 @@ const Header: FC = () => {
             <div className={styles.body}>
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src={logo} alt="logo" width={100} height={50} />
+                  <Image src="iviLogo.svg" alt="logo" width={100} height={50} />
                 </Link>
               </div>
               <div className={styles.menu}>
@@ -35,13 +36,34 @@ const Header: FC = () => {
                     <Link href="/">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Фильмы">Фильмы</Submenu>
+                    <Submenu title="Фильмы">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы">Сериалы</Submenu>
+                    <Submenu title="Сериалы">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы">Мультфильмы</Submenu>
+                    <Submenu title="Мультфильмы">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                 </ul>
               </div>
@@ -50,15 +72,14 @@ const Header: FC = () => {
               </Button>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
-            <Submenu
-              icon={HiOutlineBellAlert}
-              route={'https://www.ivi.ru/profile/pull_notifications'}
-            >
-              <Alerts />
-            </Submenu>
-            <Submenu icon={BiUser} route={'/profile'} outline>
-              <User />
-            </Submenu>
+            <div className={styles.actions}>
+              <Submenu icon={HiOutlineBellAlert}>
+                <Alerts />
+              </Submenu>
+              <Submenu icon={BiUser} outline>
+                <User />
+              </Submenu>
+            </div>
           </div>
         </div>
       </header>
