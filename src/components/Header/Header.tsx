@@ -73,10 +73,13 @@ const Header: FC = () => {
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
-              <Submenu icon={HiOutlineBellAlert}>
+              <Submenu
+                icon={HiOutlineBellAlert}
+                route={'https://www.ivi.ru/profile/pull_notifications'}
+              >
                 <Alerts />
               </Submenu>
-              <Submenu icon={BiUser} outline>
+              <Submenu icon={BiUser} route={'/profile'} outline>
                 <User />
               </Submenu>
             </div>
