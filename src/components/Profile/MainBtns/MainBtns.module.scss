@@ -1,0 +1,132 @@
+.profile__btns {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  .id {
+    font-size: 0.7rem;
+    padding: 0 12px;
+  }
+  button {
+    text-align: start;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    padding: 40px 12px 32px;
+    button {
+      padding: 20px 15px;
+    }
+  }
+  .list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    &__item {
+      margin-bottom: 24px;
+      padding: 0 12px;
+      &.subscription {
+        width: 40%;
+        &_present {
+          width: 100%;
+          svg {
+            font-size: 30px;
+          }
+        }
+      }
+      &.certificate {
+        width: 40%;
+      }
+      &.fund {
+        width: 20%;
+      }
+      &.referral_program {
+        width: calc(100%*5/7);
+      }
+      &.notifications {
+        width: calc(100%*2/7);
+      }
+      &.smalls {
+        width: calc(100%/7);
+        svg {
+          font-size: 1.5rem;
+        }
+      }
+      @media screen and (max-width: 1271px) {
+        &.smalls {
+          width: calc(100%/6);
+        }
+      }
+      @media screen and (max-width: 1095px) {
+        &.smalls {
+          width: calc(100%/5);
+        }
+      }
+      @media screen and (max-width: 919px) {
+        &.subscription {
+          width: 100%;
+        }
+        &.referral_program {
+          width: 50%;
+        }
+        &.notifications {
+          width: 50%;
+        }
+        &.certificate {
+          width: 50%;
+        }
+        &.fund {
+          width: 50%;
+        }
+        &.smalls {
+          width: calc(100%/4);
+        }
+      }
+      @media screen and (max-width: 743px) {
+        &.smalls {
+          width: calc(100%/3);
+        }
+      }
+      @media screen and (max-width: 599px) {
+        &.smalls {
+          width: calc(100%/4);
+        }
+        &.referral_program {
+          width: 100%;
+        }
+        &.notifications {
+          width: 100%;
+        }
+        &.certificate {
+          width: calc(100%*2/3);
+        }
+        &.fund {
+          width: calc(100%/3);
+        }
+      }
+      @media screen and (max-width: 511px) {
+        &.smalls {
+          width: calc(100%/3);
+        }
+      }
+      @media screen and (max-width: 391px) {
+        &.smalls {
+          width: calc(100%/2);
+        }
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 919px) {
+    .list{
+      flex-wrap: wrap;
+      &__item {
+        button {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+
