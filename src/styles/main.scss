@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 #__next {
   height: 100%;
 }
@@ -5,7 +7,7 @@
 html,
 body {
   height: 100%;
-  min-width: 320px;
+  min-width: $minWidth + px;
   line-height: 1;
   font-family: 'iviSans', 'Inter', sans-serif;
   font-size: 16px;
@@ -25,7 +27,11 @@ main {
 }
 
 .container {
-  max-width: 1240px;
+  max-width: $maxWidthContainer + px;
+  box-sizing: content-box;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 math.div($containerPadding, 2) + px;
+  // max-width: 1240px;
+  // margin: 0 auto;
+  // padding: 0 10px;
 }

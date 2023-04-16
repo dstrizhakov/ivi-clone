@@ -49,12 +49,14 @@ const Header: FC = () => {
               </Button>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
-            <Submenu icon={HiOutlineBellAlert}>
-              <Alerts />
-            </Submenu>
-            <Submenu icon={BiUser} outline>
-              <User />
-            </Submenu>
+            <div className={styles.actions}>
+              <Submenu icon={HiOutlineBellAlert}>
+                <Alerts />
+              </Submenu>
+              <Submenu icon={BiUser} outline>
+                <User />
+              </Submenu>
+            </div>
           </div>
         </div>
       </header>
