@@ -8,6 +8,9 @@
       opacity: 1;
       visibility: visible;
       pointer-events: all;
+      @media screen and (max-width: 1159px) {
+        display: none;
+      }
     }
   }
   &__button {
