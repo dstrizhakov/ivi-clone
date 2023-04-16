@@ -1,18 +1,21 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import styles from './FooterLink.module.scss';
 import { FooterLinkProps } from './FooterLink.props';
-import { FC } from 'react';
 
-const FooterLink: FC<FooterLinkProps> = ({ children, title, href }) => {
+const FooterLink: FC<FooterLinkProps> = ({ title, href, icon, openModal }) => {
+  const IconComponent = icon;
   const router = useRouter();
+
   return (
     <Link
       href={href}
       className={cn(styles.link, router.pathname === href ? styles.link__active : '')}
+      onClick={openModal}
     >
-      {children}
+      <IconComponent className={styles.icon} />
       <span className={styles.title}>{title}</span>
     </Link>
   );
