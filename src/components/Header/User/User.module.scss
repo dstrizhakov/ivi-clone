@@ -8,12 +8,16 @@
     padding: 25px;
   }
   &__actions {
-    padding-right: 20px;
+    padding-right: 25px;
     flex: 1 1 auto;
     border-right: 1px solid rgba(255, 255, 255, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 200px));
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 25px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // gap: 25px;
   }
   &__auth {
     flex: 0 0 340px;
@@ -23,15 +27,19 @@
     grid-template-rows: 1fr 1fr;
     justify-items: start;
     justify-content: center;
+    @media (max-width: $pc) {
+      flex: 0 0 30%;
+    }
   }
   &__nowrap {
     white-space: nowrap;
     padding: 0 30px;
     width: 100%;
+    @media (max-width: $pc) {
+      padding: 0;
+    }
   }
-  &__btn {
-width: 100%;
-  }
+
   &__links {
     align-self: end;
     display: flex;

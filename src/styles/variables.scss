@@ -9,6 +9,13 @@ $color-accent: #ea003d;
 
 $time-main: all 0.3s ease 0s;
 
+$minWidth: 320;
+$maxWidthContainer: 1220; // Ширина ограничивающего контейнера
+$containerPadding: 10; // Общий отступ у контейнера
+// Брейк-поинты
+$pc: 1160px; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$mobile: 599.98px; // Телефоны L
+
 @keyframes skew-animation {
   11.1% {
     -webkit-transform: none;

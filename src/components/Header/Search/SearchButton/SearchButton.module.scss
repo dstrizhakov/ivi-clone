@@ -9,6 +9,9 @@
   opacity: 0.5;
   transition: $time-main;
   z-index: 10;
+  @media (max-width: $pc) {
+    display: none;
+  }
   &:hover {
     opacity: 1;
   }
