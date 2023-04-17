@@ -19,27 +19,23 @@ const Card: FC<CardProps> = ({ card }) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBooked((booked) => !booked);
-    console.log('booked');
   };
   const finder = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
-    console.log('find similar');
   };
   const star = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setStarred((starred) => !starred);
-    console.log('starred');
   };
   const block = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
-    console.log('blocked');
   };
   return (
     <div className={styles.card}>
-      <Link href={`/movie/${card.name}`}>
+      <Link href={`/`}>
         <div className={styles.imageSection}>
           <img src={card.img} alt={card.name} />
           <div className={styles.props}>
@@ -68,18 +64,18 @@ const Card: FC<CardProps> = ({ card }) => {
                 </div>
               </div>
               <div className={styles.singleGraph}>
-                <span>criteria</span>
+                <span>актёры</span>
                 <BarGraph width={67} />
               </div>
               <div className={styles.info__text}>
-                <div className={styles.info__row}>years, country, genre,</div>
-                <div className={styles.info__row}>duration</div>
+                <div className={styles.info__row}>2019-2021, Россия, Драмы</div>
+                <div className={styles.info__row}>1 сезон</div>
               </div>
             </div>
           </div>
         </div>
         <div className={styles.textSection}>
-          <P>{card.name.length > 15 ? `${card.name.slice(0, 15)}...` : card.name}</P>
+          <P>{card.name}</P>
         </div>
       </Link>
     </div>

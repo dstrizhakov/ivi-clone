@@ -1,21 +1,35 @@
 @import "src/styles/variables";
 
 .card {
-  width: 10vw;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #d9d7e0;
   height: 100%;
-  .imageSection {
-    a {
-      position: absolute;
+  @media screen and (max-width: 600px) {
+    font-size: 0.6rem;
+  }
+  button {
+    background-color: transparent!important;
+    padding: 0;
+    max-height: 20px;
+    margin: 0;
+    svg {
+      font-size: 1.25rem;
     }
-    aspect-ratio: 13/20;
+  }
+  .imageSection {
+    &.show {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     img {
       width: 100%;
     }
+    aspect-ratio: 13/20;
     position: relative;
-    background: #232323;
+    background-color: #1f1b2e;
     border-radius: 8px;
     overflow: hidden;
     .props {
@@ -37,12 +51,9 @@
         z-index: 25;
         display: flex;
         flex-direction: column;
-        padding: 10px 8%;
         width: 40%;
-        justify-content: flex-end;
         button {
-          height: 100%;
-          width: 100%;
+          justify-content: flex-end;
           margin-top: 5px;
         }
       }
@@ -51,10 +62,14 @@
         flex-direction: column;
         justify-content: flex-end;
         position: relative;
-        margin-top: -10rem;
-        padding: 5%;
+        height: 100%;
+        padding: 10px;
+        @media screen and (max-width: 600px) {
+          bottom: 30%;
+        }
         &__text {
           text-align: start;
+          font-size: 0.6rem;
         }
         &__row {
           margin-top: 4px;
@@ -62,12 +77,12 @@
           text-overflow: ellipsis;
         }
         .ratings {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           width: 100%;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;
-          align-items: flex-start;
+          align-items: flex-end;
           .graphs {
             display: flex;
             min-width: 25%;
@@ -79,12 +94,18 @@
   }
   .textSection {
     p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition-property: color;
+      white-space: nowrap;
       font-size: 0.8rem;
       transition: $time-main;
     }
   }
   .singleGraph {
-    margin-top: 10%;
+    margin-top: 20px;
+    color: #a5a1b2;
+    font-size: 0.6rem;
     text-align: start;
     width: 65%;
   }
@@ -92,10 +113,12 @@
     .imageSection{
       transition: $time-main;
       transform: scale(1.03) translateY(-1%);
+      &.show>p {
+        color: white!important;
+        transition: $time-main;
+      }
       .props {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(black, 0.85);
+        background-color: rgba(7,5,14,.8);
         opacity: 1;
         visibility: visible;
         transition: $time-main;
@@ -111,15 +134,6 @@
   &:active {
     transition: $time-main ease-in-out;
     transform: scale(0.98);
-  }
-  button {
-    background-color: transparent!important;
-    padding: 0;
-    max-height: 20px;
-    margin: 0;
-    svg {
-      stroke-width: 0!important;
-    }
   }
 }
 

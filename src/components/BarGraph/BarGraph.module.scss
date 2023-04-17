@@ -8,6 +8,8 @@
   border-radius: 2px;
   margin: 1px;
   &Value {
+    min-width: 0 !important;
+    max-width: 100% !important;
     background-color: $color-accent;
     min-height: 3px;
     border-radius: 2px;

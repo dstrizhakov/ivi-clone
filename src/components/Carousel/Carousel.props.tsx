@@ -1,4 +1,6 @@
 export interface CarouselProps {
   title: string;
-  //arr: iMovie[]; from back
+  route: string;
+  showAll?: boolean;
+  //movies: iMovie[]; from back
 }
