@@ -14,7 +14,7 @@ const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }) => {
 
   return (
     <>
-      <FullScreenModal isOpen={isOpen} closeSearch={closeSearch}>
+      <FullScreenModal isOpen={isOpen} closeModal={closeSearch}>
         <div className={styles.body}>
           <h3>Поиск</h3>
           <div className={styles.input}>

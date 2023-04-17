@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface FSMProps {
-  children: ReactNode;
+  children?: ReactNode;
   isOpen: boolean;
-  closeSearch: () => void;
+  closeModal: () => void;
 }
