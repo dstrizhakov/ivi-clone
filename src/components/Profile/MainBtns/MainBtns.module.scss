@@ -1,3 +1,5 @@
+@import "@/styles/variables";
+
 .profile__btns {
   display: flex;
   margin-bottom: 20px;
@@ -92,7 +94,7 @@
           width: calc(100%/3);
         }
       }
-      @media screen and (max-width: 599px) {
+      @media screen and (max-width: $minWidth+px) {
         &.smalls {
           width: calc(100%/4);
         }
@@ -128,7 +130,7 @@
           width: calc(100%/2);
         }
       }
-      @media screen and (max-width: 320px) {
+      @media screen and (max-width: $minWidth+px) {
         &.smalls {
           width: calc(100%);
         }
