@@ -11,7 +11,7 @@ import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { BiUser } from 'react-icons/bi';
 import Categories from './Categories/Categories';
-import { movieCategories } from '../../mock/MovieCategories';
+import { movieCategories } from '@/mock/MovieCategories';
 
 const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -73,10 +73,13 @@ const Header: FC = () => {
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
-              <Submenu icon={HiOutlineBellAlert}>
+              <Submenu
+                icon={HiOutlineBellAlert}
+                route={'https://www.ivi.ru/profile/pull_notifications'}
+              >
                 <Alerts />
               </Submenu>
-              <Submenu icon={BiUser} outline>
+              <Submenu icon={BiUser} route={'/profile'} outline>
                 <User />
               </Submenu>
             </div>

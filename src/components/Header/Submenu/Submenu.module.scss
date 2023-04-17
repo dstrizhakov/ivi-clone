@@ -3,6 +3,16 @@
 .submenu {
   flex: 0 0 40px;
   margin-left: 10px;
+  &:hover {
+    .submenu__body {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      @media screen and (max-width: 1159px) {
+        display: none;
+      }
+    }
+  }
   &__button {
     width: 23px;
     height: 23px;
@@ -81,7 +91,7 @@
     visibility: hidden;
     pointer-events: none;
     border-radius: 10px;
-    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     z-index: 1;
     transition: $time-main;
     &:hover {

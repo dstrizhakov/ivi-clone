@@ -52,33 +52,34 @@ export const Carousel: FC<CarouselProps> = ({ title, ...props }) => {
   return (
     <div>
       <div className={styles.carousel__block} {...props}>
-        <Link href={'/'}>
-          <Htag tag={'h4'} style={{ display: 'flex', alignItems: 'center' }}>
-            {title} <MdArrowForwardIos />
-          </Htag>
+        <Link href={'/'} className={styles.title}>
+          <Htag tag={'h4'}>{title}</Htag>
+          <MdArrowForwardIos />
         </Link>
         <div className={styles.carousel}>
-          <div className={styles.viewport} style={{ transform: `translateX(-${start * 100}%)` }}>
+          <div className={styles.viewport} style={{ transform: `translateX(-${start * 80}%)` }}>
             {cards.map((card) => (
-              <Card card={card} key={card.id} />
+              <div key={card.id} className={styles.card}>
+                <Card card={card} />
+              </div>
             ))}
           </div>
         </div>
       </div>
       <span className={styles.arrow}>
-        <div className={styles.left}>
+        <span className={styles.left}>
           <Button
             size={'L'}
             onClick={() => prev()}
-            disabled={start <= 0}
             appearance={'transparent'}
+            disabled={start <= 0}
           >
-            <MdArrowBackIosNew size={'Large'} />
+            <MdArrowBackIosNew size={30} />
           </Button>
-        </div>
+        </span>
       </span>
       <span className={styles.arrow}>
-        <div className={styles.right}>
+        <span className={styles.right}>
           <Button
             size={'L'}
             appearance={'transparent'}
@@ -87,9 +88,9 @@ export const Carousel: FC<CarouselProps> = ({ title, ...props }) => {
               start >= Math.floor(cards.length / width) - 1 + (cards.length % width) / width
             }
           >
-            <MdArrowForwardIos size={'Large'} />
+            <MdArrowForwardIos size={30} />
           </Button>
-        </div>
+        </span>
       </span>
     </div>
   );

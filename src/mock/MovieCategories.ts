@@ -1,4 +1,4 @@
-import { ILink } from '../types/types';
+import { ILink } from '@/types/types';
 
 const genres: ILink[] = [
   { title: 'Артхаус', link: 'https://www.ivi.tv/movies/arthouse' },

@@ -1,4 +1,4 @@
-import { ILink } from '../../../types/types';
+import { ILink } from '@/types/types';
 
 export interface CategoriesProps {
   genres: ILink[];

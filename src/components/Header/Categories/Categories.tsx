@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Categories.module.scss';
 import Link from 'next/link';
-import { ILink } from '../../../types/types';
+import { ILink } from '@/types/types';
 import { CategoriesProps } from './Categories.props';
 
 const Categories: FC<CategoriesProps> = ({ genres, countries, years, collections }) => {
