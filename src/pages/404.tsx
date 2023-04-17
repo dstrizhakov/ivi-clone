@@ -1,13 +1,14 @@
 import Head from 'next/head';
+import NotFound from "../components/NotFound/NotFound";
+import React from "react";
 
 const NotFoundPage = () => {
   return (
     <>
       <Head>
-        <title>Страница 404</title>
+        <title>Страница не найдена</title>
       </Head>
-      <h2>404</h2>
-      <h3>Такой страницы не существует</h3>
+      <NotFound/>
     </>
   );
 };
