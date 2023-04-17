@@ -1,0 +1,33 @@
+@import '../../../styles/variables.scss';
+
+.wrap {
+  width: 50%;
+  margin: 20px auto;
+  display: grid;
+  gap: 16px;
+}
+
+.title {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba($color-main, 0.16);
+}
+
+.cards {
+  display: grid;
+  gap: 16px;
+}
+
+.link {
+  transition: $time-main;
+  cursor: pointer;
+  &:hover {
+    color: $color-main;
+  }
+}
