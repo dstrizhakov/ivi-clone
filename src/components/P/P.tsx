@@ -3,11 +3,12 @@ import styles from './P.module.scss';
 
 import cn from 'classnames';
 
-export const P = ({ children, size = 'M', color, ...props }: PProps): JSX.Element => {
+export const P = ({ children, size = 'M', color, className, ...props }: PProps): JSX.Element => {
   return (
     <p
       className={cn(
         styles.p,
+        className,
         {
           [styles.S]: size == 'S',
           [styles.M]: size == 'M',

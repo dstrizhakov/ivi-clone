@@ -94,7 +94,7 @@
           width: calc(100%/3);
         }
       }
-      @media screen and (max-width: $minWidth+px) {
+      @media screen and (max-width: $mobile+px) {
         &.smalls {
           width: calc(100%/4);
         }

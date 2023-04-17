@@ -65,7 +65,6 @@ function PrevArrow(props) {
 }
 
 const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
-  const slider = React.useRef(null);
   const settings = {
     dots: false,
     infinite: false,
@@ -140,7 +139,7 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
         <Htag tag={'h4'}>{title}</Htag>
         <MdArrowForwardIos />
       </Link>
-      <Slider ref={slider} {...settings}>
+      <Slider {...settings}>
         {arr.map((card) => (
           <div key={card.id} className={styles.card}>
             <Card card={card} />
