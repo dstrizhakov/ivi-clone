@@ -12,6 +12,7 @@ export const P = ({ children, size = 'M', color, className, ...props }: PProps):
         {
           [styles.S]: size == 'S',
           [styles.M]: size == 'M',
+					[styles.L]: size == 'L',
         },
         {
           [styles.white]: color == 'white',

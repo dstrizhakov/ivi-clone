@@ -10,13 +10,17 @@
   margin: 15px 0;
   &__icon {
     margin-left: -10px;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
   & span {
-    font-size: 14px;
+    font-size: 15px;
   }
   &:hover {
     opacity: 1;
+    margin: 15px 0;
+  }
+  &:hover .back__icon {
+    transform: scale(1.1);
   }
 }

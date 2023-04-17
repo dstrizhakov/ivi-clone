@@ -9,6 +9,8 @@ import Alerts from '@/components/Header/Alerts/Alerts';
 import User from '@/components/Header/User/User';
 import Submenu from '@/components/Header/Submenu/Submenu';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
+
+import { MdNotificationsNone } from 'react-icons/md';
 import { BiUser } from 'react-icons/bi';
 import Categories from './Categories/Categories';
 import { movieCategories } from '@/mock/MovieCategories';
@@ -73,7 +75,7 @@ const Header: FC = () => {
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
-              <Submenu icon={HiOutlineBellAlert} route={'/notifications'}>
+              <Submenu icon={MdNotificationsNone} route={'/notifications'}>
                 <Alerts />
               </Submenu>
               <Submenu icon={BiUser} route={'/profile'} outline>

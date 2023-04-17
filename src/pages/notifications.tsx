@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import { Htag } from '@/components/Htag/Htag';
-import BackButton from '@/components/BackButton/BackButton';
+import EmptyNotifications from '@/components/EmptyNotifications/EmptyNotifications';
 
 const Notifications: FC = () => {
   return (
@@ -9,8 +8,7 @@ const Notifications: FC = () => {
       <Head>
         <title>Мой профиль / ivi.ru</title>
       </Head>
-      <BackButton />
-      <Htag tag="h2">Уведомления и акции</Htag>
+        <EmptyNotifications />
     </>
   );
 };
