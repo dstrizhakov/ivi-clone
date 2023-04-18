@@ -5,6 +5,7 @@
   flex: 0 0 40px;
   &:hover {
     .submenu__body {
+      transition: all 0.05s ease-out;
       opacity: 1;
       visibility: visible;
       pointer-events: all;
@@ -22,7 +23,7 @@
     z-index: 10;
     opacity: 0.5;
     cursor: pointer;
-    transition: $time-main;
+    //transition: $time-main;
     & img {
       padding: rem(5);
     }
@@ -50,7 +51,7 @@
       padding: rem(5);
     }
     &:hover {
-      box-shadow: 0 0 15px rgba( 255,255,255, 0.3);
+     box-shadow: 0 0 15px rgba( 255,255,255, 0.3);
       opacity: 1;
     }
     &:hover ~ .submenu__body {
@@ -88,13 +89,14 @@
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+    touch-action: none;
     pointer-events: none;
     border-radius: rem(10);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     z-index: 1;
-    transition: $time-main;
+    transition: all 0.3s ease-in;
     &:hover {
       opacity: 1;
+      touch-action: auto;
       visibility: visible;
       pointer-events: all;
     }
