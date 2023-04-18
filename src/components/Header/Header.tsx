@@ -26,7 +26,7 @@ const Header: FC = (): JSX.Element => {
             <div className={styles.body}>
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src="iviLogo.svg" alt="logo" width={100} height={50} />
+                  <Image src="iviLogo.svg" alt="logo" width={66} height={48} />
                 </Link>
               </div>
               <div className={styles.menu}>
@@ -38,17 +38,17 @@ const Header: FC = (): JSX.Element => {
                     <Link href="/">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
-                      <Submenu title="Фильмы" link='/movies'>
-                        <Categories
-                          genres={movieCategories.genres}
-                          countries={movieCategories.countries}
-                          years={movieCategories.years}
-                          collections={movieCategories.collections}
-                        />
-                      </Submenu>
+                    <Submenu title="Фильмы" link="/movies">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы"  link='/series'>
+                    <Submenu title="Сериалы" link="/series">
                       <Categories
                         genres={seriesCategories.genres}
                         countries={seriesCategories.countries}
@@ -58,7 +58,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы"  link='/animation'>
+                    <Submenu title="Мультфильмы" link="/animation">
                       <Categories
                         genres={cartoonCategories.genres}
                         countries={cartoonCategories.countries}
