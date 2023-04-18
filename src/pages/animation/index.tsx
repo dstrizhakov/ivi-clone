@@ -2,6 +2,8 @@ import React from "react";
 import { Htag } from "@/components/Htag/Htag";
 import Description from "@/components/Description/Description";
 import BreadCrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import Head from "next/head";
+import Animation from "@/components/Animation/Animation";
 
 const Index = () => {
 
@@ -10,11 +12,13 @@ const Index = () => {
     { name: 'Мультфильмы', path: '/animation'},
   ]
   return (
-    <div>
+    <>
+      <Head>
+        <title>Смотреть мультфильмы онлайн</title>
+      </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs}/>
-      <Htag tag={'h2'}>Мультфильмы смотреть онлайн</Htag>
-      <Description/>
-    </div>
+      <Animation/>
+    </>
   );
 };
 
