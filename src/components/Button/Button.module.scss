@@ -45,16 +45,6 @@
   }
 }
 
-.transparent {
-  background-color: transparent;
-  border: 0;
-  border-radius: 8px;
-  &:hover {
-    background-color: transparent;
-    border: 0;
-  }
-}
-
 .S {
   height: 32px;
   padding: 7px 11px;
@@ -69,4 +59,15 @@
 .L {
   height: 48px;
   padding: 5px 15px;
+}
+
+.transparent {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 8px;
+  &:hover {
+    background-color: transparent;
+    border: 0;
+  }
 }
