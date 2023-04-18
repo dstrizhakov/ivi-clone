@@ -4,7 +4,7 @@ import Description from '@/components/Description/Description';
 import Link from 'next/link';
 import { P } from '@/components/P/P';
 
-const MoviePageDescription = () => {
+const MoviesPageDescription = () => {
   return (
     <Description
       title={<Htag tag={'h3'}>Фильмы смотреть онлайн</Htag>}
@@ -52,4 +52,4 @@ const MoviePageDescription = () => {
   );
 };
 
-export default MoviePageDescription;
+export default MoviesPageDescription;

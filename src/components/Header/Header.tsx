@@ -35,7 +35,7 @@ const Header: FC = (): JSX.Element => {
                     <Link href="/">Мой Иви</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="/">Что нового</Link>
+                    <Link href="https://www.ivi.tv/new">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
                     <Submenu title="Фильмы" link="/movies">
@@ -75,10 +75,10 @@ const Header: FC = (): JSX.Element => {
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
-              <Submenu icon={MdNotificationsNone} route={'/notifications'}>
+              <Submenu icon={MdNotificationsNone} link={'/notifications'}>
                 <Alerts />
               </Submenu>
-              <Submenu icon={BiUser} route={'/profile'} outline>
+              <Submenu icon={BiUser} link={'/profile'} outline>
                 <User />
               </Submenu>
             </div>
