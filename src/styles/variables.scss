@@ -7,7 +7,8 @@ $color-card-background: #322c43;
 $color-card-hover: #3f3856;
 $color-accent: #ea003d;
 
-$time-main: all 0.3s ease 0s;
+$time-main: all 0.3s ease-out;
+
 
 $minWidth: 320;
 $maxWidthContainer: 1220; // Ширина ограничивающего контейнера
