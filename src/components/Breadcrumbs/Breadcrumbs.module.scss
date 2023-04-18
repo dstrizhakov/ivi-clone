@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+.container {
+  margin: 20px 0;
+}
+
+.breadcrumbs {
+  display: flex;
+
+  &__item {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    margin-right: 16px;
+    & span {
+      opacity: 0.5;
+    }
+    &::before {
+      content: '/';
+      position: absolute;
+      left: -11px;
+      color: gray;
+    }
+    &:first-child::before {
+      content: none;
+    }
+    & a {
+      position: relative;
+      text-decoration: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255,255, 255, 0.3);
+
+        transform-origin: left;
+        transition: $time-main;
+      }
+
+      &:hover::after {
+        height: 18px;
+      }
+    }
+
+  }
+}

@@ -12,66 +12,70 @@ import { AiFillStar } from 'react-icons/ai';
 import { MdBlock } from 'react-icons/md';
 import BarGraph from '@/components/BarGraph/BarGraph';
 
-const Card: FC<CardProps> = ({ card, ...props }) => {
+const Card: FC<CardProps> = ({ card }) => {
   const [starred, setStarred] = useState<boolean>(false);
   const [booked, setBooked] = useState<boolean>(false);
-  const book = () => {
+  const book = (e) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
     setBooked((booked) => !booked);
   };
-  const finder = () => {
-    console.log('find similar');
+  const finder = (e) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
   };
-  const star = () => {
+  const star = (e) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
     setStarred((starred) => !starred);
   };
-  const block = () => {
-    console.log('blocked');
+  const block = (e) => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
   };
   return (
-    <div className={styles.card} {...props}>
-      <div className={styles.imageSection}>
-        <Link href={'/'}>
+    <div className={styles.card}>
+      <Link href={`/`}>
+        <div className={styles.imageSection}>
           <img src={card.img} alt={card.name} />
-        </Link>
-        <div className={styles.props}>
-          <div className={styles.btns}>
-            <Button size={'L'} onClick={() => book()}>
-              {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
-            </Button>
-            <Button size={'L'} onClick={() => finder()}>
-              <IoColorWandOutline className={styles.mirrored} />
-            </Button>
-            <Button size={'L'} onClick={() => star()}>
-              {starred ? <AiFillStar /> : <AiOutlineStar />}
-            </Button>
-            <Button size={'L'} onClick={() => block()}>
-              <MdBlock />
-            </Button>
-          </div>
-          <div className={styles.info}>
-            <div className={styles.ratings}>
-              7,7
-              <div className={styles.graphs}>
-                <BarGraph width={80} />
-                <BarGraph width={73} />
-                <BarGraph width={62} />
-                <BarGraph width={98} />
+          <div className={styles.props}>
+            <div className={styles.btns}>
+              <Button size={'L'} onClickCapture={(e) => book(e)}>
+                {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
+              </Button>
+              <Button size={'L'} onClickCapture={(e) => finder(e)}>
+                <IoColorWandOutline className={styles.mirrored} />
+              </Button>
+              <Button size={'L'} onClickCapture={(e) => star(e)}>
+                {starred ? <AiFillStar /> : <AiOutlineStar />}
+              </Button>
+              <Button size={'L'} onClickCapture={(e) => block(e)}>
+                <MdBlock />
+              </Button>
+            </div>
+            <div className={styles.info}>
+              <div className={styles.ratings}>
+                7,7
+                <div className={styles.graphs}>
+                  <BarGraph width={80} />
+                  <BarGraph width={73} />
+                  <BarGraph width={62} />
+                  <BarGraph width={98} />
+                </div>
               </div>
-            </div>
-            <div className={styles.singleGraph}>
-              <span>criteria</span>
-              <BarGraph width={67} />
-            </div>
-            <div className={styles.info__text}>
-              <div>years, country, genre,</div>
-              <div>duration</div>
+              <div className={styles.singleGraph}>
+                <span>актёры</span>
+                <BarGraph width={67} />
+              </div>
+              <div className={styles.info__text}>
+                <div className={styles.info__row}>2019-2021, Россия, Драмы</div>
+                <div className={styles.info__row}>1 сезон</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <Link href={'/'}>
         <div className={styles.textSection}>
-          <P>{card.name.length > 15 ? `${card.name.slice(0, 15)}...` : card.name}</P>
+          <P>{card.name}</P>
         </div>
       </Link>
     </div>

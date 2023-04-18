@@ -1,44 +1,65 @@
-@import "src/styles/variables";
-
-.carousel__block {
-  user-select: none;
-  margin: 20px 50px;
-  overflow: hidden;
-}
+@import "@/styles/variables";
 
 .carousel {
-  width: 100%;
-  .viewport {
-    margin: 20px;
-    white-space: nowrap;
-    transition: transform 1s;
-    flex-direction: row;
+  user-select: none;
+  padding: 0;
+  margin-bottom: 20px;
+  .title {
+    margin-left: 10px;
     display: flex;
+    align-items: flex-end;
+    svg {
+      margin-bottom: 3px;
+    }
+  }
+  .card {
+    padding: 15px 10px 0 10px;
   }
 }
+
 .arrow {
-  display: flex;
-  z-index: 15;
-  position: relative;
-  top: 30%;
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  padding: 0;
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
   button {
-    transition: $time ease-in-out;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    transition: $time-main;
     &:disabled{
       display: none;
     }
     &:active {
       transform: scale(0.5);
-      transition: $time ease-in-out;
+      transition: $time-main;
     }
   }
-  .left {
-    top: -30vh;
+  &.prev,&.next {
+    font-size: 0;
+    line-height: 0;
     position: absolute;
-    left: 0;
+    top: 50%;
+    display: block;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
   }
-  .right {
-    top: -30vh;
-    position: absolute;
-    right: 0;
+  &.prev {
+    left: -25px;
+  }
+  &.next {
+    right: -25px;
   }
 }

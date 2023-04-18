@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .link {
   padding-top: 8px;
   padding-bottom: 4px;
@@ -8,7 +10,6 @@
   position: relative;
   &__active {
     color: white;
-
     &:before {
       content: '';
       width: 60px;
@@ -19,12 +20,18 @@
       background-position-y: -60px;
       background-repeat: no-repeat;
       position: absolute;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 65%);
+      background-image: radial-gradient(rgba($color-main, 0.3) 0%, rgba($color-main, 0) 65%);
     }
   }
 }
+
 .title {
   display: block;
   font-size: 10px;
   line-height: 12px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
 }

@@ -1,29 +1,61 @@
+@import '../../../../styles/variables.scss';
+
 .title {
-  color: white;
+  color: $color-main;
   display: inline-flex;
   gap: 10px;
   align-items: center;
   font-weight: 500;
+  transition: $time-main;
+  cursor: pointer;
   svg {
     width: 20px;
     height: 20px;
   }
-}
-.link {
-  display: inline;
-  margin-left: 12px;
-}
-.list {
-  display: block;
-  padding-top: 20px;
-  animation: 0.4s rotate;
+  &:hover {
+    color: rgba($color-main, 0.72);
+  }
 }
 
-@keyframes rotate {
-  from {
-    transform: rotateX(90deg);
+.wrap {
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  &__item {
+    margin-top: 12px;
+    margin-right: 24px;
+    width: 256px;
   }
-  to {
-    transform: none;
+  &__title {
+    color: $color-main;
+    margin-bottom: 12px;
+  }
+  &__link {
+    color: rgba($color-main, 0.72);
+    display: block;
+    font-weight: 400;
+    transition: $time-main;
+    margin-bottom: 12px;
+    &:hover {
+      cursor: pointer;
+      color: $color-main;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  ul {
+    margin: 0;
+  }
+}
+
+@media (max-width: $mobile) {
+  .list {
+    flex-wrap: wrap;
   }
 }

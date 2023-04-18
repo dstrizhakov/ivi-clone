@@ -1,4 +1,5 @@
-@import '../../styles/variables.scss';
+@import '@/styles/variables.scss';
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -25,6 +26,9 @@
   &__list {
     display: flex;
     align-items: center;
+    @media (max-width: $pc) {
+      display: none;
+    }
   }
   &__item a {
     position: relative;
@@ -36,9 +40,18 @@
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
+    white-space: nowrap;
     transition: $time-main;
     &:hover {
       opacity: 1;
     }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  @media (max-width: $mobile) {
+    display: none;
   }
 }

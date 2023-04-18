@@ -2,60 +2,90 @@
 
 .card {
   cursor: pointer;
-  padding-top: 15px;
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: #d9d7e0;
-  .imageSection {
-    img {
-      height: 20vh;
+  height: 100%;
+  @media screen and (max-width: 600px) {
+    font-size: 0.6rem;
+  }
+  button {
+    background-color: transparent!important;
+    padding: 0;
+    max-height: 20px;
+    margin: 0;
+    svg {
+      font-size: 1.25rem;
     }
-    max-width: 234px;
-    max-height: 360px;
+  }
+  .imageSection {
+    &.show {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      width: 100%;
+    }
+    aspect-ratio: 13/20;
     position: relative;
-    background: #232323;
+    background-color: #1f1b2e;
     border-radius: 8px;
     overflow: hidden;
     .props {
+      height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: absolute;
       bottom: 0;
-      width: 100%;
-      height: 100%;
       text-align: center;
       transition: $time-main;
       z-index: 90;
       opacity: 0;
+      padding: 10%;
+      align-items: flex-end;
       visibility: hidden;
       .btns {
+        z-index: 25;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-        padding: 4px 8px;
+        width: 40%;
+        button {
+          justify-content: flex-end;
+          margin-top: 5px;
+        }
       }
       .info {
-        height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
-        padding: 0 10px;
+        justify-content: flex-end;
+        position: relative;
+        height: 100%;
+        padding: 10px;
+        @media screen and (max-width: 600px) {
+          bottom: 30%;
+        }
         &__text {
-          display: flex;
-          align-items: flex-start;
-          flex-direction: column;
+          text-align: start;
+          font-size: 0.6rem;
+        }
+        &__row {
+          margin-top: 4px;
+          white-space: pre-wrap;
+          text-overflow: ellipsis;
         }
         .ratings {
+          font-size: 1.4rem;
           width: 100%;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;
-          align-items: flex-start;
+          align-items: flex-end;
           .graphs {
             display: flex;
-            min-width: 25px;
+            min-width: 25%;
             flex-direction: column;
           }
         }
@@ -64,24 +94,31 @@
   }
   .textSection {
     p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition-property: color;
+      white-space: nowrap;
       font-size: 0.8rem;
       transition: $time-main;
     }
   }
   .singleGraph {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 80%;
+    margin-top: 20px;
+    color: #a5a1b2;
+    font-size: 0.6rem;
+    text-align: start;
+    width: 65%;
   }
   &:hover {
     .imageSection{
       transition: $time-main;
       transform: scale(1.03) translateY(-1%);
+      &.show>p {
+        color: white!important;
+        transition: $time-main;
+      }
       .props {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(black, 0.85);
+        background-color: rgba(7,5,14,.8);
         opacity: 1;
         visibility: visible;
         transition: $time-main;
@@ -97,15 +134,6 @@
   &:active {
     transition: $time-main ease-in-out;
     transform: scale(0.98);
-  }
-  button {
-    background-color: transparent!important;
-    padding: 0;
-    max-height: 20px;
-    margin: 0;
-    svg {
-      stroke-width: 0!important;
-    }
   }
 }
 

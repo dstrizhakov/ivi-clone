@@ -3,15 +3,19 @@ import Link from 'next/link';
 import { FC, useState } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
-import SearchButton from '../Search/SearchButton/SearchButton';
-import SearchModal from '../Search/SearchModal/SearchModal';
-import Alerts from '../Alerts/Alerts';
-import User from '../User/User';
-import Submenu from '../Submenu/Submenu';
-import { HiOutlineBellAlert } from 'react-icons/hi2';
+import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
+import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
+import Alerts from '@/components/Header/Alerts/Alerts';
+import User from '@/components/Header/User/User';
+import Submenu from '@/components/Header/Submenu/Submenu';
+import { MdNotificationsNone } from 'react-icons/md';
 import { BiUser } from 'react-icons/bi';
+import Categories from './Categories/Categories';
+import { movieCategories } from '@/mock/movieCategories';
+import { seriesCategories } from '@/mock/seriesCategories';
+import { cartoonCategories } from '@/mock/cartoonCategories';
 
-const Header: FC = () => {
+const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   return (
     <>
@@ -31,16 +35,37 @@ const Header: FC = () => {
                     <Link href="/">Мой Иви</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="/">Что нового</Link>
+                    <Link href="https://www.ivi.tv/new">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Фильмы">Фильмы</Submenu>
+                      <Submenu title="Фильмы" link='/movies'>
+                        <Categories
+                          genres={movieCategories.genres}
+                          countries={movieCategories.countries}
+                          years={movieCategories.years}
+                          collections={movieCategories.collections}
+                        />
+                      </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы">Сериалы</Submenu>
+                    <Submenu title="Сериалы"  link='/series'>
+                      <Categories
+                        genres={seriesCategories.genres}
+                        countries={seriesCategories.countries}
+                        years={seriesCategories.years}
+                        collections={seriesCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы">Мультфильмы</Submenu>
+                    <Submenu title="Мультфильмы"  link='/animation'>
+                      <Categories
+                        genres={cartoonCategories.genres}
+                        countries={cartoonCategories.countries}
+                        years={cartoonCategories.years}
+                        collections={cartoonCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                 </ul>
               </div>
@@ -49,13 +74,14 @@ const Header: FC = () => {
               </Button>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
-            <Submenu icon={HiOutlineBellAlert}>
-              <Alerts />
-            </Submenu>
-            <Submenu icon={BiUser} outline>
-              <User />
-            </Submenu>
-            {/* <User /> */}
+            <div className={styles.actions}>
+              <Submenu icon={MdNotificationsNone} link={'/notifications'}>
+                <Alerts />
+              </Submenu>
+              <Submenu icon={BiUser} link={'/profile'} outline>
+                <User />
+              </Submenu>
+            </div>
           </div>
         </div>
       </header>

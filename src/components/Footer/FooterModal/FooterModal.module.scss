@@ -2,55 +2,110 @@
 
 .modal {
   background: $color-background;
-  display: block;
+  display: none;
   width: 100%;
   padding: 70px 34px;
   position: absolute;
   z-index: 1000;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
   button {
     font-weight: 500;
   }
 }
+
 .menuItem {
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba($color-main, 0.16);
   padding: 34px 0;
   display: grid;
   gap: 24px;
   font-size: 15px;
   font-weight: 500;
 }
+
 .buttons {
   display: grid;
   grid-auto-flow: column;
   gap: 24px;
-}
-.social {
-  justify-content: start;
-  button {
-    padding: 0;
+  span {
+    display: block;
+    font-size: 10px;
   }
 }
+
 .button {
   justify-content: start;
   gap: 15px;
   svg {
     color: #7e798f;
-    width: 20px;
-    height: 20px;
   }
 }
+
 .buttonSubscribe {
   position: relative;
   &:before {
     content: '';
     display: block;
     position: absolute;
-    box-shadow: 0 2px 8px rgba(234, 0, 61, 0.8);
-    background-color: #ea003d;
+    box-shadow: 0 2px 8px rgba($color-accent, 0.8);
+    background-color: $color-accent;
     width: 10px;
     height: 10px;
     top: 8px;
     right: 8px;
     border-radius: 50%;
+  }
+}
+
+.link {
+  &:hover {
+    color: rgba($color-main, 0.72);
+  }
+}
+
+.listLink {
+  color: rgba($color-main, 0.72);
+  display: block;
+  font-weight: 400;
+  &:hover {
+    color: $color-main;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.feedbackButtons {
+  button {
+    &:first-child {
+      width: 65vw;
+      justify-content: center;
+    }
+    &:not(:first-child) {
+      padding: 0;
+    }
+  }
+}
+
+.social {
+  justify-content: start;
+  button {
+    padding: 0;
+  }
+}
+
+@media (max-width: $pc) {
+  .modal {
+    display: block;
   }
 }

@@ -1,4 +1,8 @@
+// export interface ILink {
+//   name: string;
+//   link: string;
+// }
 export interface ILink {
-  name: string;
+  title: string;
   link: string;
 }

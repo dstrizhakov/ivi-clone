@@ -4,11 +4,12 @@
   min-width: 10px;
   width: 100%;
   background-color: rgba(126,121,143,.32);
-  height: 100%;
   min-height: 3px;
   border-radius: 2px;
   margin: 1px;
   &Value {
+    min-width: 0 !important;
+    max-width: 100% !important;
     background-color: $color-accent;
     min-height: 3px;
     border-radius: 2px;

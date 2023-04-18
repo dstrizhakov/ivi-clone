@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.content {
+  &__row {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+  }
+  &__actions {
+    padding-right: 25px;
+    flex: 1 1 auto;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 200px));
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 25px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // gap: 25px;
+  }
+  &__auth {
+    flex: 0 0 340px;
+    margin-left: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr 1fr;
+    justify-items: start;
+    justify-content: center;
+    @media (max-width: $pc) {
+      flex: 0 0 30%;
+    }
+  }
+  &__nowrap {
+    white-space: nowrap;
+    padding: 0 30px;
+    width: 100%;
+    @media (max-width: $pc) {
+      padding: 0;
+    }
+  }
+
+  &__links {
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    & a {
+      opacity: 0.5;
+      margin-top: 10px;
+      transition: $time-main;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
