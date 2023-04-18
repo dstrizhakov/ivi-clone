@@ -7,7 +7,8 @@
   h4 {
     padding-bottom: 20px;
   }
-  .text {
+  p {
+    margin-top: 7px;
   }
   .first {
     display: block;
@@ -18,7 +19,8 @@
     text-overflow: ellipsis;
   }
   button{
-    margin-top: 20px;
+    margin: 5px 0 0 0;
+    padding: 0;
   }
   .list {
     ol {

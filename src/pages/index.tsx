@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import Description from '@/components/Description/Description';
 import Carousel from '@/components/Carousel/Carousel';
+import MainPageDescription from '@/components/MainPage/MainPageDescription';
 
 const Home: FC = () => {
   return (
@@ -9,7 +9,7 @@ const Home: FC = () => {
       <Head>
         <title>Главная</title>
       </Head>
-      <Description />
+      <MainPageDescription />
       <Carousel title={'Зарубежные сериалы'} route={'/'} />
       <Carousel title={'Приключения'} route={'/'} showAll />
     </>

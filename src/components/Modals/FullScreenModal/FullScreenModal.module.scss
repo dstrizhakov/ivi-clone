@@ -1,7 +1,7 @@
 @import '@/styles/variables.scss';
 
 .modal {
-  z-index: 99;
+  z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,8 +15,8 @@
 .cross {
   cursor: pointer;
   position: absolute;
-  right: 30px;
-  top: 30px;
+  right: 15px;
+  top: 15px;
   width: 50px;
   height: 50px;
   opacity: 0.5;

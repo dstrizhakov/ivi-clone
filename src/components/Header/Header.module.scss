@@ -6,6 +6,16 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  //&::after {
+  //  content: '';
+  //  background-color: rgba(black,.16);
+  //  height: 1px;
+  //  position: absolute;
+  //  left: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  pointer-events: none;
+  //}
 }
 
 .body {

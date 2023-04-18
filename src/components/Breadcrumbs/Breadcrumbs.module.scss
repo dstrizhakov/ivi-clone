@@ -39,11 +39,13 @@
         background-color: rgba(255,255, 255, 0.3);
 
         transform-origin: left;
-        transition: $time-main;
+        transition: $time-main
       }
 
       &:hover::after {
-        height: rem(18);
+        bottom: rem(0);
+        height: rem(16);
+        transition: all 0.05s ease-in ;
       }
     }
 

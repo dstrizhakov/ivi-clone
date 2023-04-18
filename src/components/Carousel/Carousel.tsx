@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,6 +11,7 @@ import { CarouselProps } from '@/components/Carousel/Carousel.props';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import ShowAll from '@/components/Card/ShowAll';
+import RatingModal from '@/components/Card/RatingModal';
 
 const long = 'long long long long long long',
   short = 'short';
@@ -70,6 +71,8 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
     infinite: false,
     speed: 500,
     slidesToShow: 7,
+    draggable: true,
+    lazyLoad: 'progressive',
     slidesToScroll: 6,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -106,7 +109,7 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
         breakpoint: 600,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
@@ -133,27 +136,36 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
       },
     ],
   };
+  const [isRatingOpen, setIsRatingOpen] = useState<boolean>(false);
+
   return (
-    <div className={styles.carousel}>
-      <Link href={route} className={styles.title}>
-        <Htag tag={'h4'}>{title}</Htag>
-        <MdArrowForwardIos />
-      </Link>
-      <Slider {...settings}>
-        {arr.map((card) => (
-          <div key={card.id} className={styles.card}>
-            <Card card={card} />
-          </div>
-        ))}
-        {showAll && (
-          <Link href={route}>
-            <div className={styles.card}>
-              <ShowAll />
+    <>
+      <RatingModal isOpen={isRatingOpen} closeModal={() => setIsRatingOpen(() => false)} />
+      <div className={styles.carousel}>
+        <div>
+          <Link href={route} className={styles.title}>
+            <div title={title}>
+              <Htag tag={'h4'}>{title}</Htag>
             </div>
+            <MdArrowForwardIos />
           </Link>
-        )}
-      </Slider>
-    </div>
+        </div>
+        <Slider {...settings}>
+          {arr.map((card) => (
+            <div key={card.id} className={styles.card}>
+              <Card card={card} openRating={setIsRatingOpen} />
+            </div>
+          ))}
+          {showAll && (
+            <Link href={route}>
+              <div className={styles.card}>
+                <ShowAll />
+              </div>
+            </Link>
+          )}
+        </Slider>
+      </div>
+    </>
   );
 };
 

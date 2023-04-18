@@ -14,7 +14,6 @@ export interface SubmenuProps {
 const Submenu: FC<SubmenuProps> = ({ icon, title, link, outline, children }): JSX.Element => {
   const IconComponent = icon || undefined;
   return (
-
     <div className={styles.submenu}>
       {icon &&
         IconComponent &&
@@ -29,7 +28,13 @@ const Submenu: FC<SubmenuProps> = ({ icon, title, link, outline, children }): JS
             className={!outline ? styles.submenu__button : styles.submenu__buttonOutline}
           />
         ))}
-      {link?<Link href={link} className={styles.submenu__button}>{title}</Link>:<span className={styles.submenu__button}>{title}</span>}
+      {link ? (
+        <Link href={link} className={styles.submenu__button}>
+          {title}
+        </Link>
+      ) : (
+        <span className={styles.submenu__button}>{title}</span>
+      )}
       <div className={styles.submenu__body}>
         <span className={styles.submenu__border}></span>
         <div className={styles.submenu__content}>{children}</div>

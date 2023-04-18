@@ -8,7 +8,7 @@ const Notifications: FC = () => {
       <Head>
         <title>Мой профиль / ivi.ru</title>
       </Head>
-        <EmptyNotifications />
+      <EmptyNotifications />
     </>
   );
 };
