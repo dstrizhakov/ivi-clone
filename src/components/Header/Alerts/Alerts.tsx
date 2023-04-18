@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styles from './Alerts.module.scss';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
 
-const Alerts: FC = () => {
+const Alerts: FC = (): JSX.Element => {
   return (
     <div className={styles.alerts__content}>
       <HiOutlineBellAlert className={styles.alerts__icon} />

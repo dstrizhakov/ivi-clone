@@ -8,14 +8,14 @@ import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
 import Alerts from '@/components/Header/Alerts/Alerts';
 import User from '@/components/Header/User/User';
 import Submenu from '@/components/Header/Submenu/Submenu';
-import { HiOutlineBellAlert } from 'react-icons/hi2';
-
 import { MdNotificationsNone } from 'react-icons/md';
 import { BiUser } from 'react-icons/bi';
 import Categories from './Categories/Categories';
-import { movieCategories } from '@/mock/MovieCategories';
+import { movieCategories } from '@/mock/movieCategories';
+import { seriesCategories } from '@/mock/seriesCategories';
+import { cartoonCategories } from '@/mock/cartoonCategories';
 
-const Header: FC = () => {
+const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   return (
     <>
@@ -38,32 +38,32 @@ const Header: FC = () => {
                     <Link href="/">Что нового</Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Фильмы">
+                      <Submenu title="Фильмы" link='/movies'>
+                        <Categories
+                          genres={movieCategories.genres}
+                          countries={movieCategories.countries}
+                          years={movieCategories.years}
+                          collections={movieCategories.collections}
+                        />
+                      </Submenu>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Submenu title="Сериалы"  link='/series'>
                       <Categories
-                        genres={movieCategories.genres}
-                        countries={movieCategories.countries}
-                        years={movieCategories.years}
-                        collections={movieCategories.collections}
+                        genres={seriesCategories.genres}
+                        countries={seriesCategories.countries}
+                        years={seriesCategories.years}
+                        collections={seriesCategories.collections}
                       />
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы">
+                    <Submenu title="Мультфильмы"  link='/animation'>
                       <Categories
-                        genres={movieCategories.genres}
-                        countries={movieCategories.countries}
-                        years={movieCategories.years}
-                        collections={movieCategories.collections}
-                      />
-                    </Submenu>
-                  </li>
-                  <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы">
-                      <Categories
-                        genres={movieCategories.genres}
-                        countries={movieCategories.countries}
-                        years={movieCategories.years}
-                        collections={movieCategories.collections}
+                        genres={cartoonCategories.genres}
+                        countries={cartoonCategories.countries}
+                        years={cartoonCategories.years}
+                        collections={cartoonCategories.collections}
                       />
                     </Submenu>
                   </li>
