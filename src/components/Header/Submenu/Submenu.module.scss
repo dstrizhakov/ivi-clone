@@ -1,7 +1,8 @@
 @import '../../../styles/variables';
+@import '@/styles/mixins.scss';
 
 .submenu {
-  flex: 0 0 40px;
+  flex: 0 0 rem(40);
   &:hover {
     .submenu__body {
       opacity: 1;
@@ -13,10 +14,9 @@
     }
   }
   &__button {
-    width: 23px;
-    height: 23px;
-    margin-left: 10px;
-    // margin-right: 10px;
+    width: rem(23);
+    height: rem(23);
+    margin-left: rem(10);
     font-weight: 400;
     position: relative;
     z-index: 10;
@@ -24,7 +24,7 @@
     cursor: pointer;
     transition: $time-main;
     & img {
-      padding: 5px;
+      padding: rem(5);
     }
     &:hover {
       opacity: 1;
@@ -41,13 +41,13 @@
     opacity: 0.5;
     border: 2px solid white;
     border-radius: 8px;
-    width: 48px;
-    height: 48px;
-    padding: 9px;
+    width: rem(48);
+    height: rem(48);
+    padding: rem(9);
     cursor: pointer;
     transition: $time-main;
     & img {
-      padding: 5px;
+      padding: rem(5);
     }
     &:hover {
       box-shadow: 0 0 15px rgba( 255,255,255, 0.3);
@@ -60,7 +60,7 @@
     }
   }
   &__border {
-    flex: 0 0 73px;
+    flex: 0 0 rem(73);
     display: block;
     width: 99%;
     border-bottom: 1px solid #ffffff;
@@ -80,8 +80,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 300px;
-    max-height: 500px;
+    min-height: rem(300);
+    max-height: rem(500);
     background-color: $color-submenu-background;
     display: flex;
     flex-direction: column;
@@ -90,7 +90,7 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    border-radius: 10px;
+    border-radius: rem(10);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     z-index: 1;
     transition: $time-main;
@@ -102,8 +102,8 @@
   }
   &__icon {
     opacity: 0.5;
-    font-size: 50px;
-    margin-bottom: 30px;
+    font-size: rem(50);
+    margin-bottom: rem(30);
   }
   & p {
     opacity: 0.5;
