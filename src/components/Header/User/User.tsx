@@ -9,7 +9,7 @@ import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 
-const User: FC = () => {
+const User: FC = (): JSX.Element => {
   return (
     <div className={styles.user__content}>
       <div className={styles.content__row}>

@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { LinkCardProps } from './LinkCard.props';
 import styles from './LinkCard.module.scss';
 
-const LinkCard: FC<LinkCardProps> = ({ icon, title, subtitle, link, status }) => {
+const LinkCard: FC<LinkCardProps> = ({ icon, title, subtitle, link, status }): JSX.Element => {
   const IconComponent = icon;
   return (
     <>

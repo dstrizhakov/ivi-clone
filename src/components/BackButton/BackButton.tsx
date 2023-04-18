@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { HiChevronLeft } from 'react-icons/hi';
 import styles from './BackButton.module.scss';
 
-const BackButton = () => {
+const BackButton = (): JSX.Element => {
   const router = useRouter();
 
   const handleClick = () => {

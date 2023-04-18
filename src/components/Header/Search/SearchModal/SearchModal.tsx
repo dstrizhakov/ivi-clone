@@ -5,7 +5,7 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { SearchModalProps } from './SearchModal.props';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 
-const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }) => {
+const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element => {
   const [query, setQuery] = useState<string>('');
 
   const clearQuery = (): void => {
