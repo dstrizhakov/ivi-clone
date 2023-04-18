@@ -1,6 +1,7 @@
 import React from 'react';
 import BreadCrumbs from '@/components/Breadcrumbs/Breadcrumbs';
-import AnimationPageDescription from '@/components/AnimationPage/AnimationPageDescription';
+import Head from 'next/head';
+import Animation from '@/components/Animation/Animation';
 
 const Index = () => {
   const breadcrumbs = [
@@ -8,10 +9,13 @@ const Index = () => {
     { name: 'Мультфильмы', path: '/animation' },
   ];
   return (
-    <div>
+    <>
+      <Head>
+        <title>Смотреть мультфильмы онлайн</title>
+      </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
-      <AnimationPageDescription />
-    </div>
+      <Animation />
+    </>
   );
 };
 

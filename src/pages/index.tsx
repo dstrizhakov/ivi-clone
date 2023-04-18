@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
 import Carousel from '@/components/Carousel/Carousel';
-import MainPageDescription from '@/components/Description/MainPageDescription';
+import MainPageDescription from '@/components/MainPage/MainPageDescription';
 
 const Home: FC = () => {
   return (

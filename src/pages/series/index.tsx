@@ -1,18 +1,22 @@
 import React from 'react';
 import BreadCrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import Head from 'next/head';
 import SeriesPageDescription from '@/components/SeriesPage/SeriesPageDescription';
 
-const Index = () => {
+const Series = () => {
   const breadcrumbs = [
     { name: 'Мой Иви', path: '/' },
     { name: 'Сериалы', path: '/series' },
   ];
   return (
-    <div>
+    <>
+      <Head>
+        <title>Смотреть сериалы онлайн</title>
+      </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <SeriesPageDescription />
-    </div>
+    </>
   );
 };
 
-export default Index;
+export default Series;
