@@ -25,6 +25,7 @@ body {
 
 main {
   flex: 1 1 auto;
+
 }
 
 .container {
@@ -32,6 +33,7 @@ main {
   box-sizing: content-box;
   margin: 0 auto;
   padding: 0 math.div($containerPadding, 2) + px;
+  border-top: 1px solid rgba($color-main, 0.16);
   // max-width: 1240px;
   // margin: 0 auto;
   // padding: 0 10px;
