@@ -7,4 +7,5 @@ export interface iMovie {
 
 export interface CardProps {
   card: iMovie;
+  openRating: () => boolean;
 }

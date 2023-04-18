@@ -4,11 +4,13 @@
   cursor: pointer;
   font-size: 1em;
   color: #d9d7e0;
+  transform-origin: 50% 50%;
+  transition-property: transform;
   height: 100%;
   @media screen and (max-width: 600px) {
     font-size: 0.6em;
   }
-  button {
+  button, a button {
     background-color: transparent!important;
     padding: 0;
     max-height: 20px;
@@ -101,7 +103,6 @@
     p {
       overflow: hidden;
       text-overflow: ellipsis;
-      transition-property: color;
       white-space: nowrap;
       font-size: 0.8rem;
       transition: $time-main;
