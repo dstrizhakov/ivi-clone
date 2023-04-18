@@ -2,7 +2,6 @@
 
 .submenu {
   flex: 0 0 40px;
-  margin-left: 10px;
   &:hover {
     .submenu__body {
       opacity: 1;
@@ -42,8 +41,8 @@
     opacity: 0.5;
     border: 2px solid white;
     border-radius: 8px;
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     padding: 9px;
     cursor: pointer;
     transition: $time-main;
@@ -51,6 +50,7 @@
       padding: 5px;
     }
     &:hover {
+      box-shadow: 0 0 15px rgba( 255,255,255, 0.3);
       opacity: 1;
     }
     &:hover ~ .submenu__body {
@@ -62,7 +62,7 @@
   &__border {
     flex: 0 0 70px;
     display: block;
-    width: 100%;
+    width: 99%;
     border-bottom: 1px solid #ffffff;
     opacity: 0.3;
     z-index: 10;
