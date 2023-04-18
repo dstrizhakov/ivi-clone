@@ -3,7 +3,7 @@ import styles from './NotFound.module.scss'
 import { Htag } from "@/components/Htag/Htag";
 import { P } from "@/components/P/P";
 
-const NotFound = () => {
+const NotFound = (): JSX.Element => {
   return (
     <div className={styles.content}>
       <div className={styles.content__row}>

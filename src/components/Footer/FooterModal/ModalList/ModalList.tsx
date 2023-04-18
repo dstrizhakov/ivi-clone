@@ -6,7 +6,7 @@ import { ModalListProps } from './ModalList.props';
 import { P } from '@/components/P/P';
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import { ILink } from '@/types/types';
-import { movieCategories } from '@/mock/MovieCategories';
+import { movieCategories } from '@/mock/movieCategories';
 
 const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
   const [isListOpen, setIsListOpen] = useState<boolean>(false);
