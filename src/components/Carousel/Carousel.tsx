@@ -142,10 +142,14 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
     <>
       <RatingModal isOpen={isRatingOpen} closeModal={() => setIsRatingOpen(() => false)} />
       <div className={styles.carousel}>
-        <Link href={route} className={styles.title} title={title}>
-          <Htag tag={'h4'}>{title}</Htag>
-          <MdArrowForwardIos />
-        </Link>
+        <div>
+          <Link href={route} className={styles.title}>
+            <div title={title}>
+              <Htag tag={'h4'}>{title}</Htag>
+            </div>
+            <MdArrowForwardIos />
+          </Link>
+        </div>
         <Slider {...settings}>
           {arr.map((card) => (
             <div key={card.id} className={styles.card}>

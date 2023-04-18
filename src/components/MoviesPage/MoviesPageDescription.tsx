@@ -7,7 +7,7 @@ import { P } from '@/components/P/P';
 const MoviesPageDescription = () => {
   return (
     <Description
-      title={<Htag tag={'h3'}>Фильмы смотреть онлайн</Htag>}
+      title={<Htag tag={'h2'}>Фильмы смотреть онлайн</Htag>}
       cut={
         <P size={'M'}>
           Вы любите смотреть фильмы онлайн и проводите много времени, прочесывая сайты в поисках
