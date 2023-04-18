@@ -44,7 +44,7 @@
   &__item a {
     position: relative;
     z-index: 10;
-    margin-left: rem(10);
+    //margin-left: rem(10);
     padding: rem(5) 0;
     color: rgb(255, 255, 255);
     opacity: 0.5;
@@ -56,6 +56,9 @@
     &:hover {
       opacity: 1;
     }
+  }
+  &__link{
+    margin-left: rem(15);
   }
 }
 

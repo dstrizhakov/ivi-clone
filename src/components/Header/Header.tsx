@@ -29,13 +29,17 @@ const Header: FC = (): JSX.Element => {
                   <Image src="iviLogo.svg" alt="logo" width={66} height={48} />
                 </Link>
               </div>
-              <div className={styles.menu}>
+              <nav className={styles.menu}>
                 <ul className={styles.menu__list}>
                   <li className={styles.menu__item}>
-                    <Link href="/">Мой Иви</Link>
+                    <Link href="/" className={styles.menu__link}>
+                      Мой Иви
+                    </Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="https://www.ivi.tv/new">Что нового</Link>
+                    <Link href="https://www.ivi.tv/new" className={styles.menu__link}>
+                      Что нового
+                    </Link>
                   </li>
                   <li className={styles.menu__item}>
                     <Submenu title="Фильмы" link="/movies">
@@ -68,7 +72,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                 </ul>
-              </div>
+              </nav>
               <Button size="S" appearance="red">
                 Смотреть 30 дней бесплатно
               </Button>

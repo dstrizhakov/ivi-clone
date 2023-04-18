@@ -13,7 +13,7 @@ const Description: FC<iDesc> = ({ title, cut, children }) => {
   return (
     <div className={styles.description}>
       {title}
-      <div className={`${open || styles.first}`}>
+      <div className={`${open ? '' : styles.first}`}>
         {cut}
         <span style={{ display: open ? 'inherit' : 'none' }}>{children}</span>
       </div>
