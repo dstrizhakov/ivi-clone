@@ -1,14 +1,12 @@
-import React from "react";
-import { Htag } from "@/components/Htag/Htag";
-import Description from "@/components/Description/Description";
+import React from 'react';
+import SeriesPageDescription from '@/components/SeriesPage/SeriesPageDescription';
 
-const Index = () => {
+const Series = () => {
   return (
     <div>
-      <Htag tag={'h2'}>Сериалы смотреть онлайн</Htag>
-      <Description/>
+      <SeriesPageDescription />
     </div>
   );
 };
 
-export default Index;
+export default Series;

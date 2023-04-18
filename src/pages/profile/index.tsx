@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <>
       <Head>
-        <title>Мой Профиль / ivi.ru</title>
+        <title>Мой профиль / ivi.ru</title>
       </Head>
       <MainBtns />
     </>

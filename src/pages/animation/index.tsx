@@ -1,12 +1,10 @@
-import React from "react";
-import { Htag } from "@/components/Htag/Htag";
-import Description from "@/components/Description/Description";
+import React from 'react';
+import AnimationPageDescription from '@/components/AnimationPage/AnimationPageDescription';
 
 const Index = () => {
   return (
     <div>
-      <Htag tag={'h2'}>Мультфильмы смотреть онлайн</Htag>
-      <Description/>
+      <AnimationPageDescription />
     </div>
   );
 };

@@ -3,7 +3,7 @@
 .description {
   width: 75%;
   margin-bottom: 30px;
-  padding: 24px 20px;
+  padding: 24px 0;
   h4 {
     padding-bottom: 20px;
   }
@@ -18,7 +18,8 @@
     text-overflow: ellipsis;
   }
   button{
-    margin-top: 20px;
+    margin: 5px 0 0 0;
+    padding: 0;
   }
   .list {
     ol {
