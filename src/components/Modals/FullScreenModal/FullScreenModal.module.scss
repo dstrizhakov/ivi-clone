@@ -2,11 +2,11 @@
 
 .modal {
   z-index: 1000;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
   top: 0;
-  position: absolute;
-  overflow: unset;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(7,5,14,.96);
   display: flex;
   justify-content: center;
@@ -15,8 +15,8 @@
 .cross {
   cursor: pointer;
   position: absolute;
-  right: 30px;
-  top: 30px;
+  right: 15px;
+  top: 15px;
   width: 50px;
   height: 50px;
   opacity: 0.5;

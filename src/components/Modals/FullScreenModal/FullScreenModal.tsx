@@ -11,7 +11,11 @@ const FullScreenModal: FC<FSMProps> = ({ isOpen, closeModal, children }) => {
     <>
       {isOpen && (
         <div className={styles.modal}>
-          <span className={styles.cross} onClick={() => closeModal()}></span>
+          <span
+            className={styles.cross}
+            onClick={() => closeModal()}
+            title="Нажмите, чтобы закрыть форму"
+          />
           {children}
         </div>
       )}
