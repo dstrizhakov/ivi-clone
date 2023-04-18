@@ -4,6 +4,8 @@ import Description from "@/components/Description/Description";
 import BreadCrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Head from "next/head";
 import Animation from "@/components/Animation/Animation";
+import Descript from "@/components/Descript/Descript";
+import { P } from "@/components/P/P";
 
 const Index = () => {
 
