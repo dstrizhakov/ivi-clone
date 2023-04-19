@@ -8,8 +8,7 @@ export const movies: IMovie[] = [
     enName: 'Гарри Поттер и Дары Смерти: Часть I',
     descr:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    trailer:
-      'https://thumbs.dfs.ivi.ru/storage28/contents/7/b/2918e4eddc1071a55b08129f6efef5.jpg/858x483/?q=85',
+    trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     year: '2011',
     countrys: 'США',
     rating: '9,0',
@@ -23,8 +22,7 @@ export const movies: IMovie[] = [
     enName: 'Гарри Поттер и Дары Смерти: Часть II',
     descr:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    trailer:
-      'https://thumbs.dfs.ivi.ru/storage28/contents/7/b/2918e4eddc1071a55b08129f6efef5.jpg/858x483/?q=85',
+    trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     year: '2011',
     countrys: 'США',
     rating: '9,0',
@@ -38,8 +36,7 @@ export const movies: IMovie[] = [
     enName: 'Гарри Поттер и Принц-полукровка',
     descr:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    trailer:
-      'https://thumbs.dfs.ivi.ru/storage28/contents/7/b/2918e4eddc1071a55b08129f6efef5.jpg/858x483/?q=85',
+    trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     year: '2011',
     countrys: 'США',
     rating: '9,0',

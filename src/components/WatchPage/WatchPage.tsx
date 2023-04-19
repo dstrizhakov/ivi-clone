@@ -3,10 +3,9 @@ import { Htag } from '../Htag/Htag';
 import { P } from '../P/P';
 import Player from '../Player/Player';
 import styles from './WatchPage.module.scss';
-import { IMovie } from '@/types/types';
 import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
-
+import { WatchPageProps } from './WatchPage.props';
 
 const WatchPage: FC<WatchPageProps> = ({ item }) => {
   const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
@@ -17,7 +16,6 @@ const WatchPage: FC<WatchPageProps> = ({ item }) => {
           <div className={styles.watch__row}>
             <div className={styles.watch__player}>
               <Player url={trailer} />
-              <img src={trailer} alt={enName} />
             </div>
             <div className={styles.watch__info}>
               <div className={styles.watch__title}>
