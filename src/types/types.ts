@@ -1,9 +1,7 @@
+import { iMovieCard } from '@/components/Person/MoviesList/MovieCard/MovieCard.props';
 // export interface ILink {
 //   name: string;
 //   link: string;
-
-import { iMovieCard } from '@/components/Person/MoviesList/MovieCard/MovieCard.props';
-
 // }
 export interface ILink {
   title: string;
@@ -15,4 +13,17 @@ export interface IPerson {
   enName: string;
   descr: string;
   films: iMovieCard[];
+}
+export interface IMovie {
+  id: number;
+  name: string;
+  enName: string;
+  descr: string;
+  trailer: string;
+  year: string;
+  countrys: string | string[];
+  rating: string;
+  genres: string | string[];
+  duration: string;
+  persons: IPerson[];
 }

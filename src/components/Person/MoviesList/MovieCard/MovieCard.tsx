@@ -8,7 +8,7 @@ import { P } from '@/components/P/P';
 
 const MovieCard: FC<MovieCardProps> = ({ card }) => {
   return (
-    <Link href={`/movie/${card.name}`} className={styles.card} key={card.id}>
+    <Link href={`/movie/${card.id}`} className={styles.card} key={card.id}>
       <div className={styles.info}>
         <img src={card.img} alt="" className={styles.img} />
         <div>
