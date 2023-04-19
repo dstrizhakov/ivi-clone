@@ -1,33 +1,48 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Htag } from '../Htag/Htag';
 import { P } from '../P/P';
 import styles from './WatchPage.module.scss';
+import { IMovie } from '@/types/types';
+import { PersonList } from './PersonList/PersonList';
+import Carousel from '../Carousel/Carousel';
 
 export interface WatchPageProps {
-  item: any[];
+  item: IMovie;
 }
 
-const WatchPage = ({ item }) => {
-  const { name, description, rating, link } = item;
+const WatchPage: FC<WatchPageProps> = ({ item }) => {
+  const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
   return (
     <>
       <section className={styles.watch}>
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
-            <div className={styles.watch__player}></div>
+            <div className={styles.watch__player}>
+              <img src={trailer} alt={enName} />
+            </div>
             <div className={styles.watch__info}>
               <div className={styles.watch__title}>
                 <Htag tag="h2">{`Фильм ${name} смотреть онлайн`}</Htag>
               </div>
-              <div className={styles.watch__params}></div>
-              <div className={styles.watch__medallions}></div>
-              <div className={styles.watch__description}>
-                <P>{description}</P>
+              <div className={styles.watch__params}>
+                <P>
+                  {year} {duration}
+                </P>
+                <P>
+                  {countrys} {genres}
+                </P>
               </div>
-              <div className={styles.watch__rating}></div>
+              <div className={styles.watch__rating}>
+                <PersonList list={persons} rating={rating} />
+              </div>
+              <div className={styles.watch__description}>
+                <P>{descr}</P>
+              </div>
+              <div className={styles.watch__medallions}></div>
             </div>
           </div>
         </div>
+        <Carousel title={`С фильмом «${name}» смотрят`} route={'/'} />
       </section>
     </>
   );
