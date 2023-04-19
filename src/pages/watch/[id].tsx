@@ -1,23 +1,27 @@
-import React from 'react';
-import Head from 'next/head';
+import { MovieInfo } from '@/components/Movie/Movie';
+import { movies } from '@/mock/movies';
+import { IMovie } from '@/types/types';
 import { useRouter } from 'next/router';
-import { Movie } from '@/mock/movie';
-import WatchPage from '@/components/WatchPage/WatchPage';
+import BreadCrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import React from 'react';
+import NotFoundPage from '@/pages/404';
 
-const Watch = () => {
+const Movie = () => {
   const router = useRouter();
-  //тут получаем данные о фильме с backend
-  console.log(Movie);
-  console.log(`Путь: ${router.asPath}`);
+  const movie = movies.find((m: IMovie) => router.asPath === `/watch/${m.id}`) || false;
 
+  const breadcrumbs = [
+    { name: 'Фильмы', path: '/movies' },
+    { name: 'Поджанр', path: '/movies' },
+    { name: movie?.name, path: '/movies' },
+  ];
+  if (!movie) return <NotFoundPage />;
   return (
     <>
-      <Head>
-        <title>{`Фильм ${Movie.name}`}</title>
-      </Head>
-      <WatchPage item={Movie} />
+      <BreadCrumbs breadcrumbs={breadcrumbs} />
+      <MovieInfo movie={movie} />
     </>
   );
 };
 
-export default Watch;
+export default Movie;
