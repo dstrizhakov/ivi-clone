@@ -1,14 +1,12 @@
 import React, { FC } from 'react';
 import { Htag } from '../Htag/Htag';
 import { P } from '../P/P';
+import Player from '../Player/Player';
 import styles from './WatchPage.module.scss';
 import { IMovie } from '@/types/types';
 import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
 
-export interface WatchPageProps {
-  item: IMovie;
-}
 
 const WatchPage: FC<WatchPageProps> = ({ item }) => {
   const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
@@ -18,6 +16,7 @@ const WatchPage: FC<WatchPageProps> = ({ item }) => {
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
             <div className={styles.watch__player}>
+              <Player url={trailer} />
               <img src={trailer} alt={enName} />
             </div>
             <div className={styles.watch__info}>

@@ -9,7 +9,6 @@ import { IMovie } from '@/types/types';
 const Watch = () => {
   const router = useRouter();
   //тут получаем данные о фильме с backend
-  console.log(Movie);
   console.log(`Путь: ${router.asPath}`);
 
   return (
