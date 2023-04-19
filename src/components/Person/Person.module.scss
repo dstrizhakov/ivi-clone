@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+.person {
+  width: 50%;
+  margin: 30px auto 70px;
+  display: grid;
+  gap: 20px;
+  @media (max-width: $pc) {
+    width: 66%;
+  }
+  @media (max-width: 880px) {
+    width: 100%;
+  }
+}
+
+.img {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  img {
+    position: absolute;
+    top: -5px;
+  }
+}
