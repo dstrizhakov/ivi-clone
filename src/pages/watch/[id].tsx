@@ -7,7 +7,6 @@ import WatchPage from '@/components/WatchPage/WatchPage';
 const Watch = () => {
   const router = useRouter();
   //тут получаем данные о фильме с backend
-  console.log(Movie);
   console.log(`Путь: ${router.asPath}`);
 
   return (
