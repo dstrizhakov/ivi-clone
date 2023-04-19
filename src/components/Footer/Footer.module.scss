@@ -1,8 +1,8 @@
 @import '../../styles/variables.scss';
 
 .footer {
-  padding: 0;
-  margin: 0;
+  padding: 0 10px;
+  margin: 0 20px;
   color: rgba($color-main, 0.48);
   &__container {
     display: flex;

@@ -37,5 +37,6 @@ main {
 }
 
 .header {
+  padding: 0 math.div($containerPadding, 2) + px;
   margin: 0 20px;
 }
