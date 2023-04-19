@@ -7,6 +7,15 @@ import { RxCross2 } from 'react-icons/rx';
 
 const Filters = () => {
   const [active, setActive] = useState(true); //mock
+  const [chosenPlanks, setChosenPlanks] = useState([
+    { title: 'Комедия' },
+    { title: 'Артхаус' },
+    { title: 'Приключения' },
+  ]);
+  const reset = () => {
+    setChosenPlanks(() => []);
+    setActive(() => false);
+  };
   const sausages = [
     { id: 1, title: 'Бесплатные' },
     { id: 2, title: 'По подписке' },
@@ -26,7 +35,7 @@ const Filters = () => {
       <div className={styles.plank_list}>
         {planks.map((i) => (
           <div className={styles.plank_item} key={'p' + i.id}>
-            <Plank plank={i} />
+            <Plank plank={i} chosen={chosenPlanks} />
           </div>
         ))}
       </div>
@@ -40,7 +49,7 @@ const Filters = () => {
       <Button
         appearance={'transparent'}
         className={`${styles.reset} ${active && styles.active}`}
-        onClick={() => setActive((a) => !a)}
+        onClick={() => reset()}
       >
         <div>
           <RxCross2 size={'20px'} />
