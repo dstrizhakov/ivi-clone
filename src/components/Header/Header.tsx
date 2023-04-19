@@ -14,6 +14,7 @@ import Categories from './Categories/Categories';
 import { movieCategories } from '@/mock/movieCategories';
 import { seriesCategories } from '@/mock/seriesCategories';
 import { cartoonCategories } from '@/mock/cartoonCategories';
+import logo from '@/../public/iviLogo.svg';
 
 const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -26,7 +27,7 @@ const Header: FC = (): JSX.Element => {
             <div className={styles.body}>
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src="iviLogo.svg" alt="logo" width={66} height={48} />
+                  <Image src={logo} alt="logo" width={66} height={48} />
                 </Link>
               </div>
               <nav className={styles.menu}>
