@@ -2,6 +2,7 @@ import React from 'react';
 import BreadCrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import Head from 'next/head';
 import MoviesPageDescription from '@/components/MoviesPage/MoviesPageDescription';
+import Filters from '../../components/Filters/Filters';
 
 const Movies = () => {
   const breadcrumbs = [
@@ -15,6 +16,7 @@ const Movies = () => {
       </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />
+      <Filters />
     </>
   );
 };
