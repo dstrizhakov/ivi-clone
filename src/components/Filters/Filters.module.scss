@@ -52,4 +52,18 @@
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
+
+  .reset {
+    user-select: none;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .32;
+    cursor: default!important;
+    &.active {
+      opacity: 1;
+      cursor: pointer!important;
+    }
+  }
 }

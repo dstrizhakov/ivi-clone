@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Filters.module.scss';
 import Plank from '@/components/Filters/Plank/Plank';
 import Sausage from '@/components/Filters/Sausage/Sausage';
+import { Button } from '@/components/Button/Button';
+import { RxCross2 } from 'react-icons/rx';
 
 const Filters = () => {
+  const [active, setActive] = useState(true); //mock
   const sausages = [
     { id: 1, title: 'Бесплатные' },
     { id: 2, title: 'По подписке' },
@@ -34,6 +37,16 @@ const Filters = () => {
           </div>
         ))}
       </div>
+      <Button
+        appearance={'transparent'}
+        className={`${styles.reset} ${active && styles.active}`}
+        onClick={() => setActive((a) => !a)}
+      >
+        <div>
+          <RxCross2 size={'20px'} />
+        </div>
+        <div>Сбросить фильтры</div>
+      </Button>
     </div>
   );
 };
