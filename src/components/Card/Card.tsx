@@ -17,28 +17,32 @@ const Card: FC<CardProps> = ({ card, openRating }) => {
   const [booked, setBooked] = useState<boolean>(false);
   const [blocked, setBlocked] = useState<boolean>(false);
   const book = (e) => {
+    e.stopPropagation();
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBooked((booked) => !booked);
   };
   const find = (e) => {
+    e.stopPropagation();
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     console.log('change to s');
     router.push('/movies');
   };
   const star = (e) => {
+    e.stopPropagation();
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     openRating(true);
   };
   const block = (e) => {
+    e.stopPropagation();
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBlocked((blocked) => !blocked);
   };
   return (
-    <Link href={`/`} className={styles.card} draggable="false">
+    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false">
       <div className={styles.imageSection}>
         <img src={card.img} alt={card.name} />
         <div className={styles.props}>

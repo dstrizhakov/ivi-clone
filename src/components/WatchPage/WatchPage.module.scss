@@ -1,0 +1,31 @@
+.watch {
+  &__content {
+  }
+  &__row {
+    display: flex;
+  }
+  &__player {
+    flex: 1 1 auto;
+  }
+  &__info {
+    flex: 0 0 37.5%;
+  }
+  &__title {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    padding: 0 12px;
+    text-align: center;
+  }
+  &__params {
+    margin-bottom: 20px;
+  }
+  &__medallions {
+    margin-bottom: 20px;
+  }
+  &__description {
+    padding: 0 12px;
+    margin-bottom: 20px;
+  }
+  &__rating {
+  }
+}
