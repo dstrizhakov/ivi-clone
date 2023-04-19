@@ -9,7 +9,12 @@ const Movie = () => {
   return (
     <>
       {movies.map((m: IMovie) => {
-        if (router.asPath === `/movie/${m.id}`) return <MovieInfo movie={m} />;
+        if (router.asPath === `/movie/${m.id}`)
+          return (
+            <span key={m.id}>
+              <MovieInfo movie={m} />
+            </span>
+          );
       })}
     </>
   );
