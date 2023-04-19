@@ -38,7 +38,7 @@ const Card: FC<CardProps> = ({ card, openRating }) => {
     setBlocked((blocked) => !blocked);
   };
   return (
-    <Link href={`/`} className={styles.card} draggable="false">
+    <Link href={`/movie/${card.id}`} className={styles.card} draggable="false">
       <div className={styles.imageSection}>
         <img src={card.img} alt={card.name} />
         <div className={styles.props}>
