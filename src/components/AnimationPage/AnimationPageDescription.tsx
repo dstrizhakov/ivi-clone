@@ -3,7 +3,7 @@ import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import Description from '@/components/Description/Description';
 
-const Animation = () => {
+const AnimationPageDescription = () => {
   return (
     <>
       <Description
@@ -52,4 +52,4 @@ const Animation = () => {
   );
 };
 
-export default Animation;
+export default AnimationPageDescription;

@@ -1,7 +1,7 @@
 @import '@/styles/variables.scss';
 @import '@/styles/mixins.scss';
 .row {
-
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +20,7 @@
 
 .body {
   * {
-    z-index: 1;
+    z-index: inherit;
   }
   flex: 1 1 auto;
   display: flex;
@@ -28,7 +28,6 @@
   align-items: center;
   min-height: rem(72);
   background-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .logo {

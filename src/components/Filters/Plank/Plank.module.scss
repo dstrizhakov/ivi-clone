@@ -21,10 +21,10 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 0.8rem;
-    transition: $time-main;
     color: $color-secondary;
   }
   .title {
+    transition: $time-main;
     display: flex;
     align-content: flex-start;
     font-size: 15px;
@@ -32,6 +32,7 @@
     height: 20px;
   }
   &.active {
+    transition: $time-main;
     background-color: #7e798f!important;
   }
   .icon {

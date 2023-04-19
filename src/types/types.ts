@@ -1,8 +1,4 @@
 import { iMovieCard } from '@/components/Person/MoviesList/MovieCard/MovieCard.props';
-// export interface ILink {
-//   name: string;
-//   link: string;
-// }
 export interface ILink {
   title: string;
   link: string;

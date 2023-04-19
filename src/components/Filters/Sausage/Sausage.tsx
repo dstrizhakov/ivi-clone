@@ -1,14 +1,27 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import styles from './Sausage.module.scss';
 import { IoAddOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
+import { SausageProps } from '@/components/Filters/Sausage/Sausage.props';
 
-const Sausage: FC = ({ sausage }) => {
-  const [checked, setChecked] = useState(false);
+const Sausage: FC<SausageProps> = ({ sausage, s, set }) => {
+  const check = () => {
+    set(
+      (s = [
+        ...s.filter((i) => i.id !== sausage.id),
+        {
+          id: sausage.id,
+          title: sausage.title,
+          checked: !sausage.checked,
+        },
+      ]).sort((a, b) => a.id - b.id)
+    );
+    sausage.checked = !sausage.checked;
+  };
   return (
     <div
-      className={`${styles.sausage} ${checked && styles.checked}`}
-      onClick={() => setChecked((c) => !c)}
+      className={`${styles.sausage} ${sausage.checked && styles.checked}`}
+      onClick={() => check()}
     >
       <div className={styles.icon_plus}>
         <IoAddOutline />

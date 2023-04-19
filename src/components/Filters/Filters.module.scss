@@ -59,11 +59,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: .32;
-    cursor: default!important;
-    &.active {
-      opacity: 1;
-      cursor: pointer!important;
+    opacity: 1;
+    cursor: pointer!important;
+    &:disabled {
+      opacity: .32;
+      cursor: default!important;
     }
   }
 }

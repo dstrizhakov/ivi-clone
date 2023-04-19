@@ -17,7 +17,9 @@ const Plank: FC = ({ plank, chosen }) => {
           {!disabled && chosen && (
             <div className={styles.chosen}>
               {chosen.map((item, index) => (
-                <>{chosen.length > index + 1 ? `${item.title}, ` : item.title}</>
+                <span key={item.id}>
+                  {chosen.length > index + 1 ? `${item.title}, ` : item.title}
+                </span>
               ))}
             </div>
           )}

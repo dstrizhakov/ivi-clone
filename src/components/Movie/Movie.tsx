@@ -6,9 +6,15 @@ import styles from './Movie.module.scss';
 import { PersonList } from './PersonList/PersonList';
 
 export const MovieInfo: FC<MovieProps> = ({ movie }) => {
+  const color = '126, 182, 183'; //
   return (
     <>
-      <div className={styles.bg_container} />
+      <div
+        className={styles.bg_container}
+        style={{
+          background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
+        }}
+      />
       <div className="container">
         <div className={styles.movie}>
           <div className={styles.img}>
