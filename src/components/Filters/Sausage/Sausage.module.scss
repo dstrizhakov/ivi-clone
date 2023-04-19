@@ -1,0 +1,53 @@
+.sausage {
+  user-select: none;
+  padding: 8px 16px;
+  border: 1px solid;
+  border-radius: 32px;
+  cursor: pointer;
+  color: #fff;
+  -webkit-transition: background-color 400ms,border-color 400ms;
+  -o-transition: background-color 400ms,border-color 400ms;
+  transition: background-color 400ms,border-color 400ms;
+  display: flex;
+  flex-direction: row;
+
+  .icon_plus .icon_delete {
+    svg {
+      width: 100%;
+      stroke-width: 1px;
+    }
+  }
+  .icon_plus {
+    display: flex;
+    margin-right: 10px;
+  }
+  .icon_delete {
+    display: none;
+  }
+  &.checked {
+    background-color: #7e798f!important;
+    .icon_plus {
+      display: none!important;
+    }
+    .icon_delete {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  &.checked {
+    background-color: #7e798f;
+    border-color: #7e798f;
+    transition: background-color 80ms,border-color 80ms;
+    .icon {
+      display: none;
+    }
+  }
+  .title {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    white-space: nowrap;
+  }
+}
