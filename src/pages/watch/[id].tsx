@@ -10,20 +10,20 @@ import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 const Movie = () => {
   const router = useRouter();
   const movie = movies.find((m: IMovie) => router.asPath === `/watch/${m.id}`);
+  if (!movie) return <NotFoundPage />;
 
   const breadcrumbs = [
     { name: 'Фильмы', path: '/movies' },
     { name: 'Поджанр', path: '/movies' },
     { name: movie.name, path: '/movies' },
   ];
-  if (!movie) return <NotFoundPage />;
   return (
     <>
       <Head>
         <title>{`Фильм ${movie.name}`}</title>
       </Head>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <WatchPage movie={movie} />
+      <WatchPage item={movie} />
     </>
   );
 };

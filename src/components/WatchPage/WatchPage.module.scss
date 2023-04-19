@@ -13,30 +13,47 @@
   z-index: 0;
   pointer-events: none;
 }
-.movie {
+.watch {
   * {
     z-index: 1;
   }
-  -webkit-flex-shrink: 0;
-  flex-shrink: 0;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 3fr 2fr;
-  gap: 5vw;
-  margin: 20px 0;
-}
-
-.img img {
-  max-width: 720px;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: center;
-}
-
-.descr {
-  text-align: left;
+  margin: 40px 0;
+  &__content {
+  }
+  &__row {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+  }
+  &__player {
+    flex: 1 1 auto;
+    img {
+      max-width: 720px;
+      position: sticky;
+      top: 0;
+    }
+  }
+  &__info {
+    margin-left: 20px;
+    flex: 0 0 37.5%;
+  }
+  &__title {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    padding: 0 12px;
+    text-align: center;
+  }
+  &__params {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  &__medallions {
+    margin-bottom: 20px;
+  }
+  &__description {
+    padding: 0 12px;
+    margin-bottom: 20px;
+  }
+  &__rating {
+  }
 }

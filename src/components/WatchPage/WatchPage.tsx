@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import { Htag } from '../Htag/Htag';
 import { P } from '../P/P';
+import Player from '../Player/Player';
 import styles from './WatchPage.module.scss';
-import { IMovie } from '@/types/types';
 import { PersonList } from './PersonList/PersonList';
+import Carousel from '../Carousel/Carousel';
+import { WatchPageProps } from './WatchPage.props';
 
-export interface WatchPageProps {
-  movie: IMovie;
-}
+const WatchPage: FC<WatchPageProps> = ({ item }) => {
+  const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
+  const color = '106, 80, 47'; //
 
-const WatchPage: FC<WatchPageProps> = ({ movie }) => {
-  const color = '42, 140, 142'; //
   return (
     <>
       <div
@@ -19,28 +19,36 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
           background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
         }}
       />
-      <div className="container">
-        <div className={styles.movie}>
-          <div className={styles.img}>
-            <img src={movie.trailer} alt={movie.enName} />
-          </div>
-          <div className={styles.info}>
-            <Htag tag={'h3'}>{movie.name}</Htag>
-            <div>
-              <P>
-                {movie.year} {movie.duration}
-              </P>
-              <P>
-                {movie.countrys} {movie.genres}
-              </P>
+      <section className={styles.watch}>
+        <div className={styles.watch__content}>
+          <div className={styles.watch__row}>
+            <div className={styles.watch__player}>
+              <Player url={trailer} />
             </div>
-            <PersonList list={movie.persons} rating={movie.rating} />
-            <P color={'gray-light'} className={styles.descr}>
-              {movie.descr}
-            </P>
+            <div className={styles.watch__info}>
+              <div className={styles.watch__title}>
+                <Htag tag="h2">{`Фильм ${name} смотреть онлайн`}</Htag>
+              </div>
+              <div className={styles.watch__params}>
+                <P>
+                  {year} {duration}
+                </P>
+                <P>
+                  {countrys} {genres}
+                </P>
+              </div>
+              <div className={styles.watch__rating}>
+                <PersonList list={persons} rating={rating} />
+              </div>
+              <div className={styles.watch__description}>
+                <P>{descr}</P>
+              </div>
+              <div className={styles.watch__medallions}></div>
+            </div>
           </div>
         </div>
-      </div>
+        <Carousel title={`С фильмом «${name}» смотрят`} route={'/'} />
+      </section>
     </>
   );
 };
