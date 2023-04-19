@@ -32,7 +32,6 @@ main {
 .container {
   max-width: $maxWidthContainer + px;
   box-sizing: content-box;
-  border-top: 1px solid rgba($color-main, 0.16);
   margin: 0 auto;
 }
 
