@@ -4,44 +4,20 @@ import Plank from '@/components/Filters/Plank/Plank';
 import Sausage from '@/components/Filters/Sausage/Sausage';
 import { Button } from '@/components/Button/Button';
 import { RxCross2 } from 'react-icons/rx';
-
-const planks = [
-  { id: 1, title: 'Жанры' },
-  { id: 2, title: 'Поджанры' },
-  { id: 3, title: 'Страны' },
-  { id: 4, title: 'Годы' },
-  { id: 5, title: 'Рейтинг иви' },
-];
-
-const genres = [
-  { id: 1, title: 'Артхаус' },
-  { id: 2, title: 'Вестерн' },
-  { id: 3, title: 'Драмы' },
-  { id: 4, title: 'Комедии' },
-  { id: 5, title: 'Катастрофы' },
-];
-
-const subgenres = [
-  { id: 1, title: 'Артхаус' },
-  { id: 2, title: 'Артхаус' },
-  { id: 3, title: 'Артхаус' },
-  { id: 4, title: 'Артхаус' },
-  { id: 5, title: 'Артхаус' },
-];
-
-const countries = [
-  { id: 1, title: 'Австралия' },
-  { id: 2, title: 'Беларусь' },
-  { id: 3, title: 'Великобритания' },
-  { id: 4, title: 'Гонконг' },
-  { id: 5, title: 'Ирландия' },
-];
+import { categories, planks } from '@/mock/filters';
 
 const Filters = () => {
   const [active, setActive] = useState(false);
-  const [chosenGenrePlanks, setChosenGenrePlanks] = useState([]);
-  const [chosenSubGenrePlanks, setChosenSubGenrePlanks] = useState([]);
-  const [chosenCountries, setChosenCountries] = useState([]);
+  const chose = planks.reduce((p, next) => {
+    return [
+      ...p,
+      {
+        plankID: next.id,
+        category: [],
+      },
+    ];
+  }, []);
+  const [chosen, setChosen] = useState(chose);
   const [sausages, setSausages] = useState([
     { id: 1, title: 'Бесплатные', checked: false },
     { id: 2, title: 'По подписке', checked: false },
@@ -51,47 +27,30 @@ const Filters = () => {
   ]);
   useEffect(() => {
     const check =
-      chosenGenrePlanks.length > 0 ||
-      chosenSubGenrePlanks.length > 0 ||
-      chosenCountries.length > 0 ||
-      sausages.find((i) => i.checked)?.checked ||
-      false;
+      chosen.map((i) => i.category.length) > 0 || sausages.find((i) => i.checked)?.checked || false;
     setActive(() => check);
-  }, [chosenCountries.length, chosenGenrePlanks.length, chosenSubGenrePlanks.length, sausages]);
+    console.log(chosen);
+  }, [chosen, sausages]);
   const reset = () => {
-    setChosenGenrePlanks(() => []);
-    setChosenSubGenrePlanks(() => []);
-    setChosenCountries(() => []);
+    console.log(chosen);
+    setChosen(chose);
     sausages.map((i) => (i.checked = false));
     setActive(() => false);
   };
   return (
     <div className={styles.filters}>
       <div className={styles.plank_list}>
-        <div className={styles.plank_item}>
-          <Plank
-            plank={planks[0]}
-            chosen={chosenGenrePlanks}
-            setChosen={setChosenGenrePlanks}
-            arr={genres}
-          />
-        </div>
-        <div className={styles.plank_item}>
-          <Plank
-            plank={planks[1]}
-            chosen={chosenSubGenrePlanks}
-            setChosen={setChosenSubGenrePlanks}
-            arr={subgenres}
-          />
-        </div>
-        <div className={styles.plank_item}>
-          <Plank
-            plank={planks[2]}
-            chosen={chosenCountries}
-            setChosen={setChosenCountries}
-            arr={countries}
-          />
-        </div>
+        {planks.map((plank) => (
+          <div className={styles.plank_item} key={plank.id}>
+            <Plank
+              plank={plank}
+              chosen={chosen}
+              setChosen={setChosen}
+              plankID={plank.id}
+              arr={categories.find((item) => item.plankID == plank.id).category}
+            />
+          </div>
+        ))}
       </div>
       <div className={styles.sausage_list}>
         {sausages.map((i) => (

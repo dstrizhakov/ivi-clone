@@ -6,6 +6,7 @@ import styles from './PromoCarousel.module.scss';
 import { NextArrow } from '@/components/Carousel/NextArrow';
 import { PrevArrow } from '@/components/Carousel/PrevArrow';
 import { Button } from '@/components/Button/Button';
+import Link from 'next/link';
 
 const mockCarousel = [
   {
@@ -75,7 +76,9 @@ const PromoCarousel: FC = () => {
                   <img src={i.logo} alt="logo" />
                   <div className={styles.synopsis}>{i.description}</div>
                 </div>
-                <Button appearance={'red'}>{i.btn}</Button>
+                <Link href={'/movies'}>
+                  <Button appearance={'red'}>{i.btn}</Button>
+                </Link>
               </div>
             </div>
           ))}

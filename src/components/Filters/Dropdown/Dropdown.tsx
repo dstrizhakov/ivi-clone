@@ -1,33 +1,40 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './Dropdown.module.scss';
 import { BsCheckLg } from 'react-icons/bs';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 
-const Dropdown = ({ state, chosen, setChosen, close, arr }) => {
+const Dropdown = ({ state, plankID, chosen, setChosen, close, arr }) => {
+  const [narr, setArr] = useState([]);
   const changePressed = (i) => {
+    chosen.reduce((i, n) => i + n.category.length, 0) || setArr(() => []);
+    let newChosen;
     const findChosen = chosen.find((item) => item.id == i.id);
     if (findChosen?.checked) {
-      setChosen(() => [...chosen.filter((item) => item.id !== i.id)].sort((a, b) => a.id - b.id));
+      setArr(() => [...narr.filter((item) => item.id !== i.id)]);
     } else {
-      setChosen(() =>
-        [
-          ...chosen.filter((item) => item.id !== i.id),
-          {
-            id: i.id,
-            title: i.title,
-            checked: true,
-          },
-        ].sort((a, b) => a.id - b.id)
+      newChosen = {
+        id: i.id,
+        title: i.title,
+        checked: true,
+      };
+      setArr(() =>
+        [...narr.filter((item) => item.id !== i.id), newChosen].sort((a, b) => a.id - b.id)
       );
     }
+    setChosen(() =>
+      [
+        ...chosen.filter((item) => item.plankID !== plankID),
+        { plankID: plankID, category: [...narr] },
+      ].sort((a, b) => a.plankID - b.plankID)
+    );
   };
   const ref = useRef(null);
   useOutsideClick(close, ref);
   return (
-    <span ref={ref}>
-      <div className={styles.dropdown_out}>
+    <>
+      <div className={styles.dropdown_out} ref={ref}>
         {state && (
-          <div className={styles.dropdown} onClick={(e) => e.stopPropagation()}>
+          <div className={styles.dropdown}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div>Card</div>
               <div>Card</div>
@@ -60,7 +67,7 @@ const Dropdown = ({ state, chosen, setChosen, close, arr }) => {
           </div>
         )}
       </div>
-    </span>
+    </>
   );
 };
 

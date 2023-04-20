@@ -1,21 +1,15 @@
-import { useCallback, useEffect } from 'react';
-
-const MOUSE_UP = 'mouseup';
+import { useEffect } from 'react';
 
 export function useOutsideClick(handleClose, ref) {
-  const handleClick = useCallback(
-    (event) => {
-      if (ref?.current?.contains && !ref.current.contains(event.target)) {
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
         handleClose();
       }
-    },
-    [handleClose, ref]
-  );
-
-  useEffect(() => {
-    document.addEventListener(MOUSE_UP, handleClick);
+    }
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener(MOUSE_UP, handleClick);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [handleClick]);
+  }, [handleClose, ref]);
 }
