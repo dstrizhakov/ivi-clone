@@ -1,0 +1,13 @@
+.carousel {
+  -webkit-tap-highlight-color: transparent;
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: 10px 0;
+    img {
+      margin-right: 10px;
+    }
+  }
+}

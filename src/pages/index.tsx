@@ -22,10 +22,7 @@ const Home: FC = () => {
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star
-            book
-            find
-            block
+            star book find block
             key={card.id}
           />
         ))}
@@ -35,10 +32,7 @@ const Home: FC = () => {
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star
-            book
-            find
-            block
+            star book find block
             key={card.id}
           />
         ))}
