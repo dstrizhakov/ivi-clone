@@ -18,10 +18,17 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     color: $color-secondary;
+    transition-duration: 0.4s;
   }
   &:hover {
+    transition-duration: 0.8s;
+    transition-property: color;
     .card_name {
-      color: white
+      color: white;
+      will-change: color;
+      -webkit-transition-property: color;
+      -o-transition-property: color;
+      transition-property: color;
     }
     .wrapCard {
       background-color: rgba(white, .24);
