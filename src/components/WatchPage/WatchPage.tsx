@@ -8,11 +8,13 @@ import Carousel from '../Carousel/Carousel';
 import { WatchPageProps } from './WatchPage.props';
 import { movies } from '@/mock/movies';
 import { IMovie } from '@/types/types';
+import { carouselMock } from '@/mock/carouselMocks'; //похожие на
+import Card from '@/components/Card/Card';
 
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const item = movies.find((m: IMovie) => id == m.id);
 
-  const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
+  const { name, description, trailer, year, countries, rating, genres, duration, persons } = item;
   const color = '106, 80, 47'; //
 
   return (
@@ -38,20 +40,24 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
                   {year} {duration}
                 </P>
                 <P>
-                  {countrys} {genres}
+                  {countries} {genres}
                 </P>
               </div>
               <div className={styles.watch__rating}>
                 <PersonList list={persons} rating={rating} />
               </div>
               <div className={styles.watch__description}>
-                <P>{descr}</P>
+                <P>{description}</P>
               </div>
               <div className={styles.watch__medallions}></div>
             </div>
           </div>
         </div>
-        <Carousel title={`С фильмом «${name}» смотрят`} route={'/'} />
+        <Carousel title={`С фильмом «${name}» смотрят`} route={'/'}>
+          {carouselMock.map((card) => (
+            <Card card={card} book key={card.id} />
+          ))}
+        </Carousel>
       </section>
     </>
   );
