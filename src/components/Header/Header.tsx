@@ -14,6 +14,7 @@ import Categories from './Categories/Categories';
 import { movieCategories } from '@/mock/movieCategories';
 import { seriesCategories } from '@/mock/seriesCategories';
 import { cartoonCategories } from '@/mock/cartoonCategories';
+import logo from '@/../public/iviLogo.svg';
 
 const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -26,29 +27,33 @@ const Header: FC = (): JSX.Element => {
             <div className={styles.body}>
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src="iviLogo.svg" alt="logo" width={100} height={50} />
+                  <Image src={logo} alt="logo" width={66} height={48} />
                 </Link>
               </div>
-              <div className={styles.menu}>
+              <nav className={styles.menu}>
                 <ul className={styles.menu__list}>
                   <li className={styles.menu__item}>
-                    <Link href="/">Мой Иви</Link>
+                    <Link href="/" className={styles.menu__link}>
+                      Мой Иви
+                    </Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Link href="https://www.ivi.tv/new">Что нового</Link>
+                    <Link href="https://www.ivi.tv/new" className={styles.menu__link}>
+                      Что нового
+                    </Link>
                   </li>
                   <li className={styles.menu__item}>
-                      <Submenu title="Фильмы" link='/movies'>
-                        <Categories
-                          genres={movieCategories.genres}
-                          countries={movieCategories.countries}
-                          years={movieCategories.years}
-                          collections={movieCategories.collections}
-                        />
-                      </Submenu>
+                    <Submenu title="Фильмы" link="/movies">
+                      <Categories
+                        genres={movieCategories.genres}
+                        countries={movieCategories.countries}
+                        years={movieCategories.years}
+                        collections={movieCategories.collections}
+                      />
+                    </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы"  link='/series'>
+                    <Submenu title="Сериалы" link="/series">
                       <Categories
                         genres={seriesCategories.genres}
                         countries={seriesCategories.countries}
@@ -58,7 +63,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы"  link='/animation'>
+                    <Submenu title="Мультфильмы" link="/animation">
                       <Categories
                         genres={cartoonCategories.genres}
                         countries={cartoonCategories.countries}
@@ -68,7 +73,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                 </ul>
-              </div>
+              </nav>
               <Button size="S" appearance="red">
                 Смотреть 30 дней бесплатно
               </Button>

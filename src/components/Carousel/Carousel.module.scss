@@ -1,11 +1,9 @@
 @import "@/styles/variables";
 
 .carousel {
-  user-select: none;
-  padding: 0;
+  -webkit-tap-highlight-color: transparent;
   margin-bottom: 20px;
   .title {
-    margin-left: 10px;
     display: flex;
     align-items: flex-end;
     svg {
@@ -13,7 +11,7 @@
     }
   }
   .card {
-    padding: 15px 10px 0 10px;
+    padding: 20px 20px 0 0;
   }
 }
 
@@ -57,9 +55,9 @@
     background: transparent;
   }
   &.prev {
-    left: -25px;
+    left: -30px;
   }
   &.next {
-    right: -25px;
+    right: -15px;
   }
 }

@@ -1,12 +1,18 @@
-import { Htag } from "@/components/Htag/Htag";
-import { P } from "@/components/P/P";
+import { PersonInfo } from '@/components/Person/Person';
+import { persons } from '@/mock/persons';
+import { IPerson } from '@/types/types';
+import { useRouter } from 'next/router';
 
 const Person = () => {
+  const router = useRouter();
+
   return (
-    <div>
-      <Htag tag={'h1'}>Это страница актера</Htag>
-      <P size={'L'}>http://localhost:3000/person/123</P>
-    </div>
+    <>
+      {persons.map((p: IPerson) => {
+        const name = p.enName.toLowerCase().split(' ').join('-');
+        if (router.asPath === `/person/${name}`) return <PersonInfo person={p} />;
+      })}
+    </>
   );
 };
 

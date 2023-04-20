@@ -7,11 +7,12 @@ $color-card-background: #322c43;
 $color-card-hover: #3f3856;
 $color-accent: #ea003d;
 
-$time-main: all 0.3s ease 0s;
+$time-main: all 0.3s ease-out;
+
 
 $minWidth: 320;
 $maxWidthContainer: 1220; // Ширина ограничивающего контейнера
-$containerPadding: 10; // Общий отступ у контейнера
+$containerPadding: 20; // Общий отступ у контейнера
 // Брейк-поинты
 $pc: 1160px; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
 $mobile: 599.98px; // Телефоны L

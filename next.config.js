@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     // Поиск всех файлов WOFF2 в директории fonts
-		const fontFiles = glob.sync('**/*.woff2', { cwd: 'public/fonts' });
+    const fontFiles = glob.sync('**/*.woff2', { cwd: 'public/fonts' });
     // Добавление лоадера для каждого найденного файла шрифта
     fontFiles.forEach((fontFile) => {
       config.module.rules.push({

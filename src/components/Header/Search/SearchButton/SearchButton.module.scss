@@ -1,11 +1,12 @@
 @import '../../../../styles/variables';
+@import '@/styles/mixins.scss';
 
 .search {
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: rem(20);
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: rem(14);
   opacity: 0.5;
   transition: $time-main;
   z-index: 10;
@@ -18,7 +19,7 @@
 }
 
 .icon {
-  margin-right: 5px;
-  width: 20px;
-  height: 20px;
+  margin-right: rem(5);
+  width: rem(20);
+  height: rem(20);
 }

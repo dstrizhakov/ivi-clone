@@ -1,9 +1,9 @@
 import { P } from '../P/P';
 import styles from './EmptyNotifications.module.scss';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
-import BackButton from "@/components/BackButton/BackButton";
-import { Htag } from "@/components/Htag/Htag";
-import React from "react";
+import BackButton from '@/components/BackButton/BackButton';
+import { Htag } from '@/components/Htag/Htag';
+import React from 'react';
 
 const EmptyNotifications = (): JSX.Element => {
   return (
@@ -17,7 +17,6 @@ const EmptyNotifications = (): JSX.Element => {
         </P>
       </div>
     </>
-
   );
 };
 

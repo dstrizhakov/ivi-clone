@@ -1,10 +1,11 @@
 @import '../../../styles/variables';
+@import '@/styles/mixins.scss';
 
 .submenu {
   flex: 0 0 40px;
-  margin-left: 10px;
   &:hover {
     .submenu__body {
+      transition: all 0.05s ease-out;
       opacity: 1;
       visibility: visible;
       pointer-events: all;
@@ -14,18 +15,17 @@
     }
   }
   &__button {
-    width: 23px;
-    height: 23px;
-    margin-left: 10px;
-    // margin-right: 10px;
+    width: rem(23);
+    height: rem(23);
+    margin-left: rem(15);
     font-weight: 400;
     position: relative;
     z-index: 10;
     opacity: 0.5;
     cursor: pointer;
-    transition: $time-main;
+    //transition: $time-main;
     & img {
-      padding: 5px;
+      padding: rem(5);
     }
     &:hover {
       opacity: 1;
@@ -42,15 +42,16 @@
     opacity: 0.5;
     border: 2px solid white;
     border-radius: 8px;
-    width: 45px;
-    height: 45px;
-    padding: 9px;
+    width: rem(48);
+    height: rem(48);
+    padding: rem(9);
     cursor: pointer;
     transition: $time-main;
     & img {
-      padding: 5px;
+      padding: rem(5);
     }
     &:hover {
+      box-shadow: 0 0 15px rgba( 255,255,255, 0.3);
       opacity: 1;
     }
     &:hover ~ .submenu__body {
@@ -62,7 +63,7 @@
   &__border {
     flex: 0 0 73px;
     display: block;
-    width: 100%;
+    width: 99%;
     border-bottom: 1px solid #ffffff;
     opacity: 0.3;
     z-index: 10;
@@ -78,10 +79,10 @@
   &__body {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 300px;
-    max-height: 500px;
+    left: -1%;
+    right: -1%;
+    width: 102%;
+    min-height: rem(300);
     background-color: $color-submenu-background;
     display: flex;
     flex-direction: column;
@@ -89,21 +90,22 @@
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+    touch-action: none;
     pointer-events: none;
-    border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+    border-radius: rem(10);
     z-index: 1;
-    transition: $time-main;
+    transition: all 0.3s ease-in;
     &:hover {
       opacity: 1;
+      touch-action: auto;
       visibility: visible;
       pointer-events: all;
     }
   }
   &__icon {
     opacity: 0.5;
-    font-size: 50px;
-    margin-bottom: 30px;
+    font-size: rem(50);
+    margin-bottom: rem(30);
   }
   & p {
     opacity: 0.5;

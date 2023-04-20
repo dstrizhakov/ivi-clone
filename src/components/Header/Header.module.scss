@@ -1,10 +1,21 @@
 @import '@/styles/variables.scss';
-
+@import '@/styles/mixins.scss';
 .row {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  //&::after {
+  //  content: '';
+  //  background-color: rgba(black,.16);
+  //  height: 1px;
+  //  position: absolute;
+  //  left: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  pointer-events: none;
+  //}
 }
 
 .body {
@@ -12,12 +23,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 72px;
+  min-height: rem(72);
   background-color: transparent;
 }
 
 .logo {
-  margin-right: 10px;
+  margin-right: rem(10);
   z-index: 10;
 }
 
@@ -33,18 +44,21 @@
   &__item a {
     position: relative;
     z-index: 10;
-    margin-left: 10px;
-    padding: 5px 0;
+    //margin-left: rem(10);
+    padding: rem(5) 0;
     color: rgb(255, 255, 255);
     opacity: 0.5;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: rem(15);
+    line-height: rem(20);
     font-weight: 500;
     white-space: nowrap;
     transition: $time-main;
     &:hover {
       opacity: 1;
     }
+  }
+  &__link{
+    margin-left: rem(15);
   }
 }
 

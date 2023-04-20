@@ -14,6 +14,14 @@
   color: white;
   font-size: 15px;
   font-weight: 600;
+  z-index: 10;
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+    &:hover {
+      background-color: #1f1b2e;
+    }
+  }
   &:hover {
     background-color: #28233b;
   }
@@ -39,19 +47,16 @@
   background-color: #ea003d;
   border-color: #ea003d;
   border-radius: 8px;
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+    &:hover {
+      background-color: #ea003d;
+    }
+  }
   &:hover {
     background-color: #ff0f4d;
     border-color: #ff0f4d;
-  }
-}
-
-.transparent {
-  background-color: transparent;
-  border: 0;
-  border-radius: 8px;
-  &:hover {
-    background-color: transparent;
-    border: 0;
   }
 }
 
@@ -69,4 +74,15 @@
 .L {
   height: 48px;
   padding: 5px 15px;
+}
+
+.transparent {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 8px;
+  &:hover {
+    background-color: transparent;
+    border: 0;
+  }
 }

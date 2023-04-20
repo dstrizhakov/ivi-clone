@@ -1,0 +1,29 @@
+.wrapCard {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff29;
+}
+.person {
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 6px;
+  img {
+    width: 44px;
+    height: auto;
+  }
+}
+
+.rating {
+  border-radius: 6px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+}

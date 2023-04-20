@@ -1,25 +1,24 @@
-import React from "react";
-import { Htag } from "@/components/Htag/Htag";
-import Description from "@/components/Description/Description";
-import BreadCrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import Head from "next/head";
+import React from 'react';
+import BreadCrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import Head from 'next/head';
+import MoviesPageDescription from '@/components/MoviesPage/MoviesPageDescription';
+import Filters from '../../components/Filters/Filters';
 
-const Index = () => {
-
+const Movies = () => {
   const breadcrumbs = [
-    { name: 'Мой Иви', path: '/'},
-    { name: 'Фильмы', path: '/movies'},
-  ]
+    { name: 'Мой Иви', path: '/' },
+    { name: 'Фильмы', path: '/movies' },
+  ];
   return (
     <>
       <Head>
         <title>Смотреть фильмы онлайн</title>
       </Head>
-      <BreadCrumbs breadcrumbs={breadcrumbs}/>
-      <Htag tag={'h2'}>Фильмы смотреть онлайн</Htag>
-      <Description/>
+      <BreadCrumbs breadcrumbs={breadcrumbs} />
+      <MoviesPageDescription />
+      <Filters />
     </>
   );
 };
 
-export default Index;
+export default Movies;

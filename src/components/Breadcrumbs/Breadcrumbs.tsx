@@ -1,15 +1,15 @@
-import React from 'react'
-import Link from 'next/link'
-import styles from './Breadcrumbs.module.scss'
+import React from 'react';
+import Link from 'next/link';
+import styles from './Breadcrumbs.module.scss';
 
 export type Breadcrumb = {
-  name: string
-  path: string
-}
+  name: string;
+  path: string;
+};
 
 export type BreadcrumbsProps = {
-  breadcrumbs: Breadcrumb[]
-}
+  breadcrumbs: Breadcrumb[];
+};
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
   return (
@@ -20,15 +20,13 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
             {index === breadcrumbs.length - 1 ? (
               <span>{breadcrumb.name}</span>
             ) : (
-              <Link href={breadcrumb.path}>
-                {breadcrumb.name}
-              </Link>
+              <Link href={breadcrumb.path}>{breadcrumb.name}</Link>
             )}
           </li>
         ))}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Breadcrumbs
+export default Breadcrumbs;

@@ -1,58 +1,59 @@
-@import '../../../styles/variables';
+@import '@/styles/variables';
+@import '@/styles/mixins.scss';
 
 .content {
   width: 100%;
-  padding: 20px;
+  padding: rem(20);
   display: flex;
   &__items {
     flex: 1 1 55%;
     display: flex;
   }
   &__collections {
-    padding: 0 15px;
+    padding: 0 rem(15);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     flex: 1 1 45%;
   }
   &__title {
-    margin-bottom: 10px;
+    margin-bottom: rem(10);
   }
   &__genres {
     display: grid;
-    grid-template-columns: repeat(2, 190px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(2, rem(190));
+    grid-gap: rem(5);
     & a {
       margin: 0;
-      padding: 4px 0;
+      padding: rem(4) 0;
       line-height: 100%;
     }
   }
   &__countries {
     display: grid;
-    grid-template-columns: repeat(1, 190px);
-    grid-gap: 5px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(1, rem(190));
+    grid-gap: rem(5);
+    margin-bottom: rem(20);
     & a {
       margin: 0;
-      padding: 4px 0;
+      padding: rem(4) 0;
       line-height: 100%;
     }
   }
   &__years {
     display: grid;
     grid-template-columns: repeat(1, 190px);
-    grid-gap: 5px;
+    grid-gap: rem(5);
     & a {
       margin: 0;
-      padding: 4px 0;
+      padding: rem(4) 0;
       line-height: 100%;
     }
   }
   &__link {
     font-family: 'Inter', Helvetica, sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: rem(15);
     margin-left: 0;
-    padding: 4px 0;
+    padding: rem(4) 0;
     line-height: 100%;
     letter-spacing: 0.3px;
     opacity: 0.5;
@@ -67,10 +68,10 @@
   &__collection {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: rem(5);
     & a {
       margin: 0;
-      padding: 4px 0;
+      padding: rem(4) 0;
       line-height: 100%;
     }
   }
@@ -78,9 +79,9 @@
     position: relative;
     font-family: 'Inter', Helvetica, sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: rem(15);
     margin: 0;
-    padding: 4px 0;
+    padding: rem(4) 0;
     line-height: 100%;
     letter-spacing: 0.3px;
     opacity: 0.5;
@@ -90,9 +91,9 @@
       content: '';
       position: absolute;
       top: 0;
-      left: -16.5px;
-      width: 2px;
-      height: 25px;
+      left: rem(-16.5);
+      width: rem(2);
+      height: rem(25);
       background-color: white;
       opacity: 0;
     }
