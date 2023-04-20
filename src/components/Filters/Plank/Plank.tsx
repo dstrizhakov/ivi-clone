@@ -1,23 +1,22 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import styles from './Plank.module.scss';
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import Dropdown from '@/components/Filters/Dropdown/Dropdown';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 const Plank: FC = ({ plank, chosen }) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
-  const handler = (e) => {
-    e.nativeEvent.stopImmediatePropagation();
-    setDropDownOpen((dd) => !dd);
-  };
   const disabled = plank.id == 3;
+  const ref = useRef(null);
+  useOutsideClick(() => setDropDownOpen(false), ref);
   return (
     <>
       <Dropdown state={dropDownOpen} />
-      <span onClick={() => setDropDownOpen(false)}>
+      <span ref={ref}>
         <button
           className={`${styles.plank} ${dropDownOpen && styles.active}`}
           disabled={disabled} //mock
-          onClickCapture={handler}
+          onClick={() => setDropDownOpen((dd) => !dd)}
         >
           <div className={styles.info}>
             <div className={styles.title}>{plank.title}</div>
