@@ -6,8 +6,12 @@ import styles from './WatchPage.module.scss';
 import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
 import { WatchPageProps } from './WatchPage.props';
+import { movies } from '@/mock/movies';
+import { IMovie } from '@/types/types';
 
-const WatchPage: FC<WatchPageProps> = ({ item }) => {
+const WatchPage: FC<WatchPageProps> = ({ id }) => {
+  const item = movies.find((m: IMovie) => id == m.id);
+
   const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
   const color = '106, 80, 47'; //
 
