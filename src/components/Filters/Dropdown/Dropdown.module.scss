@@ -68,6 +68,14 @@
         }
       }
     }
+    .checked {
+      .checkbox {
+        opacity: 1!important;
+      }
+      .input_text {
+        color: white!important;
+      }
+    }
   }
 }
 

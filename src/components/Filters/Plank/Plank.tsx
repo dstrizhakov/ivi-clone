@@ -1,18 +1,21 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Plank.module.scss';
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import Dropdown from '@/components/Filters/Dropdown/Dropdown';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
 
-const Plank: FC = ({ plank, chosen }) => {
+const Plank: FC = ({ plank, chosen, setChosen, arr }) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
-  const disabled = plank.id == 3;
-  const ref = useRef(null);
-  useOutsideClick(() => setDropDownOpen(false), ref);
+  const disabled = plank.id == 2;
   return (
     <>
-      <Dropdown state={dropDownOpen} />
-      <span ref={ref}>
+      <Dropdown
+        state={dropDownOpen}
+        chosen={chosen}
+        setChosen={setChosen}
+        arr={arr}
+        close={() => setDropDownOpen(false)}
+      />
+      <span>
         <button
           className={`${styles.plank} ${dropDownOpen && styles.active}`}
           disabled={disabled} //mock
