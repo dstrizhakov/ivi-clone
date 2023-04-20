@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import styles from './BigMPCarousel.module.scss';
+import styles from './PromoCarousel.module.scss';
 import { NextArrow } from '@/components/Carousel/NextArrow';
 import { PrevArrow } from '@/components/Carousel/PrevArrow';
 import { Button } from '@/components/Button/Button';
@@ -46,7 +46,7 @@ const mockCarousel = [
   },
 ];
 
-const BigMPCarousel: FC = () => {
+const PromoCarousel: FC = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -85,4 +85,4 @@ const BigMPCarousel: FC = () => {
   );
 };
 
-export default BigMPCarousel;
+export default PromoCarousel;

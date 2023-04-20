@@ -23,7 +23,12 @@
   color: transparent;
   border: none;
   outline: none;
+  opacity: 0.7;
+  transition: $time-main;
   background: transparent;
+  &:hover {
+    opacity: 1;
+  }
   button {
     height: 100%;
     width: 100%;

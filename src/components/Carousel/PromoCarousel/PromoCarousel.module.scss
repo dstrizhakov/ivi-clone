@@ -16,25 +16,42 @@
     }
   }
   .items {
+    margin: -5px 0;
+    max-height: 100%;
+    padding: 0 20px;
     position: absolute;
     bottom: 5%;
     left: 3%;
     .content_container {
-      margin-bottom: 30px;
+      margin-bottom: 5%;
       width: 50%;
       img {
-        max-width: 110%;
+        max-width: 100%;
+        object-fit: contain;
       }
     }
     button {
       display: flex;
+      font-size: 1rem;
+      padding: 10px;
     }
     .synopsis {
-      font-size: 15px;
+      font-size: 1rem;
       font-style: normal;
       font-weight: 400;
-      line-height: 22px;
-      margin-top: 20px;
+      line-height: 100%;
+      margin-top: 2%;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      display: block;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media screen and (max-width: 600px) {
+      * {
+        font-size: 0.7rem!important;
+      }
     }
   }
 }
