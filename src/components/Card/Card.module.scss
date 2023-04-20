@@ -2,6 +2,7 @@
 
 .card {
   cursor: pointer;
+  padding: 20px 20px 0 0;
   font-size: 1em;
   color: #d9d7e0;
   transform-origin: 50% 50%;
@@ -58,11 +59,6 @@
         button {
           justify-content: flex-end;
           margin-top: 5px;
-          svg {
-            &:focus, &:focus-visible {
-              outline: -webkit-focus-ring-color auto 0;
-            }
-          }
         }
       }
       .info {

@@ -12,49 +12,60 @@ import { MdBlock } from 'react-icons/md';
 import BarGraph from '@/components/BarGraph/BarGraph';
 import { useRouter } from 'next/navigation';
 
-const Card: FC<CardProps> = ({ card, openRating }) => {
+const Card: FC<CardProps> = ({ card, openRating, star, book, find, block, ...props }) => {
   const router = useRouter();
   const [booked, setBooked] = useState<boolean>(false);
   const [blocked, setBlocked] = useState<boolean>(false);
-  const book = (e) => {
+
+  const addToFavorite = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBooked((booked) => !booked);
   };
-  const find = (e) => {
+  const findSimilar = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
-    console.log('change to s');
     router.push('/movies');
   };
-  const star = (e) => {
+  const openRatingModal = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
-    openRating(true);
+    if (openRating) {
+      openRating();
+    }
   };
-  const block = (e) => {
+  const blockMovie = (e) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBlocked((blocked) => !blocked);
   };
+
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false">
+    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
       <div className={styles.imageSection}>
         <img src={card.img} alt={card.name} />
         <div className={styles.props}>
           <div className={styles.btns}>
-            <Button size={'L'} onClickCapture={(e) => book(e)}>
-              {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
-            </Button>
-            <Button size={'L'} onClickCapture={(e) => find(e)}>
-              <IoColorWandOutline className={styles.mirrored} />
-            </Button>
-            <Button size={'L'} onClickCapture={(e) => star(e)}>
-              <AiOutlineStar />
-            </Button>
-            <Button size={'L'} onClickCapture={(e) => block(e)}>
-              {blocked ? <MdBlock fill={'#ff542e'} /> : <MdBlock />}
-            </Button>
+            {book && (
+              <Button size={'L'} onClick={(e) => addToFavorite(e)}>
+                {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
+              </Button>
+            )}
+            {find && (
+              <Button size={'L'} onClick={(e) => findSimilar(e)}>
+                <IoColorWandOutline className={styles.mirrored} />
+              </Button>
+            )}
+            {star && (
+              <Button size={'L'} onClick={(e) => openRatingModal(e)}>
+                <AiOutlineStar />
+              </Button>
+            )}
+            {block && (
+              <Button size={'L'} onClick={(e) => blockMovie(e)}>
+                {blocked ? <MdBlock fill={'#ff542e'} /> : <MdBlock />}
+              </Button>
+            )}
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
