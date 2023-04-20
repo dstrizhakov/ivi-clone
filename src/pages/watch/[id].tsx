@@ -9,7 +9,8 @@ import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 
 const Movie = () => {
   const router = useRouter();
-  const movie = movies.find((m: IMovie) => +router.query.id == m.id);
+  const id = +router.query.id;
+  const movie = movies.find((m: IMovie) => id == m.id);
   if (!movie) return <NotFoundPage />;
 
   const breadcrumbs = [
@@ -23,7 +24,7 @@ const Movie = () => {
         <title>{`Фильм ${movie.name}`}</title>
       </Head>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <WatchPage id={router.query.id} />
+      <WatchPage id={id} />
     </>
   );
 };
