@@ -1,0 +1,40 @@
+.carousel {
+  -webkit-tap-highlight-color: transparent;
+  margin: 20px 0;
+  .item {
+    position: relative;
+    border-radius: 24px;
+    display: flex;
+    padding: 0;
+    width: 100%;
+    max-height: 600px;
+  }
+  .img {
+    img {
+      width: 100%;
+      border-radius: 24px;
+    }
+  }
+  .items {
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    .content_container {
+      margin-bottom: 30px;
+      width: 50%;
+      img {
+        max-width: 110%;
+      }
+    }
+    button {
+      display: flex;
+    }
+    .synopsis {
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      margin-top: 20px;
+    }
+  }
+}

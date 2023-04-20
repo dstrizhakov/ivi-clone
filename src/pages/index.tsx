@@ -5,6 +5,7 @@ import MainPageDescription from '@/components/MainPage/MainPageDescription';
 import Card from '@/components/Card/Card';
 import RatingModal from '@/components/Card/RatingModal';
 import { carouselMock } from '@/mock/carouselMocks';
+import BigMPCarousel from '@/components/Carousel/MainPageCarousel/BigMPCarousel';
 
 const Home: FC = () => {
   const [isRatingOpen, setIsRatingOpen] = useState<boolean>(false);
@@ -14,6 +15,7 @@ const Home: FC = () => {
       <Head>
         <title>Главная</title>
       </Head>
+      <BigMPCarousel />
       <MainPageDescription />
       <Carousel title={'Зарубежные сериалы'} route={'/'}>
         {carouselMock.map((card) => (

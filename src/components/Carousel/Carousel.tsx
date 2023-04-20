@@ -3,41 +3,13 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './Carousel.module.scss';
-import { Button } from '@/components/Button/Button';
-import { MdArrowBackIosNew } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
 import { CarouselProps } from '@/components/Carousel/Carousel.props';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import ShowAll from '@/components/Card/ShowAll';
-
-function NextArrow(props) {
-  return (
-    <div className={`${styles.arrow} ${styles.next}`} onClick={props.onClick}>
-      <Button
-        size={'L'}
-        appearance={'transparent'}
-        disabled={props.className.split(' ')[2] === 'slick-disabled'}
-      >
-        <MdArrowForwardIos size={30} />
-      </Button>
-    </div>
-  );
-}
-
-function PrevArrow(props) {
-  return (
-    <div className={`${styles.arrow} ${styles.prev}`} onClick={props.onClick}>
-      <Button
-        size={'L'}
-        appearance={'transparent'}
-        disabled={props.className.split(' ')[2] === 'slick-disabled'}
-      >
-        <MdArrowBackIosNew size={30} />
-      </Button>
-    </div>
-  );
-}
+import { NextArrow } from '@/components/Carousel/NextArrow';
+import { PrevArrow } from '@/components/Carousel/PrevArrow';
 
 const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children }) => {
   const settings = {
