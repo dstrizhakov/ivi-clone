@@ -1,9 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './Carousel.module.scss';
-import Card from '../Card/Card';
 import { Button } from '@/components/Button/Button';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
@@ -11,31 +10,6 @@ import { CarouselProps } from '@/components/Carousel/Carousel.props';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import ShowAll from '@/components/Card/ShowAll';
-import RatingModal from '@/components/Card/RatingModal';
-
-const long = 'long long long long long long',
-  short = 'short';
-const src1 =
-  'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85';
-const src2 =
-  'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85';
-const arr = [
-  { id: 1, name: long, img: src1 },
-  { id: 2, name: long, img: src2 },
-  { id: 3, name: short, img: src1 },
-  { id: 4, name: short, img: src2 },
-  { id: 5, name: long, img: src1 },
-  { id: 6, name: long, img: src2 },
-  { id: 7, name: short, img: src1 },
-  { id: 8, name: short, img: src2 },
-  { id: 9, name: long, img: src1 },
-  { id: 10, name: long, img: src2 },
-  { id: 11, name: short, img: src1 },
-  { id: 12, name: short, img: src2 },
-  { id: 13, name: long, img: src1 },
-  { id: 14, name: long, img: src2 },
-  { id: 15, name: short, img: src1 },
-];
 
 function NextArrow(props) {
   return (
@@ -65,7 +39,7 @@ function PrevArrow(props) {
   );
 }
 
-const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
+const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children }) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -136,11 +110,9 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
       },
     ],
   };
-  const [isRatingOpen, setIsRatingOpen] = useState<boolean>(false);
 
   return (
     <>
-      <RatingModal isOpen={isRatingOpen} closeModal={() => setIsRatingOpen(() => false)} />
       <div className={styles.carousel}>
         <div>
           <Link href={route} className={styles.title}>
@@ -151,16 +123,10 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false }) => {
           </Link>
         </div>
         <Slider {...settings}>
-          {arr.map((card) => (
-            <div key={card.id} className={styles.card}>
-              <Card card={card} openRating={setIsRatingOpen} />
-            </div>
-          ))}
+          {children}
           {showAll && (
             <Link href={route}>
-              <div className={styles.card}>
-                <ShowAll />
-              </div>
+              <ShowAll />
             </Link>
           )}
         </Slider>
