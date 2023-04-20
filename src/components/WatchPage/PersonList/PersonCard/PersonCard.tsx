@@ -7,15 +7,25 @@ import Link from 'next/link';
 const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
   const name = person?.enName.toLowerCase().split(' ').join('-');
   return (
-    <div className={styles.wrapCard}>
+    <div className={styles.person_card}>
       {person ? (
-        <Link href={`/person/${name}`}>
-          <div className={styles.person}>
-            <img src={person.url} alt={person.enName} />
+        <>
+          <div className={styles.wrapCard}>
+            <Link href={`/person/${name}`}>
+              <div className={styles.person}>
+                <img src={person.url} alt={person.enName} />
+              </div>
+            </Link>
           </div>
-        </Link>
+          <div className={styles.card_name}>{person.name}</div>
+        </>
       ) : (
-        <div className={styles.rating}>{children}</div>
+        <>
+          <div className={styles.wrapCard}>
+            <div className={styles.rating}>{children}</div>
+          </div>
+          <div className={styles.card_name}>Рейтинг иви</div>
+        </>
       )}
     </div>
   );
