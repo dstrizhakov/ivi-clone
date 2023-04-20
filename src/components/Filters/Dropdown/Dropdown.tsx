@@ -5,17 +5,21 @@ import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 const Dropdown = ({ state, chosen, setChosen, close, arr }) => {
   const changePressed = (i) => {
-    setChosen(() =>
-      [
-        ...chosen.filter((a) => a.id !== i.id),
-        {
-          id: i.id,
-          title: i.title,
-          checked: !i.checked,
-        },
-      ].sort((a, b) => a.id - b.id)
-    );
-    i.checked = !i.checked;
+    const findChosen = chosen.find((item) => item.id == i.id);
+    if (findChosen?.checked) {
+      setChosen(() => [...chosen.filter((item) => item.id !== i.id)].sort((a, b) => a.id - b.id));
+    } else {
+      setChosen(() =>
+        [
+          ...chosen.filter((item) => item.id !== i.id),
+          {
+            id: i.id,
+            title: i.title,
+            checked: true,
+          },
+        ].sort((a, b) => a.id - b.id)
+      );
+    }
   };
   const ref = useRef(null);
   useOutsideClick(close, ref);
@@ -36,8 +40,9 @@ const Dropdown = ({ state, chosen, setChosen, close, arr }) => {
                 {arr.map((i) => (
                   <li
                     key={i.id}
-                    className={`${chosen.find((item) => item.id == i.id) && styles.checked}`}
-                    onClick={() => setChosen([...new Set([...chosen, i])])}
+                    className={`${
+                      chosen.find((item) => item.id == i.id)?.checked && styles.checked
+                    }`}
                   >
                     <label>
                       <input type="checkbox" value={i.title} onChange={() => changePressed(i)} />
