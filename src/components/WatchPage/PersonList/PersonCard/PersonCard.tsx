@@ -13,7 +13,7 @@ const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
           <div className={styles.wrapCard}>
             <Link href={`/person/${name}`}>
               <div className={styles.person}>
-                <img src={person.url} alt={person.enName} />
+                <img src={person.url} alt={person.name} />
               </div>
             </Link>
           </div>
