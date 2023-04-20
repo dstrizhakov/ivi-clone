@@ -14,10 +14,10 @@ export interface IMovie {
   id: number;
   name: string;
   enName: string;
-  descr: string;
+  description: string;
   trailer: string;
   year: string;
-  countrys: string | string[];
+  countries: string | string[];
   rating: string;
   genres: string | string[];
   duration: string;
