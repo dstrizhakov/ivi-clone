@@ -40,57 +40,59 @@
     img {
       width: 100%;
     }
-    .props {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 0;
-      text-align: center;
-      transition: $time-main;
-      z-index: 90;
-      opacity: 0;
-      padding: 10%;
-      align-items: flex-end;
-      visibility: hidden;
-      .btns {
-        button {
-          justify-content: flex-end;
-          margin-top: 5px;
-        }
-      }
-      .info {
+    &.hover {
+      .props {
+        height: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        position: relative;
-        height: 100%;
-        padding: 10px;
-        @media screen and (max-width: 600px) {
-          bottom: 30%;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        transition: $time-main;
+        z-index: 90;
+        opacity: 0;
+        padding: 10%;
+        align-items: flex-end;
+        visibility: hidden;
+        .btns {
+          button {
+            justify-content: flex-end;
+            margin-top: 5px;
+          }
         }
-        &__text {
-          text-align: start;
-          font-size: 0.6rem;
-        }
-        &__row {
-          margin-top: 4px;
-          white-space: pre-wrap;
-          text-overflow: ellipsis;
-        }
-        .ratings {
-          font-size: 1.4rem;
-          width: 100%;
+        .info {
           display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          align-items: flex-end;
-          .graphs {
+          flex-direction: column;
+          justify-content: flex-end;
+          position: relative;
+          height: 100%;
+          padding: 10px;
+          @media screen and (max-width: 600px) {
+            bottom: 30%;
+          }
+          &__text {
+            text-align: start;
+            font-size: 0.6rem;
+          }
+          &__row {
+            margin-top: 4px;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+          }
+          .ratings {
+            font-size: 1.4rem;
+            width: 100%;
             display: flex;
-            min-width: 25%;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-end;
+            .graphs {
+              display: flex;
+              min-width: 25%;
+              flex-direction: column;
+            }
           }
         }
       }

@@ -12,7 +12,16 @@ import { MdBlock } from 'react-icons/md';
 import BarGraph from '@/components/BarGraph/BarGraph';
 import { useRouter } from 'next/navigation';
 
-const Card: FC<CardProps> = ({ card, openRating, star, book, find, block, ...props }) => {
+const Card: FC<CardProps> = ({
+  card,
+  hover = true,
+  openRating,
+  star,
+  book,
+  find,
+  block,
+  ...props
+}) => {
   const router = useRouter();
   const [booked, setBooked] = useState<boolean>(false);
   const [blocked, setBlocked] = useState<boolean>(false);
@@ -42,7 +51,7 @@ const Card: FC<CardProps> = ({ card, openRating, star, book, find, block, ...pro
 
   return (
     <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
-      <div className={styles.imageSection}>
+      <div className={`${styles.imageSection} ${hover && styles.hover}`}>
         <img src={card.img} alt={card.name} />
         <div className={styles.props}>
           <div className={styles.btns}>

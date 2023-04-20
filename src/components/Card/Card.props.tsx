@@ -7,6 +7,7 @@ export interface iMovie {
 
 export interface CardProps {
   card: iMovie;
+  hover?: boolean;
   star?: boolean;
   book?: boolean;
   find?: boolean;
