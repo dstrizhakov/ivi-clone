@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 
 export type QueryParams = { limit?: number; genre?: string; rating?: number; year?: string };
 
-export const movieAPI = createApi({
-  reducerPath: 'movieAPI',
+export const movieApi = createApi({
+  reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000' }),
   endpoints: (build) => ({
     fetchAllMovies: build.query<IMovie[], QueryParams>({
@@ -26,4 +26,4 @@ export const movieAPI = createApi({
   }),
 });
 
-export const {} = movieAPI;
+export const {} = movieApi;

@@ -1,17 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 export interface IAuth {
+  user: string | null;
   token: string | null;
-  isAuth: boolean;
-  isAdmin: boolean;
+  role: 'user' | 'admin';
   favorites: string[];
   watched: string[];
 }
 
 const initialState: IAuth = {
+  user: null,
   token: null,
-  isAuth: false,
-  isAdmin: false,
+  role: 'user',
   favorites: [],
   watched: [],
 };
@@ -20,22 +21,14 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setToken: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
-      state.isAuth = true;
-    },
-    removeToken: (state) => {
-      state.token = null;
-      state.isAuth = false;
-    },
-    updateToken: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
-    },
-    setIsAuth: (state, action: PayloadAction<boolean>) => {
-      state.isAuth = action.payload;
+    setUser: (state, action) => {
+      const { user, accessToken } = action.payload;
+      state.token = accessToken;
+      state.user = user;
     },
   },
 });
 
-export const { setToken, updateToken, removeToken, setIsAuth } = authSlice.actions;
+export const selectAuth = (state: RootState) => state.authReducer;
+export const { setUser } = authSlice.actions;
 export default authSlice.reducer;
