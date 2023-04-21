@@ -1,14 +1,18 @@
+import { movieAPI } from '@/services/movie.api';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import mainReducer from './reducers/Main/main.slice';
+import authReducer from './reducers/auth.slice';
+import movieReducer from './reducers/movie.slice';
 
 const rootReducer = combineReducers({
-  mainReducer,
+  authReducer,
+  movieReducer,
+  [movieAPI.reducerPath]: movieAPI.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(movieAPI.middleware),
   });
 };
 
