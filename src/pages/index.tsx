@@ -1,15 +1,17 @@
 import Head from 'next/head';
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import Carousel from '@/components/Carousel/Carousel';
 import MainPageDescription from '@/components/MainPage/MainPageDescription';
-import Card from '@/components/Card/Card';
-import RatingModal from '@/components/Card/RatingModal';
+import { wrapper } from '@/store/store';
+import { GetServerSideProps } from 'next';
+import { authApi } from '@/services/auth.api';
 import { carouselMock } from '@/mock/carouselMocks';
 import PromoCarousel from '@/components/Carousel/PromoCarousel/PromoCarousel';
+import Card from '@/components/Card/Card';
+import RatingModal from '@/components/Card/RatingModal';
 
-const Home: FC = () => {
+export default function Home() {
   const [isRatingOpen, setIsRatingOpen] = useState<boolean>(false);
-
   return (
     <>
       <Head>
@@ -22,7 +24,10 @@ const Home: FC = () => {
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star book find block
+            star
+            book
+            find
+            block
             key={card.id}
           />
         ))}
@@ -32,7 +37,10 @@ const Home: FC = () => {
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star book find block
+            star
+            book
+            find
+            block
             key={card.id}
           />
         ))}
@@ -41,6 +49,13 @@ const Home: FC = () => {
       <RatingModal isOpen={isRatingOpen} closeModal={() => setIsRatingOpen(() => false)} />
     </>
   );
-};
+}
 
-export default Home;
+//.. тут будем проверять авторизован ли пользователь и сохранять данные о нем
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    console.log('CONTEXT', context);
+    console.log('STORE', store);
+    return { props: {} };
+  }
+);
