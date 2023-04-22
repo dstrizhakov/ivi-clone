@@ -5,21 +5,17 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { wrapper } from '@/store/store';
 
-function App({ Component, ...rest }: AppProps) {
-  const { store, props } = wrapper.useWrappedStore(rest);
-  const { pageProps } = props;
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Provider store={store}>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-      </Provider>
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
     </>
   );
 }
 
-export default App;
+export default wrapper.withRedux(App);

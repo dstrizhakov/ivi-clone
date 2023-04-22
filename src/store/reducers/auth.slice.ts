@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 import { RootState } from '../store';
 
 export interface IAuth {
@@ -44,6 +45,14 @@ export const authSlice = createSlice({
       state.role = null;
       state.favorites = [];
       state.watched = [];
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      return {
+        ...state,
+        ...action.payload.authReducer,
+      };
     },
   },
 });
