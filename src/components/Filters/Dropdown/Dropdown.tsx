@@ -1,38 +1,38 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styles from './Dropdown.module.scss';
 import { BsCheckLg } from 'react-icons/bs';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { categories } from '@/mock/filters';
 
-const Dropdown = ({ state, plankID, chosen, setChosen, close, arr }) => {
-  const [narr, setArr] = useState([]);
+const Dropdown = ({ state, plankID, chosen, setChosen }) => {
   const changePressed = (i) => {
-    chosen.reduce((i, n) => i + n.category.length, 0) || setArr(() => []);
-    let newChosen;
-    const findChosen = chosen.find((item) => item.id == i.id);
-    if (findChosen?.checked) {
-      setArr(() => [...narr.filter((item) => item.id !== i.id)]);
-    } else {
-      newChosen = {
-        id: i.id,
-        title: i.title,
-        checked: true,
-      };
-      setArr(() =>
-        [...narr.filter((item) => item.id !== i.id), newChosen].sort((a, b) => a.id - b.id)
-      );
-    }
-    setChosen(() =>
+    //state.filters
+    setChosen((ch) =>
       [
-        ...chosen.filter((item) => item.plankID !== plankID),
-        { plankID: plankID, category: [...narr] },
+        ...ch.filter((item) => item.plankID !== plankID),
+        {
+          plankID: plankID,
+          category: ch
+            .find((item) => item.plankID === plankID)
+            ?.category.find((item) => item.id == i.id)
+            ? [
+                ...ch
+                  ?.find((item) => item.plankID === plankID)
+                  ?.category.filter((item) => item.id !== i.id),
+              ]
+            : [
+                ...(ch?.find((item) => item.plankID == plankID)?.category || []),
+                {
+                  id: i.id,
+                  title: i.title,
+                },
+              ],
+        },
       ].sort((a, b) => a.plankID - b.plankID)
     );
   };
-  const ref = useRef(null);
-  useOutsideClick(close, ref);
   return (
     <>
-      <div className={styles.dropdown_out} ref={ref}>
+      <div className={styles.dropdown_out}>
         {state && (
           <div className={styles.dropdown}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -44,24 +44,28 @@ const Dropdown = ({ state, plankID, chosen, setChosen, close, arr }) => {
             </div>
             <div className={styles.list_container}>
               <ul>
-                {arr.map((i) => (
-                  <li
-                    key={i.id}
-                    className={`${
-                      chosen.find((item) => item.id == i.id)?.checked && styles.checked
-                    }`}
-                  >
-                    <label>
-                      <input type="checkbox" value={i.title} onChange={() => changePressed(i)} />
-                      <div className={styles.input_text}>{i.title}</div>
-                      <div className={styles.checkbox}>
-                        <div className={styles.checkbox_selected}>
-                          <BsCheckLg />
+                {categories
+                  .find((item) => item.plankID == plankID)
+                  .category.map((i) => (
+                    <li
+                      key={i.id}
+                      className={`${
+                        chosen
+                          ?.find((item) => item.plankID === plankID)
+                          ?.category.find((item) => item.id == i.id) && styles.checked
+                      }`}
+                    >
+                      <label>
+                        <input type="checkbox" value={i.title} onChange={() => changePressed(i)} />
+                        <div className={styles.input_text}>{i.title}</div>
+                        <div className={styles.checkbox}>
+                          <div className={styles.checkbox_selected}>
+                            <BsCheckLg />
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  </li>
-                ))}
+                      </label>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
