@@ -3,9 +3,11 @@ import type { AppProps } from 'next/app';
 import MainLayout from '@/layouts/MainLayout';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import { store } from '@/store/store';
+import { wrapper } from '@/store/store';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { pageProps } = props;
   return (
     <>
       <Head>
@@ -19,3 +21,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default App;
