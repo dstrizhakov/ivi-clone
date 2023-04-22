@@ -1,3 +1,4 @@
+import { movies } from '@/mock/movies';
 import { IMovie } from '@/types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -8,7 +9,7 @@ export interface IMovieListType {
 }
 
 const initialState: IMovieListType = {
-  movies: [],
+  movies: movies,
   genres: [],
   years: [],
 };
