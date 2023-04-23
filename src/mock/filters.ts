@@ -3,7 +3,6 @@ export const planks = [
   { id: 2, title: 'Поджанры' },
   { id: 3, title: 'Страны' },
   { id: 4, title: 'Годы' },
-  { id: 5, title: 'Рейтинг иви' },
 ];
 
 export const sausages = [
@@ -65,16 +64,6 @@ export const categories = [
       { id: 3, title: '2021' },
       { id: 4, title: '2020' },
       { id: 5, title: '2019' },
-    ],
-  },
-  {
-    plankID: 5,
-    category: [
-      { id: 1, title: '10' },
-      { id: 2, title: '9' },
-      { id: 3, title: '8' },
-      { id: 4, title: '7' },
-      { id: 5, title: '6' },
     ],
   },
 ];

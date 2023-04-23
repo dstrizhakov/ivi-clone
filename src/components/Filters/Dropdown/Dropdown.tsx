@@ -5,7 +5,6 @@ import { categories } from '@/mock/filters';
 
 const Dropdown = ({ state, plankID, chosen, setChosen }) => {
   const changePressed = (i) => {
-    //state.filters
     setChosen((ch) =>
       [
         ...ch.filter((item) => item.plankID !== plankID),

@@ -30,6 +30,9 @@ const Filters = () => {
             <Plank plank={plank} chosen={chosen} setChosen={setChosen} plankID={plank.id} />
           </div>
         ))}
+        <div className={styles.plank_item}>
+          <input type="range" min="1" max="10" />
+        </div>
       </div>
       <div className={styles.sausage_list}>
         {sausages.map((i) => (

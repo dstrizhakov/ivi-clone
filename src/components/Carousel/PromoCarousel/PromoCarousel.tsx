@@ -68,18 +68,20 @@ const PromoCarousel: FC = () => {
         <Slider {...settings}>
           {mockCarousel.map((i) => (
             <div className={styles.item} key={i.id}>
-              <div className={styles.img}>
-                <img src={i.img} alt={i.name} />
-              </div>
-              <div className={styles.items}>
-                <div className={styles.content_container}>
-                  <img src={i.logo} alt="logo" />
-                  <div className={styles.synopsis}>{i.description}</div>
+              <Link href={'/'}>
+                <div className={styles.img}>
+                  <img src={i.img} alt={i.name} />
                 </div>
-                <Link href={'/movies'}>
-                  <Button appearance={'red'}>{i.btn}</Button>
-                </Link>
-              </div>
+                <div className={styles.items}>
+                  <div className={styles.content_container}>
+                    <img src={i.logo} alt="logo" />
+                    <div className={styles.synopsis}>{i.description}</div>
+                  </div>
+                  <Link href={'/movies'}>
+                    <Button appearance={'red'}>{i.btn}</Button>
+                  </Link>
+                </div>
+              </Link>
             </div>
           ))}
         </Slider>
