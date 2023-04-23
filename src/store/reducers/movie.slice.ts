@@ -19,7 +19,7 @@ export const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    setMovies: (state, action: PayloadAction<IMovie[]>) => {
+    setMovies(state, action: PayloadAction<IMovie[]>) {
       state.movies = action.payload;
       state.genres = Array.from(new Set(state.movies.flatMap((movie) => movie.genres)));
       state.years = Array.from(new Set(state.movies.flatMap((movie) => movie.year)));
