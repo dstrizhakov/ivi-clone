@@ -1,4 +1,4 @@
-import { movies } from '@/mock/movies';
+import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -10,7 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 const Movie = () => {
   const router = useRouter();
   const id = +router.query.id;
-  const movie = movies.find((m: IMovie) => id == m.id);
+  const movie = moviesData.find((m: IMovie) => id == m.id);
   if (!movie) return <NotFoundPage />;
 
   const breadcrumbs = [

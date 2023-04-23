@@ -1,12 +1,7 @@
-export interface iMovie {
-  //mock
-  id: number;
-  name: string;
-  img: string;
-}
+import { IMovie } from '@/types/types';
 
 export interface CardProps {
-  card: iMovie;
+  card: IMovie;
   hover?: boolean;
   star?: boolean;
   book?: boolean;

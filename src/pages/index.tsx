@@ -4,14 +4,14 @@ import Carousel from '@/components/Carousel/Carousel';
 import MainPageDescription from '@/components/MainPage/MainPageDescription';
 import { wrapper } from '@/store/store';
 import { GetServerSideProps } from 'next';
-import { authApi } from '@/services/auth.api';
-import { carouselMock } from '@/mock/carouselMocks';
 import PromoCarousel from '@/components/Carousel/PromoCarousel/PromoCarousel';
 import Card from '@/components/Card/Card';
 import RatingModal from '@/components/Card/RatingModal';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
   const [isRatingOpen, setIsRatingOpen] = useState<boolean>(false);
+  const { movies } = useSelector((state) => state.movieReducer);
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ export default function Home() {
       <PromoCarousel />
       <MainPageDescription />
       <Carousel title={'Зарубежные сериалы'} route={'/'}>
-        {carouselMock.map((card) => (
+        {movies.map((card) => (
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
@@ -33,7 +33,7 @@ export default function Home() {
         ))}
       </Carousel>
       <Carousel title={'Приключения'} route={'/'} star book find block showAll>
-        {carouselMock.map((card) => (
+        {movies.map((card) => (
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}

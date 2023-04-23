@@ -7,7 +7,7 @@ export interface IPerson {
   url: string;
   name: string;
   enName: string;
-  descr: string;
+  description: string;
   films: iMovieCard[];
 }
 export interface IMovie {
@@ -16,6 +16,7 @@ export interface IMovie {
   enName: string;
   description: string;
   trailer: string;
+  card_image: string;
   year: string;
   countries: string | string[];
   rating: string;

@@ -1,4 +1,3 @@
-import { iMovieCard } from '@/components/Person/MoviesList/MovieCard/MovieCard.props';
 import { IPerson } from '@/types/types';
 
 const src1 =
@@ -11,7 +10,7 @@ export const persons: IPerson[] = [
     url: 'https://thumbs.dfs.ivi.ru/storage5/contents/9/6/b7f9eef3eaeb3d500cd994fb130047.jpg/120x144/?q=85',
     name: 'Оскар Айзек',
     enName: 'Oscar Isaak',
-    descr:
+    description:
       'Оскар Айзек (Oscar Isaak Hernandez) - американский актер, ставший известным благодаря главной роли в картине братьев Коэн «Внутри Льюина Дэвиса».',
     films: [
       { id: 1, name: 'Name', year: '2020', rating: '4.5', img: src1 },
@@ -25,7 +24,7 @@ export const persons: IPerson[] = [
     url: 'https://thumbs.dfs.ivi.ru/storage9/contents/f/e/26bda1add19e61753e5e852054a96f.jpeg/120x144/?q=85',
     name: 'Сет Роген',
     enName: 'Seth Rogen',
-    descr:
+    description:
       'Сет Роген (англ. Seth Rogen) — канадский актер, комик и сценарист. Наибольшую известность получил за свои роли в фильмах «Жизнь прекрасна» и «SuperПерцы».',
     films: [
       { id: 5, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
@@ -40,7 +39,7 @@ export const persons: IPerson[] = [
     url: '	https://thumbs.dfs.ivi.ru/storage9/contents/3/e/3a98ea123e47135da2d1a9a4dd50cf.jpg/120x144/?q=85',
     name: 'Стеллан Скарсгард',
     enName: 'Stellan Skarsgard',
-    descr:
+    description:
       'Стеллан Скарсгард (Stellan Skarsgård) — шведский актер театра и кино. Наибольшую известность получил за свои роли в фильмах «Умница Уилл Хантинг», «Рассекая волны», «Девушка с татуировкой дракона», «Спаситель» и «Король чертова острова».',
     films: [
       { id: 3, name: 'Name3', year: '2020', rating: '4.5', img: src1 },

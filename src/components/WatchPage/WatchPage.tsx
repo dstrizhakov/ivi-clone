@@ -6,17 +6,17 @@ import styles from './WatchPage.module.scss';
 import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
 import { WatchPageProps } from './WatchPage.props';
-import { movies } from '@/mock/movies';
+import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
-import { carouselMock } from '@/mock/carouselMocks'; //похожие на
 import Card from '@/components/Card/Card';
+import { useSelector } from 'react-redux';
 
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
-  const item = movies.find((m: IMovie) => id == m.id);
+  const item = moviesData.find((m: IMovie) => id == m.id);
 
   const { name, description, trailer, year, countries, rating, genres, duration, persons } = item;
   const color = '106, 80, 47'; //
-
+  const { movies } = useSelector((state) => state.movieReducer);
   return (
     <>
       <div
@@ -54,7 +54,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
           </div>
         </div>
         <Carousel title={`С фильмом «${name}» смотрят`} route={'/'}>
-          {carouselMock.map((card) => (
+          {movies.map((card) => (
             <Card card={card} book key={card.id} />
           ))}
         </Carousel>

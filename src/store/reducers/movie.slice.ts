@@ -1,4 +1,4 @@
-import { movies } from '@/mock/movies';
+import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
@@ -10,7 +10,7 @@ export interface IMovieListType {
 }
 
 const initialState: IMovieListType = {
-  movies: movies,
+  movies: moviesData,
   genres: [],
   years: [],
 };

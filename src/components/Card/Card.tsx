@@ -52,7 +52,7 @@ const Card: FC<CardProps> = ({
   return (
     <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
-        <img src={card.img} alt={card.name} />
+        <img src={card.card_image} alt={card.name} />
         <div className={styles.props}>
           <div className={styles.btns}>
             {book && (
@@ -78,21 +78,23 @@ const Card: FC<CardProps> = ({
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
-              7,7
+              {card.rating}
               <div className={styles.graphs}>
-                <BarGraph width={80} />
-                <BarGraph width={73} />
-                <BarGraph width={62} />
-                <BarGraph width={98} />
+                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
+                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
+                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
+                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
               </div>
             </div>
             <div className={styles.singleGraph}>
               <span>актёры</span>
-              <BarGraph width={67} />
+              <BarGraph width={(Math.random() + 0.5) * +card.rating[0] * 10} />
             </div>
             <div className={styles.info__text}>
-              <div className={styles.info__row}>2019-2021, Россия, Драмы</div>
-              <div className={styles.info__row}>1 сезон</div>
+              <div className={styles.info__row}>
+                {card.year}, {card.countries}, {card.genres}
+              </div>
+              <div className={styles.info__row}>{card.duration}</div>
             </div>
           </div>
         </div>

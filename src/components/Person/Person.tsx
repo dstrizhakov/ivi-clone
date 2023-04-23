@@ -17,7 +17,7 @@ export const PersonInfo: FC<PersonProps> = ({ person }) => {
         <Htag tag={'h1'}>{person.name}</Htag>
         <P key={person.url}>{person.enName}</P>
         <P color={'gray-light'} className={styles.descr}>
-          {person.descr}
+          {person.description}
         </P>
         <MovieList list={person.films} />
       </div>
