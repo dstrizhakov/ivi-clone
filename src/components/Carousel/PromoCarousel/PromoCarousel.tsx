@@ -68,7 +68,7 @@ const PromoCarousel: FC = () => {
         <Slider {...settings}>
           {mockCarousel.map((i) => (
             <div className={styles.item} key={i.id}>
-              <Link href={'/'}>
+              <Link href={'/movies'}>
                 <div className={styles.img}>
                   <img src={i.img} alt={i.name} />
                 </div>
@@ -77,9 +77,9 @@ const PromoCarousel: FC = () => {
                     <img src={i.logo} alt="logo" />
                     <div className={styles.synopsis}>{i.description}</div>
                   </div>
-                  <Link href={'/movies'}>
-                    <Button appearance={'red'}>{i.btn}</Button>
-                  </Link>
+                  <Button appearance={'red'} title={i.btn}>
+                    {i.btn}
+                  </Button>
                 </div>
               </Link>
             </div>
