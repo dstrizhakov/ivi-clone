@@ -2,8 +2,9 @@ import '@/styles/global.scss';
 import type { AppProps } from 'next/app';
 import MainLayout from '@/layouts/MainLayout';
 import Head from 'next/head';
+import { wrapper } from '@/store/store';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -15,3 +16,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+//Provider передает store внутри wrapper согласно документации https://github.com/kirill-konshin/next-redux-wrapper/
+export default wrapper.withRedux(App);
