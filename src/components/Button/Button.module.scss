@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 
 .button {
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +15,6 @@
   color: white;
   font-size: 15px;
   font-weight: 600;
-  z-index: 10;
   &:disabled {
     opacity: 0.4;
     cursor: default;

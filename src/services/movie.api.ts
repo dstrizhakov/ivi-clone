@@ -1,5 +1,5 @@
 import { IMovie } from '@/types/types';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export type QueryParams = { limit?: number; genre?: string; rating?: number; year?: string };
 
@@ -26,4 +26,4 @@ export const movieApi = createApi({
   }),
 });
 
-export const {} = movieApi;
+export const { useFetchAllMoviesQuery, useFetchOneMovieQuery } = movieApi;

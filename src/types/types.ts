@@ -4,6 +4,7 @@ export interface ILink {
   link: string;
 }
 export interface IPerson {
+  id: number;
   url: string;
   name: string;
   enName: string;

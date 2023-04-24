@@ -10,6 +10,7 @@ import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
 import { useSelector } from 'react-redux';
+import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
 
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const item = moviesData.find((m: IMovie) => id == m.id);
@@ -58,6 +59,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
             <Card card={card} book key={card.id} />
           ))}
         </Carousel>
+        <PersonsGallery list={persons} />
       </section>
     </>
   );

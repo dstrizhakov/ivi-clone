@@ -25,7 +25,22 @@ const nextConfig = {
         include: [path.resolve(__dirname, fontFile)],
       });
     });
-
+    // module.exports = {
+    //   i18n: {
+    //     locales: ['ru-RU', 'en-US'],
+    //     defaultLocale: 'ru-RU',
+    //     domains: [
+    //       {
+    //         domain: 'localhost:3000/ru/',
+    //         defaultLocale: 'ru-RU',
+    //       },
+    //       {
+    //         domain: 'localhost:3000/en-US/',
+    //         defaultLocale: 'en-US',
+    //       },
+    //     ],
+    //   },
+    // };
     return config;
   },
 };

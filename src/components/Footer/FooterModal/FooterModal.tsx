@@ -155,7 +155,7 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
             </ModalList>
           </div>
           <div className={styles.menuItem}>
-            <div className={cn(styles.social, styles.buttons)}>
+            <div className={styles.social}>
               <Button appearance={'circle'}>
                 <FaVk />
               </Button>

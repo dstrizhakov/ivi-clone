@@ -21,21 +21,20 @@
   &__content {
   }
   &__row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas:
+      'a b'
+      'a c';
     gap: 30px;
     margin: 30px 0;
   }
   &__player {
     flex: 1 1 auto;
-    img {
-      max-width: 720px;
-      position: sticky;
-      top: 0;
-    }
+    grid-area: a;
   }
   &__info {
-    margin-left: 20px;
-    flex: 0 0 37.5%;
+    grid-area: b;
   }
   &__title {
     margin-top: 8px;
@@ -51,8 +50,22 @@
     margin-bottom: 20px;
   }
   &__description {
+    padding: 12px 0;
     margin-bottom: 20px;
   }
   &__rating {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $pc) {
+  .watch {
+    &__row {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'b'
+        'a'
+        'c';
+    }
   }
 }

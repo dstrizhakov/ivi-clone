@@ -20,5 +20,5 @@ function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
+//Provider передает store внутри wrapper согласно документации https://github.com/kirill-konshin/next-redux-wrapper/
 export default wrapper.withRedux(App);

@@ -9,6 +9,7 @@
       opacity: 1;
       visibility: visible;
       pointer-events: all;
+      filter: drop-shadow(0 20px 96px #12101b);
       @media screen and (max-width: 1159px) {
         display: none;
       }
