@@ -1,7 +1,6 @@
 @import '@/styles/variables.scss';
 @import '@/styles/mixins.scss';
 .row {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +31,9 @@
   z-index: 10;
 }
 
+.zindex {
+  z-index: 10;
+}
 .menu {
   flex: 1 1 auto;
   &__list {
@@ -57,7 +59,7 @@
       opacity: 1;
     }
   }
-  &__link{
+  &__link {
     margin-left: rem(15);
   }
 }

@@ -18,6 +18,7 @@ import logo from '@/../public/iviLogo.svg';
 
 const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
   return (
     <>
       <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
@@ -74,9 +75,11 @@ const Header: FC = (): JSX.Element => {
                   </li>
                 </ul>
               </nav>
-              <Button size="S" appearance="red">
-                Смотреть 30 дней бесплатно
-              </Button>
+              <div className={styles.zindex}>
+                <Button size="S" appearance="red">
+                  Смотреть 30 дней бесплатно
+                </Button>
+              </div>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
