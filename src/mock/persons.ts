@@ -14,12 +14,12 @@ export const persons: IPerson[] = [
     description:
       'Оскар Айзек (Oscar Isaak Hernandez) - американский актер, ставший известным благодаря главной роли в картине братьев Коэн «Внутри Льюина Дэвиса».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 518, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 618, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 718, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 818, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 918, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1018, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -30,12 +30,12 @@ export const persons: IPerson[] = [
     description:
       'Сет Роген (англ. Seth Rogen) — канадский актер, комик и сценарист. Наибольшую известность получил за свои роли в фильмах «Жизнь прекрасна» и «SuperПерцы».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 517, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 617, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 717, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 817, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 917, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1017, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -46,12 +46,12 @@ export const persons: IPerson[] = [
     description:
       'Стеллан Скарсгард (Stellan Skarsgård) — шведский актер театра и кино. Наибольшую известность получил за свои роли в фильмах «Умница Уилл Хантинг», «Рассекая волны», «Девушка с татуировкой дракона», «Спаситель» и «Король чертова острова».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 516, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 616, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 716, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 816, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 916, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1016, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -78,12 +78,12 @@ export const persons: IPerson[] = [
     descr:
       'Сет Роген (англ. Seth Rogen) — канадский актер, комик и сценарист. Наибольшую известность получил за свои роли в фильмах «Жизнь прекрасна» и «SuperПерцы».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 514, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 614, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 714, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 814, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 914, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1014, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -94,12 +94,12 @@ export const persons: IPerson[] = [
     descr:
       'Стеллан Скарсгард (Stellan Skarsgård) — шведский актер театра и кино. Наибольшую известность получил за свои роли в фильмах «Умница Уилл Хантинг», «Рассекая волны», «Девушка с татуировкой дракона», «Спаситель» и «Король чертова острова».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 513, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 613, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 713, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 813, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 913, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1013, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -110,12 +110,12 @@ export const persons: IPerson[] = [
     descr:
       'Оскар Айзек (Oscar Isaak Hernandez) - американский актер, ставший известным благодаря главной роли в картине братьев Коэн «Внутри Льюина Дэвиса».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 512, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 612, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 712, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 812, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 912, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1012, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -126,12 +126,12 @@ export const persons: IPerson[] = [
     descr:
       'Сет Роген (англ. Seth Rogen) — канадский актер, комик и сценарист. Наибольшую известность получил за свои роли в фильмах «Жизнь прекрасна» и «SuperПерцы».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 511, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 611, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 711, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 811, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 911, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1011, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
   {
@@ -142,12 +142,12 @@ export const persons: IPerson[] = [
     descr:
       'Стеллан Скарсгард (Stellan Skarsgård) — шведский актер театра и кино. Наибольшую известность получил за свои роли в фильмах «Умница Уилл Хантинг», «Рассекая волны», «Девушка с татуировкой дракона», «Спаситель» и «Король чертова острова».',
     films: [
-      { id: 515, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
-      { id: 615, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
-      { id: 715, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
-      { id: 815, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
-      { id: 915, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
-      { id: 1015, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
+      { id: 510, name: 'Name5', year: '2020', rating: '4.5', img: src1 },
+      { id: 610, name: 'Name6', year: '2021', rating: '4.2', img: src2 },
+      { id: 710, name: 'Name7', year: '2020', rating: '4.5', img: src1 },
+      { id: 810, name: 'Name8', year: '2021', rating: '4.2', img: src2 },
+      { id: 910, name: 'Name9', year: '2020', rating: '4.5', img: src1 },
+      { id: 1010, name: 'Name10', year: '2021', rating: '4.2', img: src2 },
     ],
   },
 ];

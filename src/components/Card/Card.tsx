@@ -80,15 +80,15 @@ const Card: FC<CardProps> = ({
             <div className={styles.ratings}>
               {card.rating}
               <div className={styles.graphs}>
-                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
-                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
-                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
-                <BarGraph width={(Math.random() + 0.2) * +card.rating[0] * 10} />
+                <BarGraph width={+card.rating[0] * 0.7 * 10 - 0.2} />
+                <BarGraph width={+card.rating[0] * 0.9 * 10 - 0.2} />
+                <BarGraph width={+card.rating[0] * 1.2 * 10 - 0.2} />
+                <BarGraph width={+card.rating[0] * 0.8 * 10 - 0.2} />
               </div>
             </div>
             <div className={styles.singleGraph}>
               <span>актёры</span>
-              <BarGraph width={(Math.random() + 0.5) * +card.rating[0] * 10} />
+              <BarGraph width={+card.rating[0] * 10 - 0.2} />
             </div>
             <div className={styles.info__text}>
               <div className={styles.info__row}>

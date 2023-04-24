@@ -24,7 +24,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
                 </div>
                 <div>
                   {person.name.split(' ').map((n) => (
-                    <p key={'f' + person.id} className={styles.name}>
+                    <p key={person.id + n} className={styles.name}>
                       {n}
                     </p>
                   ))}

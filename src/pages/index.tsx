@@ -15,12 +15,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Главная</title>
+        <title>
+          Главная
+          {/*Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем*/}
+          {/*качестве*/}
+        </title>
       </Head>
       <PromoCarousel />
       <MainPageDescription />
       <Carousel title={'Зарубежные сериалы'} route={'/'}>
-        {movies.map((card) => (
+        {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
@@ -33,7 +37,7 @@ export default function Home() {
         ))}
       </Carousel>
       <Carousel title={'Приключения'} route={'/'} star book find block showAll>
-        {movies.map((card) => (
+        {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
