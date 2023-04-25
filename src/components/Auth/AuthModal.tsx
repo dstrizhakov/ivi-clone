@@ -6,7 +6,6 @@ import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal
 import { AuthModalProps } from './AuthModal.props';
 import Progress from './Progress/Progress';
 import { P } from '../P/P';
-import { Button } from '../Button/Button';
 
 const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
   const [progress, setProgress] = useState<number>(5);
