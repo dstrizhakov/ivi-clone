@@ -20,7 +20,13 @@ const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element
         <div className={styles.body}>
           <h3>{t('sections.search')}</h3>
           <div className={styles.input}>
-            <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
+            <input
+              className={!!query ? styles.input__active : ''}
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <label>Фильмы, персоны, жанры</label>
             {!!query ? (
               <CgClose className={styles.input__icon} onClick={clearQuery} />
             ) : (
