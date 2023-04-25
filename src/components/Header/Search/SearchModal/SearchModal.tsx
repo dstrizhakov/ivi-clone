@@ -4,9 +4,11 @@ import { CgClose } from 'react-icons/cg';
 import { IoSearchOutline } from 'react-icons/io5';
 import { SearchModalProps } from './SearchModal.props';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
+import { useTranslation } from 'react-i18next';
 
 const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element => {
   const [query, setQuery] = useState<string>('');
+  const { t } = useTranslation();
 
   const clearQuery = (): void => {
     setQuery('');
@@ -16,7 +18,7 @@ const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element
     <>
       <FullScreenModal isOpen={isOpen} closeModal={closeSearch}>
         <div className={styles.body}>
-          <h3>Поиск</h3>
+          <h3>{t('sections.search')}</h3>
           <div className={styles.input}>
             <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
             {!!query ? (
