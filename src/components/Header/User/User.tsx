@@ -10,14 +10,11 @@ import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
 import { setIsLogin } from '@/store/reducers/app.slice';
-import { useRouter } from 'next/navigation';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { push } = useRouter();
 
   const login = () => {
-    push('/profile');
     dispatch(setIsLogin(true));
   };
 
@@ -40,9 +37,11 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title="Способы оплаты" link="/pirchases" />
         </div>
         <div className={styles.content__auth}>
-          <Button size="L" appearance="red" onClick={() => login()}>
-            <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
-          </Button>
+          <Link href={'/profile'}>
+            <Button size="L" appearance="red" onClick={() => login()}>
+              <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
+            </Button>
+          </Link>
           <div className={styles.content__links}>
             <Link href={'https://www.ivi.tv/profile/settings'}>Настройки</Link>
             <Link href={'https://ask.ivi.ru/'}>Помощь</Link>
