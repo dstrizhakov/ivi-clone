@@ -65,6 +65,21 @@ const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
             <button disabled={!login} className={styles.button} onClick={nextStep}>
               Продолжить
             </button>
+            <div className={styles.chat__confidential}>
+              <p>Нажимая «Продолжить», я соглашаюсь</p>
+              <p>
+                c{' '}
+                <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
+                  Политикой конфиденциальности
+                </a>
+              </p>
+              <p>
+                и{' '}
+                <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
+                  Пользовательским соглашением
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </FullScreenModal>

@@ -67,22 +67,49 @@
     padding: rem(16);
     word-wrap: break-word;
   }
+  &__confidential {
+    margin-right: rem(30);
+    margin-top: rem(25);
+    font-size: rem(13);
+    line-height: 1.3;
+    color: #a5a1b2;
+    & a {
+      color: white;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: rem(-2);
+        left: 0;
+        width: 100%;
+        height: rem(2);
+        background-color: rgba(255, 255, 255, 0.3);
+        transform-origin: left;
+        transition: $time-main;
+      }
+      &:hover::after {
+        bottom: rem(-2);
+        height: rem(17);
+        transition: all 0.05s ease-in;
+      }
+    }
+  }
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: rem(40);
   cursor: pointer;
   background-color: $color-accent;
   color: white;
-  border-radius: 8px;
-  width: 290px;
+  border-radius: rem(8);
+  width: rem(290);
   transition: $time-main;
   margin-top: rem(12);
-  font-size: 15px;
-  line-height: 20px;
+  font-size: rem(15);
+  line-height: percent(20, 15);
   font-weight: 500;
   &:hover {
     background-color: #ff0f4d;
@@ -99,18 +126,25 @@
   position: relative;
   margin-top: rem(20);
   width: 50%;
-  width: 290px;
+  width: rem(290);
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $color-input;
   color: $color-input-text;
   border-radius: rem(8);
-  height: 40px;
+  height: rem(40);
   & label {
     position: absolute;
-    font-weight: 700;
-    opacity: 0.5;
+    left: 40px;
+    width: rem(240);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    opacity: 0.32;
     pointer-events: none;
     transition: $time-main;
   }
@@ -122,8 +156,8 @@
   }
   &__active + label {
     transition: all 0.05s ease-in;
-    transform: translateY(-10px) translateX(-15px);
-    font-size: 14px;
+    transform: translateY(-10px);
+    font-size: rem(13);
   }
   & input {
     position: relative;
@@ -142,13 +176,13 @@
     }
     &:focus ~ label {
       transition: all 0.05s ease-in;
-      transform: translateY(-10px) translateX(-15px);
-      font-size: 14px;
+      transform: translateY(-10px);
+      font-size: rem(13);
     }
   }
   &__icon {
     cursor: pointer;
-    margin: 0 rem(8);
+    margin-left: rem(15);
     color: $color-input-text;
     opacity: 0.5;
     transition: $time-main;
