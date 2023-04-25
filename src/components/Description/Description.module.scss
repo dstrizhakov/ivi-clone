@@ -2,6 +2,9 @@
 
 .description {
   width: 75%;
+  @media screen and (max-width: 968px) {
+    width: 100%;
+  }
   padding: 10px 0 24px 0;
   h4 {
     padding-bottom: 20px;
