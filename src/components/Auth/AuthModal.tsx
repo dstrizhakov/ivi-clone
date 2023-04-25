@@ -1,13 +1,39 @@
 import React, { FC, useState } from 'react';
 import styles from './AuthModal.module.scss';
 import { CgClose } from 'react-icons/cg';
+import { BiUser } from 'react-icons/bi';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { AuthModalProps } from './AuthModal.props';
 import Progress from './Progress/Progress';
 import { P } from '../P/P';
+import { Button } from '../Button/Button';
 
 const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
+  const [progress, setProgress] = useState<number>(5);
+  const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
+
+  const nextStep = () => {
+    setProgress(5);
+    switch (step) {
+      case 1:
+        setStep((prev) => prev + 1);
+        setProgress(40);
+        break;
+      case 2:
+        setStep((prev) => prev + 1);
+        setProgress(70);
+        break;
+      case 3:
+        setStep((prev) => prev + 1);
+        setProgress(100);
+        break;
+      case 4:
+        setStep(1);
+        setProgress(5);
+        break;
+    }
+  };
 
   return (
     <>
@@ -18,13 +44,28 @@ const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
             <div className={styles.chat__close}>
               <CgClose className={styles.close__icon} onClick={close} />
             </div>
-            <Progress progress={5} />
+            <Progress progress={progress} />
           </div>
           <div className={styles.chat__body}>
-            <div className={styles.chat__message}>
-              <h5>Войдите или зарегистрируйтесь</h5>
-              <P>чтобы пользоваться сервисом на любом устройстве</P>
+            {step >= 1 && (
+              <div className={styles.chat__message}>
+                <h5>Войдите или зарегистрируйтесь</h5>
+                <P>чтобы пользоваться сервисом на любом устройстве</P>
+              </div>
+            )}
+            <div className={styles.input}>
+              <BiUser className={styles.input__icon} />
+              <input
+                type="text"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
+                className={!!login ? styles.input__active : ''}
+              />
+              <label>Через email или телефон</label>
             </div>
+            <button disabled={!login} className={styles.button} onClick={nextStep}>
+              Продолжить
+            </button>
           </div>
         </div>
       </FullScreenModal>
