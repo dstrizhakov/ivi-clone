@@ -25,7 +25,7 @@ export default function Home() {
       </Head>
       <PromoCarousel />
       <MainPageDescription />
-      <Carousel title={'Зарубежные сериалы'} route={'movies'}>
+      <Carousel title={t('carousels.foreign-series')} route={'movies'}>
         {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
@@ -38,7 +38,7 @@ export default function Home() {
           />
         ))}
       </Carousel>
-      <Carousel title={'Приключения'} route={'movies'} star book find block showAll>
+      <Carousel title={t('carousels.adventures')} route={'movies'} star book find block showAll>
         {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
