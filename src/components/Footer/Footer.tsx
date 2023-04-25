@@ -17,80 +17,86 @@ import {
 import { BiDevices } from 'react-icons/bi';
 import { CgPhone } from 'react-icons/cg';
 import FooterMobile from './FooterMobile/FooterMobile';
+import { useTranslation } from 'react-i18next';
 
 const Footer: FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <footer className={styles.footer}>
         <div className="container">
           <div className={styles.footer__container}>
             <ul className={styles.list}>
-              <span className={styles.listTitle}>О нас</span>
+              <span className={styles.listTitle}>{t('footer.about-us')}</span>
               <li className={styles.link}>
-                <Link href={'https://corp.ivi.ru/'}> О компании</Link>
+                <Link href={'https://corp.ivi.ru/'}>{t('footer.about-company')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://corp.ivi.ru/career/#career-vacancy-block'}>Вакансии</Link>
+                <Link href={'https://corp.ivi.ru/career/#career-vacancy-block'}>
+                  {t('footer.vacancies')}
+                </Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/pages/beta/'}>Программа бета-тестирования</Link>
+                <Link href={'https://www.ivi.ru/pages/beta/'}>{t('footer.beta')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/partners'}>Информация для партнёров</Link>
+                <Link href={'https://www.ivi.ru/info/partners'}>{t('footer.partners')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://corp.ivi.ru/advertisers/'}>Размещение рекламы</Link>
+                <Link href={'https://corp.ivi.ru/advertisers/'}>{t('footer.advertisers')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/agreement'}>Пользовательское соглашение</Link>
+                <Link href={'https://www.ivi.ru/info/agreement'}>{t('footer.agreement')}</Link>
               </li>
               <li className={styles.link}>
                 <Link href={'https://www.ivi.ru/info/confidential'}>
-                  Политика конфиденциальности
+                  {t('footer.confidential')}
                 </Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}>Комплаенс</Link>
+                <Link href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}>
+                  {t('footer.compliance')}
+                </Link>
               </li>
             </ul>
             <ul className={styles.list}>
-              <span className={styles.listTitle}>Разделы</span>
+              <span className={styles.listTitle}>{t('footer.sections')}</span>
               <li className={styles.link}>
-                <Link href={'#'}>Мой Иви</Link>
+                <Link href={'#'}>{t('sections.my-ivi')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/new'}>Что нового</Link>
+                <Link href={'https://www.ivi.ru/new'}>{t('sections.whats-new')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'/movies'}>Фильмы</Link>
+                <Link href={'/movies'}>{t('sections.movies')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'/series'}>Сериалы</Link>
+                <Link href={'/series'}>{t('sections.series')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'/animation'}>Мультфильмы</Link>
+                <Link href={'/animation'}>{t('sections.animation')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/tvplus'}>TV+</Link>
+                <Link href={'https://www.ivi.ru/tvplus'}>{t('sections.tv-plus')}</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/goodmovies'}>Что посмотреть</Link>
+                <Link href={'https://www.ivi.ru/goodmovies'}>{t('sections.good-movies')}</Link>
               </li>
               <li className={styles.link}>
                 <Link href={'https://www.ivi.ru/cert'} className={styles.certLink}>
-                  Активация сертификата
+                  {t('footer.cert')}
                 </Link>
               </li>
             </ul>
             <ul className={styles.list}>
-              <span className={styles.listTitle}>Служба поддержки</span>
+              <span className={styles.listTitle}>{t('footer.support')}</span>
               <li>
-                <P>Мы всегда готовы вам помочь. </P>
-                <P>Наши операторы онлайн 24/7</P>
+                <P>{t('footer.ready-to-help')}</P>
+                <P>{t('footer.anytime')}</P>
               </li>
               <li className={styles.buttonsGroup}>
                 <Link href={'https://www.ivi.ru/profile'}>
-                  <Button className={styles.button}>Написать в чате</Button>
+                  <Button className={styles.button}>{t('footer.chat-us')}</Button>
                 </Link>
                 <Button appearance={'square'}>
                   <IoMailOutline />
@@ -103,7 +109,7 @@ const Footer: FC = () => {
                 <Link href={'https://ask.ivi.ru/'} className={styles.askLink}>
                   ask.ivi.ru
                 </Link>
-                <P>Ответы на вопросы</P>
+                <P>{t('footer.answers')}</P>
               </li>
             </ul>
             <ul className={styles.list}>
@@ -114,9 +120,7 @@ const Footer: FC = () => {
                   <div className={styles.widget}>
                     <HiOutlineMegaphone className={styles.widget__icon} />
                   </div>
-                  <P className={styles.widget__descr}>
-                    Смотрите фильмы, сериалы и мультфильмы без рекламы
-                  </P>
+                  <P className={styles.widget__descr}>{t('footer.watch')}</P>
                 </Link>
               </li>
             </ul>
@@ -127,27 +131,27 @@ const Footer: FC = () => {
                 <Button>
                   <FaApple />
                   <div>
-                    <span>Загрузить в</span>
+                    <span>{t('footer.download')}</span>
                     App Store
                   </div>
                 </Button>
                 <Button>
                   <FaGooglePlay />
                   <div>
-                    <span>Доступно в</span>
+                    <span>{t('footer.available')}</span>
                     Google Play
                   </div>
                 </Button>
                 <Button>
                   <IoTv />
                   <div>
-                    <span>Смотрите на</span>
+                    <span>{t('footer.watch-on')}</span>
                     Smart TV
                   </div>
                 </Button>
                 <Button>
                   <BiDevices />
-                  Все устройства
+                  {t('footer.all-devices')}
                 </Button>
               </div>
               <div className={styles.flex}>

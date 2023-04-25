@@ -15,9 +15,11 @@ import { movieCategories } from '@/mock/movieCategories';
 import { seriesCategories } from '@/mock/seriesCategories';
 import { cartoonCategories } from '@/mock/cartoonCategories';
 import logo from '@/../public/iviLogo.svg';
+import { useTranslation } from 'react-i18next';
 
 const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
   return (
     <>
       <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
@@ -34,16 +36,16 @@ const Header: FC = (): JSX.Element => {
                 <ul className={styles.menu__list}>
                   <li className={styles.menu__item}>
                     <Link href="/" className={styles.menu__link}>
-                      Мой Иви
+                      {t('sections.my-ivi')}
                     </Link>
                   </li>
                   <li className={styles.menu__item}>
                     <Link href="https://www.ivi.tv/new" className={styles.menu__link}>
-                      Что нового
+                      {t('sections.whats-new')}
                     </Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Фильмы" link="/movies">
+                    <Submenu title={t('sections.movies')} link="movies">
                       <Categories
                         genres={movieCategories.genres}
                         countries={movieCategories.countries}
@@ -53,7 +55,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Сериалы" link="/series">
+                    <Submenu title={t('sections.series')} link="series">
                       <Categories
                         genres={seriesCategories.genres}
                         countries={seriesCategories.countries}
@@ -63,7 +65,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title="Мультфильмы" link="/animation">
+                    <Submenu title={t('sections.animation')} link="animation">
                       <Categories
                         genres={cartoonCategories.genres}
                         countries={cartoonCategories.countries}
@@ -75,15 +77,15 @@ const Header: FC = (): JSX.Element => {
                 </ul>
               </nav>
               <Button size="S" appearance="red">
-                Смотреть 30 дней бесплатно
+                {t('header.watch-free')}
               </Button>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
-              <Submenu icon={MdNotificationsNone} link={'/notifications'}>
+              <Submenu icon={MdNotificationsNone} link={'notifications'}>
                 <Alerts />
               </Submenu>
-              <Submenu icon={BiUser} link={'/profile'} outline>
+              <Submenu icon={BiUser} link={'profile'} outline>
                 <User />
               </Submenu>
             </div>

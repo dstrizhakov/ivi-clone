@@ -8,22 +8,24 @@ import PromoCarousel from '@/components/Carousel/PromoCarousel/PromoCarousel';
 import Card from '@/components/Card/Card';
 import RatingModal from '@/components/Card/RatingModal';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
   const [isRatingOpen, setIsRatingOpen] = useState<boolean>(false);
   const { movies } = useSelector((state) => state.movieReducer);
+  const { t } = useTranslation();
   return (
     <>
       <Head>
         <title>
-          Главная
+          {t('title.home')}
           {/*Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем*/}
           {/*качестве*/}
         </title>
       </Head>
       <PromoCarousel />
       <MainPageDescription />
-      <Carousel title={'Зарубежные сериалы'} route={'/'}>
+      <Carousel title={'Зарубежные сериалы'} route={'movies'}>
         {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
@@ -36,7 +38,7 @@ export default function Home() {
           />
         ))}
       </Carousel>
-      <Carousel title={'Приключения'} route={'/'} star book find block showAll>
+      <Carousel title={'Приключения'} route={'movies'} star book find block showAll>
         {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
