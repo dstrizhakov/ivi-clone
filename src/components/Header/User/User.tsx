@@ -8,8 +8,19 @@ import { IoDiamondOutline, IoTimerOutline } from 'react-icons/io5';
 import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
+import { useAppDispatch } from '@/hooks/redux';
+import { setIsLogin } from '@/store/reducers/app.slice';
+import { useRouter } from 'next/navigation';
 
 const User: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const { push } = useRouter();
+
+  const login = () => {
+    push('/profile');
+    dispatch(setIsLogin(true));
+  };
+
   return (
     <div className={styles.user__content}>
       <div className={styles.content__row}>
@@ -29,7 +40,7 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title="Способы оплаты" link="/pirchases" />
         </div>
         <div className={styles.content__auth}>
-          <Button size="L" appearance="red">
+          <Button size="L" appearance="red" onClick={() => login()}>
             <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
           </Button>
           <div className={styles.content__links}>

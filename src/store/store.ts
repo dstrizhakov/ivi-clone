@@ -5,8 +5,10 @@ import { createWrapper } from 'next-redux-wrapper';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import authReducer from './reducers/auth.slice';
 import movieReducer from './reducers/movie.slice';
+import appReducer from './reducers/app.slice';
 
 const rootReducer = combineReducers({
+  appReducer,
   authReducer,
   movieReducer,
   [movieApi.reducerPath]: movieApi.reducer,

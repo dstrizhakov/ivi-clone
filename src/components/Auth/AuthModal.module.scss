@@ -1,0 +1,67 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  &__header {
+    width: 100%;
+    position: relative;
+    flex: 0 0 52px;
+    background-color: #100e19;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  &__title {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    left: auto !important;
+    height: 52px;
+    padding: 10px;
+    & svg {
+      width: 32px;
+      height: 32px;
+      opacity: 0.5;
+      transform: scale(0.9);
+      transition: $time-main;
+    }
+    &:hover {
+      & svg {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__body {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    flex: 1 1 auto;
+    width: 50%;
+    margin-right: 16.66666667%;
+  }
+
+  &__message {
+    max-height: 700px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 0;
+    background-color: #312b45;
+    position: relative;
+    padding: 16px;
+    word-wrap: break-word;
+  }
+}

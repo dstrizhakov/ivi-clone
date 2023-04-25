@@ -104,9 +104,11 @@ const Header: FC = (): JSX.Element => {
                   </li>
                 </ul>
               </nav>
-              <Button size="S" appearance="red">
-                {t('header.watch-free')}
-              </Button>
+              <div className={styles.zindex}>
+                <Button size="S" appearance="red">
+                  {t('header.watch-free')}
+                </Button>
+              </div>
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
