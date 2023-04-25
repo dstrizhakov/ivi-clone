@@ -26,7 +26,6 @@
     color: $color-secondary;
   }
   .title {
-    transition: $time-main;
     display: flex;
     align-content: flex-start;
     font-size: 15px;
@@ -47,6 +46,5 @@
   &:disabled {
     opacity: .32;
     cursor: default;
-    pointer-events: none;
   }
 }

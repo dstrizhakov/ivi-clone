@@ -20,5 +20,10 @@
   "download": "Загрузить в",
   "available": "Доступно в",
   "watch-on": "Смотрите на",
-  "all-devices": "Все устройства"
+  "all-devices": "Все устройства",
+
+  "subscribe": "Подключить подписку",
+
+  "close-btn": "Закрыть",
+  "open-btn": "Ещё"
 }

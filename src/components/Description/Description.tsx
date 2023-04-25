@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, useState } from 'react';
 import { Button } from '@/components/Button/Button';
 import styles from './Description.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface iDesc {
   title: ReactNode;
@@ -10,6 +11,7 @@ interface iDesc {
 
 const Description: FC<iDesc> = ({ title, cut, children }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
   return (
     <div className={styles.description}>
       {title}
@@ -18,7 +20,7 @@ const Description: FC<iDesc> = ({ title, cut, children }) => {
         <span style={{ display: open ? 'inherit' : 'none' }}>{children}</span>
       </div>
       <Button size={'S'} appearance={'transparent'} onClick={() => setOpen(() => !open)}>
-        {open ? `Свернуть` : `Развернуть`}
+        {open ? t('descriptions.close-btn') : t('descriptions.open-btn')}
       </Button>
     </div>
   );

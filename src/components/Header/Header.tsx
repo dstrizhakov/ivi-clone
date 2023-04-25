@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
 import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
@@ -16,10 +16,20 @@ import { seriesCategories } from '@/mock/seriesCategories';
 import { cartoonCategories } from '@/mock/cartoonCategories';
 import logo from '@/../public/iviLogo.svg';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const { t } = useTranslation();
+  useEffect(() => {
+    const language = localStorage.getItem('language') || 'ru';
+    i18next.changeLanguage(language);
+  }, []);
+  const changeLanguage = async (e, language) => {
+    e.preventDefault();
+    await i18next.changeLanguage(language);
+    localStorage.setItem('language', language);
+  };
   return (
     <>
       <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
@@ -73,6 +83,24 @@ const Header: FC = (): JSX.Element => {
                         collections={cartoonCategories.collections}
                       />
                     </Submenu>
+                  </li>
+                  <li>
+                    <div style={{ display: 'flex', margin: '0 10px 0 110px' }}>
+                      <Button
+                        size={'S'}
+                        onClick={(e) => changeLanguage(e, 'ru')}
+                        appearance={i18next.language == 'ru' ? 'red' : 'rectangle'}
+                      >
+                        RU
+                      </Button>
+                      <Button
+                        size={'S'}
+                        onClick={(e) => changeLanguage(e, 'en')}
+                        appearance={i18next.language == 'en' ? 'red' : 'rectangle'}
+                      >
+                        EN
+                      </Button>
+                    </div>
                   </li>
                 </ul>
               </nav>

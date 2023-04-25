@@ -8,21 +8,22 @@ import { HiOutlineFolder } from 'react-icons/hi2';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoCloseOutline, IoTvOutline } from 'react-icons/io5';
 import { RiHome6Line } from 'react-icons/ri';
+import { useTranslation } from 'react-i18next';
 
 const FooterMobile: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-
+  const { t } = useTranslation();
   return (
     <>
       <FooterModal isOpen={isModalOpen} />
       <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
       <div className={styles.footerMobile}>
         <div className={styles.menu}>
-          <FooterLink title={'Мой Иви'} href={'/'} icon={RiHome6Line} />
-          <FooterLink title={'Каталог'} href={'/movies'} icon={HiOutlineFolder} />
+          <FooterLink title={t('sections.my-ivi')} href={'/'} icon={RiHome6Line} />
+          <FooterLink title={t('sections.catalog')} href={'/movies'} icon={HiOutlineFolder} />
           <FooterLink
-            title={'Поиск'}
+            title={t('sections.search')}
             href={isSearchOpen ? '/' : '/?search'}
             icon={BiSearch}
             openModal={
@@ -36,7 +37,7 @@ const FooterMobile: FC = () => {
           />
           <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
           <FooterLink
-            title={isModalOpen ? 'Закрыть' : 'Ещё'}
+            title={isModalOpen ? t('footer.close-btn') : t('footer.open-btn')}
             href={isModalOpen ? '/' : '/?navigation'}
             openModal={
               isModalOpen

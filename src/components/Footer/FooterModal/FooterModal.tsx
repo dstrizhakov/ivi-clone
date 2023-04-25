@@ -16,8 +16,10 @@ import { FaLinkedinIn, FaOdnoklassniki, FaTelegramPlane, FaTwitter, FaVk } from 
 import { CgPhone } from 'react-icons/cg';
 import { BiDevices, BiInfoCircle, BiMessageAlt } from 'react-icons/bi';
 import { HiPhone } from 'react-icons/hi2';
+import { useTranslation } from 'react-i18next';
 
 const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
+  const { t } = useTranslation();
   return (
     <>
       {isOpen && (
@@ -34,14 +36,18 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
           </div>
           <div className={styles.menuItem}>
             <Link href={'#'} className={styles.link}>
-              Мой Иви
+              {t('sections.my-ivi')}
             </Link>
             <Link href={'#'} className={styles.link}>
-              Что нового
+              {t('sections.whats-new')}
             </Link>
-            <ModalList title={'Фильмы'} icon={BsCameraReels} isFilms={true}></ModalList>
-            <ModalList title={'Сериалы'} icon={MdOutlineVideoLibrary} isFilms={true}></ModalList>
-            <ModalList title={'Мультфильмы'} icon={TbTractor} isFilms={true}></ModalList>
+            <ModalList title={t('sections.movies')} icon={BsCameraReels} isFilms={true}></ModalList>
+            <ModalList
+              title={t('sections.series')}
+              icon={MdOutlineVideoLibrary}
+              isFilms={true}
+            ></ModalList>
+            <ModalList title={t('sections.animation')} icon={TbTractor} isFilms={true}></ModalList>
             <ModalList title={'TV+'} icon={IoTvOutline}>
               <div className={styles.list}>
                 <p>TB онлайн</p>
@@ -75,37 +81,37 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
             </Link>
           </div>
           <div className={styles.menuItem}>
-            <ModalList title={'О нас'} icon={BiInfoCircle}>
+            <ModalList title={t('footer.about-us')} icon={BiInfoCircle}>
               <div className={styles.list}>
                 <Link href={'https://corp.ivi.ru/'} className={styles.listLink}>
-                  О компании
+                  {t('footer.about-company')}
                 </Link>
                 <Link
                   href={'https://corp.ivi.ru/career/#career-vacancy-block'}
                   className={styles.listLink}
                 >
-                  Вакансии
+                  {t('footer.vacancies')}
                 </Link>
                 <Link href={'https://www.ivi.ru/pages/beta/'} className={styles.listLink}>
-                  Программа бета-тестирования
+                  {t('footer.beta')}
                 </Link>
                 <Link href={'https://www.ivi.ru/info/partners'} className={styles.listLink}>
-                  Информация для партнёров
+                  {t('footer.partners')}
                 </Link>
                 <Link href={'https://corp.ivi.ru/advertisers/'} className={styles.listLink}>
-                  Размещение рекламы
+                  {t('footer.advertisers')}
                 </Link>
                 <Link href={'https://www.ivi.ru/info/agreement'} className={styles.listLink}>
-                  Пользовательское соглашение
+                  {t('footer.agreement')}
                 </Link>
                 <Link href={'https://www.ivi.ru/info/confidential'} className={styles.listLink}>
-                  Политика конфиденциальности
+                  {t('footer.confidential')}
                 </Link>
                 <Link
                   href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}
                   className={styles.listLink}
                 >
-                  Комплаенс
+                  {t('footer.compliance')}
                 </Link>
               </div>
             </ModalList>
@@ -117,26 +123,26 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
               <Button>
                 <IoTv />
                 <div>
-                  <span>Смотрите на</span>
+                  <span>{t('footer.watch-on')}</span>
                   Smart TV
                 </div>
               </Button>
               <Button>
                 <BiDevices />
-                Все устройства
+                {t('footer.all-devices')}
               </Button>
             </div>
           </div>
           <div className={styles.menuItem}>
-            <ModalList title={'Служба поддержки'} icon={BiMessageAlt}>
+            <ModalList title={t('footer.support')} icon={BiMessageAlt}>
               <div className={styles.list}>
                 <div>
-                  <P>Мы всегда готовы вам помочь. </P>
-                  <P>Наши операторы онлайн 24/7</P>
+                  <P>{t('footer.ready-to-help')}</P>
+                  <P>{t('footer.anytime')}</P>
                 </div>
                 <div className={cn(styles.flex, styles.feedbackButtons)}>
                   <Link href={'https://www.ivi.ru/profile'}>
-                    <Button className={styles.button}>Написать в чате</Button>
+                    <Button className={styles.button}>{t('footer.chat-us')}</Button>
                   </Link>
                   <Button appearance={'square'}>
                     <IoMailOutline />
@@ -149,7 +155,7 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
                   <Link href={'https://ask.ivi.ru/'} className={styles.askLink}>
                     ask.ivi.ru
                   </Link>
-                  <P>Ответы на вопросы</P>
+                  <P>{t('footer.answers')}</P>
                 </div>
               </div>
             </ModalList>

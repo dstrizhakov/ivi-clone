@@ -1,3 +1,5 @@
+@import '@/styles/variables.scss';
+
 .carousel {
   -webkit-tap-highlight-color: transparent;
   margin: 20px 0;
@@ -53,6 +55,40 @@
       * {
         font-size: 0.7rem!important;
       }
+    }
+  }
+}
+
+.arrows {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 100%;
+  display: block;
+  padding: 0;
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  transition: $time-main;
+  background: transparent;
+  &:hover {
+    opacity: 0.75;
+  }
+  button {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    transition: $time-main;
+    &:disabled{
+      display: none;
+    }
+    &:active {
+      transform: scale(0.5);
+      transition: $time-main;
     }
   }
 }
