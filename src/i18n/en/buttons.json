@@ -1,7 +1,23 @@
+
 {
   "watch-free": "Watch for free",
   "watch": "Watch",
   "watch-sub": "Watch by subscription",
   "watch-collection": "Watch collection",
-  "subscribe-login": "Login or Sign in"
+  "watch-later": "Watch later",
+  "login-signup": "Login or register",
+  "subscriptions": "Subscriptions",
+  "subscribe": "Subscribe",
+  "certificates": "Certificates and promo codes",
+  "activate": "Activate",
+  "balance": "IVI account",
+  "present-subscription": "Present subscription to loved ones",
+  "invite-friends": "Invite friends",
+  "notifications-stocks": "Notifications and promotions",
+  "purchases": "Purchases",
+  "views": "Views",
+  "payment": "Payment methods",
+  "code-login": "Login by code",
+  "settings": "Settings",
+  "support": "Support"
 }

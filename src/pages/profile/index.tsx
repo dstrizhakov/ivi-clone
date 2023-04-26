@@ -1,12 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
 import MainBtns from '@/components/Profile/MainBtns/MainBtns';
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Head>
-        <title>Мой профиль / ivi.ru</title>
+        <title>{t('title.profile')}</title>
       </Head>
       <MainBtns />
     </>

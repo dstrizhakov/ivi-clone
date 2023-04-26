@@ -15,6 +15,7 @@ import Link from 'next/link';
 import AuthModal from '@/components/Auth/AuthModal';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { setIsLogin } from '@/store/reducers/app.slice';
+import { useTranslation } from 'react-i18next';
 
 const MainBtns = ({ ...props }) => {
   const isLogin = useAppSelector((state) => state.appReducer.isLogin);
@@ -27,6 +28,8 @@ const MainBtns = ({ ...props }) => {
     dispatch(setIsLogin(true));
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <AuthModal isOpen={isLogin} close={() => closeLoginModal()} />
@@ -34,7 +37,7 @@ const MainBtns = ({ ...props }) => {
         <div className={styles.login}>
           <Button onClick={() => openLoginModal()} size={'S'} appearance={'red'}>
             <TiUserOutline />
-            Войти или зарегистрироваться
+            {t('buttons.login-signup')}
           </Button>
         </div>
         <ul className={styles.list}>
@@ -42,8 +45,8 @@ const MainBtns = ({ ...props }) => {
             <Link href={'https://www.ivi.ru/profile/subscriptions'}>
               <ProfileButton type={'rect_text'}>
                 <>
-                  <div>Подписки</div>
-                  <div>Перейти к подключению</div>
+                  <div>{t('buttons.subscriptions')}</div>
+                  <div>{t('buttons.subscribe')}</div>
                 </>
               </ProfileButton>
             </Link>
@@ -51,15 +54,15 @@ const MainBtns = ({ ...props }) => {
           <li className={`${styles.list__item} ${styles.certificate}`}>
             <ProfileButton type={'rect_text'}>
               <>
-                <div>Сертификаты и промокоды</div>
-                <div>Активировать</div>
+                <div>{t('buttons.certificates')}</div>
+                <div>{t('buttons.activate')}</div>
               </>
             </ProfileButton>
           </li>
           <li className={`${styles.list__item} ${styles.fund}`}>
             <ProfileButton type={'rect_text'}>
               <>
-                <div>Счёт Иви</div>
+                <div>{t('buttons.balance')}</div>
                 <div>0 &#8381;</div>
               </>
             </ProfileButton>
@@ -69,7 +72,7 @@ const MainBtns = ({ ...props }) => {
           <li className={`${styles.list__item} ${styles.subscription_present}`}>
             <Link href={'https://widget.mgc-loyalty.ru/iviru/landing'} target={'_blank'}>
               <ProfileButton type={'rect_icon_light'} icon={GiPresent}>
-                Подарите подписку близким
+                {t('buttons.present-subscription')}
               </ProfileButton>
             </Link>
           </li>
@@ -78,14 +81,14 @@ const MainBtns = ({ ...props }) => {
           <li className={`${styles.list__item} ${styles.referral_program}`}>
             <Link href={'https://www.ivi.ru/profile/referral'} target={'_blank'}>
               <ProfileButton type={'rect_icon'} icon={TbVectorTriangle}>
-                Пригласить друзей
+                {t('buttons.invite-friends')}
               </ProfileButton>
             </Link>
           </li>
           <li className={`${styles.list__item} ${styles.notifications}`}>
             <Link href={'https://www.ivi.ru/profile/pull_notifications'} target={'_blank'}>
               <ProfileButton type={'rect_icon'} icon={TbBellRinging}>
-                Уведомления и акции
+                {t('buttons.invite-friends')}
               </ProfileButton>
             </Link>
           </li>
@@ -94,28 +97,28 @@ const MainBtns = ({ ...props }) => {
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <Link href={'https://www.ivi.ru/profile/favorites'} target={'_blank'}>
               <ProfileButton type={'square_icon'} icon={BiWallet}>
-                Покупки
+                {t('buttons.purchases')}
               </ProfileButton>
             </Link>
           </li>
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <Link href={'https://www.ivi.ru/profile/watched'} target={'_blank'}>
               <ProfileButton type={'square_icon'} icon={BsBookmark}>
-                Смотреть позже
+                {t('buttons.watch-later')}
               </ProfileButton>
             </Link>
           </li>
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <Link href={'https://www.ivi.ru/profile/cards'} target={'_blank'}>
               <ProfileButton type={'square_icon'} icon={RxCountdownTimer}>
-                Просмотры
+                {t('buttons.views')}
               </ProfileButton>
             </Link>
           </li>
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <Link href={'https://www.ivi.ru/profile/purchases'} target={'_blank'}>
               <ProfileButton type={'square_icon'} icon={AiFillCreditCard}>
-                Способы оплаты
+                {t('buttons.payment')}
               </ProfileButton>
             </Link>
           </li>
@@ -125,20 +128,20 @@ const MainBtns = ({ ...props }) => {
               icon={AiOutlinePlaySquare}
               onClick={() => console.log('modal open')}
             >
-              Вход по коду
+              {t('buttons.code-login')}
             </ProfileButton>
           </li>
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <Link href={'https://www.ivi.ru/profile/settings'} target={'_blank'}>
               <ProfileButton type={'square_icon'} icon={FiSettings}>
-                Настройки
+                {t('buttons.settings')}
               </ProfileButton>
             </Link>
           </li>
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <Link href={'https://ask.ivi.ru/'} target={'_blank'}>
               <ProfileButton type={'square_icon'} icon={BiSupport}>
-                Помощь
+                {t('buttons.support')}
               </ProfileButton>
             </Link>
           </li>

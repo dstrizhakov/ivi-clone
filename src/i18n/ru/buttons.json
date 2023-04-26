@@ -3,5 +3,20 @@
   "watch": "Смотреть",
   "watch-sub": "Смотреть по подписке",
   "watch-collection": "Посмотреть подборку",
-  "subscribe-login": "Войти или зарегестрироваться"
+  "watch-later": "Смотреть позже",
+  "login-signup": "Войти или зарегестрироваться",
+  "subscriptions": "Подписки",
+  "subscribe": "Перейти к подключению",
+  "certificates": "Сертификаты и промокоды",
+  "activate": "Активировать",
+  "balance": "Счёт Иви",
+  "present-subscription": "Подарите подписку близким",
+  "invite-friends": "Пригласить друзей",
+  "notifications-stocks": "Уведомления и акции",
+  "purchases": "Покупки",
+  "views": "Просмотры",
+  "payment": "Способы оплаты",
+  "code-login": "Вход по коду",
+  "settings": "Настройки",
+  "support": "Поддержка"
 }
