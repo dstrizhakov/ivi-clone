@@ -2,11 +2,11 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import Carousel from '@/components/Carousel/Carousel';
 import MainPageDescription from '@/components/MainPage/MainPageDescription';
-import { wrapper } from '@/store/store';
-import { GetServerSideProps } from 'next';
 import PromoCarousel from '@/components/Carousel/PromoCarousel/PromoCarousel';
 import Card from '@/components/Card/Card';
 import RatingModal from '@/components/Card/RatingModal';
+import { wrapper } from '@/store/store';
+import { GetServerSideProps } from 'next';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -17,37 +17,25 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>
-          {t('title.home')}
-          {/*Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем*/}
-          {/*качестве*/}
-        </title>
+        <title>{t('title.home')}</title>
       </Head>
       <PromoCarousel />
       <MainPageDescription />
-      <Carousel title={t('carousels.foreign-series')} route={'movies'}>
+      <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
         {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star
-            book
-            find
-            block
-            key={card.id}
+            star book find block key={card.id}
           />
         ))}
       </Carousel>
-      <Carousel title={t('carousels.adventures')} route={'movies'} star book find block showAll>
+      <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
         {movies.slice(0, 15).map((card) => (
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star
-            book
-            find
-            block
-            key={card.id}
+            star book find block key={card.id}
           />
         ))}
       </Carousel>
