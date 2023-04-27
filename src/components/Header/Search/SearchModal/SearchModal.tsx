@@ -5,6 +5,7 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { SearchModalProps } from './SearchModal.props';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element => {
   const [query, setQuery] = useState<string>('');
@@ -26,7 +27,9 @@ const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <label>Фильмы, персоны, жанры</label>
+            <label>
+              {i18next.language == 'ru' ? 'Фильмы, персоны, жанры' : 'Movies, persons, genres'}
+            </label>
             {!!query ? (
               <CgClose className={styles.input__icon} onClick={clearQuery} />
             ) : (

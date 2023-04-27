@@ -3,6 +3,7 @@ import styles from './Categories.module.scss';
 import Link from 'next/link';
 import { ILink } from '@/types/types';
 import { CategoriesProps } from './Categories.props';
+import { useTranslation } from 'react-i18next';
 
 const Categories: FC<CategoriesProps> = ({
   genres,
@@ -10,11 +11,12 @@ const Categories: FC<CategoriesProps> = ({
   years,
   collections,
 }): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <div className={styles.content}>
       <div className={styles.content__items}>
         <div className={styles.content__item}>
-          <h5 className={styles.content__title}>Жанры</h5>
+          <h5 className={styles.content__title}>{t('categories.genres')}</h5>
           <div className={styles.content__genres}>
             {genres &&
               genres.map((item: ILink) => (
@@ -25,7 +27,7 @@ const Categories: FC<CategoriesProps> = ({
           </div>
         </div>
         <div className={styles.content__item}>
-          <h5 className={styles.content__title}>Страны</h5>
+          <h5 className={styles.content__title}>{t('categories.countries')}</h5>
           <div className={styles.content__countries}>
             {countries &&
               countries.map((item: ILink) => (
@@ -34,7 +36,7 @@ const Categories: FC<CategoriesProps> = ({
                 </Link>
               ))}
           </div>
-          <h5 className={styles.content__title}>Годы</h5>
+          <h5 className={styles.content__title}>{t('categories.years')}</h5>
           <div className={styles.content__years}>
             {years &&
               years.map((item: ILink) => (

@@ -11,6 +11,7 @@ import { AiOutlineStar } from 'react-icons/ai';
 import { MdBlock } from 'react-icons/md';
 import BarGraph from '@/components/BarGraph/BarGraph';
 import { useRouter } from 'next/navigation';
+import i18next from 'i18next';
 
 const Card: FC<CardProps> = ({
   card,
@@ -99,8 +100,11 @@ const Card: FC<CardProps> = ({
           </div>
         </div>
       </div>
-      <div className={styles.textSection}>
-        <P>{card.name}</P>
+      <div
+        className={styles.textSection}
+        title={i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}
+      >
+        <P>{i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}</P>
       </div>
     </Link>
   );

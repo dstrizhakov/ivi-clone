@@ -55,7 +55,7 @@ const Header: FC = (): JSX.Element => {
                     </Link>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title={t('sections.movies')} link="movies">
+                    <Submenu title={t('sections.movies')} link="/movies">
                       <Categories
                         genres={movieCategories.genres}
                         countries={movieCategories.countries}
@@ -65,7 +65,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title={t('sections.series')} link="series">
+                    <Submenu title={t('sections.series')} link="/series">
                       <Categories
                         genres={seriesCategories.genres}
                         countries={seriesCategories.countries}
@@ -75,7 +75,7 @@ const Header: FC = (): JSX.Element => {
                     </Submenu>
                   </li>
                   <li className={styles.menu__item}>
-                    <Submenu title={t('sections.animation')} link="animation">
+                    <Submenu title={t('sections.animation')} link="/animation">
                       <Categories
                         genres={cartoonCategories.genres}
                         countries={cartoonCategories.countries}
@@ -112,10 +112,10 @@ const Header: FC = (): JSX.Element => {
               <SearchButton openSearch={() => setIsSearchOpen(true)} />
             </div>
             <div className={styles.actions}>
-              <Submenu icon={MdNotificationsNone} link={'notifications'}>
+              <Submenu icon={MdNotificationsNone} link={'/notifications'}>
                 <Alerts />
               </Submenu>
-              <Submenu icon={BiUser} link={'profile'} outline>
+              <Submenu icon={BiUser} link={'/profile'} outline>
                 <User />
               </Submenu>
             </div>

@@ -16,6 +16,7 @@ export interface IMovie {
   name: string;
   enName: string;
   description: string;
+  enDescription?: string;
   trailer: string;
   card_image: string;
   year: string;

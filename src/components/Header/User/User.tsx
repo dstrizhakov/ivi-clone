@@ -10,10 +10,11 @@ import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
 import { setIsLogin } from '@/store/reducers/app.slice';
+import { useTranslation } from 'react-i18next';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-
+  const { t } = useTranslation();
   const login = () => {
     dispatch(setIsLogin(true));
   };
@@ -22,29 +23,33 @@ const User: FC = (): JSX.Element => {
     <div className={styles.user__content}>
       <div className={styles.content__row}>
         <div className={styles.content__actions}>
-          <LinkCard icon={BiMoviePlay} title="Покупки" link="/pirchases" />
-          <LinkCard icon={HiOutlineBookmark} title="Смотреть позже" link="/pirchases" />
-          <LinkCard icon={IoTimerOutline} title="История просмотров" link="/pirchases" />
+          <LinkCard icon={BiMoviePlay} title={t('buttons.purchases')} link="/purchases" />
+          <LinkCard icon={HiOutlineBookmark} title={t('buttons.watch-later')} link="/purchases" />
+          <LinkCard icon={IoTimerOutline} title={t('buttons.views-story')} link="/purchases" />
           <LinkCard
             icon={IoDiamondOutline}
-            title="Покупки"
-            link="/pirchases"
-            subtitle="Подключить"
+            title={t('buttons.subscriptions')}
+            link="/purchases"
+            subtitle={t('buttons.connect')}
             status="red"
           />
-          <LinkCard icon={BiCertification} title="Активация сертификата" link="/pirchases" />
-          <LinkCard icon={TbDeviceTvOld} title="Вход по коду" link="/pirchases" />
-          <LinkCard icon={GoCreditCard} title="Способы оплаты" link="/pirchases" />
+          <LinkCard
+            icon={BiCertification}
+            title={t('buttons.activate-certificate')}
+            link="/purchases"
+          />
+          <LinkCard icon={TbDeviceTvOld} title={t('buttons.code-login')} link="/purchases" />
+          <LinkCard icon={GoCreditCard} title={t('buttons.payment')} link="/purchases" />
         </div>
         <div className={styles.content__auth}>
           <Link href={'/profile'}>
             <Button size="L" appearance="red" onClick={() => login()}>
-              <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
+              <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
             </Button>
           </Link>
           <div className={styles.content__links}>
-            <Link href={'https://www.ivi.tv/profile/settings'}>Настройки</Link>
-            <Link href={'https://ask.ivi.ru/'}>Помощь</Link>
+            <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
+            <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
           </div>
         </div>
       </div>

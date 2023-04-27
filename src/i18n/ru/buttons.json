@@ -6,17 +6,22 @@
   "watch-later": "Смотреть позже",
   "login-signup": "Войти или зарегестрироваться",
   "subscriptions": "Подписки",
+  "connect": "Подключить",
   "subscribe": "Перейти к подключению",
   "certificates": "Сертификаты и промокоды",
   "activate": "Активировать",
+  "activate-certificate": "Активировать сертификат",
   "balance": "Счёт Иви",
   "present-subscription": "Подарите подписку близким",
   "invite-friends": "Пригласить друзей",
   "notifications-stocks": "Уведомления и акции",
   "purchases": "Покупки",
+  "views-story": "История просмотров",
   "views": "Просмотры",
   "payment": "Способы оплаты",
   "code-login": "Вход по коду",
   "settings": "Настройки",
-  "support": "Поддержка"
+  "support": "Поддержка",
+  "more": "Ещё",
+  "trailer": "Трейлер"
 }

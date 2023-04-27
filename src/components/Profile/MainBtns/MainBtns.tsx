@@ -35,7 +35,12 @@ const MainBtns = ({ ...props }) => {
       <AuthModal isOpen={isLogin} close={() => closeLoginModal()} />
       <div className={styles.profile__btns} {...props}>
         <div className={styles.login}>
-          <Button onClick={() => openLoginModal()} size={'S'} appearance={'red'}>
+          <Button
+            onClick={() => openLoginModal()}
+            size={'S'}
+            appearance={'red'}
+            title={t('buttons.login-signup')}
+          >
             <TiUserOutline />
             {t('buttons.login-signup')}
           </Button>

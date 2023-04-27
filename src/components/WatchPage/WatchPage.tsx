@@ -11,11 +11,24 @@ import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
 import { useSelector } from 'react-redux';
 import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
+import i18next from 'i18next';
 
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const item = moviesData.find((m: IMovie) => id == m.id);
 
-  const { name, description, trailer, year, countries, rating, genres, duration, persons } = item;
+  const {
+    name,
+    enName,
+    description,
+    enDescription,
+    trailer,
+    year,
+    countries,
+    rating,
+    genres,
+    duration,
+    persons,
+  } = item;
   const color = '106, 80, 47'; //
   const { movies } = useSelector((state) => state.movieReducer);
   return (
@@ -34,7 +47,11 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
             </div>
             <div className={styles.watch__info}>
               <div className={styles.watch__title}>
-                <Htag tag="h2">{`Фильм ${name} смотреть онлайн`}</Htag>
+                <Htag tag="h2">
+                  {i18next.language == 'en'
+                    ? `Movie ${enName ? enName : name} watch online`
+                    : `Фильм ${name} смотреть онлайн`}
+                </Htag>
               </div>
               <div className={styles.watch__params}>
                 <P>
@@ -48,13 +65,26 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
                 <PersonList list={persons} rating={rating} />
               </div>
               <div className={styles.watch__description}>
-                <P>{description}</P>
+                <P>
+                  {i18next.language == 'en'
+                    ? enDescription
+                      ? enDescription
+                      : description
+                    : description}
+                </P>
               </div>
               <div className={styles.watch__medallions}></div>
             </div>
           </div>
         </div>
-        <Carousel title={`С фильмом «${name}» смотрят`} route={'/'}>
+        <Carousel
+          title={
+            i18next.language == 'en'
+              ? `Movies similar to «${enName ? enName : name}»`
+              : `С фильмом «${name}» смотрят`
+          }
+          route={'/'}
+        >
           {movies.map((card) => (
             <Card card={card} book key={card.id} />
           ))}

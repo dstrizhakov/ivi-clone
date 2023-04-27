@@ -5,7 +5,7 @@ import enSections from '../en/sections.json';
 import enDescriptions from '../en/descriptions.json';
 import enButtons from '../en/buttons.json';
 import enCarousels from '../en/carousels.json';
-import enProfile from '../en/profile.json';
+import enCategories from '../en/categories.json';
 
 import ruTitle from '../ru/title.json';
 import ruHeader from '../ru/header.json';
@@ -14,7 +14,7 @@ import ruSections from '../ru/sections.json';
 import ruDescriptions from '../ru/descriptions.json';
 import ruButtons from '../ru/buttons.json';
 import ruCarousels from '../ru/carousels.json';
-import ruProfile from '../ru/profile.json';
+import ruCategories from '../ru/categories.json';
 
 const translations = {
   en: {
@@ -26,7 +26,7 @@ const translations = {
       buttons: enButtons,
       descriptions: enDescriptions,
       carousels: enCarousels,
-      profile: enProfile,
+      categories: enCategories,
     },
   },
   ru: {
@@ -38,7 +38,7 @@ const translations = {
       sections: ruSections,
       descriptions: ruDescriptions,
       carousels: ruCarousels,
-      profile: ruProfile,
+      categories: ruCategories,
     },
   },
 };
