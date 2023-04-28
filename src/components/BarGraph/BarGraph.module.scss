@@ -1,17 +1,20 @@
-@import "src/styles/variables";
+@import '@/styles/variables.scss';
 
 .bar {
   min-width: 10px;
   width: 100%;
   background-color: rgba(126,121,143,.32);
   min-height: 3px;
-  border-radius: 2px;
+  //border-radius: 2px; //? Если нужно сделать как вариант настраиваемый через пропсы
   margin: 1px;
   &Value {
     min-width: 0 !important;
     max-width: 100% !important;
     background-color: $color-accent;
     min-height: 3px;
-    border-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    //border-radius: 2px ; //? Если нужно сделать как вариант настраиваемый через пропсы
+    transition: width 0.5s;
   }
 }
