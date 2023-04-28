@@ -11,7 +11,7 @@ const AddToFavoritesButton = () => {
     setBooked((booked) => !booked);
   };
   return (
-    <Button size={'L'} onClick={(e) => addToFavorite(e)}>
+    <Button size={'M'} appearance={'square'} onClick={(e) => addToFavorite(e)}>
       {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
     </Button>
   );

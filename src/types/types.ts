@@ -22,7 +22,7 @@ export interface IMovie {
   year: string;
   countries: string | string[];
   rating: string;
-  genres: string | string[];
+  genres: string[];
   duration: string;
   persons: IPerson[];
 }

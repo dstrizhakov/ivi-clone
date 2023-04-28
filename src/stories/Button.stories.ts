@@ -5,7 +5,7 @@ import { ButtonProps } from '@/components/Button/Button.props';
 
 interface iButton extends ButtonProps {
   title: string;
-  component: ButtonProps;
+  component: Button;
   tags: [];
   argTypes?: ButtonProps;
 }
@@ -18,6 +18,13 @@ const meta: Meta<iButton> = {
 
 export default meta;
 type Story = StoryObj<iButton>;
+
+export const Rectangle: Story = {
+  args: {
+    appearance: 'rectangle',
+    children: 'Button',
+  },
+};
 
 export const Red: Story = {
   args: {

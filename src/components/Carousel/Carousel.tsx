@@ -97,7 +97,7 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children, 
             </Link>
           </div>
         )}
-        <Slider settings={settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
+        <Slider {...settings}>
           {children}
           {showAll && (
             <Link href={route ? route : ''}>

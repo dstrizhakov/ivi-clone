@@ -8,7 +8,6 @@ import { PrevArrow } from '@/components/Carousel/PrevArrow';
 import { Button } from '@/components/Button/Button';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import PromotionButton from '@/components/Profile/MainBtns/ProfileBtns/PromotionButton';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
 import ActivateCertificateButton from '@/components/Profile/MainBtns/ProfileBtns/ActivateCertificateButton';
@@ -24,7 +23,7 @@ interface iMockCarousel {
 }
 
 const PromoCarousel: FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const mockCarousel: iMockCarousel[] = [
     {
       id: 1,
@@ -83,7 +82,7 @@ const PromoCarousel: FC = () => {
   return (
     <>
       <div className={styles.carousel}>
-        <Slider settings={settings}>
+        <Slider {...settings}>
           {mockCarousel.map((i) => (
             <div className={styles.item} key={i.id}>
               <Link href={'/movies'}>
@@ -94,7 +93,7 @@ const PromoCarousel: FC = () => {
                   <div className={styles.content_container}>
                     <img src={i.logo} alt="logo" />
                     <div className={styles.synopsis}>
-                      {i18next.language == 'ru' ? i.description : i.enDescription}
+                      {i18n.language == 'ru' ? i.description : i.enDescription}
                     </div>
                   </div>
                   <Button appearance={'red'} title={i.btn}>

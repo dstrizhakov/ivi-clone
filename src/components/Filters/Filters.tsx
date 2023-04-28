@@ -6,7 +6,7 @@ import { Button } from '@/components/Button/Button';
 import { RxCross2 } from 'react-icons/rx';
 import { planks, sausages } from '@/mock/filters';
 import { useTranslation } from 'react-i18next';
-import InputRange from "@/components/Filters/InputRange";
+import InputRange from '@/components/Filters/InputRange';
 
 const Filters = () => {
   const [active, setActive] = useState<boolean>(false);

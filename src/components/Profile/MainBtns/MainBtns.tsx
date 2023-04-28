@@ -5,7 +5,7 @@ import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import AuthModal from '@/components/Auth/AuthModal';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { setIsLogin } from '@/store/reducers/app.slice';
+import { selectApp, setIsLogin } from '@/store/reducers/app.slice';
 import { useTranslation } from 'react-i18next';
 import SubscriptionsButton from '@/components/Profile/MainBtns/ProfileBtns/SubscriptionsButton';
 import CertificatesButton from '@/components/Profile/MainBtns/ProfileBtns/CertificatesButton';
@@ -23,7 +23,7 @@ import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButt
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
 
 const MainBtns = ({ ...props }) => {
-  const isLogin = useAppSelector((state) => state.appReducer.isLogin);
+  const { isLogin } = useAppSelector(selectApp);
   const dispatch = useAppDispatch();
 
   const closeLoginModal = () => {

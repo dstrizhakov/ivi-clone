@@ -13,7 +13,7 @@ const FindSimilarButton = () => {
     router.push('/movies');
   };
   return (
-    <Button size={'L'} onClick={(e) => findSimilar(e)}>
+    <Button size={'M'} appearance={'square'} onClick={(e) => findSimilar(e)}>
       <IoColorWandOutline className={styles.mirrored} />
     </Button>
   );

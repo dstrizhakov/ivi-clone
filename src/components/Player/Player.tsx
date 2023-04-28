@@ -5,10 +5,10 @@ import { PlayerProps } from './Player.props';
 import { Button } from '../Button/Button';
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: true });
 // const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
-import { HiOutlineBookmark } from 'react-icons/hi2';
 import { IoPlayOutline } from 'react-icons/io5';
 import { FiUpload } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
+import AddToFavoritesButton from '@/components/Card/CardButtons/AddToFavoritesButton';
 
 const Player: FC<PlayerProps> = ({ url }) => {
   const [error, setError] = useState(false);
@@ -28,6 +28,7 @@ const Player: FC<PlayerProps> = ({ url }) => {
               controls={true}
               light={true}
               url={url}
+              playing={true}
             />
           )}
         </div>
@@ -37,9 +38,8 @@ const Player: FC<PlayerProps> = ({ url }) => {
             <IoPlayOutline className={styles.icon} />
             {t('buttons.trailer')}
           </Button>
-          <Button appearance="square">
-            <HiOutlineBookmark className={styles.icon} />
-          </Button>
+          <AddToFavoritesButton />
+
           <Button appearance="square">
             <FiUpload className={styles.icon} />
           </Button>

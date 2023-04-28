@@ -5,13 +5,12 @@ import styles from './RatingModal.module.scss';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import { Button } from '@/components/Button/Button';
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 const RatingModal: FC<FSMProps> = ({ isOpen, closeModal }) => {
   const [active, setActive] = useState();
   const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const close = () => {
     closeModal();
     setActive(undefined);
@@ -42,10 +41,10 @@ const RatingModal: FC<FSMProps> = ({ isOpen, closeModal }) => {
         </div>
         <div className={styles.helper}>
           <div>
-            <P>{i18next.language == 'en' ? 'very bad' : 'очень плохо'}</P>
+            <P>{i18n.language == 'en' ? 'very bad' : 'очень плохо'}</P>
           </div>
           <div>
-            <P>{i18next.language == 'en' ? 'great' : 'отлично'}</P>
+            <P>{i18n.language == 'en' ? 'great' : 'отлично'}</P>
           </div>
         </div>
         <Button appearance={'red'} disabled={!active} onClick={() => send()}>

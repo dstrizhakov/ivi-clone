@@ -11,7 +11,7 @@ const RateButton = ({ openRating }) => {
     }
   };
   return (
-    <Button size={'L'} onClick={(e) => openRatingModal(e)}>
+    <Button size={'M'} appearance={'square'} onClick={(e) => openRatingModal(e)}>
       <AiOutlineStar />
     </Button>
   );

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 const minValue = 6.7;
 
 const InputRange = () => {
   const [inputValue, setInputValue] = useState<number>(minValue);
-  const changer = (e) => {
+  const changer = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.valueAsNumber < minValue) {
       setInputValue(minValue);
     } else {

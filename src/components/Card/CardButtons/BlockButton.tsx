@@ -11,7 +11,7 @@ const BlockButton = () => {
     setBlocked((blocked) => !blocked);
   };
   return (
-    <Button size={'L'} onClick={(e) => blockMovie(e)}>
+    <Button size={'M'} appearance={'square'} onClick={(e) => blockMovie(e)}>
       {blocked ? <MdBlock fill={'#ff542e'} /> : <MdBlock />}
     </Button>
   );
