@@ -65,13 +65,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
                 <PersonList list={persons} rating={rating} />
               </div>
               <div className={styles.watch__description}>
-                <P>
-                  {i18next.language == 'en'
-                    ? enDescription
-                      ? enDescription
-                      : description
-                    : description}
-                </P>
+                <P>{i18next.language == 'en' ? enDescription && enDescription : description}</P>
               </div>
               <div className={styles.watch__medallions}></div>
             </div>

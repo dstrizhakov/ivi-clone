@@ -10,5 +10,13 @@
   "genres": "Genres",
   "subgenres": "Subgenres",
   "countries": "Countries",
-  "years": "Years"
+  "years": "Years",
+  "tv-online": "Online TV",
+  "tv-channels": "TV-channels",
+  "entertainment": "Entertainment",
+  "children": "Children",
+  "sport-tv": "Sport TV",
+  "documentary": "Documentary",
+  "ivi-rating-movies": "IVI.Rating movies",
+  "ivi-rating-series": "IVI.Rating series"
 }

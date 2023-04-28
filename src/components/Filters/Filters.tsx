@@ -5,11 +5,14 @@ import Sausage from '@/components/Filters/Sausage/Sausage';
 import { Button } from '@/components/Button/Button';
 import { RxCross2 } from 'react-icons/rx';
 import { planks, sausages } from '@/mock/filters';
+import { useTranslation } from 'react-i18next';
+import InputRange from "@/components/Filters/InputRange";
 
 const Filters = () => {
   const [active, setActive] = useState<boolean>(false);
   const [chosen, setChosen] = useState([]);
   const [chosenSausages, setSausages] = useState([]);
+  const { t } = useTranslation();
   useEffect(() => {
     setActive(
       () =>
@@ -31,7 +34,7 @@ const Filters = () => {
           </div>
         ))}
         <div className={styles.plank_item}>
-          <input type="range" min="1" max="10" />
+          <InputRange />
         </div>
       </div>
       <div className={styles.sausage_list}>
@@ -50,7 +53,7 @@ const Filters = () => {
         <div>
           <RxCross2 size={'20px'} />
         </div>
-        <div>Сбросить фильтры</div>
+        <div>{t('buttons.reset-filters')}</div>
       </Button>
     </div>
   );

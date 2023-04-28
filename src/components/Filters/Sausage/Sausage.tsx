@@ -4,6 +4,7 @@ import { IoAddOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { SausageProps } from '@/components/Filters/Sausage/Sausage.props';
 import { sausages } from '@/mock/filters';
+import i18next from 'i18next';
 
 const Sausage: FC<SausageProps> = ({ sausage, chosen, set }) => {
   const check = () => {
@@ -25,7 +26,9 @@ const Sausage: FC<SausageProps> = ({ sausage, chosen, set }) => {
       <div className={styles.icon_plus}>
         <IoAddOutline />
       </div>
-      <div className={styles.title}>{sausage.title}</div>
+      <div className={styles.title}>
+        {i18next.language == 'en' ? sausage.enTitle : sausage.title}
+      </div>
       <div className={styles.icon_delete}>
         <RxCross2 />
       </div>

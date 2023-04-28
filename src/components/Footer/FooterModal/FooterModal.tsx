@@ -27,11 +27,11 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
           <div className={cn(styles.menuItem, styles.buttons)}>
             <Button size="L" className={cn(styles.buttonSubscribe, styles.button)}>
               <SlDiamond />
-              Подключить подписку
+              {t('buttons.get-subscription')}
             </Button>
             <Button size="L" className={styles.button}>
               <FiAward />
-              Активация сертификата
+              {t('footer.cert')}
             </Button>
           </div>
           <div className={styles.menuItem}>
@@ -50,34 +50,34 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
             <ModalList title={t('sections.animation')} icon={TbTractor} isFilms={true}></ModalList>
             <ModalList title={'TV+'} icon={IoTvOutline}>
               <div className={styles.list}>
-                <p>TB онлайн</p>
+                <p>{t('categories.tv-online')}</p>
                 <Link href={'https://www.ivi.ru/tvplus#'} className={styles.listLink}>
-                  ТВ-каналы
+                  {t('categories.tv-channels')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/razvlekatelnoe'} className={styles.listLink}>
-                  Развлекательное
+                  {t('categories.entertainment')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/deti'} className={styles.listLink}>
-                  Дети
+                  {t('categories.children')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/sport'} className={styles.listLink}>
-                  Спортивное ТВ
+                  {t('categories.sport-tv')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/documentalnoe'} className={styles.listLink}>
-                  Документальное
+                  {t('categories.documentary')}
                 </Link>
               </div>
             </ModalList>
             <Link href={'https://www.ivi.ru/goodmovies'} className={styles.link}>
-              Что посмотреть
+              {t('categories.what-to-watch')}
             </Link>
           </div>
           <div className={styles.menuItem}>
             <Link href={'#'} className={styles.link}>
-              Иви.Рейтинг фильмы
+              {t('categories.ivi-rating-movies')}
             </Link>
             <Link href={'#'} className={styles.link}>
-              Иви.Рейтинг сериалы
+              {t('categories.ivi-rating-series')}
             </Link>
           </div>
           <div className={styles.menuItem}>
@@ -117,7 +117,7 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
             </ModalList>
             <Link href={'#'} className={cn(styles.link, styles.flex)}>
               <TbDeviceTv />
-              Вход по коду
+              {t('buttons.code-login')}
             </Link>
             <div className={styles.buttons}>
               <Button>

@@ -6,11 +6,11 @@ export const planks = [
 ];
 
 export const sausages = [
-  { id: 1, title: 'Бесплатные' },
-  { id: 2, title: 'По подписке' },
-  { id: 3, title: 'На языке оригинала' },
-  { id: 4, title: 'С субтитрами' },
-  { id: 5, title: 'Объёмный звук' },
+  { id: 1, title: 'Бесплатные', enTitle: 'Free' },
+  { id: 2, title: 'По подписке', enTitle: 'By subscription' },
+  { id: 3, title: 'На языке оригинала', enTitle: 'In the original language' },
+  { id: 4, title: 'С субтитрами', enTitle: 'With subtitles' },
+  { id: 5, title: 'Объёмный звук', enTitle: 'Surrounding sound' },
 ];
 
 export const categories = [

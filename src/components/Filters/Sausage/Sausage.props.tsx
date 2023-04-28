@@ -1,5 +1,11 @@
+interface iSausage {
+  id: number;
+  title: string;
+  enTitle: string;
+}
+
 export interface SausageProps {
-  sausage: object;
+  sausage: iSausage;
   //change after adding redux
   set: (any) => any;
 }

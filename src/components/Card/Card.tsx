@@ -10,10 +10,10 @@ import RateButton from '@/components/Card/CardButtons/RateButton';
 import FindSimilarButton from '@/components/Card/CardButtons/FindSimilarButton';
 import BlockButton from '@/components/Card/CardButtons/BlockButton';
 
-const Card: FC<CardProps> = ({ card, openRating, star, book, find, block }) => {
+const Card: FC<CardProps> = ({ card, hover = true, openRating, star, book, find, block, key }) => {
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false">
-      <div className={`${styles.imageSection} ${styles.hover}`}>
+    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" key={key}>
+      <div className={`${styles.imageSection} ${hover && styles.hover}`}>
         <img src={card.card_image} alt={card.name} />
         <div className={styles.props}>
           <div className={styles.btns}>

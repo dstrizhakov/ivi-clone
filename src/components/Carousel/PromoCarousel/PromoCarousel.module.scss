@@ -92,3 +92,17 @@
     }
   }
 }
+
+.promo_buttons{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 20px 0;
+  a {
+    width: 50%;
+    margin: 0 10px;
+    button {
+      min-height: 42px;
+    }
+  }
+}

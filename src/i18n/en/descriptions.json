@@ -1,6 +1,15 @@
 {
   "open-btn": "Expand",
   "close-btn": "Collapse",
+  "error": "Error",
+  "page-doesnt-exist": "The requested page does not exist",
+  "complete-filmography": "Complete Filmography",
+
+  "admin": "Admin panel",
+
+
+  "your-rate": "Your rating",
+  "rates-improvements": "Rates improve recommendations",
 
   "main-page-title": "Online cinema IVI: movies in good quality always bring real pleasure",
   "main-page-cut": "Everyday millions of people search for movies online, and no one wants to make life more difficult for themselves - and you're probably one of them! And if you are, we've got you covered. You're one click away from the best HD movies. We don't just deliver the convenience of going to the movies or looking up TV shows, our website gives you so much more.",

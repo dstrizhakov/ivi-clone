@@ -5,10 +5,13 @@ import styles from './RatingModal.module.scss';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import { Button } from '@/components/Button/Button';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const RatingModal: FC<FSMProps> = ({ isOpen, closeModal }) => {
   const [active, setActive] = useState();
   const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const { t } = useTranslation();
   const close = () => {
     closeModal();
     setActive(undefined);
@@ -17,16 +20,14 @@ const RatingModal: FC<FSMProps> = ({ isOpen, closeModal }) => {
     setActive(() => r);
   };
   const send = () => {
-    //mock
-    console.log('sent');
     closeModal();
     setActive(undefined);
   };
   return (
     <FullScreenModal isOpen={isOpen} closeModal={close}>
       <div className={styles.body}>
-        <Htag tag={'h2'}>Ваша оценка</Htag>
-        <P>Оценки улучшают рекомендации</P>
+        <Htag tag={'h2'}>{t('descriptions.your-rate')}</Htag>
+        <P>{t('descriptions.rates-improvements')}</P>
         <div className={styles.picker}>
           {rates.map((r) => (
             <Button
@@ -41,14 +42,14 @@ const RatingModal: FC<FSMProps> = ({ isOpen, closeModal }) => {
         </div>
         <div className={styles.helper}>
           <div>
-            <P>очень плохо</P>
+            <P>{i18next.language == 'en' ? 'very bad' : 'очень плохо'}</P>
           </div>
           <div>
-            <P>отлично</P>
+            <P>{i18next.language == 'en' ? 'great' : 'отлично'}</P>
           </div>
         </div>
         <Button appearance={'red'} disabled={!active} onClick={() => send()}>
-          Оценить
+          {t('buttons.rate')}
         </Button>
       </div>
     </FullScreenModal>

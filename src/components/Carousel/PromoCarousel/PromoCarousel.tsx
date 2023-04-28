@@ -9,6 +9,9 @@ import { Button } from '@/components/Button/Button';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import PromotionButton from '@/components/Profile/MainBtns/ProfileBtns/PromotionButton';
+import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import ActivateCertificateButton from '@/components/Profile/MainBtns/ProfileBtns/ActivateCertificateButton';
 
 interface iMockCarousel {
   id: number;
@@ -29,7 +32,7 @@ const PromoCarousel: FC = () => {
       description:
         'Сотрудник ФСБ с тёмным прошлым защищает свою страну. Детектив с Сергеем Безруковым',
       enDescription:
-        'An FSB officer with a shady past defends his country. Detective with Sergei Bezrukov',
+        'An FSS officer with a shady past defends his country. Detective with Sergei Bezrukov',
       logo: 'https://thumbs.dfs.ivi.ru/storage9/contents/b/6/356258bbe7c5ba5b5b40251be3d48f.png/x200/',
       img: 'https://thumbs.dfs.ivi.ru/storage4/contents/0/8/e43d2485f22868f57b2dcf5193d2ad.jpg/1216x524/?q=85',
       btn: t('buttons.watch-sub'),
@@ -69,7 +72,7 @@ const PromoCarousel: FC = () => {
     },
   ];
   const settings = {
-    speed: 500,
+    speed: 300,
     draggable: true,
     autoplay: true,
     autoplaySpeed: 10000,
@@ -80,7 +83,7 @@ const PromoCarousel: FC = () => {
   return (
     <>
       <div className={styles.carousel}>
-        <Slider {...settings}>
+        <Slider settings={settings}>
           {mockCarousel.map((i) => (
             <div className={styles.item} key={i.id}>
               <Link href={'/movies'}>
@@ -102,6 +105,10 @@ const PromoCarousel: FC = () => {
             </div>
           ))}
         </Slider>
+      </div>
+      <div className={styles.promo_buttons}>
+        <PromotionButton type={iCardEnum.rect_icon_purple} />
+        <ActivateCertificateButton type={iCardEnum.rect_icon} />
       </div>
     </>
   );

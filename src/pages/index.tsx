@@ -26,7 +26,11 @@ export default function Home() {
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star book find block key={card.id}
+            star
+            book
+            find
+            block
+            key={card.id}
           />
         ))}
       </Carousel>
@@ -35,7 +39,11 @@ export default function Home() {
           <Card
             card={card}
             openRating={() => setIsRatingOpen(true)}
-            star book find block key={card.id}
+            star
+            book
+            find
+            block
+            key={card.id}
           />
         ))}
       </Carousel>

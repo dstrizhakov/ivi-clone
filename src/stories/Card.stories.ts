@@ -11,7 +11,7 @@ const meta: Meta<typeof Card> = {
 export default meta;
 type Story = StoryObj<typeof Card>;
 
-export const Default: Story = {
+export const Default: { args: { card: { img: string; name: string; id: number } } } = {
   args: {
     card: {
       id: 1,

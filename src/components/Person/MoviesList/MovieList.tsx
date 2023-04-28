@@ -2,19 +2,23 @@ import React, { FC, useState } from 'react';
 import styles from './MovieList.module.scss';
 
 import { P } from '@/components/P/P';
-import { iMovieCard } from './MovieCard/MovieCard.props';
 import { Htag } from '@/components/Htag/Htag';
 import MovieCard from './MovieCard/MovieCard';
-import { MovieListProps } from './MovieLisrt.props';
+import { MovieListProps } from './MovieList.props';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const MovieList: FC<MovieListProps> = ({ list }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className={styles.wrap}>
       <div className={styles.title}>
-        <Htag tag={'h3'}>Полная фильмография</Htag>
-        <P>{list.length} фильмов</P>
+        <Htag tag={'h3'}>{t('descriptions.complete-filmography')}</Htag>
+        <P>
+          {list.length} {i18next.language == 'en' ? 'movies' : 'фильмов'}
+        </P>
       </div>
       <div className={styles.line}></div>
       <div className={styles.cards}>
@@ -23,7 +27,7 @@ const MovieList: FC<MovieListProps> = ({ list }) => {
         })}
         {!isOpen && list.length > 8 ? (
           <P onClick={() => setIsOpen(true)} className={styles.link}>
-            Ещё {list.length - 8} фильма
+            {t('buttons.more')} {list.length - 8} {i18next.language == 'en' ? 'movies' : 'фильма'}
           </P>
         ) : (
           list.slice(8, list.length).map((card) => {

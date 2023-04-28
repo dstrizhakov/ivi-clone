@@ -84,15 +84,12 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children, 
       ],
     };
 
-  settings.nextArrow = <NextArrow />;
-  settings.prevArrow = <PrevArrow />;
-
   return (
     <>
       <div className={styles.carousel}>
         {title && (
           <div>
-            <Link href={route} className={styles.title}>
+            <Link href={route ? route : ''} className={styles.title}>
               <div title={title}>
                 <Htag tag={'h4'}>{title}</Htag>
               </div>
@@ -100,10 +97,10 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children, 
             </Link>
           </div>
         )}
-        <Slider {...settings}>
+        <Slider settings={settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
           {children}
           {showAll && (
-            <Link href={route}>
+            <Link href={route ? route : ''}>
               <ShowAll />
             </Link>
           )}

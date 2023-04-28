@@ -10,5 +10,14 @@
   "genres": "Жанры",
   "subgenres": "Поджанры",
   "countries": "Страны",
-  "years": "Годы"
+  "years": "Годы",
+  "tv-online": "TB онлайн",
+  "tv-channels": "ТВ-каналы",
+  "entertainment": "Развлекательное",
+  "children": "Дети",
+  "sport-tv": "Спортивное ТВ",
+  "documentary": "Документальное",
+  "ivi-rating-movies": "Иви.Рейтинг фильмы",
+  "ivi-rating-series": "Иви.Рейтинг сериалы"
+
 }

@@ -1,12 +1,14 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
 import EmptyNotifications from '@/components/EmptyNotifications/EmptyNotifications';
+import { useTranslation } from 'react-i18next';
 
 const Notifications: FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Head>
-        <title>Мой профиль / ivi.ru</title>
+        <title>{t('title.profile')}</title>
       </Head>
       <EmptyNotifications />
     </>
