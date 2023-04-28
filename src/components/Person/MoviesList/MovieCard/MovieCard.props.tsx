@@ -1,10 +1,5 @@
-import { iMovie } from '@/components/Card/Card.props';
-
-export interface iMovieCard extends iMovie {
-  year: string;
-  rating: string;
-}
+import { IMovie } from '@/types/types';
 
 export interface MovieCardProps {
-  card: iMovieCard;
+  card: IMovie;
 }
