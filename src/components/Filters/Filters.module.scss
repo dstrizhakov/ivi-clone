@@ -1,3 +1,24 @@
+@import "@/styles/variables.scss";
+
+.openers {
+  display: flex;
+  flex-direction: row;
+  .filters__icon {
+    display: flex;
+    margin: 0 10px;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    .open_filter:hover {
+      transition: $time-main;
+      color: $color-accent;
+    }
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
+
 .filters {
   padding: 16px;
   -moz-box-sizing: border-box;
@@ -5,7 +26,8 @@
   box-sizing: border-box;
   background-color: #1f1b2e;
   border-radius: 6px;
-  margin-bottom: 100px; //
+  margin-bottom: 20px;
+  transition: max-height 400ms ease,opacity 200ms ease,padding-top 400ms ease;
   .plank_list {
     display: -webkit-box;
     display: -webkit-flex;

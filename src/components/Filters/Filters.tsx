@@ -7,8 +7,11 @@ import { RxCross2 } from 'react-icons/rx';
 import { planks, sausages } from '@/mock/filters';
 import { useTranslation } from 'react-i18next';
 import InputRange from '@/components/Filters/InputRange';
+import { GoSettings } from 'react-icons/go';
+import SortDropdown from '@/components/Filters/SortDropdown/SortDropdown';
 
 const Filters = () => {
+  const [opened, setOpened] = useState(false);
   const [active, setActive] = useState<boolean>(false);
   const [chosen, setChosen] = useState([]);
   const [chosenSausages, setSausages] = useState([]);
@@ -26,36 +29,52 @@ const Filters = () => {
     setActive(() => false);
   };
   return (
-    <div className={styles.filters}>
-      <div className={styles.plank_list}>
-        {planks.map((plank) => (
-          <div className={styles.plank_item} key={plank.id}>
-            <Plank plank={plank} chosen={chosen} setChosen={setChosen} plankID={plank.id} />
+    <>
+      <div className={styles.openers}>
+        <Button appearance={'transparent'} onClick={() => setOpened(!opened)}>
+          <div className={styles.filters__icon}>
+            <GoSettings />
+            <div className={styles.open_filter}>
+              {opened ? t('buttons.collapse') : t('buttons.filters')}
+            </div>
           </div>
-        ))}
-        <div className={styles.plank_item}>
-          <InputRange />
-        </div>
+        </Button>
+        <SortDropdown />
       </div>
-      <div className={styles.sausage_list}>
-        {sausages.map((i) => (
-          <div className={styles.sausage} key={'s' + i.id}>
-            <Sausage sausage={i} set={setSausages} chosen={chosenSausages} />
+
+      {opened && (
+        <div className={styles.filters}>
+          <div className={styles.plank_list}>
+            {planks.map((plank) => (
+              <div className={styles.plank_item} key={plank.id}>
+                <Plank plank={plank} chosen={chosen} setChosen={setChosen} plankID={plank.id} />
+              </div>
+            ))}
+            <div className={styles.plank_item}>
+              <InputRange />
+            </div>
           </div>
-        ))}
-      </div>
-      <Button
-        appearance={'transparent'}
-        className={styles.reset}
-        onClick={() => reset()}
-        disabled={!active}
-      >
-        <div>
-          <RxCross2 size={'20px'} />
+          <div className={styles.sausage_list}>
+            {sausages.map((i) => (
+              <div className={styles.sausage} key={'s' + i.id}>
+                <Sausage sausage={i} set={setSausages} chosen={chosenSausages} />
+              </div>
+            ))}
+          </div>
+          <Button
+            appearance={'transparent'}
+            className={styles.reset}
+            onClick={() => reset()}
+            disabled={!active}
+          >
+            <div>
+              <RxCross2 size={'20px'} />
+            </div>
+            <div>{t('buttons.reset-filters')}</div>
+          </Button>
         </div>
-        <div>{t('buttons.reset-filters')}</div>
-      </Button>
-    </div>
+      )}
+    </>
   );
 };
 

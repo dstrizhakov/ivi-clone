@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import PromotionButton from '@/components/Profile/MainBtns/ProfileBtns/PromotionButton';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
 import ActivateCertificateButton from '@/components/Profile/MainBtns/ProfileBtns/ActivateCertificateButton';
+import i18next from 'i18next';
 
 interface iMockCarousel {
   id: number;
@@ -18,12 +19,37 @@ interface iMockCarousel {
   description: string;
   enDescription: string;
   logo: string;
-  img: string;
+  card_image: string;
   btn: string;
 }
 
+interface iSlide {
+  i: iMockCarousel;
+}
+
+const PromoCarouselSlide: FC<iSlide> = ({ i }) => {
+  return (
+    <Link href={'/movies'}>
+      <div className={styles.img}>
+        <img src={i.card_image} alt={'watch more'} />
+      </div>
+      <div className={styles.items}>
+        <div className={styles.content_container}>
+          <img src={i.logo} alt="logo" />
+          <div className={styles.synopsis}>
+            {i18next.language == 'ru' ? i.description : i.enDescription}
+          </div>
+        </div>
+        <Button appearance={'red'} title={i.btn}>
+          {i.btn}
+        </Button>
+      </div>
+    </Link>
+  );
+};
+
 const PromoCarousel: FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const mockCarousel: iMockCarousel[] = [
     {
       id: 1,
@@ -33,7 +59,8 @@ const PromoCarousel: FC = () => {
       enDescription:
         'An FSS officer with a shady past defends his country. Detective with Sergei Bezrukov',
       logo: 'https://thumbs.dfs.ivi.ru/storage9/contents/b/6/356258bbe7c5ba5b5b40251be3d48f.png/x200/',
-      img: 'https://thumbs.dfs.ivi.ru/storage4/contents/0/8/e43d2485f22868f57b2dcf5193d2ad.jpg/1216x524/?q=85',
+      card_image:
+        'https://thumbs.dfs.ivi.ru/storage4/contents/0/8/e43d2485f22868f57b2dcf5193d2ad.jpg/1216x524/?q=85',
       btn: t('buttons.watch-sub'),
     },
     {
@@ -44,7 +71,8 @@ const PromoCarousel: FC = () => {
       enDescription:
         'Nikita Efremov, star of "Tetris" and "Patient Zero," gives up a prestigious job for a great cause',
       logo: 'https://thumbs.dfs.ivi.ru/storage30/contents/a/a/c55629c1cb82b0ac7c0d9aca539d89.png/x200/',
-      img: 'https://thumbs.dfs.ivi.ru/storage15/contents/b/d/03674ff6e27da1cd69f1f0e9337249.jpg/1216x524/?q=85',
+      card_image:
+        'https://thumbs.dfs.ivi.ru/storage15/contents/b/d/03674ff6e27da1cd69f1f0e9337249.jpg/1216x524/?q=85',
       btn: t('buttons.watch-free'),
     },
     {
@@ -55,7 +83,8 @@ const PromoCarousel: FC = () => {
       enDescription:
         'A love story between a girl psychologist and a mafia boss. Hot Turkish novel with Kivanc Tatlitug',
       logo: 'https://thumbs.dfs.ivi.ru/storage9/contents/d/e/14ad136916cb3797041ef18a0b6149.png/x200/',
-      img: 'https://thumbs.dfs.ivi.ru/storage6/contents/a/d/9c7a06852d0d87d206bdcc1c54899e.jpg/1216x524/?q=85',
+      card_image:
+        'https://thumbs.dfs.ivi.ru/storage6/contents/a/d/9c7a06852d0d87d206bdcc1c54899e.jpg/1216x524/?q=85',
       btn: t('buttons.watch-collection'),
     },
     {
@@ -66,8 +95,21 @@ const PromoCarousel: FC = () => {
       enDescription:
         'A charming cat and clever rats pull some clever scams. Based on a book by Terry Pratchett',
       logo: 'https://thumbs.dfs.ivi.ru/storage9/contents/d/a/e175075e82d7ec21518b793875d4b7.png/x200/',
-      img: 'https://thumbs.dfs.ivi.ru/storage28/contents/4/2/3b902683579802bb9161649c3edbdf.jpg/1216x524/?q=85',
+      card_image:
+        'https://thumbs.dfs.ivi.ru/storage28/contents/4/2/3b902683579802bb9161649c3edbdf.jpg/1216x524/?q=85',
       btn: t('buttons.watch'),
+    },
+    {
+      id: 5,
+      name: 'Война миров: Вторжение',
+      description:
+        'Трое студентов оказываются в центре сражения земных войск и смертоносных боевых машин марсиан',
+      enDescription:
+        'Three students find themselves in the middle of a battle between Earth troops and deadly Martian war machines',
+      logo: 'https://thumbs.dfs.ivi.ru/storage4/contents/7/f/856da932e9a08d6dd0fbb80fa73ddd.png/x200/',
+      card_image:
+        'https://thumbs.dfs.ivi.ru/storage9/contents/1/e/4f4ce4b4ce28c5a287bd461172f714.jpg/1216x524/?q=85',
+      btn: t('buttons.watch-sub'),
     },
   ];
   const settings = {
@@ -85,22 +127,7 @@ const PromoCarousel: FC = () => {
         <Slider {...settings}>
           {mockCarousel.map((i) => (
             <div className={styles.item} key={i.id}>
-              <Link href={'/movies'}>
-                <div className={styles.img}>
-                  <img src={i.img} alt={'watch more'} />
-                </div>
-                <div className={styles.items}>
-                  <div className={styles.content_container}>
-                    <img src={i.logo} alt="logo" />
-                    <div className={styles.synopsis}>
-                      {i18n.language == 'ru' ? i.description : i.enDescription}
-                    </div>
-                  </div>
-                  <Button appearance={'red'} title={i.btn}>
-                    {i.btn}
-                  </Button>
-                </div>
-              </Link>
+              <PromoCarouselSlide i={i} />
             </div>
           ))}
         </Slider>
