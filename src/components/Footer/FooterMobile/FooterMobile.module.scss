@@ -19,6 +19,11 @@
   height: 20px;
 }
 
+.link {
+  flex-basis: 100%;
+  max-width: 120px;
+}
+
 @media (max-width: $pc) {
   .footerMobile {
     display: block;

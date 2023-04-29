@@ -9,6 +9,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoCloseOutline, IoTvOutline } from 'react-icons/io5';
 import { RiHome6Line } from 'react-icons/ri';
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 const FooterMobile: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -35,7 +36,9 @@ const FooterMobile: FC = () => {
                   }
             }
           />
-          <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
+          <Link href={'https://www.ivi.ru/tvplus'} className={styles.link}>
+            <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
+          </Link>
           <FooterLink
             title={isModalOpen ? t('footer.close-btn') : t('footer.open-btn')}
             href={isModalOpen ? '' : '?navigation'}

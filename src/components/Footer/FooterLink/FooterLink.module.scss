@@ -23,6 +23,9 @@
       background-image: radial-gradient(rgba($color-main, 0.3) 0%, rgba($color-main, 0) 65%);
     }
   }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .title {

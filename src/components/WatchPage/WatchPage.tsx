@@ -12,7 +12,7 @@ import Card from '@/components/Card/Card';
 import { useSelector } from 'react-redux';
 import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
 import i18next from 'i18next';
-
+import { PersonsModal } from '@/components/WatchPage/PersonsModal/PersonsModal';
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const item = moviesData.find((m: IMovie) => id == m.id);
 
@@ -31,14 +31,18 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
   } = item;
   const color = '106, 80, 47'; //
   const { movies } = useSelector((state) => state.movieReducer);
+
   return (
     <>
-      <div
-        className={styles.bg_container}
-        style={{
-          background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
-        }}
-      />
+      <PersonsModal />
+      <div className={styles.bg_color}>
+        <div
+          className={styles.bg_container}
+          style={{
+            background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
+          }}
+        />
+      </div>
       <section className={styles.watch}>
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>

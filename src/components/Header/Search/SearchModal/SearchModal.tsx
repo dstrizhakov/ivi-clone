@@ -2,14 +2,13 @@ import React, { FC, useState } from 'react';
 import styles from './SearchModal.module.scss';
 import { CgClose } from 'react-icons/cg';
 import { IoSearchOutline } from 'react-icons/io5';
-import { SearchModalProps } from './SearchModal.props';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectModal, setShowSearch } from '@/store/reducers/modals.slice';
 
-const SearchModal: FC<SearchModalProps> = (): JSX.Element => {
+const SearchModal: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
   const { t } = useTranslation();
   const { showSearch } = useSelector(selectModal);

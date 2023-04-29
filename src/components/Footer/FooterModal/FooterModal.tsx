@@ -17,9 +17,11 @@ import { CgPhone } from 'react-icons/cg';
 import { BiDevices, BiInfoCircle, BiMessageAlt } from 'react-icons/bi';
 import { HiPhone } from 'react-icons/hi2';
 import { useTranslation } from 'react-i18next';
+import { usePreventScroll } from '@/hooks/usePreventScroll';
 
 const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
   const { t } = useTranslation();
+  usePreventScroll(isOpen);
   return (
     <>
       {isOpen && (

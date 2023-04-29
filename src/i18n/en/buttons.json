@@ -4,8 +4,8 @@
   "balance": "IVI balance",
   "certificates": "Certificates and promo codes",
   "code-login": "Login by code",
-  "connect": "Connect",
   "collapse": "Collapse",
+  "connect": "Connect",
   "default": "Default",
   "filters": "Filters",
   "get-subscription": "Get a subscription",
@@ -32,10 +32,10 @@
   "views": "Views",
   "views-story": "Viewing history",
   "watch": "Watch",
+  "watch-all": "Watch all",
   "watch-collection": "Watch collection",
   "watch-free": "Watch for free",
   "watch-later": "Watch later",
-  "watch-sub": "Watch by subscription",
-  "watch-all": "Watch all",
-  "watch-more": "Watch more"
+  "watch-more": "Watch more",
+  "watch-sub": "Watch by subscription"
 }

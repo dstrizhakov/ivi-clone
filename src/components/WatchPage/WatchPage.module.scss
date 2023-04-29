@@ -1,8 +1,12 @@
 @import '../../styles/variables.scss';
 
+.bg_color {
+  max-height: 100%;
+}
 .bg_container {
   width: 100%;
-  height: 0;
+  height: 100vh;
+  max-height: 90vh;
   opacity: .32;
   transition: opacity 1s;
   position: absolute;
@@ -11,8 +15,6 @@
   top: 0;
   z-index: 0;
   pointer-events: none;
-  padding-bottom: 62.5%;
-  overflow-y: hidden;
 }
 .watch {
   * {
