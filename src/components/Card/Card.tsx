@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import styles from './Card.module.scss';
 import { CardProps } from './Card.props';
 import { P } from '@/components/P/P';
 import Link from 'next/link';
@@ -9,6 +8,8 @@ import AddToFavoritesButton from '@/components/Card/CardButtons/AddToFavoritesBu
 import RateButton from '@/components/Card/CardButtons/RateButton';
 import FindSimilarButton from '@/components/Card/CardButtons/FindSimilarButton';
 import BlockButton from '@/components/Card/CardButtons/BlockButton';
+import styles from './Card.module.scss';
+
 
 const Card: FC<CardProps> = ({
   card,
@@ -25,11 +26,13 @@ const Card: FC<CardProps> = ({
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
         <img src={card.card_image} alt={card.name} />
         <div className={styles.props}>
-          <div className={styles.btns}>
-            {book && <AddToFavoritesButton />}
-            {find && <FindSimilarButton />}
-            {star && <RateButton openRating={openRating} />}
-            {block && <BlockButton />}
+          <div className={styles.btns__container}>
+            <div className={styles.btns}>
+              {book && <AddToFavoritesButton />}
+              {find && <FindSimilarButton />}
+              {star && <RateButton openRating={openRating} />}
+              {block && <BlockButton />}
+            </div>
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
