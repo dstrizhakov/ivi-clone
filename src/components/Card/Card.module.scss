@@ -154,3 +154,5 @@
 .mirrored {
   transform: scale(-1, 1)
 }
+.hover.props{.btns{&__container{}button{}}.info{&__text{}&__row {}.ratings{.graphs {}}}} //prevent webstorm commit errors
+

@@ -35,5 +35,7 @@
   "watch-collection": "Watch collection",
   "watch-free": "Watch for free",
   "watch-later": "Watch later",
-  "watch-sub": "Watch by subscription"
+  "watch-sub": "Watch by subscription",
+  "watch-all": "Watch all",
+  "watch-more": "Watch more"
 }

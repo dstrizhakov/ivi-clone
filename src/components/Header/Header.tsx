@@ -109,7 +109,7 @@ const Header: FC = (): JSX.Element => {
                   {t('header.watch-free')}
                 </Button>
               </div>
-              <SearchButton openSearch={() => setIsSearchOpen(true)} />
+              <SearchButton />
             </div>
             <div className={styles.actions}>
               <Submenu icon={MdNotificationsNone} link={'/notifications'}>

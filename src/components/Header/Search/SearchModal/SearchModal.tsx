@@ -6,10 +6,14 @@ import { SearchModalProps } from './SearchModal.props';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModal, setShowSearch } from '@/store/reducers/modals.slice';
 
-const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element => {
+const SearchModal: FC<SearchModalProps> = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
   const { t } = useTranslation();
+  const { showSearch } = useSelector(selectModal);
+  const dispatch = useDispatch();
 
   const clearQuery = (): void => {
     setQuery('');
@@ -17,7 +21,7 @@ const SearchModal: FC<SearchModalProps> = ({ isOpen, closeSearch }): JSX.Element
 
   return (
     <>
-      <FullScreenModal isOpen={isOpen} closeModal={closeSearch}>
+      <FullScreenModal isOpen={showSearch} closeModal={() => dispatch(setShowSearch(false))}>
         <div className={styles.body}>
           <h3>{t('sections.search')}</h3>
           <div className={styles.input}>

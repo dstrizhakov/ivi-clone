@@ -7,5 +7,4 @@ export interface CardProps {
   book?: boolean;
   find?: boolean;
   block?: boolean;
-  openRating?: () => void;
 }

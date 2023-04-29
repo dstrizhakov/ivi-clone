@@ -10,30 +10,29 @@ interface iGrid {
 }
 
 const Grid: FC<iGrid> = ({ array }) => {
-  const [opened, setOpened] = useState<boolean>(false);
-  const [limit, setLimit] = useState<number>(10);
+  const [extended, setExtended] = useState<boolean>(false);
+  const [limit, setLimit] = useState<number>(30);
   const { t } = useTranslation();
   const showMore = () => {
     setLimit((l) => l * 2);
-    setOpened(() => true);
+    setExtended(() => true);
   };
-
   return (
     <>
       <div className={styles.grid}>
         <div className={styles.grid__container}>
           <div className={styles.grid__list}>
-            {(opened ? array : array.slice(0, limit)).map((card) => (
-              <li key={card.id}>
+            {[...array].slice(0, limit).map((card) => (
+              <li className={styles.grid_item} key={card.id}>
                 <Card card={card} star book find block />
               </li>
             ))}
           </div>
         </div>
       </div>
-      {!opened && array.length > limit && (
+      {!extended && array.length > limit && (
         <Button className={styles.open} onClick={() => showMore()}>
-          {t('buttons.show-all')}
+          {t('buttons.show-more')}
         </Button>
       )}
     </>

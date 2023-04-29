@@ -1,29 +1,32 @@
 import React, { FC, useState } from 'react';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
-import { FSMProps } from '@/components/Modals/FullScreenModal/FullScreenModal.prop';
 import styles from './RatingModal.module.scss';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import { Button } from '@/components/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModal, setShowRating } from '@/store/reducers/modals.slice';
 
-const RatingModal: FC<FSMProps> = ({ isOpen, closeModal }) => {
+const RatingModal: FC = () => {
   const [active, setActive] = useState();
   const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { t, i18n } = useTranslation();
+  const { showRating } = useSelector(selectModal);
+  const dispatch = useDispatch();
   const close = () => {
-    closeModal();
+    dispatch(setShowRating(false));
     setActive(undefined);
   };
   const rate = (r) => {
     setActive(() => r);
   };
   const send = () => {
-    closeModal();
+    dispatch(setShowRating(false));
     setActive(undefined);
   };
   return (
-    <FullScreenModal isOpen={isOpen} closeModal={close}>
+    <FullScreenModal isOpen={showRating} closeModal={() => close()}>
       <div className={styles.body}>
         <Htag tag={'h2'}>{t('descriptions.your-rate')}</Htag>
         <P>{t('descriptions.rates-improvements')}</P>

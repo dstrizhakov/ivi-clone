@@ -6,6 +6,10 @@ export default function Document() {
       <Head>
         <meta name="description" content="online cinema service" />
         <link rel="icon" href="/favicon.svg" />
+        <title>
+          Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем
+          качестве
+        </title>
       </Head>
       <body>
         <Main />
