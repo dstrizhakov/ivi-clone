@@ -13,11 +13,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectModal, setShowPersonsModal } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import i18next from 'i18next';
 
 export const PersonsModal: FC = () => {
   const dispatch = useDispatch();
   const { personModalItem, showPersonsModal } = useSelector(selectModal);
-  const { name, persons } = personModalItem;
+  const { name, enName, persons } = personModalItem;
   const { t } = useTranslation();
   const close = () => {
     dispatch(setShowPersonsModal(false));
@@ -28,12 +29,12 @@ export const PersonsModal: FC = () => {
     <div className={cn(styles.modal, showPersonsModal ? styles.modal__open : '')}>
       <Button appearance="transparent" className={styles.back} onClick={() => close()}>
         <HiChevronLeft className={styles.back__icon} />
-        <span>К фильму</span>
+        <span>{t('buttons.to-movie')}</span>
       </Button>
 
       <div className={styles.wrap}>
         <Tabs className={styles.tabs}>
-          <Htag tag={'h2'}>{name}</Htag>
+          <Htag tag={'h2'}>{i18next.language == 'en' ? enName : name}</Htag>
           <TabList className={styles.tabs__title}>
             <Tab className={styles.tab} selectedClassName={styles.active}>
               {t('categories.creators')}
@@ -50,7 +51,7 @@ export const PersonsModal: FC = () => {
           </TabList>
 
           <TabPanel className={styles.tabs__content}>
-            <Htag tag="h3">Актёры</Htag>
+            <Htag tag="h3">{t('categories.actors')}</Htag>
             <div className={styles.cards}>
               {persons.map((p) => {
                 return (
@@ -59,12 +60,12 @@ export const PersonsModal: FC = () => {
                       <img src={p.url} alt="" />
                     </div>
                     <div>
-                      {p.name.split(' ').map((n) => (
+                      {(i18next.language == 'en' ? p.enName : p.name).split(' ').map((n) => (
                         <p key={p.enName} className={styles.name}>
                           {n}
                         </p>
                       ))}
-                      <P size="S">3 фильма</P>
+                      <P size="S">3 {i18next.language == 'en' ? 'movies' : 'фильма'}</P>
                     </div>
                   </Link>
                 );
@@ -72,13 +73,13 @@ export const PersonsModal: FC = () => {
             </div>
           </TabPanel>
           <TabPanel className={styles.tabs__content}>
-            <h2> Отзывы</h2>
+            <h2>{t('categories.reviews')}</h2>
           </TabPanel>
           <TabPanel className={styles.tabs__content}>
-            <h2>Трейлеры</h2>
+            <h2>{t('categories.trailers')}</h2>
           </TabPanel>
           <TabPanel className={styles.tabs__content}>
-            <h2>Награды</h2>
+            <h2>{t('categories.awards')}</h2>
           </TabPanel>
         </Tabs>
         <div className={styles.movie}>

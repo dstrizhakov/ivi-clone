@@ -19,7 +19,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
     <div className={styles.wrap}>
       <div className={styles.title} onClick={() => dispatch(setShowPersonsModal(true))}>
         <Htag tag={'h4'}>
-          {i18next.language == 'en' ? 'Actors and creators' : 'Актёры и создатели'}{' '}
+          {i18next.language == 'en' ? 'Actors and creators' : 'Актёры и создатели'}
         </Htag>
       </div>
       <div className={styles.list}>
