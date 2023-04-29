@@ -1,0 +1,153 @@
+@import '../../../styles/variables.scss';
+
+.modal {
+  position: absolute;
+  display: none;
+  padding: 50px;
+  top: 0;
+  left: 0;
+  @media (max-width: $mobile) {
+    padding: 25px;
+  }
+  &__open {
+    display: block;
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.9);
+    z-index: 100;
+  }
+}
+
+.back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  color: white;
+  opacity: 0.7;
+  transition: $time-main;
+  &__icon {
+    width: 30px;
+    height: 30px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &:hover .back__icon {
+    transform: scale(1.1);
+  }
+}
+
+.wrap {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 150px;
+  padding: 50px 0;
+  justify-items: start;
+  justify-content: space-between;
+  grid-auto-columns: 3fr 1fr;
+  @media (max-width: $mobile) {
+    padding: 25px 0;
+  }
+}
+
+.tabs {
+  &__title {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+    border-bottom: 2px solid rgba($color-main, 0.16);
+  }
+  &__content {
+    margin: 30px 0;
+  }
+}
+
+.active {
+  transition: $time-main;
+  box-shadow: 0px 4px 0px 0px $color-accent;
+}
+
+.tab {
+  display: block;
+  cursor: pointer;
+  padding-bottom: 16px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.link {
+  display: grid;
+  gap: 10px;
+  &:hover {
+    .name {
+      color: $color-main;
+    }
+  }
+}
+
+.card {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  img {
+    width: 120px;
+  }
+  @media (max-width: $mobile) {
+    width: 88px;
+    height: 88px;
+    img {
+      width: 88px;
+    }
+  }
+}
+
+.name {
+  font-size: 13px;
+  color: #d9d7e0;
+  transition: $time-main;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.movie {
+  @media (max-width: 900px) {
+    display: none;
+  }
+  &__img {
+    transition: $time-main;
+    border-radius: 8px;
+    &:hover {
+      transform: scale(1.1, 1.1);
+      cursor: pointer;
+    }
+  }
+  &__info {
+    margin-top: 20px;
+    max-width: 100px;
+    display: grid;
+    gap: 3px;
+  }
+  &__descr {
+    line-height: 1;
+  }
+}
+
+.graphs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  span {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &__wrap {
+    width: 20px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Htag } from '../Htag/Htag';
 import { P } from '../P/P';
 import Player from '../Player/Player';
@@ -7,11 +7,16 @@ import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
 import { WatchPageProps } from './WatchPage.props';
 import { PersonsGallery } from './PersonsGallery/PersonsGallery';
+import { PersonsModal } from './PersonsModal/PersonsModal';
 
 const WatchPage: FC<WatchPageProps> = ({ item }) => {
   const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
+      <PersonsModal isOpen={isOpen} item={item} closeModal={() => setIsOpen(false)} />
+
       <section className={styles.watch}>
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
@@ -43,7 +48,7 @@ const WatchPage: FC<WatchPageProps> = ({ item }) => {
           </div>
         </div>
         <Carousel title={`С фильмом «${name}» смотрят`} route={'/'} />
-        <PersonsGallery list={persons} />
+        <PersonsGallery list={persons} openModal={() => setIsOpen(true)} />
       </section>
     </>
   );
