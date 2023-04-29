@@ -9,7 +9,7 @@ export interface IPerson {
   name: string;
   enName: string;
   description: string;
-  films: iMovieCard[];
+  films: IMovie[];
 }
 export interface IMovie {
   id: number;

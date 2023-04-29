@@ -12,7 +12,7 @@ export const PersonInfo: FC<PersonProps> = ({ person }) => {
     <>
       <BackButton />
       <div className={styles.person}>
-        <div className={styles.img}>
+        <div className={styles.card_image}>
           <img src={person.url} alt={person.enName} />
         </div>
         <Htag tag={'h1'}>{i18next.language == 'en' ? person.enName : person.name}</Htag>
