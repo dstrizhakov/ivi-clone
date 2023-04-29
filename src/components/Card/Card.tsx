@@ -10,7 +10,6 @@ import FindSimilarButton from '@/components/Card/CardButtons/FindSimilarButton';
 import BlockButton from '@/components/Card/CardButtons/BlockButton';
 import styles from './Card.module.scss';
 
-
 const Card: FC<CardProps> = ({
   card,
   hover = true,
