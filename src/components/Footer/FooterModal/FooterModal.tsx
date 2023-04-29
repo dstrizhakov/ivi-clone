@@ -16,8 +16,10 @@ import { FaLinkedinIn, FaOdnoklassniki, FaTelegramPlane, FaTwitter, FaVk } from 
 import { CgPhone } from 'react-icons/cg';
 import { BiDevices, BiInfoCircle, BiMessageAlt } from 'react-icons/bi';
 import { HiPhone } from 'react-icons/hi2';
+import { usePreventScroll } from '@/hooks/usePreventScroll';
 
 const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
+  usePreventScroll(isOpen);
   return (
     <>
       {isOpen && (

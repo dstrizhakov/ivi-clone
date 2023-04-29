@@ -6,19 +6,23 @@ import styles from './PersonsGallery.module.scss';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
+import { nameToLink } from '@/helpers/nameToLink';
 
-export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
+export const PersonsGallery: FC<PersonsGalleryProps> = ({ list, openModal }) => {
   return (
     <div className={styles.wrap}>
-      <Link href={'#'}>
+      <div className={styles.title} onClick={() => openModal()}>
         <Htag tag={'h4'}>Актёры и создатели</Htag>
-      </Link>
+      </div>
       <div className={styles.list}>
         <div className={styles.list__wrap}>
           {list.map((person) => {
-            const name = person?.enName.toLowerCase().split(' ').join('-');
             return (
-              <Link href={`/person/${name}`} key={person.enName} className={styles.link}>
+              <Link
+                href={`/person/${nameToLink(person.enName)}`}
+                key={person.enName}
+                className={styles.link}
+              >
                 <div className={styles.card}>
                   <img src={person.url} alt="" />
                 </div>
@@ -34,9 +38,9 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
             );
           })}
         </div>
-        <Link href={'#'} className={cn(styles.card, styles.card__text)}>
+        <div className={cn(styles.card, styles.card__text)} onClick={() => openModal()}>
           Ещё
-        </Link>
+        </div>
       </div>
     </div>
   );
