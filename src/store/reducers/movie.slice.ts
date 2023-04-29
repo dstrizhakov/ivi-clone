@@ -25,13 +25,13 @@ export const moviesSlice = createSlice({
       state.years = Array.from(new Set(state.movies.flatMap((movie) => movie.year)));
     },
   },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(HYDRATE, (state, action) => {
       return {
         ...state,
         ...action.payload.movieReducer,
       };
-    },
+    });
   },
 });
 
