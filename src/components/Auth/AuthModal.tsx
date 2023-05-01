@@ -4,8 +4,8 @@ import { CgClose } from 'react-icons/cg';
 import { BiUser } from 'react-icons/bi';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { AuthModalProps } from './AuthModal.props';
-import Progress from './Progress/Progress';
 import { P } from '../P/P';
+import BarGraph from "@/components/BarGraph/BarGraph";
 
 const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
   const [progress, setProgress] = useState<number>(5);
@@ -41,9 +41,11 @@ const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
           <div className={styles.chat__header}>
             <h5 className={styles.chat__title}>Вход или регистрация</h5>
             <div className={styles.chat__close}>
-              <CgClose className={styles.close__icon} onClick={close} />
+              <CgClose onClick={close} />
             </div>
-            <Progress progress={progress} />
+            <div className={styles.chat__progress} >
+              <BarGraph width={progress} />
+            </div>
           </div>
           <div className={styles.chat__body}>
             {step >= 1 && (
