@@ -5,15 +5,15 @@ import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import { Button } from '@/components/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectModal, setShowRating } from '@/store/reducers/modals.slice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
 const RatingModal: FC = () => {
   const [active, setActive] = useState();
   const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { t, i18n } = useTranslation();
-  const { showRating } = useSelector(selectModal);
-  const dispatch = useDispatch();
+  const { showRating } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShowRating(false));
     setActive(undefined);

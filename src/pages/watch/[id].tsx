@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 
 const Movie = () => {
   const { t, i18n } = useTranslation();
-  console.log(useTranslation());
   const router = useRouter();
   const movie = moviesData.find((m: IMovie) => +router.query.id == m.id);
   if (!movie) return <NotFoundPage />;

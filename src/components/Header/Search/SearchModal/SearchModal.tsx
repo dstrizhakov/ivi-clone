@@ -5,19 +5,20 @@ import { IoSearchOutline } from 'react-icons/io5';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectModal, setShowSearch } from '@/store/reducers/modals.slice';
+import { usePreventScroll } from '@/hooks/usePreventScroll';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
 const SearchModal: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
   const { t } = useTranslation();
-  const { showSearch } = useSelector(selectModal);
-  const dispatch = useDispatch();
+  const { showSearch } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
 
   const clearQuery = (): void => {
     setQuery('');
   };
-
+  usePreventScroll(showSearch);
   return (
     <>
       <FullScreenModal isOpen={showSearch} closeModal={() => dispatch(setShowSearch(false))}>

@@ -1,4 +1,3 @@
-import { iMovieCard } from '@/components/Person/MoviesList/MovieCard/MovieCard.props';
 export interface ILink {
   title: string;
   link: string;
@@ -9,7 +8,7 @@ export interface IPerson {
   name: string;
   enName: string;
   description: string;
-  films: IMovie[];
+  films: any; //todo: change to IMovie
 }
 export interface IMovie {
   id: number;

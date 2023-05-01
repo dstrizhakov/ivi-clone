@@ -9,14 +9,14 @@ import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
-import { setIsLogin } from '@/store/reducers/app.slice';
 import { useTranslation } from 'react-i18next';
+import { setShowAuth } from '@/store/reducers/modals.slice';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const login = () => {
-    dispatch(setIsLogin(true));
+    dispatch(setShowAuth(true));
   };
 
   return (

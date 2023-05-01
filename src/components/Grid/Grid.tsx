@@ -21,13 +21,13 @@ const Grid: FC<iGrid> = ({ array }) => {
     <>
       <div className={styles.grid}>
         <div className={styles.grid__container}>
-          <div className={styles.grid__list}>
+          <ul className={styles.grid__list}>
             {[...array].slice(0, limit).map((card) => (
               <li className={styles.grid_item} key={card.id}>
                 <Card card={card} star book find block />
               </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
       {!extended && array.length > limit && (

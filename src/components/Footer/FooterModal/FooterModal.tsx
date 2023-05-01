@@ -2,7 +2,6 @@ import { FC } from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
 import styles from './FooterModal.module.scss';
-import { FooterModalProps } from './FooterModal.props';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import ModalList from './ModalList/ModalList';
@@ -18,13 +17,19 @@ import { BiDevices, BiInfoCircle, BiMessageAlt } from 'react-icons/bi';
 import { HiPhone } from 'react-icons/hi2';
 import { useTranslation } from 'react-i18next';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
+import { selectModal, setShowFooterModal } from '@/store/reducers/modals.slice';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
-const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
+const FooterModal: FC = () => {
   const { t } = useTranslation();
-  usePreventScroll(isOpen);
+  const { showFooterModal } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
+  usePreventScroll(showFooterModal);
+  useEscapeKey(() => dispatch(setShowFooterModal(false)));
   return (
     <>
-      {isOpen && (
+      {showFooterModal && (
         <div className={styles.modal}>
           <div className={cn(styles.menuItem, styles.buttons)}>
             <Button size="L" className={cn(styles.buttonSubscribe, styles.button)}>

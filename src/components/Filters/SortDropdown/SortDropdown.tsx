@@ -24,14 +24,6 @@ const SortDropdown = () => {
   const ref = useRef(null);
   useOutsideClick(() => setSortDrop(() => false), ref);
 
-  const handler = (i) => {
-    if (current == i) {
-      setCurrent(sorts.find((item) => item.id == 0));
-    } else {
-      setCurrent(() => i);
-    }
-  };
-
   return (
     <div className={styles.drop} ref={ref}>
       <Button appearance={'transparent'} onClick={() => setSortDrop(!sortDrop)}>
@@ -49,7 +41,7 @@ const SortDropdown = () => {
           <button
             className={`${styles.dropdown__item} ${i.id == current.id ? styles.active : ''}`}
             key={i.id}
-            onClick={() => handler(i)}
+            onClick={() => setCurrent(() => i)}
           >
             <div className={i.id == current.id ? styles.stripe : ''} />
             <div className={styles.dropdown__item__itemText} key={i.id}>

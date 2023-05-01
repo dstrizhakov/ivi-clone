@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
 import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
-import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
 import Alerts from '@/components/Header/Alerts/Alerts';
 import User from '@/components/Header/User/User';
 import Submenu from '@/components/Header/Submenu/Submenu';
@@ -19,7 +18,6 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
 const Header: FC = (): JSX.Element => {
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const { t } = useTranslation();
   useEffect(() => {
     const language = localStorage.getItem('language') || 'ru';
@@ -32,7 +30,6 @@ const Header: FC = (): JSX.Element => {
   };
   return (
     <>
-      <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
       <header className="header">
         <div className="container">
           <div className={styles.row}>

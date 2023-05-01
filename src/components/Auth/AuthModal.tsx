@@ -3,15 +3,20 @@ import styles from './AuthModal.module.scss';
 import { CgClose } from 'react-icons/cg';
 import { BiUser } from 'react-icons/bi';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
-import { AuthModalProps } from './AuthModal.props';
 import { P } from '../P/P';
 import BarGraph from '@/components/BarGraph/BarGraph';
+import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
-const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
+const AuthModal: FC = (): JSX.Element => {
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
-
+  const { showAuth } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
+  const close = () => {
+    dispatch(setShowAuth(false));
+  };
   const nextStep = () => {
     setProgress(5);
     switch (step) {
@@ -36,7 +41,7 @@ const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
 
   return (
     <>
-      <FullScreenModal isOpen={isOpen} closeModal={close}>
+      <FullScreenModal isOpen={showAuth} closeModal={close}>
         <div className={styles.chat}>
           <div className={styles.chat__header}>
             <h5 className={styles.chat__title}>Вход или регистрация</h5>

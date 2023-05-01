@@ -9,12 +9,21 @@ import RateButton from '@/components/Card/CardButtons/RateButton';
 import FindSimilarButton from '@/components/Card/CardButtons/FindSimilarButton';
 import BlockButton from '@/components/Card/CardButtons/BlockButton';
 import styles from './Card.module.scss';
+import { useInView } from 'react-intersection-observer';
 
 const Card: FC<CardProps> = ({ card, hover = true, star, book, find, block, ...props }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.05,
+    triggerOnce: true,
+  });
   return (
     <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
-      <div className={`${styles.imageSection} ${hover && styles.hover}`}>
-        <img src={card.card_image} alt={card.name} />
+      <div ref={ref} className={`${styles.imageSection} ${hover && styles.hover}`}>
+        {inView ? (
+          <img src={card.card_image} alt={card.name} />
+        ) : (
+          <div className={styles.placeholder} />
+        )}
         <div className={styles.props}>
           <div className={styles.btns__container}>
             <div className={styles.btns}>
@@ -51,7 +60,11 @@ const Card: FC<CardProps> = ({ card, hover = true, star, book, find, block, ...p
         className={styles.textSection}
         title={i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}
       >
-        <P>{i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}</P>
+        {inView ? (
+          <P>{i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}</P>
+        ) : (
+          <div className={styles.placeholder} />
+        )}
       </div>
     </Link>
   );

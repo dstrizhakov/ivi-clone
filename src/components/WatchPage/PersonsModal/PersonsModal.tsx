@@ -9,21 +9,21 @@ import { Button } from '@/components/Button/Button';
 import { HiChevronLeft } from 'react-icons/hi';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
 import BarGraph from '@/components/BarGraph/BarGraph';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectModal, setShowPersonsModal } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import i18next from 'i18next';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
 export const PersonsModal: FC = () => {
-  const dispatch = useDispatch();
-  const { personModalItem, showPersonsModal } = useSelector(selectModal);
-  const { name, enName, persons } = personModalItem;
+  const dispatch = useAppDispatch();
+  const { personModalItem, showPersonsModal } = useAppSelector(selectModal);
+  const { name, enName, persons, card_image } = personModalItem;
   const { t } = useTranslation();
+  usePreventScroll(showPersonsModal);
   const close = () => {
     dispatch(setShowPersonsModal(false));
   };
-  usePreventScroll(showPersonsModal);
   useEscapeKey(close);
   return (
     <div className={cn(styles.modal, showPersonsModal ? styles.modal__open : '')}>
@@ -55,13 +55,13 @@ export const PersonsModal: FC = () => {
             <div className={styles.cards}>
               {persons.map((p) => {
                 return (
-                  <Link href={`/person/${name}`} key={p.enName} className={styles.link}>
+                  <Link href={`/person/${name}`} key={Math.random() * p.id} className={styles.link}>
                     <div className={styles.card}>
                       <img src={p.url} alt="" />
                     </div>
                     <div>
                       {(i18next.language == 'en' ? p.enName : p.name).split(' ').map((n) => (
-                        <p key={p.enName} className={styles.name}>
+                        <p key={Math.random() * p.id} className={styles.name}>
                           {n}
                         </p>
                       ))}
@@ -86,7 +86,7 @@ export const PersonsModal: FC = () => {
           <img
             onClick={() => close()}
             className={styles.movie__img}
-            src="https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
+            src={card_image} //"https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
             alt=""
           />
 

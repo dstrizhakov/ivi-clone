@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Htag } from '../Htag/Htag';
 import { P } from '../P/P';
 import Player from '../Player/Player';
@@ -9,12 +9,16 @@ import { WatchPageProps } from './WatchPage.props';
 import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
 import i18next from 'i18next';
-import { PersonsModal } from '@/components/WatchPage/PersonsModal/PersonsModal';
+import { setPersonItems } from '@/store/reducers/modals.slice';
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const item = moviesData.find((m: IMovie) => id == m.id);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setPersonItems(item));
+  }, []);
 
   const {
     name,
@@ -34,7 +38,6 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
 
   return (
     <>
-      <PersonsModal />
       <div className={styles.bg_color}>
         <div
           className={styles.bg_container}

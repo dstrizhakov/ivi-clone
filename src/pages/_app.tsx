@@ -45,8 +45,8 @@ function App({ Component, pageProps }: AppProps) {
       <div className={iviSans.className}>
         <MainLayout>
           <Component {...pageProps} />
-          <Modals />
         </MainLayout>
+        <Modals />
       </div>
     </>
   );

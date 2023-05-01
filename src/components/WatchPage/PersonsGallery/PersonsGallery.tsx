@@ -15,9 +15,12 @@ import { useDispatch } from 'react-redux';
 export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const open = () => {
+    dispatch(setShowPersonsModal(true));
+  };
   return (
     <div className={styles.wrap}>
-      <div className={styles.title} onClick={() => dispatch(setShowPersonsModal(true))}>
+      <div className={styles.title} onClick={() => open()}>
         <Htag tag={'h4'}>
           {i18next.language == 'en' ? 'Actors and creators' : 'Актёры и создатели'}
         </Htag>
@@ -28,7 +31,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
             return (
               <Link
                 href={`/person/${nameToLink(person.enName)}`}
-                key={person.enName}
+                key={person.id}
                 className={styles.link}
               >
                 <div className={styles.card}>
@@ -46,10 +49,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
             );
           })}
         </div>
-        <div
-          className={cn(styles.card, styles.card__text)}
-          onClick={() => dispatch(setShowPersonsModal(true))}
-        >
+        <div className={cn(styles.card, styles.card__text)} onClick={() => open()}>
           {t('buttons.more')}
         </div>
       </div>
