@@ -7,8 +7,10 @@ import { P } from '../P/P';
 import BarGraph from '@/components/BarGraph/BarGraph';
 import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useTranslation } from 'react-i18next';
 
 const AuthModal: FC = (): JSX.Element => {
+  const { t } = useTranslation();
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
@@ -44,7 +46,7 @@ const AuthModal: FC = (): JSX.Element => {
       <FullScreenModal isOpen={showAuth} closeModal={close}>
         <div className={styles.chat}>
           <div className={styles.chat__header}>
-            <h5 className={styles.chat__title}>Вход или регистрация</h5>
+            <h5 className={styles.chat__title}>{t('buttons.login-signup')}</h5>
             <div className={styles.chat__close}>
               <CgClose onClick={close} />
             </div>
@@ -55,8 +57,8 @@ const AuthModal: FC = (): JSX.Element => {
           <div className={styles.chat__body}>
             {step >= 1 && (
               <div className={styles.chat__message}>
-                <h5>Войдите или зарегистрируйтесь</h5>
-                <P>чтобы пользоваться сервисом на любом устройстве</P>
+                <h5>{t('buttons.login-signup-person')}</h5>
+                <P>{t('descriptions.any-device')}</P>
               </div>
             )}
             <div className={styles.input}>
@@ -67,23 +69,23 @@ const AuthModal: FC = (): JSX.Element => {
                 onChange={(e) => setLogin(e.target.value)}
                 className={!!login ? styles.input__active : ''}
               />
-              <label>Через email или телефон</label>
+              <label>{t('buttons.email-or-phone')}</label>
             </div>
             <button disabled={!login} className={styles.button} onClick={nextStep}>
-              Продолжить
+              {t('buttons.continue')}
             </button>
             <div className={styles.chat__confidential}>
-              <p>Нажимая «Продолжить», я соглашаюсь</p>
+              <p>{t('descriptions.agree-on-click')}</p>
               <p>
-                c{' '}
+                {t('descriptions.with')}{' '}
                 <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
-                  Политикой конфиденциальности
+                  {t('descriptions.privacy')}
                 </a>
               </p>
               <p>
-                и{' '}
+                {t('descriptions.and')}{' '}
                 <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
-                  Пользовательским соглашением
+                  {t('descriptions.agreement')}
                 </a>
               </p>
             </div>

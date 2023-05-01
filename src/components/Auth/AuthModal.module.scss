@@ -63,6 +63,7 @@
   }
 
   &__message {
+    min-width: rem(320);
     max-height: rem(700);
     border-radius: rem(16) rem(16) rem(16) 0;
     background-color: #312b45;
