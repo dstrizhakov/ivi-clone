@@ -15,13 +15,13 @@ const ChooseDropdown = ({ state, plank, chosen, change }) => {
               ?.category.map((i) => (
                 <li
                   key={i.id}
-                  className={`${
+                  className={
                     chosen
                       ?.find((item) => item.plankID === plank?.id)
                       ?.category.find((item) => item.id == i.id)
                       ? styles.checked
                       : ''
-                  }`}
+                  }
                 >
                   <label>
                     <input type="checkbox" value={i.title} onChange={() => change(i)} />

@@ -33,14 +33,14 @@ const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }) => {
                 ...ch
                   ?.find((item) => item.plankID === plank.id)
                   ?.category.filter((item) => item.id !== i.id),
-              ]
+              ].sort((a, b) => a.id - b.id)
             : [
                 ...(ch?.find((item) => item.plankID == plank.id)?.category || []),
                 {
                   id: i.id,
                   title: i.title,
                 },
-              ],
+              ].sort((a, b) => a.id - b.id),
         },
       ].sort((a, b) => a.plankID - b.plankID)
     );

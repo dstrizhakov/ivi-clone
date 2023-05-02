@@ -4,7 +4,6 @@ import { TiUserOutline } from 'react-icons/ti';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import { useAppDispatch } from '@/hooks/redux';
-import { setIsLogin } from '@/store/reducers/app.slice';
 import { useTranslation } from 'react-i18next';
 import SubscriptionsButton from '@/components/Profile/MainBtns/ProfileBtns/SubscriptionsButton';
 import CertificatesButton from '@/components/Profile/MainBtns/ProfileBtns/CertificatesButton';
@@ -20,12 +19,13 @@ import SettingsButton from '@/components/Profile/MainBtns/ProfileBtns/SettingsBu
 import SupportButton from '@/components/Profile/MainBtns/ProfileBtns/SupportButton';
 import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButton';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { setShowAuth } from '@/store/reducers/modals.slice';
 
 const MainBtns = ({ ...props }) => {
   const dispatch = useAppDispatch();
 
   const openLoginModal = () => {
-    dispatch(setIsLogin(true));
+    dispatch(setShowAuth(true));
   };
 
   const { t } = useTranslation();
