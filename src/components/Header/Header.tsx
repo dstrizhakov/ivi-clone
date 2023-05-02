@@ -29,97 +29,95 @@ const Header: FC = (): JSX.Element => {
     localStorage.setItem('language', language);
   };
   return (
-    <>
-      <header className="header">
-        <div className="container">
-          <div className={styles.row}>
-            <div className={styles.body}>
-              <div className={styles.logo}>
-                <Link href="/">
-                  <Image src={logo} alt="logo" width={66} height={48} />
-                </Link>
-              </div>
-              <nav className={styles.menu}>
-                <ul className={styles.menu__list}>
-                  <li className={styles.menu__item}>
-                    <Link href="/" className={styles.menu__link}>
-                      {t('sections.my-ivi')}
-                    </Link>
-                  </li>
-                  <li className={styles.menu__item}>
-                    <Link href="https://www.ivi.tv/new" className={styles.menu__link}>
-                      {t('sections.whats-new')}
-                    </Link>
-                  </li>
-                  <li className={styles.menu__item}>
-                    <Submenu title={t('sections.movies')} link="/movies">
-                      <Categories
-                        genres={movieCategories.genres}
-                        countries={movieCategories.countries}
-                        years={movieCategories.years}
-                        collections={movieCategories.collections}
-                      />
-                    </Submenu>
-                  </li>
-                  <li className={styles.menu__item}>
-                    <Submenu title={t('sections.series')} link="/series">
-                      <Categories
-                        genres={seriesCategories.genres}
-                        countries={seriesCategories.countries}
-                        years={seriesCategories.years}
-                        collections={seriesCategories.collections}
-                      />
-                    </Submenu>
-                  </li>
-                  <li className={styles.menu__item}>
-                    <Submenu title={t('sections.animation')} link="/animation">
-                      <Categories
-                        genres={cartoonCategories.genres}
-                        countries={cartoonCategories.countries}
-                        years={cartoonCategories.years}
-                        collections={cartoonCategories.collections}
-                      />
-                    </Submenu>
-                  </li>
-                  <li>
-                    <div style={{ display: 'flex', margin: '0 10px 0 110px' }}>
-                      <Button
-                        size={'S'}
-                        onClick={(e) => changeLanguage(e, 'ru')}
-                        appearance={i18next.language == 'ru' ? 'red' : 'rectangle'}
-                      >
-                        RU
-                      </Button>
-                      <Button
-                        size={'S'}
-                        onClick={(e) => changeLanguage(e, 'en')}
-                        appearance={i18next.language == 'en' ? 'red' : 'rectangle'}
-                      >
-                        EN
-                      </Button>
-                    </div>
-                  </li>
-                </ul>
-              </nav>
-              <div className={styles.zindex}>
-                <Button size="S" appearance="red">
-                  {t('header.watch-free')}
-                </Button>
-              </div>
-              <SearchButton />
+    <header className="header">
+      <div className="container">
+        <div className={styles.row}>
+          <div className={styles.body}>
+            <div className={styles.logo}>
+              <Link href="/">
+                <Image src={logo} alt="logo" width={66} height={48} />
+              </Link>
             </div>
-            <div className={styles.actions}>
-              <Submenu icon={MdNotificationsNone} link={'/notifications'}>
-                <Alerts />
-              </Submenu>
-              <Submenu icon={BiUser} link={'/profile'} outline>
-                <User />
-              </Submenu>
+            <nav className={styles.menu}>
+              <ul className={styles.menu__list}>
+                <li className={styles.menu__item}>
+                  <Link href="/" className={styles.menu__link}>
+                    {t('sections.my-ivi')}
+                  </Link>
+                </li>
+                <li className={styles.menu__item}>
+                  <Link href="https://www.ivi.tv/new" className={styles.menu__link}>
+                    {t('sections.whats-new')}
+                  </Link>
+                </li>
+                <li className={styles.menu__item}>
+                  <Submenu title={t('sections.movies')} link="/movies">
+                    <Categories
+                      genres={movieCategories.genres}
+                      countries={movieCategories.countries}
+                      years={movieCategories.years}
+                      collections={movieCategories.collections}
+                    />
+                  </Submenu>
+                </li>
+                <li className={styles.menu__item}>
+                  <Submenu title={t('sections.series')} link="/series">
+                    <Categories
+                      genres={seriesCategories.genres}
+                      countries={seriesCategories.countries}
+                      years={seriesCategories.years}
+                      collections={seriesCategories.collections}
+                    />
+                  </Submenu>
+                </li>
+                <li className={styles.menu__item}>
+                  <Submenu title={t('sections.animation')} link="/animation">
+                    <Categories
+                      genres={cartoonCategories.genres}
+                      countries={cartoonCategories.countries}
+                      years={cartoonCategories.years}
+                      collections={cartoonCategories.collections}
+                    />
+                  </Submenu>
+                </li>
+                <li>
+                  <div style={{ display: 'flex', margin: '0 10px 0 110px' }}>
+                    <Button
+                      size={'S'}
+                      onClick={(e) => changeLanguage(e, 'ru')}
+                      appearance={i18next.language == 'ru' ? 'red' : 'rectangle'}
+                    >
+                      RU
+                    </Button>
+                    <Button
+                      size={'S'}
+                      onClick={(e) => changeLanguage(e, 'en')}
+                      appearance={i18next.language == 'en' ? 'red' : 'rectangle'}
+                    >
+                      EN
+                    </Button>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div className={styles.zindex}>
+              <Button size="S" appearance="red">
+                {t('header.watch-free')}
+              </Button>
             </div>
+            <SearchButton />
+          </div>
+          <div className={styles.actions}>
+            <Submenu icon={MdNotificationsNone} link={'/notifications'}>
+              <Alerts />
+            </Submenu>
+            <Submenu icon={BiUser} link={'/profile'} outline>
+              <User />
+            </Submenu>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };
 
