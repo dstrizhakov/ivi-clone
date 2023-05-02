@@ -15,7 +15,7 @@ const SearchDropdown = ({ state, chosen, plank, change }) => {
     if (!val) return [...array].splice(0, 10);
     return array.filter((s) => {
       const regex = new RegExp(val + '[A-Za-z0-9]*', 'gi');
-      return s.title.match(regex)?.splice(0, 10);
+      return s.title.match(regex)?.splice(0, 15);
     });
   };
   return (
