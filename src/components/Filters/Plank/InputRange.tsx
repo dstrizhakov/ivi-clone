@@ -15,6 +15,8 @@ const InputRange: FC<iRange> = ({ onChange, minLimit, maxLimit, range, children 
   const handler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.valueAsNumber < minLimit) {
       setInputValue(minLimit);
+    } else if (e.target.valueAsNumber + range > maxLimit) {
+      setInputValue(maxLimit);
     } else {
       setInputValue(e.target.valueAsNumber);
     }

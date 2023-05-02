@@ -7,13 +7,13 @@ import AuthModal from '@/components/Auth/AuthModal';
 
 const Modals = () => {
   return (
-    <div className={'modal'}>
+    <>
       <AuthModal />
       <RatingModal />
       <SearchModal />
       <PersonsModal />
       <FooterModal />
-    </div>
+    </>
   );
 };
 

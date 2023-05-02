@@ -41,9 +41,9 @@ export const categories = [
   {
     plankID: 3,
     category: [
-      { id: 1, title: 'Актер1' },
-      { id: 2, title: 'Актер2' },
-      { id: 3, title: 'Актер3' },
+      { id: 1, title: 'Актер11' },
+      { id: 2, title: 'Актер221' },
+      { id: 3, title: 'Актер321' },
       { id: 4, title: 'Актер4' },
       { id: 5, title: 'Актер5' },
       { id: 6, title: 'Актер6' },
