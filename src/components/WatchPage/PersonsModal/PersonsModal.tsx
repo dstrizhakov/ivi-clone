@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import i18next from 'i18next';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { nameToLink } from '@/helpers/nameToLink';
 
 export const PersonsModal: FC = () => {
   const dispatch = useAppDispatch();
@@ -54,11 +55,11 @@ export const PersonsModal: FC = () => {
 
               <TabPanel className={styles.tabs__content}>
                 <Htag tag="h3">{t('categories.actors')}</Htag>
-                <div className={styles.cards}>
+                <div className={styles.cards} onClick={() => close()}>
                   {persons.map((p) => {
                     return (
                       <Link
-                        href={`/person/${name}`}
+                        href={`/person/${nameToLink(p.enName)}`}
                         key={Math.random() * p.id}
                         className={styles.link}
                       >

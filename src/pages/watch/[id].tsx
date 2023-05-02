@@ -1,6 +1,5 @@
 import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
-import { useRouter } from 'next/router';
 import React from 'react';
 import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
@@ -8,10 +7,8 @@ import WatchPage from '@/components/WatchPage/WatchPage';
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
 
-const Movie = () => {
+const Movie = ({ movie }) => {
   const { t, i18n } = useTranslation();
-  const router = useRouter();
-  const movie = moviesData.find((m: IMovie) => +router.query.id == m.id);
   if (!movie) return <NotFoundPage />;
 
   const breadcrumbs = [
@@ -33,3 +30,12 @@ const Movie = () => {
 };
 
 export default Movie;
+
+export async function getServerSideProps(context) {
+  const movie = moviesData.find((m: IMovie) => context.params.id == m.id);
+  return {
+    props: {
+      movie: movie,
+    },
+  };
+}
