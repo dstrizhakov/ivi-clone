@@ -3,6 +3,9 @@
 .find {
   background-color: $color-card-hover;
   width: 180%;
+  @media screen and (max-width: 879px){
+    width: 100%;
+  }
   input {
     width: 100%;
     background-color: rgb(42, 33, 63);
@@ -48,6 +51,8 @@
     }
     @media screen and (max-width: 1120px){
       grid-template-columns: repeat(2,1fr);
+      grid-column-gap: 10px;
+
     }
     li {
       list-style: none;
@@ -55,10 +60,14 @@
       label {
         position: relative;
         display: block;
+
       }
       .input_text {
         cursor: pointer;
         color: rgba(217,215,224,.8);
+        max-width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       input {
         display: none;
