@@ -9,7 +9,7 @@ import i18next from 'i18next';
 import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
 import { moviesData } from '@/mock/moviesData';
-import Info from '@/components/WatchPage/Info/Info';
+import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -35,7 +35,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
             <div className={styles.watch__player}>
               <Player url={trailer} />
             </div>
-            <Info movie={movie} />
+            <MovieInfo movie={movie} />
           </div>
         </div>
         <Carousel

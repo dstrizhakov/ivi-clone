@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { FC } from "react";
 import styles from '@/components/WatchPage/WatchPage.module.scss';
 import { Htag } from '@/components/Htag/Htag';
 import i18next from 'i18next';
 import { P } from '@/components/P/P';
 import { PersonList } from '@/components/WatchPage/PersonList/PersonList';
+import { IMovie } from '@/types/types';
 
-const Info = ({ movie }) => {
+interface iInfo {
+  movie: IMovie;
+}
+
+const MovieInfo: FC<iInfo> = ({ movie }) => {
   const {
     name,
     enName,
@@ -46,4 +51,4 @@ const Info = ({ movie }) => {
   );
 };
 
-export default Info;
+export default MovieInfo;
