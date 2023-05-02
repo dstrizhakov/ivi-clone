@@ -4,6 +4,7 @@ import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import ChooseDropdown from '@/components/Filters/Dropdown/ChooseDropdown';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import SearchDropdown from '@/components/Filters/Dropdown/SearchDropdown';
+import { persons } from "@/mock/persons";
 export enum Planks {
   choose = 'choose',
   find = 'find',
@@ -18,7 +19,6 @@ interface iPlank {
 const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }) => {
   const [dropDownOpen, setDropDownOpen] = useState<boolean>();
   const ref = useRef(null);
-  console.log(plank);
   useOutsideClick(() => setDropDownOpen(() => false), ref);
   const changePressed = (i) => {
     setChosen((ch) =>
@@ -48,19 +48,9 @@ const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }) => {
   return (
     <span ref={ref}>
       {type == Planks.choose ? (
-        <ChooseDropdown
-          state={dropDownOpen}
-          chosen={chosen}
-          setChosen={setChosen}
-          change={() => changePressed}
-        />
+        <ChooseDropdown state={dropDownOpen} chosen={chosen} plank={plank} change={changePressed} />
       ) : (
-        <SearchDropdown
-          state={dropDownOpen}
-          chosen={chosen}
-          setChosen={setChosen}
-          change={() => changePressed}
-        />
+        <SearchDropdown state={dropDownOpen} chosen={chosen} plank={plank} change={changePressed} />
       )}
       <button
         className={`${styles.plank} ${dropDownOpen && styles.active}`}

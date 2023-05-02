@@ -42,11 +42,11 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title={t('buttons.payment')} link="/purchases" />
         </div>
         <div className={styles.content__auth}>
-          <Link href={'/profile'}>
-            <Button size="L" appearance="red" onClick={() => login()}>
-              <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
-            </Button>
-          </Link>
+          {/*<Link href={'/profile'}>*/}
+          <Button size="L" appearance="red" onClick={() => login()}>
+            <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
+          </Button>
+          {/*</Link>*/}
           <div className={styles.content__links}>
             <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
             <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
