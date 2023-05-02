@@ -4,6 +4,11 @@
   overflow: visible;
   margin-top: 0;
   position: relative;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  button {
+    white-space: nowrap;
+  }
 }
 
 .drop_container {
@@ -18,9 +23,14 @@
   background-color: #1f1b2e;
   box-shadow: 0 20px 40px rgba(7,5,14,.4);
   overflow: hidden;
+  @media screen and (max-width: 600px) {
+    left: 0;
+    right: 0;
+  }
   &.opened {
     opacity: 1;
     pointer-events: auto;
+
   }
 }
 
@@ -90,8 +100,8 @@
 .filters__icon {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
   justify-content: center;
+  align-items: center;
   .icon {
     transform: scale(-1, 1);
     margin-right: 5px;

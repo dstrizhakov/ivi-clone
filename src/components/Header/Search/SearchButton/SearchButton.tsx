@@ -9,12 +9,10 @@ const SearchButton: FC = (): JSX.Element => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   return (
-    <>
-      <div className={styles.search} onClick={() => dispatch(setShowSearch(true))}>
-        <FaSearch className={styles.icon} />
-        <span>{t('sections.search')}</span>
-      </div>
-    </>
+    <div className={styles.search} onClick={() => dispatch(setShowSearch(true))}>
+      <FaSearch className={styles.icon} />
+      <span>{t('sections.search')}</span>
+    </div>
   );
 };
 

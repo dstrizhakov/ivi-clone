@@ -24,7 +24,7 @@ const SortDropdown = () => {
     { id: 6, title: t('sections.by-rating-desc') },
     { id: 0, title: t('sections.by-default') },
   ];
-  const [current, setCurrent] = useState(sorts.find((item) => item.id == 0).id);
+  const [current, setCurrent] = useState(0);
 
   const handler = (i) => {
     if (current === i.id) {
@@ -41,7 +41,7 @@ const SortDropdown = () => {
           <div className={styles.icon}>
             <MdOutlineSort />
           </div>
-          {sorts[current].title}
+          {sorts.find((item) => item.id === current).title}
           {!sortDrop ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowUp />}
         </div>
       </Button>

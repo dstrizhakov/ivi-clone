@@ -10,11 +10,11 @@
   "search": "Search",
   "rating": "Rating",
   "rates-amount": "Rates amount",
-  "by-amount": "By rates amount",
-  "by-name-asc": "By name А-Я",
-  "by-name-desc": "By name Я-А",
-  "by-date": "By date (new ones first)",
-  "by-rating-asc": "By rating (high first)",
-  "by-rating-desc": "By rating (low first)",
-  "by-default": "By default"
+  "by-amount": "Rates amount",
+  "by-name-asc": "Name А-Я",
+  "by-name-desc": "Name Я-А",
+  "by-date": "Date",
+  "by-rating-asc": "Rating ˅",
+  "by-rating-desc": "Rating ˄",
+  "by-default": "Default"
 }

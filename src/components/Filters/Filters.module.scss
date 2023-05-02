@@ -3,6 +3,10 @@
 .openers {
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
   .filters__icon {
     display: flex;
     margin: 0 10px;
