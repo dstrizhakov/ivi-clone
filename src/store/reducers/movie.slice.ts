@@ -2,6 +2,7 @@ import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
+import { RootState } from "@/store/store";
 
 export interface IMovieListType {
   movies: IMovie[];
@@ -36,4 +37,5 @@ export const moviesSlice = createSlice({
 });
 
 export const { setMovies } = moviesSlice.actions;
+export const selectMovies = (state: RootState) => state.movieReducer;
 export default moviesSlice.reducer;

@@ -9,13 +9,14 @@ import { WatchPageProps } from './WatchPage.props';
 import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
-import { useDispatch, useSelector } from 'react-redux';
 import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
 import i18next from 'i18next';
 import { setPersonItems } from '@/store/reducers/modals.slice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { selectMovies } from '@/store/reducers/movie.slice';
 const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const item = moviesData.find((m: IMovie) => id == m.id);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setPersonItems(item));
   }, [item]);
@@ -34,7 +35,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
     persons,
   } = item;
   const color = '106, 80, 47'; //
-  const { movies } = useSelector((state) => state.movieReducer);
+  const { movies } = useAppSelector(selectMovies);
 
   return (
     <>
