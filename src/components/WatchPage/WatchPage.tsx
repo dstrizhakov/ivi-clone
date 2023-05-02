@@ -18,7 +18,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setPersonItems(item));
-  }, []);
+  }, [item]);
 
   const {
     name,
