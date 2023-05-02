@@ -1,8 +1,8 @@
 export const planks = [
   { id: 1, title: 'Жанры' },
-  { id: 2, title: 'Поджанры' },
-  { id: 3, title: 'Страны' },
-  { id: 4, title: 'Годы' },
+  { id: 2, title: 'Режиссеры' },
+  { id: 3, title: 'Актеры' },
+  { id: 4, title: 'Страны' },
 ];
 
 export const sausages = [
@@ -29,41 +29,35 @@ export const categories = [
   {
     plankID: 2,
     category: [
-      { categoryID: 1, id: 1, title: 'Артхаус' },
-      { categoryID: 1, id: 2, title: 'Вестерн' },
-      { categoryID: 1, id: 3, title: 'Драмы' },
-      { categoryID: 1, id: 4, title: 'Комедии' },
-      { categoryID: 1, id: 5, title: 'Катастрофы' },
-      { categoryID: 2, id: 1, title: 'Артхаус' },
-      { categoryID: 2, id: 2, title: 'Вестерн' },
-      { categoryID: 2, id: 3, title: 'Драмы' },
-      { categoryID: 2, id: 4, title: 'Комедии' },
-      { categoryID: 2, id: 5, title: 'Катастрофы' },
-      { categoryID: 3, id: 1, title: 'Артхаус' },
-      { categoryID: 3, id: 2, title: 'Вестерн' },
-      { categoryID: 3, id: 3, title: 'Драмы' },
-      { categoryID: 3, id: 4, title: 'Комедии' },
-      { categoryID: 3, id: 5, title: 'Катастрофы' },
+      { id: 1, title: 'Режиссер1' },
+      { id: 2, title: 'Режиссер2' },
+      { id: 3, title: 'Режиссер3' },
+      { id: 4, title: 'Режиссер4' },
+      { id: 5, title: 'Режиссер5' },
+      { id: 6, title: 'Режиссер6' },
+      { id: 7, title: 'Режиссер7' },
     ],
   },
   {
     plankID: 3,
+    category: [
+      { id: 1, title: 'Актер1' },
+      { id: 2, title: 'Актер2' },
+      { id: 3, title: 'Актер3' },
+      { id: 4, title: 'Актер4' },
+      { id: 5, title: 'Актер5' },
+      { id: 6, title: 'Актер6' },
+      { id: 7, title: 'Актер7' },
+    ],
+  },
+  {
+    plankID: 4,
     category: [
       { id: 1, title: 'Австралия' },
       { id: 2, title: 'Беларусь' },
       { id: 3, title: 'Великобритания' },
       { id: 4, title: 'Гонконг' },
       { id: 5, title: 'Ирландия' },
-    ],
-  },
-  {
-    plankID: 4,
-    category: [
-      { id: 1, title: '2023' },
-      { id: 2, title: '2022' },
-      { id: 3, title: '2021' },
-      { id: 4, title: '2020' },
-      { id: 5, title: '2019' },
     ],
   },
 ];

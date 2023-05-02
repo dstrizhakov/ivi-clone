@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Filters.module.scss';
-import Plank from '@/components/Filters/Plank/Plank';
-import Sausage from '@/components/Filters/Sausage/Sausage';
-import { Button } from '@/components/Button/Button';
-import { RxCross2 } from 'react-icons/rx';
-import { planks, sausages } from '@/mock/filters';
-import { useTranslation } from 'react-i18next';
-import InputRange from '@/components/Filters/InputRange';
-import { GoSettings } from 'react-icons/go';
-import SortDropdown from '@/components/Filters/SortDropdown/SortDropdown';
+import React, { useEffect, useState } from "react";
+import styles from "./Filters.module.scss";
+import Plank, { Planks } from "@/components/Filters/Plank/Plank";
+import { Button } from "@/components/Button/Button";
+import { RxCross2 } from "react-icons/rx";
+import { planks } from "@/mock/filters";
+import { useTranslation } from "react-i18next";
+import InputRange from "@/components/Filters/Plank/InputRange";
+import { GoSettings } from "react-icons/go";
+import SortDropdown from "@/components/Filters/SortDropdown/SortDropdown";
 
 const Filters = () => {
   const [opened, setOpened] = useState(false);
@@ -45,21 +44,28 @@ const Filters = () => {
       {opened && (
         <div className={styles.filters}>
           <div className={styles.plank_list}>
-            {planks.map((plank) => (
-              <div className={styles.plank_item} key={plank.id}>
-                <Plank plank={plank} chosen={chosen} setChosen={setChosen} plankID={plank.id} />
-              </div>
-            ))}
             <div className={styles.plank_item}>
-              <InputRange />
+              <Plank plank={planks[0]} chosen={chosen} setChosen={setChosen} type={Planks.choose} />
             </div>
-          </div>
-          <div className={styles.sausage_list}>
-            {sausages.map((i) => (
-              <div className={styles.sausage} key={'s' + i.id}>
-                <Sausage sausage={i} set={setSausages} chosen={chosenSausages} />
-              </div>
-            ))}
+            <div className={styles.plank_item}>
+              <Plank plank={planks[1]} chosen={chosen} setChosen={setChosen} type={Planks.find} />
+            </div>
+            <div className={styles.plank_item}>
+              <Plank plank={planks[2]} chosen={chosen} setChosen={setChosen} type={Planks.find} />
+            </div>
+            <div className={styles.plank_item}>
+              <Plank plank={planks[3]} chosen={chosen} setChosen={setChosen} type={Planks.choose} />
+            </div>
+            <div className={styles.plank_item}>
+              <InputRange minLimit={6.7} maxLimit={10} range={0.1}>
+                Оценка
+              </InputRange>
+            </div>
+            <div className={styles.plank_item}>
+              <InputRange minLimit={0} maxLimit={1_000_000} range={1_000}>
+                Количество оценок
+              </InputRange>
+            </div>
           </div>
           <Button
             appearance={'transparent'}

@@ -7,5 +7,12 @@
   "tv-plus": "TV+",
   "good-movies": "Good movies",
   "catalog": "Catalog",
-  "search": "Search"
+  "search": "Search",
+  "by-amount": "By rates amount",
+  "by-name-asc": "By name А-Я",
+  "by-name-desc": "By name Я-А",
+  "by-date": "By date (new ones first)",
+  "by-rating-asc": "By rating (high first)",
+  "by-rating-desc": "By rating (low first)",
+  "by-default": "By default"
 }

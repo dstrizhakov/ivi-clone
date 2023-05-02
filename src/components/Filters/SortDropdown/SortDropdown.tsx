@@ -9,20 +9,30 @@ import { Button } from '@/components/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 
-const sorts = [
-  { id: 1, title: 'По количеству оценок' },
-  { id: 2, title: 'По дате выхода' },
-  { id: 3, title: 'По рейтингу' },
-  { id: 4, title: 'По алфавиту' },
-  { id: 0, title: 'По умолчанию' },
-];
-
 const SortDropdown = () => {
   const [sortDrop, setSortDrop] = useState(false);
-  const [current, setCurrent] = useState(sorts.find((item) => item.id == 0));
   const { t } = useTranslation();
   const ref = useRef(null);
   useOutsideClick(() => setSortDrop(() => false), ref);
+
+  const sorts = [
+    { id: 1, title: t('sections.by-amount') },
+    { id: 2, title: t('sections.by-name-asc') },
+    { id: 3, title: t('sections.by-name-desc') },
+    { id: 4, title: t('sections.by-date') },
+    { id: 5, title: t('sections.by-rating-asc') },
+    { id: 6, title: t('sections.by-rating-desc') },
+    { id: 0, title: t('sections.by-default') },
+  ];
+  const [current, setCurrent] = useState(sorts.find((item) => item.id == 0).id);
+
+  const handler = (i) => {
+    if (current === i.id) {
+      setCurrent(() => 0);
+    } else {
+      setCurrent(() => i.id);
+    }
+  };
 
   return (
     <div className={styles.drop} ref={ref}>
@@ -31,7 +41,7 @@ const SortDropdown = () => {
           <div className={styles.icon}>
             <MdOutlineSort />
           </div>
-          {current.title}
+          {sorts[current].title}
           {!sortDrop ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowUp />}
         </div>
       </Button>
@@ -39,11 +49,11 @@ const SortDropdown = () => {
         <div className={styles.dropdown__title}>{t('buttons.sort')}</div>
         {sorts.map((i) => (
           <button
-            className={`${styles.dropdown__item} ${i.id == current.id ? styles.active : ''}`}
+            className={`${styles.dropdown__item} ${i.id == current ? styles.active : ''}`}
             key={i.id}
-            onClick={() => setCurrent(() => i)}
+            onClick={() => handler(i)}
           >
-            <div className={i.id == current.id ? styles.stripe : ''} />
+            <div className={i.id == current ? styles.stripe : ''} />
             <div className={styles.dropdown__item__itemText} key={i.id}>
               {i.title}
             </div>
