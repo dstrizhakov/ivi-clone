@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { IMovie } from '@/types/types';
-import { moviesData } from '@/mock/moviesData';
 
 interface iModal {
   showAuth: boolean;
@@ -9,7 +8,7 @@ interface iModal {
   showSearch: boolean;
   showPersonsModal: boolean;
   showFooterModal: boolean;
-  personModalItem: IMovie;
+  personModalItem: IMovie | null;
 }
 
 const initialState: iModal = {
@@ -18,7 +17,7 @@ const initialState: iModal = {
   showSearch: false,
   showPersonsModal: false,
   showFooterModal: false,
-  personModalItem: moviesData[0],
+  personModalItem: null,
 };
 
 export const modalsSlice = createSlice({

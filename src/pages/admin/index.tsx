@@ -14,7 +14,8 @@ const Admin = () => {
   return (
     <>
       <Head>
-        <title>{t('title.admin')}</title>
+        {/*<title>{t('title.admin')}</title>*/}
+        <title> Панель администратора </title>
       </Head>
       <div>
         <Htag tag={'h3'}>{t('descriptions.admin')}</Htag>

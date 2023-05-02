@@ -7,24 +7,26 @@ import { Button } from '@/components/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { selectModal, setShowRating } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { usePreventScroll } from '@/hooks/usePreventScroll';
 
 const RatingModal: FC = () => {
   const [active, setActive] = useState();
   const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { showRating } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShowRating(false));
-    setActive(undefined);
+    setActive(null);
   };
   const rate = (r) => {
     setActive(() => r);
   };
   const send = () => {
     dispatch(setShowRating(false));
-    setActive(undefined);
+    setActive(null);
   };
+  usePreventScroll(showRating);
   return (
     <FullScreenModal isOpen={showRating} closeModal={() => close()}>
       <div className={styles.body}>
@@ -44,10 +46,10 @@ const RatingModal: FC = () => {
         </div>
         <div className={styles.helper}>
           <div>
-            <P>{i18n.language == 'en' ? 'very bad' : 'очень плохо'}</P>
+            <P>{t('buttons.very-bad')}</P>
           </div>
           <div>
-            <P>{i18n.language == 'en' ? 'great' : 'отлично'}</P>
+            <P>{t('buttons.great')}</P>
           </div>
         </div>
         <Button appearance={'red'} disabled={!active} onClick={() => send()}>

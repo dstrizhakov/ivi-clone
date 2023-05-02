@@ -1,41 +1,23 @@
 import React, { FC, useEffect } from 'react';
-import { Htag } from '../Htag/Htag';
-import { P } from '../P/P';
 import Player from '../Player/Player';
 import styles from './WatchPage.module.scss';
-import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
 import { WatchPageProps } from './WatchPage.props';
-import { moviesData } from '@/mock/moviesData';
-import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
 import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
 import i18next from 'i18next';
 import { setPersonItems } from '@/store/reducers/modals.slice';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { selectMovies } from '@/store/reducers/movie.slice';
-const WatchPage: FC<WatchPageProps> = ({ id }) => {
-  const item = moviesData.find((m: IMovie) => id == m.id);
+import { useAppDispatch } from '@/hooks/redux';
+import { moviesData } from '@/mock/moviesData';
+import Info from '@/components/WatchPage/Info/Info';
+const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(setPersonItems(item));
-  }, [item]);
+    dispatch(setPersonItems(movie));
+  }, [movie]);
 
-  const {
-    name,
-    enName,
-    description,
-    enDescription,
-    trailer,
-    year,
-    countries,
-    rating,
-    genres,
-    duration,
-    persons,
-  } = item;
+  const { name, enName, trailer, persons } = movie;
   const color = '106, 80, 47'; //
-  const { movies } = useAppSelector(selectMovies);
 
   return (
     <>
@@ -53,30 +35,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
             <div className={styles.watch__player}>
               <Player url={trailer} />
             </div>
-            <div className={styles.watch__info}>
-              <div className={styles.watch__title}>
-                <Htag tag="h2">
-                  {i18next.language == 'en'
-                    ? `Movie ${enName ? enName : name} watch online`
-                    : `Фильм ${name} смотреть онлайн`}
-                </Htag>
-              </div>
-              <div className={styles.watch__params}>
-                <P>
-                  {year} {duration}
-                </P>
-                <P>
-                  {countries} {genres}
-                </P>
-              </div>
-              <div className={styles.watch__rating}>
-                <PersonList list={persons} rating={rating} />
-              </div>
-              <div className={styles.watch__description}>
-                <P>{i18next.language == 'en' ? enDescription && enDescription : description}</P>
-              </div>
-              <div className={styles.watch__medallions}></div>
-            </div>
+            <Info movie={movie} />
           </div>
         </div>
         <Carousel
@@ -87,7 +46,7 @@ const WatchPage: FC<WatchPageProps> = ({ id }) => {
           }
           route={'/'}
         >
-          {movies.map((card) => (
+          {moviesData.slice(0, 15).map((card) => (
             <Card card={card} book key={card.id} />
           ))}
         </Carousel>

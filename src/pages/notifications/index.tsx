@@ -9,6 +9,7 @@ const Notifications: FC = () => {
     <>
       <Head>
         <title>{t('title.profile')}</title>
+        {/*<title> Мой профиль / ivi.ru </title>*/}
       </Head>
       <EmptyNotifications />
     </>

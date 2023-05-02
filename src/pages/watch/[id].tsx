@@ -24,7 +24,7 @@ const Movie = ({ movie }) => {
         </title>
       </Head>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <WatchPage id={movie.id} />
+      <WatchPage movie={movie} />
     </>
   );
 };

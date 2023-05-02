@@ -42,57 +42,55 @@ const AuthModal: FC = (): JSX.Element => {
   };
 
   return (
-    <>
-      <FullScreenModal isOpen={showAuth} closeModal={close}>
-        <div className={styles.chat}>
-          <div className={styles.chat__header}>
-            <h5 className={styles.chat__title}>{t('buttons.login-signup')}</h5>
-            <div className={styles.chat__close}>
-              <CgClose onClick={close} />
-            </div>
-            <div className={styles.chat__progress}>
-              <BarGraph width={progress} />
-            </div>
+    <FullScreenModal isOpen={showAuth} closeModal={close}>
+      <div className={styles.chat}>
+        <div className={styles.chat__header}>
+          <h5 className={styles.chat__title}>{t('buttons.login-signup')}</h5>
+          <div className={styles.chat__close}>
+            <CgClose onClick={close} />
           </div>
-          <div className={styles.chat__body}>
-            {step >= 1 && (
-              <div className={styles.chat__message}>
-                <h5>{t('buttons.login-signup-person')}</h5>
-                <P>{t('descriptions.any-device')}</P>
-              </div>
-            )}
-            <div className={styles.input}>
-              <BiUser className={styles.input__icon} />
-              <input
-                type="text"
-                value={login}
-                onChange={(e) => setLogin(e.target.value)}
-                className={!!login ? styles.input__active : ''}
-              />
-              <label>{t('buttons.email-or-phone')}</label>
-            </div>
-            <button disabled={!login} className={styles.button} onClick={nextStep}>
-              {t('buttons.continue')}
-            </button>
-            <div className={styles.chat__confidential}>
-              <p>{t('descriptions.agree-on-click')}</p>
-              <p>
-                {t('descriptions.with')}{' '}
-                <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
-                  {t('descriptions.privacy')}
-                </a>
-              </p>
-              <p>
-                {t('descriptions.and')}{' '}
-                <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
-                  {t('descriptions.agreement')}
-                </a>
-              </p>
-            </div>
+          <div className={styles.chat__progress}>
+            <BarGraph width={progress} />
           </div>
         </div>
-      </FullScreenModal>
-    </>
+        <div className={styles.chat__body}>
+          {step >= 1 && (
+            <div className={styles.chat__message}>
+              <h5>{t('buttons.login-signup-person')}</h5>
+              <P>{t('descriptions.any-device')}</P>
+            </div>
+          )}
+          <div className={styles.input}>
+            <BiUser className={styles.input__icon} />
+            <input
+              type="text"
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
+              className={!!login ? styles.input__active : ''}
+            />
+            <label>{t('buttons.email-or-phone')}</label>
+          </div>
+          <button disabled={!login} className={styles.button} onClick={nextStep}>
+            {t('buttons.continue')}
+          </button>
+          <div className={styles.chat__confidential}>
+            <p>{t('descriptions.agree-on-click')}</p>
+            <p>
+              {t('descriptions.with')}{' '}
+              <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
+                {t('descriptions.privacy')}
+              </a>
+            </p>
+            <p>
+              {t('descriptions.and')}{' '}
+              <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
+                {t('descriptions.agreement')}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </FullScreenModal>
   );
 };
 

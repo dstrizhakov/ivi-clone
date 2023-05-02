@@ -12,6 +12,7 @@ import PromotionButton from '@/components/Profile/MainBtns/ProfileBtns/Promotion
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
 import ActivateCertificateButton from '@/components/Profile/MainBtns/ProfileBtns/ActivateCertificateButton';
 import i18next from 'i18next';
+import Image from 'next/image';
 
 interface iMockCarousel {
   id: number;
@@ -31,11 +32,13 @@ const PromoCarouselSlide: FC<iSlide> = ({ i }) => {
   return (
     <Link href={'/movies'}>
       <div className={styles.img}>
-        <img src={i.card_image} alt={'watch more'} />
+        <Image src={i.card_image} alt={'watch more'} width={1216} height={524} quality={100} />
       </div>
       <div className={styles.items}>
         <div className={styles.content_container}>
-          <img src={i.logo} alt="logo" />
+          <div className={styles.logo}>
+            <Image src={i.logo} alt="logo" fill />
+          </div>
           <div className={styles.synopsis}>
             {i18next.language == 'ru' ? i.description : i.enDescription}
           </div>

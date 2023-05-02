@@ -36,8 +36,8 @@ export default function Home() {
 //.. тут будем проверять авторизован ли пользователь и сохранять данные о нем
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
-    console.log('CONTEXT', context);
-    console.log('STORE', store);
+    // console.log('CONTEXT', context);
+    // console.log('STORE', store);
     return { props: {} };
   }
 );

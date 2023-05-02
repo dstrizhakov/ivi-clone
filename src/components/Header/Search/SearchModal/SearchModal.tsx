@@ -14,6 +14,9 @@ const SearchModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
   const { showSearch } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
+  const close = () => {
+    dispatch(setShowSearch(false));
+  };
 
   const clearQuery = (): void => {
     setQuery('');
@@ -21,7 +24,7 @@ const SearchModal: FC = (): JSX.Element => {
   usePreventScroll(showSearch);
   return (
     <>
-      <FullScreenModal isOpen={showSearch} closeModal={() => dispatch(setShowSearch(false))}>
+      <FullScreenModal isOpen={showSearch} closeModal={() => close()}>
         <div className={styles.body}>
           <h3>{t('sections.search')}</h3>
           <div className={styles.input}>

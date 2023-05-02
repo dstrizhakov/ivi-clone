@@ -1,3 +1,5 @@
+import { IMovie } from '@/types/types';
+
 export interface WatchPageProps {
-  id: number;
+  movie: IMovie;
 }
