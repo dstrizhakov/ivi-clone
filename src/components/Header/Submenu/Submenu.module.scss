@@ -72,6 +72,7 @@
     z-index: 10;
   }
   &__content {
+    z-index: 800;
     width: 100%;
     flex: 1 1 auto;
     display: flex;

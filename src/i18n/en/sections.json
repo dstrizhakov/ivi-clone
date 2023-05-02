@@ -14,7 +14,7 @@
   "by-name-asc": "Name А-Я",
   "by-name-desc": "Name Я-А",
   "by-date": "Date",
-  "by-rating-asc": "Rating ˅",
-  "by-rating-desc": "Rating ˄",
+  "by-rating-asc": "Rating ↑",
+  "by-rating-desc": "Rating ↓",
   "by-default": "Default"
 }

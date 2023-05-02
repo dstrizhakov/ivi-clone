@@ -14,7 +14,7 @@
   "by-name-asc": "Названию А-Я",
   "by-name-desc": "Названию Я-А",
   "by-date": "Дате выхода",
-  "by-rating-asc": "Рейтингу ˅",
-  "by-rating-desc": "Рейтингу ˄",
+  "by-rating-asc": "Рейтингу ↑",
+  "by-rating-desc": "Рейтингу ↓",
   "by-default": "Умолчанию"
 }
