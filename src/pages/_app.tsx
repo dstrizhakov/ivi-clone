@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import MainLayout from '@/layouts/MainLayout';
 import Head from 'next/head';
 import { wrapper } from '@/store/store';
-import '@/i18n/settings/i18n';
+import '@/i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import Modals from '@/components/Modals/Modals';

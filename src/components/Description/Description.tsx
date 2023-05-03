@@ -1,13 +1,8 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button } from '@/components/Button/Button';
 import styles from './Description.module.scss';
 import { useTranslation } from 'react-i18next';
-
-interface iDesc {
-  title: ReactNode;
-  children: ReactNode;
-  cut: ReactNode;
-}
+import { iDesc } from '@/components/Description/Description.props';
 
 const Description: FC<iDesc> = ({ title, cut, children }) => {
   const [open, setOpen] = useState<boolean>(false);

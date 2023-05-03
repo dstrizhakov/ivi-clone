@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 import styles from '@/components/WatchPage/WatchPage.module.scss';
 import { Htag } from '@/components/Htag/Htag';
 import i18next from 'i18next';

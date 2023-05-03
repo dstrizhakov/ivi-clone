@@ -16,7 +16,6 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const open = () => {
-    window?.scrollTo(0, 0);
     dispatch(setShowPersonsModal(true));
   };
   return (

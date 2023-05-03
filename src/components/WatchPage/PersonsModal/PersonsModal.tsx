@@ -12,24 +12,23 @@ import BarGraph from '@/components/BarGraph/BarGraph';
 import { selectModal, setShowPersonsModal } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
-import i18next from 'i18next';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { nameToLink } from '@/helpers/nameToLink';
 
 export const PersonsModal: FC = () => {
   const dispatch = useAppDispatch();
   const { personModalItem, showPersonsModal } = useAppSelector(selectModal);
-  const { name, enName, persons, card_image } = personModalItem;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   usePreventScroll(showPersonsModal);
   const close = () => {
     dispatch(setShowPersonsModal(false));
   };
   useEscapeKey(close);
+
   return (
     <>
       {showPersonsModal && (
-        <div className={cn(styles.modal, showPersonsModal ? styles.modal__open : '')}>
+        <div className={cn(styles.modal, styles.modal__open)}>
           <Button appearance="transparent" className={styles.back} onClick={() => close()}>
             <HiChevronLeft className={styles.back__icon} />
             <span>{t('buttons.to-movie')}</span>
@@ -37,7 +36,9 @@ export const PersonsModal: FC = () => {
 
           <div className={styles.wrap}>
             <Tabs className={styles.tabs}>
-              <Htag tag={'h2'}>{i18next.language == 'en' ? enName : name}</Htag>
+              <Htag tag={'h2'}>
+                {i18n.language == 'en' ? personModalItem?.enName : personModalItem?.name}
+              </Htag>
               <TabList className={styles.tabs__title}>
                 <Tab className={styles.tab} selectedClassName={styles.active}>
                   {t('categories.creators')}
@@ -56,7 +57,7 @@ export const PersonsModal: FC = () => {
               <TabPanel className={styles.tabs__content}>
                 <Htag tag="h3">{t('categories.actors')}</Htag>
                 <div className={styles.cards} onClick={() => close()}>
-                  {persons.map((p) => {
+                  {personModalItem?.persons.map((p) => {
                     return (
                       <Link
                         href={`/person/${nameToLink(p.enName)}`}
@@ -67,12 +68,12 @@ export const PersonsModal: FC = () => {
                           <img src={p.url} alt="" />
                         </div>
                         <div>
-                          {(i18next.language == 'en' ? p.enName : p.name).split(' ').map((n) => (
+                          {(i18n.language == 'en' ? p.enName : p.name).split(' ').map((n) => (
                             <p key={Math.random() * p.id} className={styles.name}>
                               {n}
                             </p>
                           ))}
-                          <P size="S">3 {i18next.language == 'en' ? 'movies' : 'фильма'}</P>
+                          <P size="S">3 {i18n.language == 'en' ? 'movies' : 'фильма'}</P>
                         </div>
                       </Link>
                     );
@@ -93,7 +94,7 @@ export const PersonsModal: FC = () => {
               <img
                 onClick={() => close()}
                 className={styles.movie__img}
-                src={card_image} //"https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
+                src={personModalItem?.card_image} //"https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
                 alt=""
               />
 

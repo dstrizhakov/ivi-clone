@@ -11,11 +11,26 @@ import BlockButton from '@/components/Card/CardButtons/BlockButton';
 import styles from './Card.module.scss';
 import Image from 'next/image';
 
-const Card: FC<CardProps> = ({ card, hover = true, star, book, find, block, ...props }) => {
+const Card: FC<CardProps> = ({
+  card,
+  hover = true,
+  star = false,
+  book = false,
+  find = false,
+  block = false,
+  ...props
+}) => {
   return (
     <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
-        <Image src={card.card_image} alt={card.name} fill loading={'lazy'} />
+        <Image
+          src={card.card_image}
+          alt={card.name}
+          width={234}
+          height={360}
+          quality={85}
+          loading={'lazy'}
+        />
         <div className={styles.props}>
           <div className={styles.btns__container}>
             <div className={styles.btns}>
