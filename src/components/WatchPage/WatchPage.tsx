@@ -10,22 +10,32 @@ import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
 import { moviesData } from '@/mock/moviesData';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
+import { FastAverageColor } from 'fast-average-color';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
+  const [bgColor, setBgColor] = useState('#01a9b8');
+  const fac = new FastAverageColor();
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setPersonItems(movie));
+    fac
+      .getColorAsync(movie.card_image, {
+        algorithm: 'simple',
+      })
+      .then((color) => {
+        setBgColor(() => color.hex);
+      });
   }, [movie]);
 
   const { name, enName, trailer, persons } = movie;
-  const [color, setColor] = useState('74, 84, 90'); //rgb(74 84 90)
 
   return (
     <>
       <div
         className={styles.bg_container}
         style={{
-          background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
+          background: `linear-gradient(${bgColor} 0%, transparent 100%)`,
         }}
       />
       <section className={styles.watch}>
