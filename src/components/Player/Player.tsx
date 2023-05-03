@@ -10,11 +10,12 @@ import { useTranslation } from 'react-i18next';
 import AddToFavoritesButton from '@/components/Card/CardButtons/AddToFavoritesButton';
 
 const Player: FC<PlayerProps> = ({ url }) => {
-  const [error, setError] = useState(false);
   const { t } = useTranslation();
+
+  const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setError(true);
+      setHasWindow(true);
     }
   }, []);
 
@@ -22,10 +23,8 @@ const Player: FC<PlayerProps> = ({ url }) => {
     <div className={styles.container}>
       <div className={styles.player}>
         <div className={styles.player__container}>
-          {error && (
+          {hasWindow && (
             <ReactPlayer
-              onReady={() => setError(false)}
-              onError={() => setError(true)}
               width="100%"
               height="100%"
               className={styles.video}
