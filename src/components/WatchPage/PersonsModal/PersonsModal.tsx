@@ -14,8 +14,9 @@ import { useTranslation } from 'react-i18next';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { nameToLink } from '@/helpers/nameToLink';
+import CommentSection from '@/components/Comment/CommentSection';
 
-export const PersonsModal: FC = () => {
+const PersonsModal: FC = () => {
   const dispatch = useAppDispatch();
   const { personModalItem, showPersonsModal } = useAppSelector(selectModal);
   const { t, i18n } = useTranslation();
@@ -33,7 +34,6 @@ export const PersonsModal: FC = () => {
             <HiChevronLeft className={styles.back__icon} />
             <span>{t('buttons.to-movie')}</span>
           </Button>
-
           <div className={styles.wrap}>
             <Tabs className={styles.tabs}>
               <Htag tag={'h2'}>
@@ -44,7 +44,7 @@ export const PersonsModal: FC = () => {
                   {t('categories.creators')}
                 </Tab>
                 <Tab className={styles.tab} selectedClassName={styles.active}>
-                  {t('categories.reviews')}
+                  {t('categories.comments')}
                 </Tab>
                 <Tab className={styles.tab} selectedClassName={styles.active}>
                   {t('categories.trailers')}
@@ -81,7 +81,9 @@ export const PersonsModal: FC = () => {
                 </div>
               </TabPanel>
               <TabPanel className={styles.tabs__content}>
-                <h2>{t('categories.reviews')}</h2>
+                <div style={{ maxWidth: '700px' }}>
+                  <CommentSection />
+                </div>
               </TabPanel>
               <TabPanel className={styles.tabs__content}>
                 <h2>{t('categories.trailers')}</h2>
@@ -120,3 +122,5 @@ export const PersonsModal: FC = () => {
     </>
   );
 };
+
+export default PersonsModal;

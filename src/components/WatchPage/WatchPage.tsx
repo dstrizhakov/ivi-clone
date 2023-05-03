@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Player from '../Player/Player';
 import styles from './WatchPage.module.scss';
 import Carousel from '../Carousel/Carousel';
@@ -10,6 +10,7 @@ import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
 import { moviesData } from '@/mock/moviesData';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
+
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -17,18 +18,16 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   }, [movie]);
 
   const { name, enName, trailer, persons } = movie;
-  const color = '106, 80, 47'; //
+  const [color, setColor] = useState('74, 84, 90'); //rgb(74 84 90)
 
   return (
     <>
-      <div className={styles.bg_color}>
-        <div
-          className={styles.bg_container}
-          style={{
-            background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
-          }}
-        />
-      </div>
+      <div
+        className={styles.bg_container}
+        style={{
+          background: `linear-gradient(rgb(${color}) 0%, rgba(${color}, 0) 100%)`,
+        }}
+      />
       <section className={styles.watch}>
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
