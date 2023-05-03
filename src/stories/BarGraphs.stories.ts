@@ -5,7 +5,6 @@ import { BarGraphProps } from '@/components/BarGraph/BarGraph.props';
 const meta: Meta<BarGraphProps> = {
   title: 'Main/BarGraph',
   component: BarGraph,
-  tags: ['autodocs'],
 };
 
 export default meta;

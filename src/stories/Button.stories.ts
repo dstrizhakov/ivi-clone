@@ -13,7 +13,6 @@ interface iButton extends ButtonProps {
 const meta: Meta<iButton> = {
   title: 'Main/Button',
   component: Button,
-  tags: ['autodocs'],
 };
 
 export default meta;
@@ -43,6 +42,13 @@ export const Square: Story = {
 export const Circle: Story = {
   args: {
     appearance: 'circle',
+    children: 'Button',
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    appearance: 'transparent',
     children: 'Button',
   },
 };

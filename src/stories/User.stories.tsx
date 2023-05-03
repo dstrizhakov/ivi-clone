@@ -4,7 +4,6 @@ import User from '@/components/Header/User/User';
 const meta: Meta<typeof User> = {
   title: 'Main/User',
   component: User,
-  tags: ['autodocs'],
 };
 
 export default meta;
