@@ -43,10 +43,10 @@
     align-items: center;
     justify-content: center;
     &.success {
-      color: rgba($color-success,.72);
+      color: rgba($color-success,.9);
     }
     &.danger {
-      color: rgba($color-danger,.72);
+      color: rgba($color-danger,.9);
     }
   }
   .buttonUp, .buttonDown {

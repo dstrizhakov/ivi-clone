@@ -20,7 +20,11 @@ const Comment = ({ comment, ...props }) => {
         <time className={styles.item_date}>{comment?.date}</time>
         <div className={styles.vote}>
           <LikeButton />
-          <div className={`${styles.value} ${value > 0 ? styles.success : styles.danger}`}>
+          <div
+            className={`${styles.value} ${value > 0 && styles.success} ${
+              value < 0 && styles.danger
+            }`}
+          >
             {value}
           </div>
           <DisLikeButton />

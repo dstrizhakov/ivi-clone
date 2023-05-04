@@ -81,7 +81,7 @@ const PersonsModal: FC = () => {
                 </div>
               </TabPanel>
               <TabPanel className={styles.tabs__content}>
-                <div style={{ maxWidth: '700px' }}>
+                <div style={{ maxWidth: '590px' }}>
                   <CommentSection />
                 </div>
               </TabPanel>
