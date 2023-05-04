@@ -8,6 +8,7 @@ import BarGraph from '@/components/BarGraph/BarGraph';
 import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 const AuthModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
@@ -77,15 +78,15 @@ const AuthModal: FC = (): JSX.Element => {
             <p>{t('descriptions.agree-on-click')}</p>
             <p>
               {t('descriptions.with')}{' '}
-              <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
+              <Link href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
                 {t('descriptions.privacy')}
-              </a>
+              </Link>
             </p>
             <p>
               {t('descriptions.and')}{' '}
-              <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
+              <Link href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
                 {t('descriptions.agreement')}
-              </a>
+              </Link>
             </p>
           </div>
         </div>
