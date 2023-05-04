@@ -2,7 +2,9 @@
   "buttons": {
     "activate": "Активировать",
     "activate-certificate": "Активировать сертификат",
+    "answer": "Ответить",
     "balance": "Счёт Иви",
+    "back": "Назад",
     "certificates": "Сертификаты и промокоды",
     "code-login": "Вход по коду",
     "collapse": "Свернуть",

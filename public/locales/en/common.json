@@ -2,7 +2,9 @@
   "buttons": {
     "activate": "Activate",
     "activate-certificate": "Activate certificate",
+    "answer": "Answer",
     "balance": "IVI balance",
+    "back": "Back",
     "certificates": "Certificates and promo codes",
     "code-login": "Login by code",
     "collapse": "Collapse",
