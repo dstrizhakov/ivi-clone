@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import InputRange from '@/components/Filters/Plank/InputRange';
 import { GoSettings } from 'react-icons/go';
 import SortDropdown from '@/components/Filters/SortDropdown/SortDropdown';
+import { BtnA } from '@/components/Button/Button.props';
 
 const Filters = () => {
   const [opened, setOpened] = useState(false);
@@ -30,7 +31,7 @@ const Filters = () => {
   return (
     <>
       <div className={styles.openers}>
-        <Button appearance={'transparent'} onClick={() => setOpened(!opened)}>
+        <Button appearance={BtnA.transparent} onClick={() => setOpened(!opened)}>
           <div className={styles.filters__icon}>
             <GoSettings />
             <div className={styles.open_filter}>
@@ -68,7 +69,7 @@ const Filters = () => {
             </div>
           </div>
           <Button
-            appearance={'transparent'}
+            appearance={BtnA.transparent}
             className={styles.reset}
             onClick={() => reset()}
             disabled={!active}

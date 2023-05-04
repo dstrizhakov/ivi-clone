@@ -18,6 +18,7 @@ import { BiDevices } from 'react-icons/bi';
 import { CgPhone } from 'react-icons/cg';
 import FooterMobile from './FooterMobile/FooterMobile';
 import { useTranslation } from 'react-i18next';
+import { BtnA } from '@/components/Button/Button.props';
 
 const Footer: FC = () => {
   const { t } = useTranslation();
@@ -98,10 +99,10 @@ const Footer: FC = () => {
                 <Link href={'https://www.ivi.ru/profile'}>
                   <Button className={styles.button}>{t('footer.chat-us')}</Button>
                 </Link>
-                <Button appearance={'square'}>
+                <Button appearance={BtnA.square}>
                   <IoMailOutline />
                 </Button>
-                <Button appearance={'square'}>
+                <Button appearance={BtnA.square}>
                   <HiPhone />
                 </Button>
               </li>
@@ -155,22 +156,22 @@ const Footer: FC = () => {
                 </Button>
               </div>
               <div className={styles.flex}>
-                <Button appearance={'circle'}>
+                <Button appearance={BtnA.circle}>
                   <FaVk />
                 </Button>
-                <Button appearance={'circle'}>
+                <Button appearance={BtnA.circle}>
                   <FaOdnoklassniki />
                 </Button>
-                <Button appearance={'circle'}>
+                <Button appearance={BtnA.circle}>
                   <FaTwitter />
                 </Button>
-                <Button appearance={'circle'}>
+                <Button appearance={BtnA.circle}>
                   <CgPhone />
                 </Button>
-                <Button appearance={'circle'}>
+                <Button appearance={BtnA.circle}>
                   <FaLinkedinIn />
                 </Button>
-                <Button appearance={'circle'}>
+                <Button appearance={BtnA.circle}>
                   <FaTelegramPlane />
                 </Button>
               </div>

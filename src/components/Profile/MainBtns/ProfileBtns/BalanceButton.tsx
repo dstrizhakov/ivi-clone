@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ProfileButton from '@/components/Profile/ProfileButton/ProfileButton';
-import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 
 const BalanceButton = () => {
   const { t } = useTranslation();

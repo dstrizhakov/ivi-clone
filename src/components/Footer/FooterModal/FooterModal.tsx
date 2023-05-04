@@ -20,6 +20,7 @@ import { usePreventScroll } from '@/hooks/usePreventScroll';
 import { selectModal, setShowFooterModal } from '@/store/reducers/modals.slice';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { BtnA } from '@/components/Button/Button.props';
 
 const FooterModal: FC = () => {
   const { t } = useTranslation();
@@ -151,10 +152,10 @@ const FooterModal: FC = () => {
                   <Link href={'https://www.ivi.ru/profile'}>
                     <Button className={styles.button}>{t('footer.chat-us')}</Button>
                   </Link>
-                  <Button appearance={'square'}>
+                  <Button appearance={BtnA.square}>
                     <IoMailOutline />
                   </Button>
-                  <Button appearance={'square'}>
+                  <Button appearance={BtnA.square}>
                     <HiPhone />
                   </Button>
                 </div>
@@ -169,22 +170,22 @@ const FooterModal: FC = () => {
           </div>
           <div className={styles.menuItem}>
             <div className={styles.social}>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaVk />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaOdnoklassniki />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaTwitter />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <CgPhone />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaLinkedinIn />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaTelegramPlane />
               </Button>
             </div>

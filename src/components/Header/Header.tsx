@@ -16,6 +16,7 @@ import { cartoonCategories } from '@/mock/cartoonCategories';
 import logo from '@/../public/iviLogo.svg';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { BtnA, BtnS } from '@/components/Button/Button.props';
 
 const Header: FC = (): JSX.Element => {
   const { t } = useTranslation();
@@ -83,16 +84,16 @@ const Header: FC = (): JSX.Element => {
                 <li>
                   <div style={{ display: 'flex', margin: '0 10px 0 110px' }}>
                     <Button
-                      size={'S'}
+                      size={BtnS.S}
                       onClick={(e) => changeLanguage(e, 'ru')}
-                      appearance={i18next.language == 'ru' ? 'red' : 'rectangle'}
+                      appearance={i18next.language == 'ru' ? BtnA.red : BtnA.rectangle}
                     >
                       RU
                     </Button>
                     <Button
-                      size={'S'}
+                      size={BtnS.S}
                       onClick={(e) => changeLanguage(e, 'en')}
-                      appearance={i18next.language == 'en' ? 'red' : 'rectangle'}
+                      appearance={i18next.language == 'en' ? BtnA.red : BtnA.rectangle}
                     >
                       EN
                     </Button>
@@ -101,7 +102,7 @@ const Header: FC = (): JSX.Element => {
               </ul>
             </nav>
             <div className={styles.zindex}>
-              <Button size="S" appearance="red">
+              <Button size={BtnS.S} appearance={BtnA.red}>
                 {t('header.watch-free')}
               </Button>
             </div>

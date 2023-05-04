@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CommentAvatar from '@/components/Comment/CommentAvatar';
 import { Button } from '@/components/Button/Button';
 import styles from './Comment.module.scss';
+import { BtnA } from '@/components/Button/Button.props';
 
 const CommentInput = () => {
   const [query, setQuery] = useState<string>('');
@@ -33,7 +34,7 @@ const CommentInput = () => {
           {validate() ? `Минимум ${limit} символов, вы ввели ${query.length}` : ''}
         </div>
       </div>
-      <Button appearance={'red'} disabled={!!(validate() || !query?.length)}>
+      <Button appearance={BtnA.red} disabled={!!(validate() || !query?.length)}>
         Отправить
       </Button>
     </form>

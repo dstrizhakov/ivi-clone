@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MdBlock } from 'react-icons/md';
 import { Button } from '@/components/Button/Button';
+import { BtnA } from '@/components/Button/Button.props';
 
 const BlockButton = () => {
   const [blocked, setBlocked] = useState<boolean>(false);
@@ -11,7 +12,7 @@ const BlockButton = () => {
     setBlocked((blocked) => !blocked);
   };
   return (
-    <Button size={'M'} appearance={'square'} onClick={(e) => blockMovie(e)}>
+    <Button appearance={BtnA.square} onClick={(e) => blockMovie(e)}>
       {blocked ? <MdBlock fill={'#ff542e'} /> : <MdBlock />}
     </Button>
   );

@@ -4,6 +4,7 @@ import { persons } from '@/mock/persons';
 import { IPerson } from '@/types/types';
 import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
+import i18next from 'i18next';
 
 const Person = ({ person }) => {
   if (!person) return <NotFoundPage />;
@@ -11,7 +12,7 @@ const Person = ({ person }) => {
   return (
     <>
       <Head>
-        <title>{person.name}</title>
+        <title>{i18next.language == 'en' ? person.enName : person.name}</title>
       </Head>
       <PersonInfo person={person} />
     </>

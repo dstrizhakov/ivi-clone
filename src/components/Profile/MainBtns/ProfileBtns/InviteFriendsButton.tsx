@@ -3,7 +3,7 @@ import ProfileButton from '@/components/Profile/ProfileButton/ProfileButton';
 import { TbVectorTriangle } from 'react-icons/tb';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 
 const InviteFriendsButton = () => {
   const { t } = useTranslation();

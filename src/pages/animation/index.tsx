@@ -13,8 +13,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        {/*<title> {t('title.animation')} </title>*/}
-        <title> Смотреть мультфильмы онлайн </title>
+        <title> {t('title.animation')} </title>
       </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <AnimationPageDescription />

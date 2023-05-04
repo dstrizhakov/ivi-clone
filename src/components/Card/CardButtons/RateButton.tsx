@@ -3,6 +3,7 @@ import { AiOutlineStar } from 'react-icons/ai';
 import { Button } from '@/components/Button/Button';
 import { useDispatch } from 'react-redux';
 import { setShowRating } from '@/store/reducers/modals.slice';
+import { BtnA } from '@/components/Button/Button.props';
 
 const RateButton = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const RateButton = () => {
     dispatch(setShowRating(true));
   };
   return (
-    <Button size={'M'} appearance={'square'} onClick={(e) => openRatingModal(e)}>
+    <Button appearance={BtnA.square} onClick={(e) => openRatingModal(e)}>
       <AiOutlineStar />
     </Button>
   );

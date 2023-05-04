@@ -8,6 +8,7 @@ import {
 import { Button } from '@/components/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { BtnA } from '@/components/Button/Button.props';
 
 const SortDropdown = () => {
   const [sortDrop, setSortDrop] = useState(false);
@@ -36,7 +37,7 @@ const SortDropdown = () => {
 
   return (
     <div className={styles.drop} ref={ref}>
-      <Button appearance={'transparent'} onClick={() => setSortDrop(!sortDrop)}>
+      <Button appearance={BtnA.transparent} onClick={() => setSortDrop(!sortDrop)}>
         <div className={styles.filters__icon}>
           <div className={styles.icon}>
             <MdOutlineSort />

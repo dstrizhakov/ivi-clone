@@ -7,6 +7,7 @@ import CommentInput from '@/components/Comment/CommentInput';
 import LikeButton from '@/components/Comment/Buttons/LikeButton';
 import DisLikeButton from '@/components/Comment/Buttons/DisLikeButton';
 import { useTranslation } from 'react-i18next';
+import { BtnA, BtnS } from '@/components/Button/Button.props';
 
 const Comment = ({ comment, ...props }) => {
   const [answer, setAnswer] = useState<boolean>(false);
@@ -36,7 +37,7 @@ const Comment = ({ comment, ...props }) => {
         </div>
       </div>
       <div className={styles.interactions}>
-        <Button size={'S'} appearance={'transparent'} onClick={() => setAnswer((a) => !a)}>
+        <Button size={BtnS.S} appearance={BtnA.transparent} onClick={() => setAnswer((a) => !a)}>
           {answer ? t('buttons.collapse') : t('buttons.answer')}
         </Button>
       </div>

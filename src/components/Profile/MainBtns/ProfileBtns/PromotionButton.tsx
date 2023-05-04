@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ProfileButton from '@/components/Profile/ProfileButton/ProfileButton';
 import { useTranslation } from 'react-i18next';
 import { BsLightningChargeFill } from 'react-icons/bs';
-import { iPB } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { iPB } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 
 const PromotionButton: FC<iPB> = ({ type }) => {
   const { t } = useTranslation();

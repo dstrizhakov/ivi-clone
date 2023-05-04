@@ -18,7 +18,6 @@ const Movies = () => {
     <>
       <Head>
         <title> {t('title.movies')} </title>
-        {/*<title> Смотреть фильмы онлайн </title>*/}
       </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />

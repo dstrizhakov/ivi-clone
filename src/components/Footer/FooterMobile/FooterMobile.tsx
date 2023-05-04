@@ -31,33 +31,31 @@ const FooterMobile: FC = () => {
     }
   };
   return (
-    <>
-      <div className={styles.footerMobile}>
-        <div className={styles.menu}>
-          <Link href={'/'} className={styles.link}>
-            <FooterLink title={t('sections.my-ivi')} href={'/'} icon={RiHome6Line} />
-          </Link>
-          <Link href={'/movies'} className={styles.link}>
-            <FooterLink title={t('sections.catalog')} href={'/movies'} icon={HiOutlineFolder} />
-          </Link>
-          <FooterLink
-            title={t('sections.search')}
-            href={showSearch ? '' : '?search'}
-            icon={BiSearch}
-            openModal={() => openSearch()}
-          />
-          <Link href={'https://www.ivi.ru/tvplus'} className={styles.link}>
-            <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
-          </Link>
-          <FooterLink
-            title={showFooterModal ? t('footer.close-btn') : t('footer.open-btn')}
-            href={showFooterModal ? '' : '?navigation'}
-            openModal={() => openFooter()}
-            icon={showFooterModal ? IoCloseOutline : HiDotsHorizontal}
-          />
-        </div>
+    <div className={styles.footerMobile}>
+      <div className={styles.menu}>
+        <Link href={'/'} className={styles.link}>
+          <FooterLink title={t('sections.my-ivi')} href={'/'} icon={RiHome6Line} />
+        </Link>
+        <Link href={'/movies'} className={styles.link}>
+          <FooterLink title={t('sections.catalog')} href={'/movies'} icon={HiOutlineFolder} />
+        </Link>
+        <FooterLink
+          title={t('sections.search')}
+          href={showSearch ? '' : '?search'}
+          icon={BiSearch}
+          openModal={() => openSearch()}
+        />
+        <Link href={'https://www.ivi.ru/tvplus'} className={styles.link}>
+          <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
+        </Link>
+        <FooterLink
+          title={showFooterModal ? t('footer.close-btn') : t('footer.open-btn')}
+          href={showFooterModal ? '' : '?navigation'}
+          openModal={() => openFooter()}
+          icon={showFooterModal ? IoCloseOutline : HiDotsHorizontal}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

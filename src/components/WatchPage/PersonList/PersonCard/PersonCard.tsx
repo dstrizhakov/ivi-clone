@@ -5,16 +5,16 @@ import { PersonCardProps } from './PersonCard.props';
 import Link from 'next/link';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { nameToLink } from '@/helpers/nameToLink';
 
 const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
-  const name = person?.enName.toLowerCase().split(' ').join('-');
   const { t } = useTranslation();
   return (
     <div className={styles.person_card}>
       {person ? (
         <>
           <div className={styles.wrapCard}>
-            <Link href={`/person/${name}`}>
+            <Link href={`/person/${nameToLink(person.enName)}`}>
               <div className={styles.person}>
                 <img src={person.url} alt={person.name} />
               </div>

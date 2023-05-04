@@ -18,8 +18,9 @@ import CodeLoginButton from '@/components/Profile/MainBtns/ProfileBtns/CodeLogin
 import SettingsButton from '@/components/Profile/MainBtns/ProfileBtns/SettingsButton';
 import SupportButton from '@/components/Profile/MainBtns/ProfileBtns/SupportButton';
 import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButton';
-import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import { setShowAuth } from '@/store/reducers/modals.slice';
+import { BtnA, BtnS } from '@/components/Button/Button.props';
 
 const MainBtns = ({ ...props }) => {
   const dispatch = useAppDispatch();
@@ -36,8 +37,8 @@ const MainBtns = ({ ...props }) => {
         <div className={styles.login}>
           <Button
             onClick={() => openLoginModal()}
-            size={'S'}
-            appearance={'red'}
+            size={BtnS.S}
+            appearance={BtnA.red}
             title={t('buttons.login-signup') || 'login'}
           >
             <TiUserOutline />

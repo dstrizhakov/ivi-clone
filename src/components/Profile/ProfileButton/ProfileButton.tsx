@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Button } from '@/components/Button/Button';
 import styles from './ProfileButton.module.scss';
-import { ICardButtons, iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { ICardButtons, iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 
 const ProfileButton: FC<ICardButtons> = ({ type, icon, children, onClick }) => {
   const IconComponent = icon;

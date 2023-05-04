@@ -4,7 +4,6 @@ import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import ChooseDropdown from '@/components/Filters/Dropdown/ChooseDropdown';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import SearchDropdown from '@/components/Filters/Dropdown/SearchDropdown';
-import { persons } from "@/mock/persons";
 export enum Planks {
   choose = 'choose',
   find = 'find',

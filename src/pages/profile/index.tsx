@@ -9,7 +9,6 @@ const Profile = () => {
     <>
       <Head>
         <title>{t('title.profile')}</title>
-        {/*<title> Мой профиль / ivi.ru </title>*/}
       </Head>
       <MainBtns />
     </>

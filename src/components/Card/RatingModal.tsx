@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { selectModal, setShowRating } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
+import { BtnA } from '@/components/Button/Button.props';
 
 const RatingModal: FC = () => {
   const [active, setActive] = useState();
@@ -36,7 +37,7 @@ const RatingModal: FC = () => {
           {rates.map((r) => (
             <Button
               key={r}
-              appearance={'transparent'}
+              appearance={BtnA.transparent}
               onClick={() => rate(r)}
               className={r === active && styles.active}
             >
@@ -52,7 +53,7 @@ const RatingModal: FC = () => {
             <P>{t('buttons.great')}</P>
           </div>
         </div>
-        <Button appearance={'red'} disabled={!active} onClick={() => send()}>
+        <Button appearance={BtnA.red} disabled={!active} onClick={() => send()}>
           {t('buttons.rate')}
         </Button>
       </div>

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { iPB } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { iPB } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import ProfileButton from '@/components/Profile/ProfileButton/ProfileButton';

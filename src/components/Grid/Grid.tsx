@@ -14,7 +14,7 @@ const Grid: FC<iGrid> = ({ array }) => {
   const [limit, setLimit] = useState<number>(30);
   const { t } = useTranslation();
   const showMore = () => {
-    setLimit((l) => l * 2);
+    setLimit((l) => l + 30);
     setExtended(() => true);
   };
   return (

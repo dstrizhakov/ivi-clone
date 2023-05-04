@@ -9,10 +9,11 @@ import { Button } from '@/components/Button/Button';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import PromotionButton from '@/components/Profile/MainBtns/ProfileBtns/PromotionButton';
-import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.types';
+import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import ActivateCertificateButton from '@/components/Profile/MainBtns/ProfileBtns/ActivateCertificateButton';
 import i18next from 'i18next';
 import Image from 'next/image';
+import { BtnA } from '@/components/Button/Button.props';
 
 interface iMockCarousel {
   id: number;
@@ -50,7 +51,7 @@ const PromoCarouselSlide: FC<iSlide> = ({ i }) => {
             {i18next.language == 'ru' ? i.description : i.enDescription}
           </div>
         </div>
-        <Button appearance={'red'} title={i.btn}>
+        <Button appearance={BtnA.red} title={i.btn}>
           {i.btn}
         </Button>
       </div>
