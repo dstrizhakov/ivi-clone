@@ -4,8 +4,8 @@ import React from 'react';
 import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
 import WatchPage from '@/components/WatchPage/WatchPage';
-import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
+import MovieBreadcrumbs from '@/components/Breadcrumbs/MovieBreadcrumbs';
 
 const Movie = ({ movie }) => {
   const { t, i18n } = useTranslation();
@@ -14,7 +14,6 @@ const Movie = ({ movie }) => {
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')
     { name: movie.genres[0], path: '/movies' },
-    { name: i18n.language == 'en' ? movie.enName : movie.name, path: '' },
   ];
   return (
     <>
@@ -23,7 +22,7 @@ const Movie = ({ movie }) => {
           {i18n.language == 'en' ? movie.enName && `Movie ${movie.enName}` : `Фильм ${movie.name}`}
         </title>
       </Head>
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
       <WatchPage movie={movie} />
     </>
   );
@@ -32,7 +31,7 @@ const Movie = ({ movie }) => {
 export default Movie;
 
 export async function getServerSideProps(context) {
-  const movie = moviesData.find((m: IMovie) => context.params.id == m.id);
+  const movie = moviesData.find((m: IMovie) => context.params.id == m.id) || null;
   return {
     props: {
       movie: movie,

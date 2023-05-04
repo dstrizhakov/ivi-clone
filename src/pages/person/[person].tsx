@@ -5,15 +5,15 @@ import { IPerson } from '@/types/types';
 import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
 
-const Person = ({ person_data }) => {
-  if (!person_data) return <NotFoundPage />;
+const Person = ({ person }) => {
+  if (!person) return <NotFoundPage />;
 
   return (
     <>
       <Head>
-        <title>{person_data.name}</title>
+        <title>{person.name}</title>
       </Head>
-      <PersonInfo person={person_data} />
+      <PersonInfo person={person} />
     </>
   );
 };
@@ -21,10 +21,11 @@ const Person = ({ person_data }) => {
 export default Person;
 
 export async function getServerSideProps(context) {
-  const person_data = persons.find((p: IPerson) => context.params.person === nameToLink(p.enName));
+  const person =
+    persons.find((p: IPerson) => context.params.person === nameToLink(p.enName)) || null;
   return {
     props: {
-      person_data: person_data,
+      person: person,
     },
   };
 }
