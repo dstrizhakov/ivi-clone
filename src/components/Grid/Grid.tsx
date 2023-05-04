@@ -4,6 +4,7 @@ import { Button } from '@/components/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
+const BASE_LIMIT = 30;
 
 interface iGrid {
   array: IMovie[];
@@ -11,11 +12,13 @@ interface iGrid {
 
 const Grid: FC<iGrid> = ({ array }) => {
   const [extended, setExtended] = useState<boolean>(false);
-  const [limit, setLimit] = useState<number>(30);
+  const [limit, setLimit] = useState<number>(BASE_LIMIT);
   const { t } = useTranslation();
   const showMore = () => {
-    setLimit((l) => l + 30);
-    setExtended(() => true);
+    setLimit((l) => l + BASE_LIMIT);
+    if (limit > array.length) {
+      setExtended(() => true);
+    }
   };
   return (
     <>

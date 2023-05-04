@@ -10,8 +10,10 @@ import { GoSettings } from 'react-icons/go';
 import SortDropdown from '@/components/Filters/SortDropdown/SortDropdown';
 import { BtnA } from '@/components/Button/Button.props';
 
+//todo: add framer-motion filter animation
+
 const Filters = () => {
-  const [opened, setOpened] = useState(false);
+  const [openedFilter, setOpenedFilter] = useState(false);
   const [active, setActive] = useState<boolean>(false);
   const [chosen, setChosen] = useState([]);
   const [chosenSausages, setSausages] = useState([]);
@@ -31,18 +33,18 @@ const Filters = () => {
   return (
     <>
       <div className={styles.openers}>
-        <Button appearance={BtnA.transparent} onClick={() => setOpened(!opened)}>
+        <Button appearance={BtnA.transparent} onClick={() => setOpenedFilter(!openedFilter)}>
           <div className={styles.filters__icon}>
             <GoSettings />
             <div className={styles.open_filter}>
-              {opened ? t('buttons.collapse') : t('buttons.filters')}
+              {openedFilter ? t('buttons.collapse') : t('buttons.filters')}
             </div>
           </div>
         </Button>
         <SortDropdown />
       </div>
 
-      {opened && (
+      {openedFilter && (
         <div className={styles.filters}>
           <div className={styles.plank_list}>
             <div className={styles.plank_item}>
