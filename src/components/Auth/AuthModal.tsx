@@ -5,12 +5,16 @@ import { BiUser } from 'react-icons/bi';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { AuthModalProps } from './AuthModal.props';
 import { P } from '../P/P';
-import BarGraph from "@/components/BarGraph/BarGraph";
+import BarGraph from '@/components/BarGraph/BarGraph';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { Button } from '../Button/Button';
 
 const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
+
+  const { data: session } = useSession();
 
   const nextStep = () => {
     setProgress(5);
@@ -43,45 +47,66 @@ const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
             <div className={styles.chat__close}>
               <CgClose onClick={close} />
             </div>
-            <div className={styles.chat__progress} >
+            <div className={styles.chat__progress}>
               <BarGraph width={progress} />
             </div>
           </div>
           <div className={styles.chat__body}>
-            {step >= 1 && (
-              <div className={styles.chat__message}>
-                <h5>Войдите или зарегистрируйтесь</h5>
-                <P>чтобы пользоваться сервисом на любом устройстве</P>
-              </div>
+            {session ? (
+              <h1 onClick={() => signOut()}>Вы уже авторизованы</h1>
+            ) : (
+              <>
+                {' '}
+                {step >= 1 && (
+                  <div className={styles.chat__message}>
+                    <h5>Войдите или зарегистрируйтесь</h5>
+                    <P>чтобы пользоваться сервисом на любом устройстве</P>
+                  </div>
+                )}
+                <div className={styles.input}>
+                  <BiUser className={styles.input__icon} />
+                  <input
+                    type="text"
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)}
+                    className={!!login ? styles.input__active : ''}
+                  />
+                  <label>Через email или телефон</label>
+                </div>
+                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                  Продолжить
+                </button>
+                <div>
+                  {step === 1 && (
+                    <div className={styles.chat__oauth}>
+                      <Button
+                        onClick={async () => {
+                          await signIn();
+                        }}
+                        appearance="red"
+                      >
+                        Вход через Google/VK
+                      </Button>
+                    </div>
+                  )}
+                </div>
+                <div className={styles.chat__confidential}>
+                  <p>Нажимая «Продолжить», я соглашаюсь</p>
+                  <p>
+                    c{' '}
+                    <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
+                      Политикой конфиденциальности
+                    </a>
+                  </p>
+                  <p>
+                    и{' '}
+                    <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
+                      Пользовательским соглашением
+                    </a>
+                  </p>
+                </div>
+              </>
             )}
-            <div className={styles.input}>
-              <BiUser className={styles.input__icon} />
-              <input
-                type="text"
-                value={login}
-                onChange={(e) => setLogin(e.target.value)}
-                className={!!login ? styles.input__active : ''}
-              />
-              <label>Через email или телефон</label>
-            </div>
-            <button disabled={!login} className={styles.button} onClick={nextStep}>
-              Продолжить
-            </button>
-            <div className={styles.chat__confidential}>
-              <p>Нажимая «Продолжить», я соглашаюсь</p>
-              <p>
-                c{' '}
-                <a href="https://www.ivi.tv/info/confidential" target="_blank" rel="noreferrer">
-                  Политикой конфиденциальности
-                </a>
-              </p>
-              <p>
-                и{' '}
-                <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
-                  Пользовательским соглашением
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </FullScreenModal>

@@ -4,6 +4,7 @@ import MainLayout from '@/layouts/MainLayout';
 import Head from 'next/head';
 import localFont from 'next/font/local';
 import { wrapper } from '@/store/store';
+import { SessionProvider } from 'next-auth/react';
 
 const iviSans = localFont({
   src: [
@@ -32,7 +33,7 @@ const iviSans = localFont({
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <SessionProvider session={pageProps.session}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -41,7 +42,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </MainLayout>
       </div>
-    </>
+    </SessionProvider>
   );
 }
 //Provider передает store внутри wrapper согласно документации https://github.com/kirill-konshin/next-redux-wrapper/

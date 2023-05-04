@@ -14,11 +14,13 @@ import Categories from './Categories/Categories';
 import { movieCategories } from '@/mock/movieCategories';
 import { seriesCategories } from '@/mock/seriesCategories';
 import { cartoonCategories } from '@/mock/cartoonCategories';
-import logo from '@/../public/iviLogo.svg';
+import logo from '../../../public/iviLogo.svg';
+import { useSession } from 'next-auth/react';
 
 const Header: FC = (): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <>
       <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
@@ -86,7 +88,12 @@ const Header: FC = (): JSX.Element => {
               <Submenu icon={MdNotificationsNone} link={'/notifications'}>
                 <Alerts />
               </Submenu>
-              <Submenu icon={BiUser} link={'/profile'} outline>
+              <Submenu
+                icon={BiUser}
+                user={session ? session.user?.image : null}
+                link={'/profile'}
+                outline
+              >
                 <User />
               </Submenu>
             </div>

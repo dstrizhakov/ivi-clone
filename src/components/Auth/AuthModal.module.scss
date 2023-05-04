@@ -62,6 +62,13 @@
     margin-right: 37.5%;
   }
 
+  &__oauth {
+    & button {
+      width: rem(290);
+    }
+    margin-top: rem(20);
+  }
+
   &__message {
     max-height: rem(700);
     border-top-left-radius: rem(16);
