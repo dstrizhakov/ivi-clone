@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
 import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
@@ -15,20 +15,11 @@ import { seriesCategories } from '@/mock/seriesCategories';
 import { cartoonCategories } from '@/mock/cartoonCategories';
 import logo from '@/../public/iviLogo.svg';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
+import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 
 const Header: FC = (): JSX.Element => {
   const { t } = useTranslation();
-  useEffect(() => {
-    const language = localStorage.getItem('language') || 'ru';
-    i18next.changeLanguage(language);
-  }, []);
-  const changeLanguage = async (e, language) => {
-    e.preventDefault();
-    await i18next.changeLanguage(language);
-    localStorage.setItem('language', language);
-  };
   return (
     <header className="header">
       <div className="container">
@@ -81,26 +72,10 @@ const Header: FC = (): JSX.Element => {
                     />
                   </Submenu>
                 </li>
-                <li>
-                  <div style={{ display: 'flex', margin: '0 10px 0 110px' }}>
-                    <Button
-                      size={BtnS.S}
-                      onClick={(e) => changeLanguage(e, 'ru')}
-                      appearance={i18next.language == 'ru' ? BtnA.red : BtnA.rectangle}
-                    >
-                      RU
-                    </Button>
-                    <Button
-                      size={BtnS.S}
-                      onClick={(e) => changeLanguage(e, 'en')}
-                      appearance={i18next.language == 'en' ? BtnA.red : BtnA.rectangle}
-                    >
-                      EN
-                    </Button>
-                  </div>
-                </li>
               </ul>
             </nav>
+            <LanguageSwitcher />
+
             <div className={styles.zindex}>
               <Button size={BtnS.S} appearance={BtnA.red}>
                 {t('header.watch-free')}
