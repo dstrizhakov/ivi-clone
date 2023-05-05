@@ -15,18 +15,26 @@
   &__header {
     width: 100%;
     position: relative;
-    flex: 0 0 52px;
+    flex: 0 0 55px;
     background-color: #100e19;
     justify-content: center;
     align-items: center;
     padding-left: rem(40);
     padding-right: rem(40);
   }
-  &__title {
-    height: 100%;
+  &__welcome {
     display: flex;
+    height: 55px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    & p {
+      margin-top: 0;
+    }
+  }
+  &__title {
+    text-align: center;
+    margin-top: 10px;
   }
   &__close {
     position: absolute;
@@ -56,13 +64,27 @@
     margin-bottom: rem(48);
     flex: 1 1 auto;
     width: 50%;
+    max-width: rem(600);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-right: 37.5%;
+    gap: 24px;
+  }
+
+  &__oauth {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    & button {
+      width: rem(290);
+    }
+    margin-top: rem(20);
   }
 
   &__message {
+    align-self: flex-start;
+    width: 70%;
     max-height: rem(700);
     border-top-left-radius: rem(16);
     border-top-right-radius: rem(16);
@@ -73,9 +95,42 @@
     padding: rem(16);
     word-wrap: break-word;
   }
+  &__row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    & button {
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background-color: transparent;
+      position: relative;
+      &:hover {
+        background-color: transparent;
+        border: 2px solid rgba(255, 255, 255, 1);
+      }
+      & svg {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+  &__answer {
+    align-self: flex-end;
+    width: 60%;
+    border-top-left-radius: rem(16);
+    border-top-right-radius: rem(16);
+    border-bottom-right-radius: rem(0);
+    border-bottom-left-radius: rem(16);
+    background-color: #231f31;
+    position: relative;
+    padding: rem(16);
+    word-wrap: break-word;
+  }
   &__confidential {
-    margin-right: rem(30);
-    margin-top: rem(25);
+    align-self: center;
+    padding-right: 24px;
     font-size: rem(13);
     line-height: 1.3;
     color: #a5a1b2;
@@ -100,9 +155,24 @@
       }
     }
   }
+  &__recover {
+    cursor: pointer;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    & h5 {
+      margin-left: 10px;
+    }
+    & svg {
+      color: $color-accent;
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 
 .button {
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,10 +183,14 @@
   border-radius: rem(8);
   width: rem(290);
   transition: $time-main;
-  margin-top: rem(12);
   font-size: rem(15);
   line-height: percent(20, 15);
   font-weight: 500;
+  & svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+  }
   &:hover {
     background-color: #ff0f4d;
     transition: all 0.05s ease-in;
@@ -124,13 +198,14 @@
   &:disabled {
     pointer-events: none;
     cursor: default;
-    opacity: 0.32;
+    background-color: #6e0e26;
+    color: rgb(187, 187, 187);
   }
 }
 
 .input {
+  align-self: center;
   position: relative;
-  margin-top: rem(20);
   width: rem(290);
   display: flex;
   align-items: center;
@@ -194,5 +269,26 @@
     &:hover {
       opacity: 1;
     }
+  }
+  &__show {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-right: rem(15);
+    color: $color-input-text;
+    opacity: 0.5;
+    transition: $time-main;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__showActive {
+    opacity: 1;
+  }
+}
+
+.password {
+  & label {
+    left: 10px;
   }
 }

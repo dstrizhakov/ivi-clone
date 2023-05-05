@@ -51,7 +51,30 @@
       padding: rem(5);
     }
     &:hover {
-      box-shadow: 0 0 15px rgba( 255,255,255, 0.3);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      opacity: 1;
+    }
+    &:hover ~ .submenu__body {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+
+  &__buttonUser {
+    position: relative;
+    z-index: 10;
+    opacity: 0.9;
+    border-radius: 8px;
+    width: rem(48);
+    height: rem(48);
+    cursor: pointer;
+    transition: $time-main;
+    & img {
+      padding: rem(0);
+    }
+    &:hover {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
       opacity: 1;
     }
     &:hover ~ .submenu__body {

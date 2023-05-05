@@ -11,10 +11,15 @@ import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
 import { setIsLogin } from '@/store/reducers/app.slice';
 import { useRouter } from 'next/navigation';
+import { useSession, signOut } from 'next-auth/react';
+import { Htag } from '@/components/Htag/Htag';
+import Image from 'next/image';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { push } = useRouter();
+
+  const { data: session } = useSession();
 
   const login = () => {
     push('/profile');
@@ -40,12 +45,42 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title="Способы оплаты" link="/pirchases" />
         </div>
         <div className={styles.content__auth}>
-          <Button size="L" appearance="red" onClick={() => login()}>
-            <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
-          </Button>
+          {!session && (
+            <Button size="L" appearance="red" onClick={() => login()}>
+              <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
+            </Button>
+          )}
+          {/* Создать отдельный компонент профайла */}
+          {session && (
+            <div className={styles.content__profile}>
+              <div className={styles.profile__title}>
+                <Htag tag="h3">Выбор профиля</Htag>
+              </div>
+              <div className={styles.profile__row}>
+                <div className={styles.profile__user}>
+                  {session.user && session.user?.image && (
+                    <Image
+                      className={styles.profile__image}
+                      src={session.user?.image}
+                      alt="user"
+                      width={48}
+                      height={48}
+                    />
+                  )}
+                  <span>{session.user?.email || session.user?.name}</span>
+                </div>
+                <div className={styles.profile__item}></div>
+              </div>
+            </div>
+          )}
+
           <div className={styles.content__links}>
+            {session && (
+              <Link href="https://www.ivi.tv/profile/profile_info">Редактировать профиль</Link>
+            )}
             <Link href={'https://www.ivi.tv/profile/settings'}>Настройки</Link>
             <Link href={'https://ask.ivi.ru/'}>Помощь</Link>
+            {session && <span onClick={() => signOut()}>Выйти</span>}
           </div>
         </div>
       </div>
