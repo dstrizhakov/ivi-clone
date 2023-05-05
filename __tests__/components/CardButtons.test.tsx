@@ -1,45 +1,11 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import AddToFavoritesButton from "../../src/components/Card/CardButtons/AddToFavoritesButton";
-import BlockButton from "../../src/components/Card/CardButtons/BlockButton";
-import FindSimilarButton from "../../src/components/Card/CardButtons/FindSimilarButton";
-import { Provider } from "react-redux";
-import RateButton from "../../src/components/Card/CardButtons/RateButton";
-import { configureStore } from "@reduxjs/toolkit";
-import modalsReducer from "../../src/store/reducers/modals.slice";
-import { persons } from "../../src/mock/persons";
-
-jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      route: '/',
-      pathname: '',
-      query: '',
-      asPath: '',
-      push: jest.fn(),
-      events: {
-        on: jest.fn(),
-        off: jest.fn(),
-      },
-      beforePopState: jest.fn(() => null),
-      prefetch: jest.fn(() => null),
-    };
-  },
-}));
-
-jest.mock('react-i18next', () => ({
-  useTranslation: () => {
-    return {
-      t: (str) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-  initReactI18next: {
-    type: '3rdParty',
-    init: () => {},
-  },
-}));
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import AddToFavoritesButton from '../../src/components/Card/CardButtons/AddToFavoritesButton';
+import BlockButton from '../../src/components/Card/CardButtons/BlockButton';
+import FindSimilarButton from '../../src/components/Card/CardButtons/FindSimilarButton';
+import { Provider } from 'react-redux';
+import RateButton from '../../src/components/Card/CardButtons/RateButton';
+import { configureStore } from '@reduxjs/toolkit';
+import modalsReducer from '../../src/store/reducers/modals.slice';
 
 const mockStore = configureStore({ reducer: { modalsReducer } });
 

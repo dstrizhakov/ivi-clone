@@ -4,7 +4,7 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import React from 'react';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-export function NextArrow(props) {
+const NextArrow = (props) => {
   return (
     <div className={`${styles.arrow} ${styles.next}`} onClick={props.onClick}>
       <Button
@@ -16,4 +16,6 @@ export function NextArrow(props) {
       </Button>
     </div>
   );
-}
+};
+
+export default NextArrow;

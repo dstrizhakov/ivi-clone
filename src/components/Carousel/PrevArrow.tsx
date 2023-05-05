@@ -4,7 +4,7 @@ import { MdArrowBackIosNew } from 'react-icons/md';
 import React from 'react';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-export function PrevArrow(props) {
+const PrevArrow = (props) => {
   return (
     <div className={`${styles.arrow} ${styles.prev}`} onClick={props.onClick}>
       <Button
@@ -16,4 +16,6 @@ export function PrevArrow(props) {
       </Button>
     </div>
   );
-}
+};
+
+export default PrevArrow;

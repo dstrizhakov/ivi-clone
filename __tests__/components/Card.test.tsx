@@ -1,53 +1,10 @@
-import { cleanup, findByTestId, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import Card from '../../src/components/Card/Card';
 import { configureStore } from '@reduxjs/toolkit';
 import modalsReducer from '@/store/reducers/modals.slice';
 import { Provider } from 'react-redux';
 import { persons } from '../../src/mock/persons';
 import ShowAll from '../../src/components/Card/ShowAll';
-
-jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      route: '/',
-      pathname: '',
-      query: '',
-      asPath: '',
-      push: jest.fn(),
-      events: {
-        on: jest.fn(),
-        off: jest.fn(),
-      },
-      beforePopState: jest.fn(() => null),
-      prefetch: jest.fn(() => null),
-    };
-  },
-}));
-
-jest.mock('react-i18next', () => ({
-  useTranslation: () => {
-    return {
-      t: (str) => str,
-      i18n: {
-        changeLanguage: () => new Promise(() => {}),
-      },
-    };
-  },
-  initReactI18next: {
-    type: '3rdParty',
-    init: () => {},
-  },
-}));
-
-// jest.mock('i18next', () => ({
-//   ...jest.requireActual('i18next'),
-//   t: (i18n, locale) =>
-//     i18n.init({
-//       lng: i18n.defaultLng,
-//       debug: process.env.NODE_ENV === 'test',
-//     }),
-//   i18n: jest.fn(),
-// }));
 
 const mockStore = configureStore({ reducer: { modalsReducer } });
 const mockCard = {
@@ -68,21 +25,21 @@ const mockCard = {
   duration: '2ч 50мин',
   persons: persons,
 };
-const emptyCard = {
-  id: 1,
-  name: '',
-  enName: '',
-  description: '',
-  enDescription: '',
-  trailer: '',
-  card_image: '',
-  year: '',
-  countries: '',
-  rating: '',
-  genres: [''],
-  duration: '',
-  persons: [],
-};
+// const emptyCard = {
+//   id: 1,
+//   name: '',
+//   enName: '',
+//   description: '',
+//   enDescription: '',
+//   trailer: '',
+//   card_image: '',
+//   year: '',
+//   countries: '',
+//   rating: '',
+//   genres: [''],
+//   duration: '',
+//   persons: [],
+// };
 
 describe('card', () => {
   describe('params', () => {
