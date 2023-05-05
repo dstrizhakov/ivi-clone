@@ -9,11 +9,17 @@ import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
-import { useTranslation } from 'react-i18next';
+import { useSession, signOut } from 'next-auth/react';
+import { Htag } from '@/components/Htag/Htag';
+import Image from 'next/image';
 import { setShowAuth } from '@/store/reducers/modals.slice';
+import { useTranslation } from 'react-i18next';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
+
+  const { data: session } = useSession();
+
   const { t } = useTranslation();
   const login = () => {
     dispatch(setShowAuth(true));
@@ -42,14 +48,46 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title={t('buttons.payment')} link="/purchases" />
         </div>
         <div className={styles.content__auth}>
-          {/*<Link href={'/profile'}>*/}
-          <Button size="L" appearance="red" onClick={() => login()}>
-            <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
-          </Button>
-          {/*</Link>*/}
+          {!session && (
+            <Link href={'/profile'}>
+              <Button size="L" appearance="red" onClick={() => login()}>
+                <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
+              </Button>
+            </Link>
+          )}
+          {/* Создать отдельный компонент профайла */}
+          {session && (
+            <div className={styles.content__profile}>
+              <div className={styles.profile__title}>
+                <Htag tag="h3">Выбор профиля</Htag>
+              </div>
+              <div className={styles.profile__row}>
+                <div className={styles.profile__user}>
+                  {session.user && session.user?.image && (
+                    <Image
+                      className={styles.profile__image}
+                      src={session.user.image}
+                      alt="user"
+                      width={48}
+                      height={48}
+                    />
+                  )}
+                  <span>{session.user?.email || session.user?.name}</span>
+                </div>
+                <div className={styles.profile__item}></div>
+              </div>
+            </div>
+          )}
+
           <div className={styles.content__links}>
+            {session && (
+              <Link href="https://www.ivi.tv/profile/profile_info">
+                {t('buttons.edit-profile')}
+              </Link>
+            )}
             <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
             <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
+            {session && <span onClick={() => signOut()}>Выйти</span>}
           </div>
         </div>
       </div>

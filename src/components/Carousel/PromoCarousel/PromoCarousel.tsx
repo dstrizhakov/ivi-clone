@@ -136,7 +136,7 @@ const PromoCarousel: FC = () => {
     <>
       <div className={styles.carousel}>
         <Slider {...settings}>
-          {mockCarousel.map((i) => (
+          {mockCarousel.map((i: iMockCarousel) => (
             <div className={styles.item} key={i.id}>
               <PromoCarouselSlide i={i} />
             </div>

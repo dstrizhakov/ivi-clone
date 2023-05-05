@@ -2,12 +2,7 @@ import React from 'react';
 import styles from '@/components/Comment/Comment.module.scss';
 import { FiUser } from 'react-icons/fi';
 
-const colors = [
-  'https://gambit-parent.dfs.ivi.ru/static/23.05.01/images/avatarBg/varna.jpg',
-  'https://gambit-parent.dfs.ivi.ru/static/23.05.01/images/avatarBg/hanoi.jpg',
-  'https://gambit-parent.dfs.ivi.ru/static/23.05.01/images/avatarBg/beirut.jpg',
-  'https://gambit-parent.dfs.ivi.ru/static/23.05.01/images/avatarBg/alexandria.jpg',
-];
+const colors = ['#313131', '#c74d1f', '#d0af23', '#212bb6', '#0bae0b'];
 
 const CommentAvatar = ({ user }) => {
   return (
@@ -15,11 +10,9 @@ const CommentAvatar = ({ user }) => {
       <div
         className={styles.image_container}
         style={{
-          backgroundImage: `${
-            user?.name
-              ? `url(${colors[Math.round(Math.random() * (colors.length - 1))]}`
-              : `url(${colors[0]}`
-          })`,
+          backgroundColor: `${
+            user?.name ? colors[Math.round(Math.random() * (colors.length - 1))] : colors[0]
+          }`,
         }}
       >
         <div className={styles.image_text}>

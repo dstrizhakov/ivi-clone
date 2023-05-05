@@ -17,9 +17,12 @@ import logo from '@/../public/iviLogo.svg';
 import { useTranslation } from 'react-i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
+import { useSession } from 'next-auth/react';
 
 const Header: FC = (): JSX.Element => {
   const { t } = useTranslation();
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <header className="header">
       <div className="container">
@@ -87,7 +90,12 @@ const Header: FC = (): JSX.Element => {
             <Submenu icon={MdNotificationsNone} link={'/notifications'}>
               <Alerts />
             </Submenu>
-            <Submenu icon={BiUser} link={'/profile'} outline>
+            <Submenu
+              icon={BiUser}
+              user={session ? session.user?.image || null : null}
+              link={'/profile'}
+              outline
+            >
               <User />
             </Submenu>
           </div>

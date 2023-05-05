@@ -43,6 +43,7 @@ export const authSlice = createSlice({
       state.role = role;
       state.favorites = favorites;
       state.watched = watched;
+      console.log(user);
     },
     logout: (state) => {
       state.token = null;
