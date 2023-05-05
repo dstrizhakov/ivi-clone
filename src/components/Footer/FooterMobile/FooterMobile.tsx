@@ -8,14 +8,11 @@ import { HiOutlineFolder } from 'react-icons/hi2';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoCloseOutline, IoTvOutline } from 'react-icons/io5';
 import { RiHome6Line } from 'react-icons/ri';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const FooterMobile: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-  const router = useRouter();
-  console.log(router.asPath);
   return (
     <>
       <FooterModal isOpen={isModalOpen} />
