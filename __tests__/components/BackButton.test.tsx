@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import BackButton from '../../src/components/BackButton/BackButton';
 
-jest.mock('next/router', () => ({
+jest.mock('next/navigation', () => ({
   useRouter() {
     return {
       route: '/',

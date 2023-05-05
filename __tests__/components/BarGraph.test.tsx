@@ -3,28 +3,26 @@ import { cleanup, render, screen } from '@testing-library/react';
 
 describe('BarGraphSnapshot', () => {
   test('25%', () => {
-    const component = render(<BarGraph width={25} />);
-    expect(component).toMatchSnapshot();
+    const bar = render(<BarGraph width={25} />);
+    expect(bar).toMatchSnapshot();
   });
   test('50%', () => {
-    const component = render(<BarGraph width={50} />);
-    expect(component).toMatchSnapshot();
+    const bar = render(<BarGraph width={50} />);
+    expect(bar).toMatchSnapshot();
   });
   test('75%', () => {
-    const component = render(<BarGraph width={75} />);
-    expect(component).toMatchSnapshot();
+    const bar = render(<BarGraph width={75} />);
+    expect(bar).toMatchSnapshot();
   });
   test('100%', () => {
-    const component = render(<BarGraph width={100} />);
-    expect(component).toMatchSnapshot();
+    const bar = render(<BarGraph width={100} />);
+    expect(bar).toMatchSnapshot();
   });
 });
 
 describe('BarGraph', () => {
-  beforeEach(() => {
-    render(<BarGraph width={25} />);
-  });
   it('should be in the document', async () => {
+    render(<BarGraph width={100} />);
     expect(screen.getByTestId('bar')).toBeInTheDocument();
   });
 
