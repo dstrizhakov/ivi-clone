@@ -8,8 +8,8 @@ import { CarouselProps } from '@/components/Carousel/Carousel.props';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import ShowAll from '@/components/Card/ShowAll';
-import { NextArrow } from '@/components/Carousel/NextArrow';
-import { PrevArrow } from '@/components/Carousel/PrevArrow';
+import NextArrow from '@/components/Carousel/NextArrow';
+import PrevArrow from '@/components/Carousel/PrevArrow';
 
 const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children, settings }) => {
   if (!settings)
@@ -85,28 +85,26 @@ const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children, 
     };
 
   return (
-    <>
-      <div className={styles.carousel}>
-        {title && (
-          <div>
-            <Link href={route ? route : ''} className={styles.title}>
-              <div title={title}>
-                <Htag tag={'h4'}>{title}</Htag>
-              </div>
-              <MdArrowForwardIos />
-            </Link>
-          </div>
+    <div className={styles.carousel}>
+      {title && (
+        <div>
+          <Link href={route ? route : ''} className={styles.title}>
+            <div title={title}>
+              <Htag tag={'h4'}>{title}</Htag>
+            </div>
+            <MdArrowForwardIos />
+          </Link>
+        </div>
+      )}
+      <Slider {...settings}>
+        {children}
+        {showAll && (
+          <Link href={route ? route : ''}>
+            <ShowAll />
+          </Link>
         )}
-        <Slider {...settings}>
-          {children}
-          {showAll && (
-            <Link href={route ? route : ''}>
-              <ShowAll />
-            </Link>
-          )}
-        </Slider>
-      </div>
-    </>
+      </Slider>
+    </div>
   );
 };
 
