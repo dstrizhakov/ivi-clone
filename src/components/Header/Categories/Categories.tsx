@@ -4,7 +4,12 @@ import Link from 'next/link';
 import { ILink } from '@/types/types';
 import { CategoriesProps } from './Categories.props';
 
-const Categories: FC<CategoriesProps> = ({ genres, countries, years, collections }): JSX.Element => {
+const Categories: FC<CategoriesProps> = ({
+  genres,
+  countries,
+  years,
+  collections,
+}): JSX.Element => {
   return (
     <div className={styles.content}>
       <div className={styles.content__items}>
