@@ -11,6 +11,7 @@ import { Button } from '@/components/Button/Button';
 import { HiChevronLeft } from 'react-icons/hi';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
 import BarGraph from '@/components/BarGraph/BarGraph';
+import { nameToLink } from '@/helpers/nameToLink';
 
 export const PersonsModal: FC<PersonsModalProps> = ({ item, isOpen, closeModal }) => {
   usePreventScroll(isOpen);
@@ -46,7 +47,11 @@ export const PersonsModal: FC<PersonsModalProps> = ({ item, isOpen, closeModal }
             <div className={styles.cards}>
               {persons.map((p) => {
                 return (
-                  <Link href={`/person/${name}`} key={p.enName} className={styles.link}>
+                  <Link
+                    href={`/person/${nameToLink(p.enName)}`}
+                    key={p.enName}
+                    className={styles.link}
+                  >
                     <div className={styles.card}>
                       <img src={p.url} alt="" />
                     </div>
