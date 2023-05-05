@@ -1,17 +1,50 @@
 import NextAuth from 'next-auth/next';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import VkProvider from 'next-auth/providers/vk';
-// import EmailProvider from 'next-auth/providers/email';
 
 export default NextAuth({
   providers: [
-    // EmailProvider({
-    //   server: process.env.EMAIL_SERVER,
-    //   from: process.env.EMAIL_FROM,
-    // }),
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. "Sign in with...")
+      name: 'Credentials',
+      // `credentials` is used to generate a form on the sign in page.
+      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials, req) {
+        // Add logic here to look up the user from the credentials supplied
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/auth/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+        const user = await res.json();
+
+        if (user) {
+          // Any object returned will be saved in `user` property of the JWT
+          return user;
+        } else {
+          // If you return null then an error will be displayed advising the user to check their details.
+          return null;
+
+          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+        }
+      },
+    }),
+    // OAuth autentification provoders...
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRE || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
     VkProvider({
       clientId: process.env.VK_CLIENT_ID || '',
@@ -22,12 +55,7 @@ export default NextAuth({
 
   session: {
     strategy: 'jwt',
-    // Seconds - How long until an idle session expires and is no longer valid.
     maxAge: 30 * 24 * 60 * 60, // 30 days
-
-    // Seconds - Throttle how frequently to write to database to extend a session.
-    // Use it to limit write operations. Set to 0 to always update the database.
-    // Note: This option is ignored if using JSON Web Tokens
     updateAge: 24 * 60 * 60, // 24 hours
   },
 
@@ -44,11 +72,6 @@ export default NextAuth({
     // encode: async ({ secret, token, maxAge }) => {},
     // decode: async ({ secret, token, maxAge }) => {},
   },
-
-  // You can define custom pages to override the built-in ones. These will be regular Next.js pages
-  // so ensure that they are placed outside of the '/api' folder, e.g. signIn: '/auth/mycustom-signin'
-  // The routes shown here are the default URLs that will be used when a custom
-  // pages is not specified for that route.
   // https://next-auth.js.org/configuration/pages
   pages: {
     // signIn: '/auth/signin', // Displays signin buttons
@@ -58,9 +81,6 @@ export default NextAuth({
     // newUser: null // If set, new users will be directed here on first sign in
   },
 
-  // Callbacks are asynchronous functions you can use to control what happens
-  // when an action is performed.
-  // https://next-auth.js.org/configuration/callbacks
   callbacks: {
     // async signIn({ user, account, profile, email, credentials }) {
     //   return true;
@@ -68,18 +88,18 @@ export default NextAuth({
     // async redirect({ url, baseUrl }) {
     //   return baseUrl;
     // },
-    // async session({ session, token, user }) {
-    //   return session;
-    // },
-    // async jwt({ token, user, account, profile, isNewUser }) {
-    //   return token;
-    // },
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    },
+    async jwt({ token, user }) {
+      console.log(token);
+      return { ...token, ...user };
+    },
   },
 
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
-
-  // Enable debug messages in the console if you are having problems
   debug: true,
 });
