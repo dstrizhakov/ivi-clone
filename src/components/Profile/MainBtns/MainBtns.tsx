@@ -21,30 +21,93 @@ import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButt
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import { setShowAuth } from '@/store/reducers/modals.slice';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
+import { signOut, useSession } from 'next-auth/react';
+import { Htag } from '@/components/Htag/Htag';
+import Link from 'next/link';
+import { HiOutlinePencil } from 'react-icons/hi';
+import { BsEnvelope, BsPhone } from 'react-icons/bs';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
 
 const MainBtns = ({ ...props }) => {
   const dispatch = useAppDispatch();
-
   const openLoginModal = () => {
     dispatch(setShowAuth(true));
   };
 
   const { t } = useTranslation();
-
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <>
       <div className={styles.profile__btns} {...props}>
-        <div className={styles.login}>
-          <Button
-            onClick={() => openLoginModal()}
-            size={BtnS.S}
-            appearance={BtnA.red}
-            title={t('buttons.login-signup') || 'login'}
-          >
-            <TiUserOutline />
-            {t('buttons.login-signup')}
-          </Button>
-        </div>
+        {session && session?.user && (
+          <div className={styles.select_profile}>
+            <Htag tag={'h4'}>{t('sections.select-profile')}</Htag>
+            <div className={styles.profiles}>
+              <div className={styles.avatar}>
+                <img src={session?.user?.image || undefined} alt={'avatar'} />
+                <P color={'white'}>
+                  {session?.user?.name || session?.user?.email || t('sections.profile')}
+                </P>
+              </div>
+            </div>
+          </div>
+        )}
+        {session && session?.user ? (
+          <div className={styles.userinfo}>
+            <div className={styles.userinfo__title}>
+              <div className={styles.title__text}>
+                <Htag tag={'h2'}>{t('sections.profile')}</Htag>
+                <P>{t('sections.main-profile')}</P>
+              </div>
+              <Link href={'https://www.ivi.ru/profile/profile_info'}>
+                <Button>
+                  <HiOutlinePencil />
+                  Редактировать профиль
+                </Button>
+              </Link>
+            </div>
+            <div className={styles.userinfo__information}>
+              <div className={styles.info}>
+                <BsEnvelope />
+                {session?.user?.email ? (
+                  <P size={'S'}>{session?.user?.email}</P>
+                ) : (
+                  <Button
+                    appearance={BtnA.transparent}
+                    size={BtnS.S}
+                    title={t('buttons.add-email') || ''}
+                  >
+                    {t('buttons.add-email')}
+                  </Button>
+                )}
+              </div>
+              <div className={styles.info}>
+                <BsPhone />
+                <Button
+                  appearance={BtnA.transparent}
+                  size={BtnS.S}
+                  title={t('buttons.add-phone') || ''}
+                >
+                  {t('buttons.add-phone')}
+                </Button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.login}>
+            <Button
+              onClick={() => openLoginModal()}
+              size={BtnS.S}
+              appearance={BtnA.red}
+              title={t('buttons.login-signup') || 'login'}
+            >
+              <TiUserOutline />
+              {t('buttons.login-signup')}
+            </Button>
+          </div>
+        )}
+
         <ul className={styles.list}>
           <li className={`${styles.list__item} ${styles.subscription}`}>
             <SubscriptionsButton />
@@ -92,9 +155,18 @@ const MainBtns = ({ ...props }) => {
             <SupportButton />
           </li>
         </ul>
-        <div className={styles.id}>
-          <P>uid: 2049522430</P>
-        </div>
+        {session && session?.user ? (
+          <div className={styles.id}>
+            <Button appearance={BtnA.transparent} onClick={() => signOut()}>
+              <RiLogoutBoxRLine />
+              Выйти
+            </Button>
+          </div>
+        ) : (
+          <div className={styles.id}>
+            <P>uid: 2049522430</P>
+          </div>
+        )}
       </div>
     </>
   );

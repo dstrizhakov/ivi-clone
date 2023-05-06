@@ -14,10 +14,10 @@ import { Htag } from '@/components/Htag/Htag';
 import Image from 'next/image';
 import { setShowAuth } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
+import children from '@/../public/children.png';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-
   const { data: session } = useSession();
 
   const { t } = useTranslation();
@@ -74,7 +74,27 @@ const User: FC = (): JSX.Element => {
                   )}
                   <span>{session.user?.email || session.user?.name}</span>
                 </div>
-                <div className={styles.profile__item}></div>
+                <div className={`${styles.profile__user} ${styles.profile__item}`}>
+                  <Image
+                    className={styles.profile__image}
+                    src={children}
+                    alt="children"
+                    width={40}
+                    height={40}
+                  />
+                  <span>Дети</span>
+                </div>
+                <div className={`${styles.profile__user} ${styles.profile__item}`}>
+                  <div className={styles.profile__addProfile}></div>
+                  {/* <Image
+                    className={styles.profile__image}
+                    src={children}
+                    alt="children"
+                    width={40}
+                    height={40}
+                  /> */}
+                  <span>Новый</span>
+                </div>
               </div>
             </div>
           )}

@@ -94,7 +94,9 @@ const AuthModal: FC = (): JSX.Element => {
           </div>
           <div className={styles.chat__body}>
             {session ? (
-              <h1 onClick={() => signOut()}>Вы уже авторизованы</h1>
+              <div className={styles.chat__message}>
+                <h1 onClick={() => signOut()}>Вы уже авторизованы</h1>
+              </div>
             ) : (
               <>
                 {step >= 1 && (
