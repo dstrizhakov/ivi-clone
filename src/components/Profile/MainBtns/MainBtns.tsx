@@ -155,18 +155,23 @@ const MainBtns = ({ ...props }) => {
             <SupportButton />
           </li>
         </ul>
-        {session && session?.user ? (
-          <div className={styles.id}>
-            <Button appearance={BtnA.transparent} onClick={() => signOut()}>
-              <RiLogoutBoxRLine />
-              Выйти
-            </Button>
-          </div>
-        ) : (
-          <div className={styles.id}>
-            <P>uid: 2049522430</P>
-          </div>
-        )}
+        <div className={styles.bottom}>
+          {session && session?.user ? (
+            <>
+              <Button appearance={BtnA.transparent} onClick={() => signOut()}>
+                <RiLogoutBoxRLine />
+                Выйти
+              </Button>
+              <div className={styles.id}>
+                <P>uid: 2049522430</P>
+              </div>
+            </>
+          ) : (
+            <div className={styles.id}>
+              <P>uid: 2049522430</P>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

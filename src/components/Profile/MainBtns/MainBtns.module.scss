@@ -40,7 +40,7 @@
     display: block;
     background-color: rgba(255,255,255,.16);
     height: 1px;
-    width: 95%;
+    width: 97%;
     pointer-events: none
   }
 }
@@ -74,8 +74,11 @@
         margin-right: 10px;
       }
       button {
-        border: 1px solid rgba($color-input, .72);
+        border: 1px solid rgba($color-input, .43);
         padding: 10px;
+        &:hover {
+          border: 1px solid $color-input;
+        }
       }
       +.info {
         margin-left: 16px;
@@ -83,22 +86,29 @@
     }
   }
 }
-
-.profile__btns {
+.bottom {
+  padding: 0 12px;
   display: flex;
-  margin-bottom: 20px;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    color: $color-accent;
+  }
   .id {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     font-size: 0.7rem;
-    padding: 0 12px;
-    svg {
-      color: $color-accent;
-    }
   }
+}
+
+.profile__btns {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+
   button {
     text-align: center;
   }

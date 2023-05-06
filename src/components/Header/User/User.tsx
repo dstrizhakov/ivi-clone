@@ -72,7 +72,7 @@ const User: FC = (): JSX.Element => {
                       height={48}
                     />
                   )}
-                  <span>{session.user?.email || session.user?.name}</span>
+                  <span>{session.user?.name || session.user?.email}</span>
                 </div>
                 <div className={`${styles.profile__user} ${styles.profile__item}`}>
                   <Image
