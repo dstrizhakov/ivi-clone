@@ -15,8 +15,12 @@ import Link from 'next/link';
 import AuthModal from '@/components/Auth/AuthModal';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { setIsLogin } from '@/store/reducers/app.slice';
+import { useSession } from 'next-auth/react';
+import SelectProfile from '@/components/Auth/SelectProfile/SelectProfile';
 
 const MainBtns = ({ ...props }) => {
+  const { data: session } = useSession();
+
   const isLogin = useAppSelector((state) => state.appReducer.isLogin);
   const dispatch = useAppDispatch();
 
@@ -31,12 +35,18 @@ const MainBtns = ({ ...props }) => {
     <>
       <AuthModal isOpen={isLogin} close={() => closeLoginModal()} />
       <div className={styles.profile__btns} {...props}>
-        <div className={styles.login}>
-          <Button onClick={() => openLoginModal()} size={'S'} appearance={'red'}>
-            <TiUserOutline />
-            Войти или зарегистрироваться
-          </Button>
-        </div>
+        {!session ? (
+          <div className={styles.login}>
+            <Button onClick={() => openLoginModal()} size={'S'} appearance={'red'}>
+              <TiUserOutline />
+              Войти или зарегистрироваться
+            </Button>
+          </div>
+        ) : (
+          <div className={styles.login}>
+            <SelectProfile tag="h4" />
+          </div>
+        )}
         <ul className={styles.list}>
           <li className={`${styles.list__item} ${styles.subscription}`}>
             <Link href={'https://www.ivi.ru/profile/subscriptions'}>

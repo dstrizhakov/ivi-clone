@@ -15,6 +15,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { Htag } from '@/components/Htag/Htag';
 import Image from 'next/image';
 import children from '../../../../public/children.png';
+import SelectProfile from '@/components/Auth/SelectProfile/SelectProfile';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -51,50 +52,8 @@ const User: FC = (): JSX.Element => {
               <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
             </Button>
           )}
-          {/* Создать отдельный компонент профайла */}
-          {session && (
-            <div className={styles.content__profile}>
-              <div className={styles.profile__title}>
-                <Htag tag="h3">Выбор профиля</Htag>
-              </div>
-              <div className={styles.profile__row}>
-                <div className={styles.profile__user}>
-                  {session.user && session.user?.image && (
-                    <Image
-                      className={styles.profile__image}
-                      src={session.user?.image}
-                      alt="user"
-                      width={48}
-                      height={48}
-                    />
-                  )}
-                  <span>{session.user?.email || session.user?.name}</span>
-                </div>
-                <div className={`${styles.profile__user} ${styles.profile__item}`}>
-                  <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  />
-                  <span>Дети</span>
-                </div>
-                <div className={`${styles.profile__user} ${styles.profile__item}`}>
-                  <div className={styles.profile__addProfile}></div>
-                  {/* <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  /> */}
-                  <span>Новый</span>
-                </div>
-              </div>
-            </div>
-          )}
-
+          {/* Выбор профайла */}
+          <SelectProfile />
           <div className={styles.content__links}>
             {session && (
               <Link href="https://www.ivi.tv/profile/profile_info">Редактировать профиль</Link>
