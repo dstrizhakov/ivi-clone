@@ -6,6 +6,7 @@ const comments = [
   {
     id: 1,
     user: {
+      userId: 1,
       name: 'auser1',
     },
     date: '5 марта 2014',
@@ -14,6 +15,7 @@ const comments = [
       {
         id: 'c1',
         user: {
+          userId: 2,
           name: 'inner1',
         },
         date: '12 апреля 2023',
@@ -22,6 +24,7 @@ const comments = [
           {
             id: 'cc1',
             user: {
+              userId: 3,
               name: 'innerinner1',
             },
             date: '13 июня 2016',
@@ -33,6 +36,7 @@ const comments = [
       {
         id: 'c2',
         user: {
+          userId: 4,
           name: 'inner2',
         },
         date: '5 марта 2014',
@@ -43,6 +47,7 @@ const comments = [
   {
     id: 2,
     user: {
+      userId: 5,
       name: 'buser2',
     },
     date: '5 марта 2014',
@@ -51,6 +56,7 @@ const comments = [
   {
     id: 3,
     user: {
+      userId: 6,
       name: 'cuser3',
     },
     date: '5 марта 2014',
@@ -59,6 +65,7 @@ const comments = [
   {
     id: 4,
     user: {
+      userId: 7,
       name: 'duser4',
     },
     date: '5 марта 2014',
