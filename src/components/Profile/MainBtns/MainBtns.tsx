@@ -5,6 +5,15 @@ import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import { useAppDispatch } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
+import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
+import { setShowAuth } from '@/store/reducers/modals.slice';
+import { BtnA, BtnS } from '@/components/Button/Button.props';
+import { signOut, useSession } from 'next-auth/react';
+import { Htag } from '@/components/Htag/Htag';
+import { HiOutlinePencil } from 'react-icons/hi';
+import { BsEnvelope, BsPhone } from 'react-icons/bs';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
+import Link from 'next/link';
 import SubscriptionsButton from '@/components/Profile/MainBtns/ProfileBtns/SubscriptionsButton';
 import CertificatesButton from '@/components/Profile/MainBtns/ProfileBtns/CertificatesButton';
 import PresentSubscriptionButton from '@/components/Profile/MainBtns/ProfileBtns/PresentSubscriptionButton';
@@ -18,25 +27,15 @@ import CodeLoginButton from '@/components/Profile/MainBtns/ProfileBtns/CodeLogin
 import SettingsButton from '@/components/Profile/MainBtns/ProfileBtns/SettingsButton';
 import SupportButton from '@/components/Profile/MainBtns/ProfileBtns/SupportButton';
 import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButton';
-import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
-import { setShowAuth } from '@/store/reducers/modals.slice';
-import { BtnA, BtnS } from '@/components/Button/Button.props';
-import { signOut, useSession } from 'next-auth/react';
-import { Htag } from '@/components/Htag/Htag';
-import Link from 'next/link';
-import { HiOutlinePencil } from 'react-icons/hi';
-import { BsEnvelope, BsPhone } from 'react-icons/bs';
-import { RiLogoutBoxRLine } from 'react-icons/ri';
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 
 const MainBtns = ({ ...props }) => {
+  const { t } = useTranslation();
+  const { data: session } = useSession();
   const dispatch = useAppDispatch();
   const openLoginModal = () => {
     dispatch(setShowAuth(true));
   };
-  const { data: session } = useSession();
-
-  const { t } = useTranslation();
   return (
     <div className={styles.profile__btns} {...props}>
       {session && (
