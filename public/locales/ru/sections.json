@@ -1,10 +1,13 @@
 {
+  "and": "и",
+  "already-signed": "Вы уже авторизованы",
   "my-ivi": "Мой Иви",
   "whats-new": "Что нового",
   "movies": "Фильмы",
   "series": "Сериалы",
   "animation": "Мультфильмы",
   "children": "Дети",
+  "hello": "Здравствуйте",
   "select-profile": "Выбор профиля",
   "tv-plus": "TV+",
   "good-movies": "Что посмотреть",
@@ -20,5 +23,9 @@
   "by-date": "Дате выхода",
   "by-rating-asc": "Рейтингу ↑",
   "by-rating-desc": "Рейтингу ↓",
-  "by-default": "Умолчанию"
+  "by-default": "Умолчанию",
+  "use-service-any-device" : "чтобы пользоваться сервисом на любом устройстве",
+  "click-continue-agree": "Нажимая «Продолжить», я соглашаюсь",
+  "privacy-policy": "Политикой конфиденциальности",
+  "user-agreement": "Пользовательским соглашением"
 }

@@ -13,8 +13,11 @@ import { TbReload } from 'react-icons/tb';
 import { SlSocialVkontakte, SlSocialGoogle } from 'react-icons/sl';
 import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useTranslation } from 'react-i18next';
 
 const AuthModal: FC = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
@@ -25,6 +28,7 @@ const AuthModal: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShowAuth(false));
+    setStep(() => 1);
   };
 
   const { data: session, status } = useSession();
@@ -63,10 +67,10 @@ const AuthModal: FC = (): JSX.Element => {
     }
   }, [step]);
 
-  async function handleGoogleSingin() {
+  async function handleGoogleSingIn() {
     await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
   }
-  async function handleVkSingin() {
+  async function handleVkSingIn() {
     await signIn('vk', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
   }
 
@@ -77,12 +81,12 @@ const AuthModal: FC = (): JSX.Element => {
           <div className={styles.chat__header}>
             {step > 1 ? (
               <div className={styles.chat__welcome}>
-                <h5 className={styles.chat__title}>Здравствуйте</h5>
+                <h5 className={styles.chat__title}>{t('sections.hello')}</h5>
                 {login && <P size="S">{login}</P>}
               </div>
             ) : (
               <div className={styles.chat__welcome}>
-                <h5 className={styles.chat__title}>Вход или регистрация</h5>
+                <h5 className={styles.chat__title}>{t('buttons.login-signup')}</h5>
               </div>
             )}
             <div className={styles.chat__close}>
@@ -95,14 +99,14 @@ const AuthModal: FC = (): JSX.Element => {
           <div className={styles.chat__body}>
             {session ? (
               <div className={styles.chat__message}>
-                <h1 onClick={() => signOut()}>Вы уже авторизованы</h1>
+                <h1 onClick={() => signOut()}>{t('sections.already-signed')}</h1>
               </div>
             ) : (
               <>
                 {step >= 1 && (
                   <div className={styles.chat__message}>
-                    <h5>Войдите или зарегистрируйтесь</h5>
-                    {step <= 1 && <P>чтобы пользоваться сервисом на любом устройстве</P>}
+                    <h5>{t('buttons.login-signup-person')}</h5>
+                    {step <= 1 && <P>{t('sections.use-service-any-device')}</P>}
                   </div>
                 )}
                 {step < 2 ? (
@@ -114,7 +118,7 @@ const AuthModal: FC = (): JSX.Element => {
                       onChange={(e) => setLogin(e.target.value)}
                       className={!!login ? styles.input__active : ''}
                     />
-                    <label>Через email или телефон</label>
+                    <label>{t('buttons.email-or-phone')}</label>
                   </div>
                 ) : (
                   <div className={styles.chat__row}>
@@ -129,7 +133,9 @@ const AuthModal: FC = (): JSX.Element => {
                 {step >= 2 && (
                   <>
                     <div className={styles.chat__message}>
-                      <h5>Введите пароль чтобы войти</h5>
+                      <h5>
+                        {t('buttons.enter-password')} {t('buttons.to-login')}
+                      </h5>
                     </div>
                     <div className={`${styles.input} ${styles.password}`}>
                       <input
@@ -138,7 +144,7 @@ const AuthModal: FC = (): JSX.Element => {
                         onChange={(e) => setPassword(e.target.value)}
                         className={!!password ? styles.input__active : ''}
                       />
-                      <label>Введите пароль</label>
+                      <label>{t('buttons.enter-password')}</label>
                       {!showPassword ? (
                         <AiOutlineEye
                           className={`${styles.input__show} ${
@@ -159,27 +165,27 @@ const AuthModal: FC = (): JSX.Element => {
                 )}
                 {step < 2 ? (
                   <button disabled={!login} className={styles.button} onClick={nextStep}>
-                    Продолжить
+                    {t('buttons.continue')}
                   </button>
                 ) : (
                   <button disabled={!login} className={styles.button} onClick={nextStep}>
-                    Войти
+                    {t('buttons.login')}
                   </button>
                 )}
                 {step < 2 ? (
                   <>
                     <div className={styles.chat__oauth}>
-                      <button className={styles.button} onClick={() => handleGoogleSingin()}>
-                        <span>Войти через Google</span>
+                      <button className={styles.button} onClick={() => handleGoogleSingIn()}>
+                        <span>{t('buttons.login-with')} Google</span>
                         <SlSocialGoogle />
                       </button>
-                      <button className={styles.button} onClick={() => handleVkSingin()}>
-                        <span>Войти через VK</span>
+                      <button className={styles.button} onClick={() => handleVkSingIn()}>
+                        <span>{t('buttons.login-with')} VK</span>
                         <SlSocialVkontakte />
                       </button>
                     </div>
                     <div className={styles.chat__confidential}>
-                      <p>Нажимая «Продолжить», я соглашаюсь</p>
+                      <p>{t('sections.click-continue-agree')}</p>
                       <p>
                         <span>c </span>
                         <a
@@ -187,17 +193,17 @@ const AuthModal: FC = (): JSX.Element => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          Политикой конфиденциальности
+                          {t('sections.privacy-policy')}
                         </a>
                       </p>
                       <p>
-                        <span>и </span>
+                        <span>{t('sections.and')} </span>
                         <a
                           href="https://www.ivi.tv/info/agreement"
                           target="_blank"
                           rel="noreferrer"
                         >
-                          Пользовательским соглашением
+                          {t('sections.user-agreement')}
                         </a>
                       </p>
                     </div>
@@ -205,7 +211,7 @@ const AuthModal: FC = (): JSX.Element => {
                 ) : (
                   <div className={styles.chat__recover}>
                     <TbReload />
-                    <h5>Восстановить пароль</h5>
+                    <h5>{t('buttons.reset-password')}</h5>
                   </div>
                 )}
               </>
