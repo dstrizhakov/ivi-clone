@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, use } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { IconType } from 'react-icons';
 import styles from './Submenu.module.scss';
 import Link from 'next/link';
