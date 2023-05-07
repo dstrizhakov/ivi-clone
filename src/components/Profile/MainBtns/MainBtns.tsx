@@ -9,11 +9,7 @@ import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.pro
 import { setShowAuth } from '@/store/reducers/modals.slice';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 import { signOut, useSession } from 'next-auth/react';
-import { Htag } from '@/components/Htag/Htag';
-import { HiOutlinePencil } from 'react-icons/hi';
-import { BsEnvelope, BsPhone } from 'react-icons/bs';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
-import Link from 'next/link';
 import SubscriptionsButton from '@/components/Profile/MainBtns/ProfileBtns/SubscriptionsButton';
 import CertificatesButton from '@/components/Profile/MainBtns/ProfileBtns/CertificatesButton';
 import PresentSubscriptionButton from '@/components/Profile/MainBtns/ProfileBtns/PresentSubscriptionButton';
@@ -28,6 +24,8 @@ import SettingsButton from '@/components/Profile/MainBtns/ProfileBtns/SettingsBu
 import SupportButton from '@/components/Profile/MainBtns/ProfileBtns/SupportButton';
 import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButton';
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
+import EditProfile from '@/components/Profile/EditProfile';
+import ChecksButton from '@/components/Profile/MainBtns/ProfileBtns/ChecksButton';
 
 const MainBtns = ({ ...props }) => {
   const { t } = useTranslation();
@@ -44,53 +42,14 @@ const MainBtns = ({ ...props }) => {
         </div>
       )}
       {session && session?.user ? (
-        <div className={styles.userinfo}>
-          <div className={styles.userinfo__title}>
-            <div className={styles.title__text}>
-              <Htag tag={'h2'}>{t('sections.profile')}</Htag>
-              <P>{t('sections.main-profile')}</P>
-            </div>
-            <Link href={'/profile'}>
-              <Button>
-                <HiOutlinePencil />
-                {t('buttons.edit-profile')}
-              </Button>
-            </Link>
-          </div>
-          <div className={styles.userinfo__information}>
-            <div className={styles.info}>
-              <BsEnvelope />
-              {session.user?.email ? (
-                <P size={'S'}>{session.user?.email}</P>
-              ) : (
-                <Button
-                  appearance={BtnA.transparent}
-                  size={BtnS.S}
-                  title={t('buttons.add-email') || ''}
-                >
-                  {t('buttons.add-email')}
-                </Button>
-              )}
-            </div>
-            <div className={styles.info}>
-              <BsPhone />
-              <Button
-                appearance={BtnA.transparent}
-                size={BtnS.S}
-                title={t('buttons.add-phone') || ''}
-              >
-                {t('buttons.add-phone')}
-              </Button>
-            </div>
-          </div>
-        </div>
+        <EditProfile />
       ) : (
         <div className={styles.login}>
           <Button
             onClick={() => openLoginModal()}
             size={BtnS.S}
             appearance={BtnA.red}
-            title={t('buttons.login-signup') || 'Войти или зарегестрироваться'}
+            title={t('buttons.login-signup') || 'Войти или зарегистрироваться'}
           >
             <TiUserOutline />
             {t('buttons.login-signup')}
@@ -138,6 +97,11 @@ const MainBtns = ({ ...props }) => {
         <li className={`${styles.list__item} ${styles.smalls}`}>
           <CodeLoginButton />
         </li>
+        {session && session?.user && (
+          <li className={`${styles.list__item} ${styles.smalls}`}>
+            <ChecksButton />
+          </li>
+        )}
         <li className={`${styles.list__item} ${styles.smalls}`}>
           <SettingsButton />
         </li>
