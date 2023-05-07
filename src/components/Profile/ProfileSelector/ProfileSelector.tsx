@@ -46,14 +46,7 @@ const ProfileSelector = () => {
               <span>{t('sections.children')}</span>
             </div>
             <div className={`${styles.profile__user} ${styles.profile__item}`}>
-              <div className={styles.profile__addProfile}></div>
-              {/* <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  /> */}
+              <div className={styles.profile__addProfile} />
               <span>{t('buttons.new-one')}</span>
             </div>
           </div>
