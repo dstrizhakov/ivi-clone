@@ -1,88 +1,73 @@
-import React, { FC, useState } from 'react';
-import styles from './Card.module.scss';
+import React, { FC } from 'react';
 import { CardProps } from './Card.props';
 import { P } from '@/components/P/P';
 import Link from 'next/link';
-import { Button } from '@/components/Button/Button';
-import { BsBookmark } from 'react-icons/bs';
-import { BsFillBookmarkFill } from 'react-icons/bs';
-import { IoColorWandOutline } from 'react-icons/io5';
-import { AiOutlineStar } from 'react-icons/ai';
-import { MdBlock } from 'react-icons/md';
 import BarGraph from '@/components/BarGraph/BarGraph';
-import { useRouter } from 'next/navigation';
+import i18next from 'i18next';
+import AddToFavoritesButton from '@/components/Card/CardButtons/AddToFavoritesButton';
+import RateButton from '@/components/Card/CardButtons/RateButton';
+import FindSimilarButton from '@/components/Card/CardButtons/FindSimilarButton';
+import BlockButton from '@/components/Card/CardButtons/BlockButton';
+import styles from './Card.module.scss';
+import Image from 'next/image';
 
-const Card: FC<CardProps> = ({ card, openRating }) => {
-  const router = useRouter();
-  const [booked, setBooked] = useState<boolean>(false);
-  const [blocked, setBlocked] = useState<boolean>(false);
-  const book = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    e.nativeEvent.stopImmediatePropagation();
-    setBooked((booked) => !booked);
-  };
-  const find = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    e.nativeEvent.stopImmediatePropagation();
-    console.log('change to s');
-    router.push('/movies');
-  };
-  const star = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    e.nativeEvent.stopImmediatePropagation();
-    openRating(true);
-  };
-  const block = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    e.nativeEvent.stopImmediatePropagation();
-    setBlocked((blocked) => !blocked);
-  };
+const Card: FC<CardProps> = ({
+  card,
+  hover = true,
+  star = false,
+  book = false,
+  find = false,
+  block = false,
+  ...props
+}) => {
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false">
-      <div className={styles.imageSection}>
-        <img src={card.img} alt={card.name} />
+    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
+      <div className={`${styles.imageSection} ${hover && styles.hover}`}>
+        <Image
+          src={card.card_image}
+          alt={card.name}
+          width={234}
+          height={360}
+          quality={85}
+          loading={'lazy'}
+        />
         <div className={styles.props}>
-          <div className={styles.btns}>
-            <Button size={'L'} onClickCapture={(e) => book(e)}>
-              {booked ? <BsFillBookmarkFill /> : <BsBookmark />}
-            </Button>
-            <Button size={'L'} onClickCapture={(e) => find(e)}>
-              <IoColorWandOutline className={styles.mirrored} />
-            </Button>
-            <Button size={'L'} onClickCapture={(e) => star(e)}>
-              <AiOutlineStar />
-            </Button>
-            <Button size={'L'} onClickCapture={(e) => block(e)}>
-              {blocked ? <MdBlock fill={'#ff542e'} /> : <MdBlock />}
-            </Button>
+          <div className={styles.btns__container}>
+            <div className={styles.btns}>
+              {book && <AddToFavoritesButton />}
+              {find && <FindSimilarButton />}
+              {star && <RateButton />}
+              {block && <BlockButton />}
+            </div>
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
-              7,7
+              {card.rating}
               <div className={styles.graphs}>
-                <BarGraph width={80} />
-                <BarGraph width={73} />
-                <BarGraph width={62} />
-                <BarGraph width={98} />
+                <BarGraph width={+card.rating[0] * 0.7 * 10 - 0.2} />
+                <BarGraph width={+card.rating[0] * 0.9 * 10 - 0.2} />
+                <BarGraph width={+card.rating[0] * 1.2 * 10 - 0.2} />
+                <BarGraph width={+card.rating[0] * 0.8 * 10 - 0.2} />
               </div>
             </div>
             <div className={styles.singleGraph}>
-              <span>актёры</span>
-              <BarGraph width={67} />
+              <span>{i18next.language == 'en' ? 'actors' : 'актёры'}</span>
+              <BarGraph width={+card.rating[0] * 10 - 0.2} />
             </div>
             <div className={styles.info__text}>
-              <div className={styles.info__row}>2019-2021, Россия, Драмы</div>
-              <div className={styles.info__row}>1 сезон</div>
+              <div className={styles.info__row}>
+                {card.year}, {card.countries}, {card.genres[0]}
+              </div>
+              <div className={styles.info__row}>{card.duration}</div>
             </div>
           </div>
         </div>
       </div>
-      <div className={styles.textSection}>
-        <P>{card.name}</P>
+      <div
+        className={styles.textSection}
+        title={i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}
+      >
+        <P>{i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}</P>
       </div>
     </Link>
   );

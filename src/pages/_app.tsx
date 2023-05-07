@@ -5,6 +5,9 @@ import Head from 'next/head';
 import localFont from 'next/font/local';
 import { wrapper } from '@/store/store';
 import { SessionProvider } from 'next-auth/react';
+import { useTranslation } from 'react-i18next';
+import Modals from '@/components/Modals/Modals';
+import '@/i18n/i18n';
 
 const iviSans = localFont({
   src: [
@@ -32,15 +35,19 @@ const iviSans = localFont({
 });
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const { t } = useTranslation();
+
   return (
     <SessionProvider session={session}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{t('title.home')}</title>
       </Head>
       <div className={iviSans.className}>
         <MainLayout>
           <Component {...pageProps} />
         </MainLayout>
+        <Modals />
       </div>
     </SessionProvider>
   );

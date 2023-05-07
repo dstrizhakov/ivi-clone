@@ -1,18 +1,23 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { HiChevronLeft } from 'react-icons/hi';
 import styles from './BackButton.module.scss';
+import { useTranslation } from 'react-i18next';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 const BackButton = (): JSX.Element => {
+  const { t } = useTranslation();
   const router = useRouter();
 
-  const handleClick = () => {
+  const back = () => {
     router.back();
   };
 
+  useEscapeKey(back);
+
   return (
-    <button className={styles.back} onClick={handleClick}>
+    <button className={styles.back} onClick={back}>
       <HiChevronLeft className={styles.back__icon} />
-      <span>Назад</span>
+      <span>{t('buttons.back')}</span>
     </button>
   );
 };

@@ -1,0 +1,44 @@
+/* Задаем правила для шрифта iviSans-Black */
+@font-face {
+  font-family: 'iviSans';
+  src: url('/fonts/iviSans-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Задаем правила для шрифта iviSans-Bold */
+@font-face {
+  font-family: 'iviSans';
+  src: url('/fonts/iviSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Задаем правила для шрифта iviSans-Medium */
+@font-face {
+  font-family: 'iviSans';
+  src: url('/fonts/iviSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Задаем правила для шрифта iviSans-Regular */
+@font-face {
+  font-family: 'iviSans';
+  src: url('/fonts/iviSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import "src/styles/variables.scss";
+
+* {
+  font-family: iviSans, sans-serif;
+}
+body {
+  background-color: $color-background!important;
+}

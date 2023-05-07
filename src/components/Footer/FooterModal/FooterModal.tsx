@@ -2,7 +2,6 @@ import { FC } from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
 import styles from './FooterModal.module.scss';
-import { FooterModalProps } from './FooterModal.props';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import ModalList from './ModalList/ModalList';
@@ -16,134 +15,147 @@ import { FaLinkedinIn, FaOdnoklassniki, FaTelegramPlane, FaTwitter, FaVk } from 
 import { CgPhone } from 'react-icons/cg';
 import { BiDevices, BiInfoCircle, BiMessageAlt } from 'react-icons/bi';
 import { HiPhone } from 'react-icons/hi2';
+import { useTranslation } from 'react-i18next';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
+import { selectModal, setShowFooterModal } from '@/store/reducers/modals.slice';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { BtnA } from '@/components/Button/Button.props';
 
-const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
-  usePreventScroll(isOpen);
+const FooterModal: FC = () => {
+  const { t } = useTranslation();
+  const { showFooterModal } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
+  usePreventScroll(showFooterModal);
+  useEscapeKey(() => dispatch(setShowFooterModal(false)));
   return (
     <>
-      {isOpen && (
+      {showFooterModal && (
         <div className={styles.modal}>
           <div className={cn(styles.menuItem, styles.buttons)}>
             <Button size="L" className={cn(styles.buttonSubscribe, styles.button)}>
               <SlDiamond />
-              Подключить подписку
+              {t('buttons.get-subscription')}
             </Button>
             <Button size="L" className={styles.button}>
               <FiAward />
-              Активация сертификата
+              {t('footer.cert')}
             </Button>
           </div>
           <div className={styles.menuItem}>
             <Link href={'#'} className={styles.link}>
-              Мой Иви
+              {t('sections.my-ivi')}
             </Link>
             <Link href={'#'} className={styles.link}>
-              Что нового
+              {t('sections.whats-new')}
             </Link>
-            <ModalList title={'Фильмы'} icon={BsCameraReels} isFilms={true}></ModalList>
-            <ModalList title={'Сериалы'} icon={MdOutlineVideoLibrary} isFilms={true}></ModalList>
-            <ModalList title={'Мультфильмы'} icon={TbTractor} isFilms={true}></ModalList>
+            <ModalList title={t('sections.movies')} icon={BsCameraReels} isFilms={true}></ModalList>
+            <ModalList
+              title={t('sections.series')}
+              icon={MdOutlineVideoLibrary}
+              isFilms={true}
+            ></ModalList>
+            <ModalList title={t('sections.animation')} icon={TbTractor} isFilms={true}></ModalList>
             <ModalList title={'TV+'} icon={IoTvOutline}>
               <div className={styles.list}>
-                <p>TB онлайн</p>
+                <p>{t('categories.tv-online')}</p>
                 <Link href={'https://www.ivi.ru/tvplus#'} className={styles.listLink}>
-                  ТВ-каналы
+                  {t('categories.tv-channels')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/razvlekatelnoe'} className={styles.listLink}>
-                  Развлекательное
+                  {t('categories.entertainment')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/deti'} className={styles.listLink}>
-                  Дети
+                  {t('categories.children')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/sport'} className={styles.listLink}>
-                  Спортивное ТВ
+                  {t('categories.sport-tv')}
                 </Link>
                 <Link href={'https://www.ivi.ru/tvplus/documentalnoe'} className={styles.listLink}>
-                  Документальное
+                  {t('categories.documentary')}
                 </Link>
               </div>
             </ModalList>
             <Link href={'https://www.ivi.ru/goodmovies'} className={styles.link}>
-              Что посмотреть
+              {t('categories.what-to-watch')}
             </Link>
           </div>
           <div className={styles.menuItem}>
             <Link href={'#'} className={styles.link}>
-              Иви.Рейтинг фильмы
+              {t('categories.ivi-rating-movies')}
             </Link>
             <Link href={'#'} className={styles.link}>
-              Иви.Рейтинг сериалы
+              {t('categories.ivi-rating-series')}
             </Link>
           </div>
           <div className={styles.menuItem}>
-            <ModalList title={'О нас'} icon={BiInfoCircle}>
+            <ModalList title={t('footer.about-us')} icon={BiInfoCircle}>
               <div className={styles.list}>
                 <Link href={'https://corp.ivi.ru/'} className={styles.listLink}>
-                  О компании
+                  {t('footer.about-company')}
                 </Link>
                 <Link
                   href={'https://corp.ivi.ru/career/#career-vacancy-block'}
                   className={styles.listLink}
                 >
-                  Вакансии
+                  {t('footer.vacancies')}
                 </Link>
                 <Link href={'https://www.ivi.ru/pages/beta/'} className={styles.listLink}>
-                  Программа бета-тестирования
+                  {t('footer.beta')}
                 </Link>
                 <Link href={'https://www.ivi.ru/info/partners'} className={styles.listLink}>
-                  Информация для партнёров
+                  {t('footer.partners')}
                 </Link>
                 <Link href={'https://corp.ivi.ru/advertisers/'} className={styles.listLink}>
-                  Размещение рекламы
+                  {t('footer.advertisers')}
                 </Link>
                 <Link href={'https://www.ivi.ru/info/agreement'} className={styles.listLink}>
-                  Пользовательское соглашение
+                  {t('footer.agreement')}
                 </Link>
                 <Link href={'https://www.ivi.ru/info/confidential'} className={styles.listLink}>
-                  Политика конфиденциальности
+                  {t('footer.confidential')}
                 </Link>
                 <Link
                   href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}
                   className={styles.listLink}
                 >
-                  Комплаенс
+                  {t('footer.compliance')}
                 </Link>
               </div>
             </ModalList>
             <Link href={'#'} className={cn(styles.link, styles.flex)}>
               <TbDeviceTv />
-              Вход по коду
+              {t('buttons.code-login')}
             </Link>
             <div className={styles.buttons}>
               <Button>
                 <IoTv />
                 <div>
-                  <span>Смотрите на</span>
+                  <span>{t('footer.watch-on')}</span>
                   Smart TV
                 </div>
               </Button>
               <Button>
                 <BiDevices />
-                Все устройства
+                {t('footer.all-devices')}
               </Button>
             </div>
           </div>
           <div className={styles.menuItem}>
-            <ModalList title={'Служба поддержки'} icon={BiMessageAlt}>
+            <ModalList title={t('footer.support')} icon={BiMessageAlt}>
               <div className={styles.list}>
                 <div>
-                  <P>Мы всегда готовы вам помочь. </P>
-                  <P>Наши операторы онлайн 24/7</P>
+                  <P>{t('footer.ready-to-help')}</P>
+                  <P>{t('footer.anytime')}</P>
                 </div>
                 <div className={cn(styles.flex, styles.feedbackButtons)}>
                   <Link href={'https://www.ivi.ru/profile'}>
-                    <Button className={styles.button}>Написать в чате</Button>
+                    <Button className={styles.button}>{t('footer.chat-us')}</Button>
                   </Link>
-                  <Button appearance={'square'}>
+                  <Button appearance={BtnA.square}>
                     <IoMailOutline />
                   </Button>
-                  <Button appearance={'square'}>
+                  <Button appearance={BtnA.square}>
                     <HiPhone />
                   </Button>
                 </div>
@@ -151,29 +163,29 @@ const FooterModal: FC<FooterModalProps> = ({ isOpen }) => {
                   <Link href={'https://ask.ivi.ru/'} className={styles.askLink}>
                     ask.ivi.ru
                   </Link>
-                  <P>Ответы на вопросы</P>
+                  <P>{t('footer.answers')}</P>
                 </div>
               </div>
             </ModalList>
           </div>
           <div className={styles.menuItem}>
             <div className={styles.social}>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaVk />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaOdnoklassniki />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaTwitter />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <CgPhone />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaLinkedinIn />
               </Button>
-              <Button appearance={'circle'}>
+              <Button appearance={BtnA.circle}>
                 <FaTelegramPlane />
               </Button>
             </div>

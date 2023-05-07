@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from '@/components/Card/Card.module.scss';
 import { P } from '@/components/P/P';
+import { useTranslation } from 'react-i18next';
 
 const ShowAll = () => {
+  const { t } = useTranslation();
   return (
     <div className={styles.card}>
       <div className={`${styles.imageSection} ${styles.show}`}>
-        <P>Посмотреть все</P>
+        <P>{t('buttons.show-all')}</P>
       </div>
     </div>
   );

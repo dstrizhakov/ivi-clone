@@ -1,0 +1,23 @@
+@import "@/styles/variables.scss";
+
+.ft_cont {
+  margin-left: 12px;
+  cursor: pointer;
+}
+.ft {
+  background-color: #312b45;
+  height: 32px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  span {
+    color: $color-secondary;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    font-style: normal;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

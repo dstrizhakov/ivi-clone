@@ -1,15 +1,109 @@
-@import "@/styles/variables";
+@import "@/styles/variables.scss";
+
+.select_profile {
+  padding: 0 12px;
+  &:before {
+    content: '';
+    display: block;
+    background-color: rgba(255,255,255,.16);
+    height: 1px;
+    width: 100%;
+    pointer-events: none;
+  }
+  &:after {
+    content: '';
+    display: block;
+    background-color: rgba(255,255,255,.16);
+    height: 1px;
+    width: 97%;
+    pointer-events: none
+  }
+}
+
+.userinfo {
+  padding: 0 12px;
+  margin: 20px 0;
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    a {
+      height: 100%;
+    }
+    .title__text {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      h2 {
+        font-size: 32px;
+        line-height: 36px;
+        font-weight: 700;
+        font-style: normal;
+        padding-bottom: 4px;
+        margin-bottom: -4px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+  &__information {
+    display: flex;
+    .info {
+      margin-top: -2px;
+      margin-bottom: -2px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: flex;
+      svg {
+        color: $color-gray-text;
+        margin-right: 10px;
+      }
+      button {
+        border: 1px solid rgba($color-input, .43);
+        padding: 10px;
+        &:hover {
+          border: 1px solid $color-input;
+        }
+      }
+      +.info {
+        margin-left: 16px;
+      }
+    }
+  }
+}
+.bottom {
+  padding: 0 12px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    color: $color-accent;
+  }
+  .id {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+  }
+}
 
 .profile__btns {
   display: flex;
   margin-bottom: 20px;
   flex-direction: column;
-  .id {
-    font-size: 0.7rem;
-    padding: 0 12px;
-  }
+
   button {
-    text-align: start;
+    text-align: center;
   }
   .login {
     display: flex;

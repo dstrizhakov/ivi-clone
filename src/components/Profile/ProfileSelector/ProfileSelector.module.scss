@@ -1,0 +1,101 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.profile {
+  margin: 20px 0;
+  &__title {
+    margin-bottom: rem(24);
+    h3 {
+      font-size: rem(26);
+    }
+  }
+  &__row {
+    margin-top: 18px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  &__user {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    margin-right: 10px;
+    & span {
+      margin-left: -2px;
+      margin-top: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &__item {
+    margin-right: 5px;
+    width: 45px;
+    opacity: 0.5;
+    align-items: center;
+    transition: $time-main;
+    & img {
+      width: 40px;
+      height: 40px;
+    }
+    &:hover {
+      opacity: 1;
+    }
+    span {
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__image {
+    border-radius: 8px;
+    cursor: pointer;
+    &.no_image {
+      width: 48px;
+      aspect-ratio: 1;
+      background-color: #151515;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        width: 80%;
+        height: 80%;
+      }
+    }
+  }
+  &__addProfile {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: $color-card-hover;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40%;
+      height: 2px;
+      border-radius: 1px;
+      background-color: white;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 40%;
+      border-radius: 1px;
+      background-color: white;
+    }
+  }
+}

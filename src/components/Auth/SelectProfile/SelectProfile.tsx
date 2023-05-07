@@ -1,10 +1,10 @@
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
 import { Htag } from '@/components/Htag/Htag';
 import children from '../../../../public/children.png';
 import styles from './SelectProfile.module.scss';
 import { FC } from 'react';
 import { SelectProfileProps } from './SelectProfile.props';
+import ProfileIcon from './ProfileIcon/ProfileIcon';
 
 const SelectProfile: FC<SelectProfileProps> = ({ tag = 'h3' }) => {
   const { data: session, status } = useSession();
@@ -18,39 +18,15 @@ const SelectProfile: FC<SelectProfileProps> = ({ tag = 'h3' }) => {
         <Htag tag={tag}>Выбор профиля</Htag>
       </div>
       <div className={styles.profile__row}>
-        <div className={`${styles.profile__user} ${styles.active}`}>
-          {session.user && session.user?.image && (
-            <Image
-              className={styles.profile__image}
-              src={session.user?.image}
-              alt="user"
-              width={48}
-              height={48}
-            />
-          )}
-          <span>{session.user?.email || session.user?.name}</span>
-        </div>
-        <div className={`${styles.profile__user}`}>
-          <Image
-            className={styles.profile__image}
-            src={children}
-            alt="children"
-            width={40}
-            height={40}
+        {session.user && session.user?.image && (
+          <ProfileIcon
+            image={session.user?.image}
+            name={session.user?.email || session.user?.name || 'user'}
+            isActive={true}
           />
-          <span>Дети</span>
-        </div>
-        <div className={`${styles.profile__user}`}>
-          <div className={styles.profile__addProfile}></div>
-          {/* <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  /> */}
-          <span>Новый</span>
-        </div>
+        )}
+        <ProfileIcon image={children} name={'Дети'} isActive={false} />
+        <ProfileIcon name={'Новый'} isActive={false} />
       </div>
     </div>
   );

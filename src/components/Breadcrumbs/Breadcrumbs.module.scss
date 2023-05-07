@@ -50,3 +50,30 @@
     }
   }
 }
+
+.breadcrumbs__movie__item {
+  float: left;
+  color: rgba(white,.56);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  font-style: normal;
+  a {
+    transition-duration: .4s;
+    color: rgba(white,.72);
+  }
+  &:hover a {
+    color: white;
+  }
+  &.not_first:before {
+    color: rgba(255,255,255,.56);
+    display: inline-block;
+    content: '';
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255,255,255,.56);
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 3px;
+  }
+}

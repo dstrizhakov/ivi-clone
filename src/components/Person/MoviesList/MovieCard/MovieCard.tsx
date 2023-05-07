@@ -5,19 +5,23 @@ import { MovieCardProps } from './MovieCard.props';
 import Link from 'next/link';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
+import { useTranslation } from 'react-i18next';
 
 const MovieCard: FC<MovieCardProps> = ({ card }) => {
+  const { t } = useTranslation();
   return (
     <Link href={`/watch/${card.id}`} className={styles.card} key={card.id}>
       <div className={styles.info}>
-        <img src={card.img} alt="" className={styles.img} />
+        <img src={card.card_image} alt="" className={styles.card_image} />
         <div>
           <P color={'white'}>{card.year}</P>
           <P color={'white'}>{card.name}</P>
-          <P size={'S'}>Рейтинг Иви: {card.rating}</P>
+          <P size={'S'}>
+            {t('categories.rating')}: {card.rating}
+          </P>
         </div>
       </div>
-      <Button>Подробнее</Button>
+      <Button>{t('buttons.read-more')}</Button>
     </Link>
   );
 };

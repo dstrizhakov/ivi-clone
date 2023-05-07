@@ -5,19 +5,23 @@ import { BreadcrumbsProps } from './Breadcrumbs.props';
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
   return (
-    <div className={styles.container}>
-      <ul className={styles.breadcrumbs}>
-        {breadcrumbs.map((breadcrumb, index) => (
-          <li key={index} className={styles.breadcrumbs__item}>
-            {index === breadcrumbs.length - 1 ? (
-              <span>{breadcrumb.name}</span>
-            ) : (
-              <Link href={breadcrumb.path}>{breadcrumb.name}</Link>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {breadcrumbs.length && (
+        <div className={styles.container}>
+          <ul className={styles.breadcrumbs}>
+            {breadcrumbs.map((breadcrumb, index) => (
+              <li key={index} className={styles.breadcrumbs__item}>
+                {index === breadcrumbs.length - 1 ? (
+                  <span>{breadcrumb.name}</span>
+                ) : (
+                  <Link href={breadcrumb.path}>{breadcrumb.name}</Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 };
 

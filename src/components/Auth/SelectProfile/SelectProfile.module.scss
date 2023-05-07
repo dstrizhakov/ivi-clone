@@ -6,27 +6,33 @@
     margin-bottom: rem(24);
   }
   &__row {
+    width: 100%;
     margin-top: 24px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
+  }
+  &__image {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+      width: 40px;
+      height: 40px;
+    }
   }
   &__user {
     display: flex;
     flex-direction: column;
     width: 40px;
     opacity: 0.5;
-    margin-right: 10px;
+    margin-right: 12px;
     transition: $time-main;
     &:hover {
       opacity: 1;
     }
-    & img {
-      width: 40px;
-      height: 40px;
-    }
     & span {
-      margin-left: -2px;
       margin-top: 4px;
       font-size: 13px;
       font-weight: 700;
@@ -49,7 +55,7 @@
     border-radius: 8px;
     cursor: pointer;
   }
-  &__addProfile {
+  &__add {
     cursor: pointer;
     width: 40px;
     height: 40px;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should be circle 1`] = `
+<button
+  class="button circle M"
+>
+  btn
+</button>
+`;
+
+exports[`Button should be rectangle 1`] = `
+<button
+  class="button rectangle M"
+>
+  btn
+</button>
+`;
+
+exports[`Button should be rectangle default 1`] = `
+<button
+  class="button rectangle M"
+>
+  btn
+</button>
+`;
+
+exports[`Button should be red 1`] = `
+<button
+  class="button red M"
+>
+  btn
+</button>
+`;
+
+exports[`Button should be square 1`] = `
+<button
+  class="button square M"
+>
+  btn
+</button>
+`;

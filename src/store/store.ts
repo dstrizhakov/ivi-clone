@@ -6,11 +6,13 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import authReducer from './reducers/auth.slice';
 import movieReducer from './reducers/movie.slice';
 import appReducer from './reducers/app.slice';
+import modalsReducer from './reducers/modals.slice';
 
 const rootReducer = combineReducers({
   appReducer,
   authReducer,
   movieReducer,
+  modalsReducer,
   [movieApi.reducerPath]: movieApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
 });

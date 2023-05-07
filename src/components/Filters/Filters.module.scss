@@ -1,11 +1,37 @@
+@import "@/styles/variables.scss";
+
+.openers {
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .filters__icon {
+    display: flex;
+    margin: 0 10px;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    .open_filter:hover {
+      transition: $time-main;
+      color: $color-accent;
+    }
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
+
 .filters {
-  padding: 16px 28px;
+  padding: 16px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-color: #1f1b2e;
   border-radius: 6px;
-  margin-bottom: 100px; //
+  margin-bottom: 20px;
+  transition: max-height 400ms ease,opacity 200ms ease,padding-top 400ms ease;
   .plank_list {
     display: -webkit-box;
     display: -webkit-flex;
@@ -18,10 +44,12 @@
     margin-right: -6px;
   }
   .plank_item {
+    position: relative;
     margin-bottom: 12px;
     padding-right: 6px;
     padding-left: 6px;
-    width: 20%;
+    width: calc(100%/6);
+
     @media screen and (max-width: 879px) {
       width: 50%;
     }
@@ -59,11 +87,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: .32;
-    cursor: default!important;
-    &.active {
-      opacity: 1;
-      cursor: pointer!important;
+    opacity: 1;
+    cursor: pointer!important;
+    &:disabled {
+      opacity: .32;
+      cursor: default!important;
     }
   }
 }

@@ -13,18 +13,18 @@
 .picker {
   margin-top: 17px;
   display: flex;
-  background-color: #1f1b2e;
+  background-color: $color-input-text;
   border-radius: 16px;
-  button{
+  button {
     margin: 3px;
     border-radius: 12px;
     height: 48px;
     aspect-ratio: 14/16;
-    color: #7e798f;
+    color: $color-gray-text;
     font-size: 18px;
     line-height: 200%;
     &:hover {
-      color: white;
+      color: $color-main;
       background-color: $color-accent;
     }
   }
@@ -38,12 +38,12 @@
   padding: 8px 7px 10px;
   p {
     font-size: 13px;
-    color: #7e798f;
+    color: $color-gray-text;
   }
 }
 
 .active {
   background-color: #312b45;
   box-shadow: 0 4px 16px rgb(49 43 69 / 32%);
-  color: white!important;
+  color: $color-main!important;
 }

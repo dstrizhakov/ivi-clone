@@ -1,14 +1,17 @@
-@import "@/styles/variables";
+@import "@/styles/variables.scss";
 
 .description {
   width: 75%;
-  margin-bottom: 30px;
-  padding: 24px 0;
+  @media screen and (max-width: 968px) {
+    width: 100%;
+  }
+  padding: 10px 0;
   h4 {
     padding-bottom: 20px;
   }
   p {
-    margin-top: 7px;
+    margin-top: 3px;
+    line-height: 20px;
   }
   .first {
     display: block;

@@ -3,19 +3,34 @@ import styles from './PersonCard.module.scss';
 import { PersonCardProps } from './PersonCard.props';
 
 import Link from 'next/link';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { nameToLink } from '@/helpers/nameToLink';
 
 const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
-  const name = person?.enName.toLowerCase().split(' ').join('-');
+  const { t } = useTranslation();
   return (
-    <div className={styles.wrapCard}>
+    <div className={styles.person_card}>
       {person ? (
-        <Link href={`/person/${name}`}>
-          <div className={styles.person}>
-            <img src={person.url} alt={person.enName} />
+        <>
+          <div className={styles.wrapCard}>
+            <Link href={`/person/${nameToLink(person.enName)}`}>
+              <div className={styles.person}>
+                <img src={person.url} alt={person.name} />
+              </div>
+            </Link>
           </div>
-        </Link>
+          <div className={styles.card_name}>
+            {i18next.language == 'en' ? person.enName : person.name}
+          </div>
+        </>
       ) : (
-        <div className={styles.rating}>{children}</div>
+        <>
+          <div className={styles.wrapCard}>
+            <div className={styles.rating}>{children}</div>
+          </div>
+          <div className={styles.card_name}>{t('categories.rating')}</div>
+        </>
       )}
     </div>
   );

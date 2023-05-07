@@ -9,57 +9,59 @@ import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
-import { setIsLogin } from '@/store/reducers/app.slice';
-import { useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
-import { Htag } from '@/components/Htag/Htag';
-import Image from 'next/image';
-import children from '../../../../public/children.png';
-import SelectProfile from '@/components/Auth/SelectProfile/SelectProfile';
+import { setShowAuth } from '@/store/reducers/modals.slice';
+import { useTranslation } from 'react-i18next';
+import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { push } = useRouter();
-
   const { data: session } = useSession();
 
+  const { t } = useTranslation();
   const login = () => {
-    push('/profile');
-    dispatch(setIsLogin(true));
+    dispatch(setShowAuth(true));
   };
 
   return (
     <div className={styles.user__content}>
       <div className={styles.content__row}>
         <div className={styles.content__actions}>
-          <LinkCard icon={BiMoviePlay} title="Покупки" link="/pirchases" />
-          <LinkCard icon={HiOutlineBookmark} title="Смотреть позже" link="/pirchases" />
-          <LinkCard icon={IoTimerOutline} title="История просмотров" link="/pirchases" />
+          <LinkCard icon={BiMoviePlay} title={t('buttons.purchases')} link="/purchases" />
+          <LinkCard icon={HiOutlineBookmark} title={t('buttons.watch-later')} link="/purchases" />
+          <LinkCard icon={IoTimerOutline} title={t('buttons.views-story')} link="/purchases" />
           <LinkCard
             icon={IoDiamondOutline}
-            title="Покупки"
-            link="/pirchases"
-            subtitle="Подключить"
+            title={t('buttons.subscriptions')}
+            link="/purchases"
+            subtitle={t('buttons.connect')}
             status="red"
           />
-          <LinkCard icon={BiCertification} title="Активация сертификата" link="/pirchases" />
-          <LinkCard icon={TbDeviceTvOld} title="Вход по коду" link="/pirchases" />
-          <LinkCard icon={GoCreditCard} title="Способы оплаты" link="/pirchases" />
+          <LinkCard
+            icon={BiCertification}
+            title={t('buttons.activate-certificate')}
+            link="/purchases"
+          />
+          <LinkCard icon={TbDeviceTvOld} title={t('buttons.code-login')} link="/purchases" />
+          <LinkCard icon={GoCreditCard} title={t('buttons.payment')} link="/purchases" />
         </div>
         <div className={styles.content__auth}>
           {!session && (
-            <Button size="L" appearance="red" onClick={() => login()}>
-              <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
-            </Button>
+            <Link href={'/profile'}>
+              <Button size="L" appearance="red" onClick={() => login()}>
+                <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
+              </Button>
+            </Link>
           )}
-          {/* Выбор профайла */}
-          <SelectProfile />
+          {session && <ProfileSelector />}
           <div className={styles.content__links}>
             {session && (
-              <Link href="https://www.ivi.tv/profile/profile_info">Редактировать профиль</Link>
+              <Link href="https://www.ivi.tv/profile/profile_info">
+                {t('buttons.edit-profile')}
+              </Link>
             )}
-            <Link href={'https://www.ivi.tv/profile/settings'}>Настройки</Link>
-            <Link href={'https://ask.ivi.ru/'}>Помощь</Link>
+            <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
+            <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
             {session && <span onClick={() => signOut()}>Выйти</span>}
           </div>
         </div>

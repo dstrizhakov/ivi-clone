@@ -5,7 +5,6 @@ import { Htag } from '@/components/Htag/Htag';
 const meta: Meta<HtagProps> = {
   title: 'Main/Htag',
   component: Htag,
-  tags: ['autodocs'],
 };
 
 export default meta;

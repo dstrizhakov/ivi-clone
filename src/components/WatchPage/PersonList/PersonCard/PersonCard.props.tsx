@@ -1,4 +1,3 @@
-import { iMovie } from '@/components/Card/Card.props';
 import { IPerson } from '@/types/types';
 import { ReactNode } from 'react';
 
