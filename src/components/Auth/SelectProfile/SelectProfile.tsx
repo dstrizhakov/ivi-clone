@@ -20,35 +20,36 @@ const SelectProfile: FC<SelectProfileProps> = ({ tag = 'h3' }) => {
       <div className={styles.profile__row}>
         <div className={`${styles.profile__user} ${styles.active}`}>
           {session.user && session.user?.image && (
-            <Image
-              className={styles.profile__image}
-              src={session.user?.image}
-              alt="user"
-              width={48}
-              height={48}
-            />
+            <div className={`${styles.profile__image}`}>
+              {' '}
+              <Image
+                className={styles.profile__image}
+                src={session.user?.image}
+                alt="user"
+                width={48}
+                height={48}
+              />
+            </div>
           )}
           <span>{session.user?.email || session.user?.name}</span>
         </div>
         <div className={`${styles.profile__user}`}>
-          <Image
-            className={styles.profile__image}
-            src={children}
-            alt="children"
-            width={40}
-            height={40}
-          />
+          <div className={`${styles.profile__image}`}>
+            <Image
+              className={styles.profile__image}
+              src={children}
+              alt="children"
+              width={40}
+              height={40}
+            />
+          </div>
+
           <span>Дети</span>
         </div>
         <div className={`${styles.profile__user}`}>
-          <div className={styles.profile__addProfile}></div>
-          {/* <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  /> */}
+          <div className={styles.profile__image}>
+            <div className={styles.profile__addProfile}></div>
+          </div>
           <span>Новый</span>
         </div>
       </div>
