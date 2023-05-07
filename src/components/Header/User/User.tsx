@@ -10,11 +10,9 @@ import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
 import { useAppDispatch } from '@/hooks/redux';
 import { useSession, signOut } from 'next-auth/react';
-import { Htag } from '@/components/Htag/Htag';
-import Image from 'next/image';
 import { setShowAuth } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
-import children from '@/../public/children.png';
+import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 
 const User: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -55,50 +53,7 @@ const User: FC = (): JSX.Element => {
               </Button>
             </Link>
           )}
-          {/* Создать отдельный компонент профайла */}
-          {session && (
-            <div className={styles.content__profile}>
-              <div className={styles.profile__title}>
-                <Htag tag="h3">Выбор профиля</Htag>
-              </div>
-              <div className={styles.profile__row}>
-                <div className={styles.profile__user}>
-                  {session.user && session.user?.image && (
-                    <Image
-                      className={styles.profile__image}
-                      src={session.user.image}
-                      alt="user"
-                      width={48}
-                      height={48}
-                    />
-                  )}
-                  <span>{session.user?.name || session.user?.email}</span>
-                </div>
-                <div className={`${styles.profile__user} ${styles.profile__item}`}>
-                  <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  />
-                  <span>Дети</span>
-                </div>
-                <div className={`${styles.profile__user} ${styles.profile__item}`}>
-                  <div className={styles.profile__addProfile}></div>
-                  {/* <Image
-                    className={styles.profile__image}
-                    src={children}
-                    alt="children"
-                    width={40}
-                    height={40}
-                  /> */}
-                  <span>Новый</span>
-                </div>
-              </div>
-            </div>
-          )}
-
+          <ProfileSelector />
           <div className={styles.content__links}>
             {session && (
               <Link href="https://www.ivi.tv/profile/profile_info">

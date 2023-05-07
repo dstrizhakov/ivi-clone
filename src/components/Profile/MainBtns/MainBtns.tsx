@@ -27,6 +27,7 @@ import Link from 'next/link';
 import { HiOutlinePencil } from 'react-icons/hi';
 import { BsEnvelope, BsPhone } from 'react-icons/bs';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
+import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 
 const MainBtns = ({ ...props }) => {
   const dispatch = useAppDispatch();
@@ -37,142 +38,132 @@ const MainBtns = ({ ...props }) => {
 
   const { t } = useTranslation();
   return (
-    <>
-      <div className={styles.profile__btns} {...props}>
-        {session && session?.user && (
-          <div className={styles.select_profile}>
-            <Htag tag={'h4'}>{t('sections.select-profile')}</Htag>
-            <div className={styles.profiles}>
-              <div className={styles.avatar}>
-                <img src={session.user?.image || undefined} alt={'avatar'} />
-                <P color={'white'}>
-                  {session.user?.name || session.user?.email || t('sections.profile')}
-                </P>
-              </div>
+    <div className={styles.profile__btns} {...props}>
+      {session && (
+        <div className={styles.select_profile}>
+          <ProfileSelector />
+        </div>
+      )}
+      {session && session?.user ? (
+        <div className={styles.userinfo}>
+          <div className={styles.userinfo__title}>
+            <div className={styles.title__text}>
+              <Htag tag={'h2'}>{t('sections.profile')}</Htag>
+              <P>{t('sections.main-profile')}</P>
             </div>
+            <Link href={'/profile'}>
+              <Button>
+                <HiOutlinePencil />
+                {t('buttons.edit-profile')}
+              </Button>
+            </Link>
           </div>
-        )}
-        {session && session?.user ? (
-          <div className={styles.userinfo}>
-            <div className={styles.userinfo__title}>
-              <div className={styles.title__text}>
-                <Htag tag={'h2'}>{t('sections.profile')}</Htag>
-                <P>{t('sections.main-profile')}</P>
-              </div>
-              <Link href={'https://www.ivi.ru/profile/profile_info'}>
-                <Button>
-                  <HiOutlinePencil />
-                  Редактировать профиль
-                </Button>
-              </Link>
-            </div>
-            <div className={styles.userinfo__information}>
-              <div className={styles.info}>
-                <BsEnvelope />
-                {session.user?.email ? (
-                  <P size={'S'}>{session.user?.email}</P>
-                ) : (
-                  <Button
-                    appearance={BtnA.transparent}
-                    size={BtnS.S}
-                    title={t('buttons.add-email') || ''}
-                  >
-                    {t('buttons.add-email')}
-                  </Button>
-                )}
-              </div>
-              <div className={styles.info}>
-                <BsPhone />
+          <div className={styles.userinfo__information}>
+            <div className={styles.info}>
+              <BsEnvelope />
+              {session.user?.email ? (
+                <P size={'S'}>{session.user?.email}</P>
+              ) : (
                 <Button
                   appearance={BtnA.transparent}
                   size={BtnS.S}
-                  title={t('buttons.add-phone') || ''}
+                  title={t('buttons.add-email') || ''}
                 >
-                  {t('buttons.add-phone')}
+                  {t('buttons.add-email')}
                 </Button>
-              </div>
+              )}
+            </div>
+            <div className={styles.info}>
+              <BsPhone />
+              <Button
+                appearance={BtnA.transparent}
+                size={BtnS.S}
+                title={t('buttons.add-phone') || ''}
+              >
+                {t('buttons.add-phone')}
+              </Button>
             </div>
           </div>
-        ) : (
-          <div className={styles.login}>
-            <Button
-              onClick={() => openLoginModal()}
-              size={BtnS.S}
-              appearance={BtnA.red}
-              title={t('buttons.login-signup') || 'login'}
-            >
-              <TiUserOutline />
-              {t('buttons.login-signup')}
-            </Button>
-          </div>
-        )}
+        </div>
+      ) : (
+        <div className={styles.login}>
+          <Button
+            onClick={() => openLoginModal()}
+            size={BtnS.S}
+            appearance={BtnA.red}
+            title={t('buttons.login-signup') || 'Войти или зарегестрироваться'}
+          >
+            <TiUserOutline />
+            {t('buttons.login-signup')}
+          </Button>
+        </div>
+      )}
 
-        <ul className={styles.list}>
-          <li className={`${styles.list__item} ${styles.subscription}`}>
-            <SubscriptionsButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.certificate}`}>
-            <CertificatesButton type={iCardEnum.rect_text} />
-          </li>
-          <li className={`${styles.list__item} ${styles.fund}`}>
-            <BalanceButton />
-          </li>
-        </ul>
-        <ul className={styles.list}>
-          <li className={`${styles.list__item} ${styles.subscription_present}`}>
-            <PresentSubscriptionButton type={iCardEnum.rect_icon_light} />
-          </li>
-        </ul>
-        <ul className={styles.list}>
-          <li className={`${styles.list__item} ${styles.referral_program}`}>
-            <InviteFriendsButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.notifications}`}>
-            <NotificationsButton />
-          </li>
-        </ul>
-        <ul className={styles.list}>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <PurchasesButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <WatchLaterButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <ViewedButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <PaymentButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <CodeLoginButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <SettingsButton />
-          </li>
-          <li className={`${styles.list__item} ${styles.smalls}`}>
-            <SupportButton />
-          </li>
-        </ul>
-        <div className={styles.bottom}>
-          {session && session?.user ? (
-            <>
-              <Button appearance={BtnA.transparent} onClick={() => signOut()}>
-                <RiLogoutBoxRLine />
-                Выйти
-              </Button>
-              <div className={styles.id}>
-                <P>uid: 2049522430</P>
-              </div>
-            </>
-          ) : (
+      <ul className={styles.list}>
+        <li className={`${styles.list__item} ${styles.subscription}`}>
+          <SubscriptionsButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.certificate}`}>
+          <CertificatesButton type={iCardEnum.rect_text} />
+        </li>
+        <li className={`${styles.list__item} ${styles.fund}`}>
+          <BalanceButton />
+        </li>
+      </ul>
+      <ul className={styles.list}>
+        <li className={`${styles.list__item} ${styles.subscription_present}`}>
+          <PresentSubscriptionButton type={iCardEnum.rect_icon_light} />
+        </li>
+      </ul>
+      <ul className={styles.list}>
+        <li className={`${styles.list__item} ${styles.referral_program}`}>
+          <InviteFriendsButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.notifications}`}>
+          <NotificationsButton />
+        </li>
+      </ul>
+      <ul className={styles.list}>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <PurchasesButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <WatchLaterButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <ViewedButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <PaymentButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <CodeLoginButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <SettingsButton />
+        </li>
+        <li className={`${styles.list__item} ${styles.smalls}`}>
+          <SupportButton />
+        </li>
+      </ul>
+      <div className={styles.bottom}>
+        {session && session?.user ? (
+          <>
+            <Button appearance={BtnA.transparent} onClick={() => signOut()}>
+              <RiLogoutBoxRLine />
+              Выйти
+            </Button>
             <div className={styles.id}>
               <P>uid: 2049522430</P>
             </div>
-          )}
-        </div>
+          </>
+        ) : (
+          <div className={styles.id}>
+            <P>uid: 2049522430</P>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
