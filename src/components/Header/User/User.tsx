@@ -53,7 +53,7 @@ const User: FC = (): JSX.Element => {
               </Button>
             </Link>
           )}
-          <ProfileSelector />
+          {session && <ProfileSelector />}
           <div className={styles.content__links}>
             {session && (
               <Link href="https://www.ivi.tv/profile/profile_info">

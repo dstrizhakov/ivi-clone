@@ -19,7 +19,7 @@ import { BtnA, BtnS } from '@/components/Button/Button.props';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import { useSession } from 'next-auth/react';
 
-const Header: FC = (): JSX.Element => {
+const Header: FC = () => {
   const { t } = useTranslation();
   const { data: session } = useSession();
   return (

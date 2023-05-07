@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import '../../../../styles/variables.scss';
 
 .profile {
   width: 100%;
@@ -39,6 +39,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-align: center;
     }
     &.active {
       opacity: 1;
