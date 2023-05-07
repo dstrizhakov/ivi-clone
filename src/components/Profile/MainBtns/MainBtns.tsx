@@ -33,10 +33,9 @@ const MainBtns = ({ ...props }) => {
   const openLoginModal = () => {
     dispatch(setShowAuth(true));
   };
+  const { data: session } = useSession();
 
   const { t } = useTranslation();
-  const { data: session } = useSession();
-  console.log(session);
   return (
     <>
       <div className={styles.profile__btns} {...props}>
@@ -45,9 +44,9 @@ const MainBtns = ({ ...props }) => {
             <Htag tag={'h4'}>{t('sections.select-profile')}</Htag>
             <div className={styles.profiles}>
               <div className={styles.avatar}>
-                <img src={session?.user?.image || undefined} alt={'avatar'} />
+                <img src={session.user?.image || undefined} alt={'avatar'} />
                 <P color={'white'}>
-                  {session?.user?.name || session?.user?.email || t('sections.profile')}
+                  {session.user?.name || session.user?.email || t('sections.profile')}
                 </P>
               </div>
             </div>
@@ -70,8 +69,8 @@ const MainBtns = ({ ...props }) => {
             <div className={styles.userinfo__information}>
               <div className={styles.info}>
                 <BsEnvelope />
-                {session?.user?.email ? (
-                  <P size={'S'}>{session?.user?.email}</P>
+                {session.user?.email ? (
+                  <P size={'S'}>{session.user?.email}</P>
                 ) : (
                   <Button
                     appearance={BtnA.transparent}

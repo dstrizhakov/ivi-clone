@@ -90,12 +90,7 @@ const Header: FC = (): JSX.Element => {
             <Submenu icon={MdNotificationsNone} link={'/notifications'}>
               <Alerts />
             </Submenu>
-            <Submenu
-              icon={BiUser}
-              user={session ? session.user?.image || null : null}
-              link={'/profile'}
-              outline
-            >
+            <Submenu icon={BiUser} user={session?.user?.image || null} link={'/profile'} outline>
               <User />
             </Submenu>
           </div>

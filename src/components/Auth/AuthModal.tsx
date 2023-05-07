@@ -174,7 +174,7 @@ const AuthModal: FC = (): JSX.Element => {
                         <SlSocialGoogle />
                       </button>
                       <button className={styles.button} onClick={() => handleVkSingin()}>
-                        <span>Войти через Google</span>
+                        <span>Войти через VK</span>
                         <SlSocialVkontakte />
                       </button>
                     </div>
