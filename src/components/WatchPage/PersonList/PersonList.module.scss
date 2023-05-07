@@ -1,5 +1,9 @@
-// @import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 .list {
   display: flex;
   gap: 2vw;
+  justify-content: center;
+  @media (max-width: $pc) {
+    justify-content: start;
+  }
 }

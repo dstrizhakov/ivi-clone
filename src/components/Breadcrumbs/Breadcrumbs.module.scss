@@ -1,4 +1,4 @@
-@import '@/styles/variables';
+@import '@/styles/variables.scss';
 @import '@/styles/mixins.scss';
 
 .container {
@@ -36,18 +36,17 @@
         left: 0;
         width: 100%;
         height: rem(2);
-        background-color: rgba(255,255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.3);
 
         transform-origin: left;
-        transition: $time-main
+        transition: $time-main;
       }
 
       &:hover::after {
         bottom: rem(0);
         height: rem(16);
-        transition: all 0.05s ease-in ;
+        transition: all 0.05s ease-in;
       }
     }
-
   }
 }

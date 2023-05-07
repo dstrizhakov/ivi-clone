@@ -1,4 +1,5 @@
 import { PersonInfo } from '@/components/Person/Person';
+import { nameToLink } from '@/helpers/nameToLink';
 import { persons } from '@/mock/persons';
 import { IPerson } from '@/types/types';
 import { useRouter } from 'next/router';
@@ -9,8 +10,7 @@ const Person = () => {
   return (
     <>
       {persons.map((p: IPerson) => {
-        const name = p.enName.toLowerCase().split(' ').join('-');
-        if (router.asPath === `/person/${name}`) return <PersonInfo person={p} />;
+        if (router.asPath === `/person/${nameToLink(p.enName)}`) return <PersonInfo person={p} />;
       })}
     </>
   );

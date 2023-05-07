@@ -8,8 +8,26 @@ import { IoDiamondOutline, IoTimerOutline } from 'react-icons/io5';
 import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
+import { useAppDispatch } from '@/hooks/redux';
+import { setIsLogin } from '@/store/reducers/app.slice';
+import { useRouter } from 'next/navigation';
+import { useSession, signOut } from 'next-auth/react';
+import { Htag } from '@/components/Htag/Htag';
+import Image from 'next/image';
+import children from '../../../../public/children.png';
+import SelectProfile from '@/components/Auth/SelectProfile/SelectProfile';
 
 const User: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const { push } = useRouter();
+
+  const { data: session } = useSession();
+
+  const login = () => {
+    push('/profile');
+    dispatch(setIsLogin(true));
+  };
+
   return (
     <div className={styles.user__content}>
       <div className={styles.content__row}>
@@ -29,12 +47,20 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title="Способы оплаты" link="/pirchases" />
         </div>
         <div className={styles.content__auth}>
-          <Button size="L" appearance="red">
-            <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
-          </Button>
+          {!session && (
+            <Button size="L" appearance="red" onClick={() => login()}>
+              <span className={styles.content__nowrap}>Войти или зарегистрироваться</span>
+            </Button>
+          )}
+          {/* Выбор профайла */}
+          <SelectProfile />
           <div className={styles.content__links}>
+            {session && (
+              <Link href="https://www.ivi.tv/profile/profile_info">Редактировать профиль</Link>
+            )}
             <Link href={'https://www.ivi.tv/profile/settings'}>Настройки</Link>
             <Link href={'https://ask.ivi.ru/'}>Помощь</Link>
+            {session && <span onClick={() => signOut()}>Выйти</span>}
           </div>
         </div>
       </div>

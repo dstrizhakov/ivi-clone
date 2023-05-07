@@ -1,17 +1,15 @@
-import { IPerson } from '@/types/types';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { PersonListProps } from './PersonList.props';
 
 import styles from './PersonList.module.scss';
-import Link from 'next/link';
 import PersonCard from './PersonCard/PersonCard';
 
-export const PersonList: FC<PersonListProps> = ({ list, rating, head }) => {
+export const PersonList: FC<PersonListProps> = ({ list, rating }) => {
   return (
     <div className={styles.list}>
       <>
         <PersonCard>{rating}</PersonCard>
-        {list.map((item) => {
+        {list.slice(0, 4).map((item) => {
           return <PersonCard key={item.enName} person={item} />;
         })}
       </>

@@ -62,13 +62,13 @@ const Footer: FC = () => {
                 <Link href={'https://www.ivi.ru/new'}>Что нового</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'#'}>Фильмы</Link>
+                <Link href={'/movies'}>Фильмы</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'#'}>Сериалы</Link>
+                <Link href={'/series'}>Сериалы</Link>
               </li>
               <li className={styles.link}>
-                <Link href={'#'}>Мультфильмы</Link>
+                <Link href={'/animation'}>Мультфильмы</Link>
               </li>
               <li className={styles.link}>
                 <Link href={'https://www.ivi.ru/tvplus'}>TV+</Link>

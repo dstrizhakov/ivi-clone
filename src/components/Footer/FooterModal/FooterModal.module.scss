@@ -6,7 +6,7 @@
   width: 100%;
   padding: 70px 34px;
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   svg {
     width: 20px;
     height: 20px;
@@ -98,7 +98,10 @@
 }
 
 .social {
-  justify-content: start;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   button {
     padding: 0;
   }
@@ -107,5 +110,24 @@
 @media (max-width: $pc) {
   .modal {
     display: block;
+  }
+}
+@media (max-width: $mobile) {
+  .modal {
+    padding: 70px 16px;
+  }
+  .buttons {
+    grid-auto-flow: row;
+  }
+  .feedbackButtons {
+    a {
+      flex-basis: 100%;
+    }
+    flex-wrap: wrap;
+    button {
+      &:first-child {
+        width: 100%;
+      }
+    }
   }
 }

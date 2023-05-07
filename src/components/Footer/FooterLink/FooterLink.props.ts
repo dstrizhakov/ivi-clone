@@ -3,7 +3,9 @@ import { IconType } from 'react-icons';
 
 export interface FooterLinkProps {
   title: ReactNode;
-  href: string;
+  href?: string;
   icon: IconType;
   openModal?: () => void;
+  modal?: boolean;
+  isOpen?: boolean;
 }

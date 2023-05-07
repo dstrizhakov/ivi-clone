@@ -1,17 +1,40 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import mainReducer from './reducers/Main/main.slice';
+import { authApi } from '@/services/auth.api';
+import { movieApi } from '@/services/movie.api';
+import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { createWrapper } from 'next-redux-wrapper';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import authReducer from './reducers/auth.slice';
+import movieReducer from './reducers/movie.slice';
+import appReducer from './reducers/app.slice';
 
 const rootReducer = combineReducers({
-  mainReducer,
+  appReducer,
+  authReducer,
+  movieReducer,
+  [movieApi.reducerPath]: movieApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
 });
 
-export const setupStore = () => {
+export function makeStore() {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(movieApi.middleware).concat(authApi.middleware),
   });
-};
+}
 
-export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore['dispatch'];
+export const store = makeStore();
+
+export type RootStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<RootStore['getState']>;
+export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootStore,
+  unknown,
+  Action<string>
+>;
+
+export const wrapper = createWrapper<RootStore>(makeStore, { debug: true });
+
+setupListeners(store.dispatch);
