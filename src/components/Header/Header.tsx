@@ -17,7 +17,7 @@ import { cartoonCategories } from '@/mock/cartoonCategories';
 import logo from '../../../public/iviLogo.svg';
 import { useSession } from 'next-auth/react';
 
-const Header: FC = (): JSX.Element => {
+const Header: FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const { data: session } = useSession();
   console.log(session);
