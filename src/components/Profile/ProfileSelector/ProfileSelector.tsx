@@ -5,6 +5,7 @@ import children from '../../../../public/children.png';
 import { useTranslation } from 'react-i18next';
 import { useSession } from 'next-auth/react';
 import styles from './ProfileSelector.module.scss';
+import { FiUser } from 'react-icons/fi';
 
 const ProfileSelector = () => {
   const { data: session } = useSession();
@@ -19,7 +20,7 @@ const ProfileSelector = () => {
           </div>
           <div className={styles.profile__row}>
             <div className={styles.profile__user}>
-              {session.user && session.user?.image && (
+              {session.user && session.user?.image ? (
                 <Image
                   className={styles.profile__image}
                   src={session.user.image}
@@ -27,6 +28,10 @@ const ProfileSelector = () => {
                   width={48}
                   height={48}
                 />
+              ) : (
+                <div className={`${styles.profile__image} ${styles.no_image}`}>
+                  <FiUser />
+                </div>
               )}
               <span>{session.user?.name || session.user?.email}</span>
             </div>
