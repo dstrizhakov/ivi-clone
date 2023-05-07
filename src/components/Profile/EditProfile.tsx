@@ -21,7 +21,7 @@ const EditProfile = () => {
           <P>{t('sections.main-profile')}</P>
         </div>
         <Link href={'/profile'}>
-          <Button>
+          <Button title={t('buttons.edit-profile') || 'Редактировать профиль'}>
             <HiOutlinePencil />
             {t('buttons.edit-profile')}
           </Button>

@@ -22,7 +22,6 @@ import { useSession } from 'next-auth/react';
 const Header: FC = (): JSX.Element => {
   const { t } = useTranslation();
   const { data: session } = useSession();
-  console.log(session);
   return (
     <header className="header">
       <div className="container">
