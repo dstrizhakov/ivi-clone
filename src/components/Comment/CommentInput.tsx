@@ -3,10 +3,12 @@ import CommentAvatar from '@/components/Comment/CommentAvatar';
 import { Button } from '@/components/Button/Button';
 import styles from './Comment.module.scss';
 import { BtnA } from '@/components/Button/Button.props';
+import { useSession } from 'next-auth/react';
 
 const CommentInput = () => {
   const [query, setQuery] = useState<string>('');
   const limit = 5;
+  const { data: session } = useSession();
 
   const validate = () => {
     return query?.length < limit && query?.length;
@@ -18,7 +20,7 @@ const CommentInput = () => {
 
   return (
     <form className={styles.comment_form} onSubmit={(e) => submit(e)}>
-      <CommentAvatar />
+      <CommentAvatar user={session?.user || null} />
       <div className={styles.input_container}>
         <div className={`${styles.input} ${validate() ? styles.invalid : ''}`}>
           <input
