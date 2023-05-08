@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 
 .drop {
   display: flex;
@@ -23,7 +24,7 @@
   background-color: #1f1b2e;
   box-shadow: 0 20px 40px rgba(7,5,14,.4);
   overflow: hidden;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $mobile) {
     right: 0;
   }
   &.opened {
