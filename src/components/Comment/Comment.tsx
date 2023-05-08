@@ -33,7 +33,7 @@ const Comment = ({ comment, ...props }) => {
       </header>
       <div className={styles.clause}>
         <div className={styles.clause_text}>
-          <P color={'gray-light'}>{comment?.clause}</P>
+          <P color={'white'}>{comment?.clause}</P>
         </div>
       </div>
       <div className={styles.interactions}>
