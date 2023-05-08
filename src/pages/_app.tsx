@@ -8,6 +8,7 @@ import { SessionProvider } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
 import Modals from '@/components/Modals/Modals';
 import '@/i18n/i18n';
+import { Provider } from 'react-redux';
 
 const iviSans = localFont({
   src: [
@@ -36,21 +37,24 @@ const iviSans = localFont({
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const { t } = useTranslation();
+  const { store } = wrapper.useWrappedStore(pageProps);
 
   return (
-    <SessionProvider session={session}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{t('title.home')}</title>
-      </Head>
-      <div className={iviSans.className}>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-        <Modals />
-      </div>
-    </SessionProvider>
+    <Provider store={store}>
+      <SessionProvider session={session}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>{t('title.home')}</title>
+        </Head>
+        <div className={iviSans.className}>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+          <Modals />
+        </div>
+      </SessionProvider>
+    </Provider>
   );
 }
 //Provider передает store внутри wrapper согласно документации https://github.com/kirill-konshin/next-redux-wrapper/
-export default wrapper.withRedux(App);
+export default App;
