@@ -4,6 +4,9 @@
   padding: 0 12px;
   .select_container {
     margin: 20px 0;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
   &:before {
     content: '';
@@ -46,6 +49,10 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        @media screen and (max-width: $mobile) {
+          font-size: 24px;
+
+        }
       }
       p {
         margin-top: 0;
@@ -64,6 +71,7 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       display: flex;
+
       svg {
         color: $color-gray-text;
         margin-right: 10px;
@@ -78,6 +86,16 @@
       +.info {
         margin-left: 16px;
       }
+    }
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      .info {
+        margin: 5px 0;
+        +.info {
+          margin-left: 0px;
+        }
+      }
+
     }
   }
 }

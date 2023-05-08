@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/components/Profile/MainBtns/MainBtns.module.scss';
+import styles from '@/components/Profile/ProfilePage/ProfilePage.module.scss';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import Link from 'next/link';
@@ -17,7 +17,7 @@ const EditProfile = () => {
     <div className={styles.userinfo}>
       <div className={styles.userinfo__title}>
         <div className={styles.title__text}>
-          <Htag tag={'h2'}>{t('sections.profile')}</Htag>
+          <Htag tag={'h2'}>{session?.user?.name ? session.user.name : t('sections.profile')}</Htag>
           <P>{t('sections.main-profile')}</P>
         </div>
         <Link href={'/profile'}>

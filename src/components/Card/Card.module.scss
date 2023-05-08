@@ -55,7 +55,7 @@
     @keyframes p3 {
       100% {background-size:100% 100%}
     }
-    @media screen and (min-width: 1px) { ////
+    @media screen and (min-width: $mobile) {
       &.hover .props{
         height: 100%;
         width: 100%;
@@ -120,6 +120,7 @@
     }
   }
   .textSection {
+    margin-top: 10px;
     p {
       overflow: hidden;
       text-overflow: ellipsis;
