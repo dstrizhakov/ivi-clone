@@ -1,13 +1,9 @@
 import React from 'react';
 import styles from './MainBtns.module.scss';
-import { TiUserOutline } from 'react-icons/ti';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
-import { useAppDispatch } from '@/hooks/redux';
-import { useTranslation } from 'react-i18next';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
-import { setShowAuth } from '@/store/reducers/modals.slice';
-import { BtnA, BtnS } from '@/components/Button/Button.props';
+import { BtnA } from '@/components/Button/Button.props';
 import { signOut, useSession } from 'next-auth/react';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 import SubscriptionsButton from '@/components/Profile/MainBtns/ProfileBtns/SubscriptionsButton';
@@ -26,34 +22,25 @@ import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButt
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 import EditProfile from '@/components/Profile/EditProfile';
 import ChecksButton from '@/components/Profile/MainBtns/ProfileBtns/ChecksButton';
+import LoginButton from '@/components/Profile/LoginButton/LoginButton';
 
 const MainBtns = ({ ...props }) => {
-  const { t } = useTranslation();
   const { data: session } = useSession();
-  const dispatch = useAppDispatch();
-  const openLoginModal = () => {
-    dispatch(setShowAuth(true));
-  };
+
   return (
     <div className={styles.profile__btns} {...props}>
       {session && (
         <div className={styles.select_profile}>
-          <ProfileSelector />
+          <div className={styles.select_container}>
+            <ProfileSelector />
+          </div>
         </div>
       )}
       {session && session?.user ? (
         <EditProfile />
       ) : (
-        <div className={styles.login}>
-          <Button
-            onClick={() => openLoginModal()}
-            size={BtnS.S}
-            appearance={BtnA.red}
-            title={t('buttons.login-signup') || 'Войти или зарегистрироваться'}
-          >
-            <TiUserOutline />
-            {t('buttons.login-signup')}
-          </Button>
+        <div className={styles.login_button}>
+          <LoginButton />
         </div>
       )}
 
