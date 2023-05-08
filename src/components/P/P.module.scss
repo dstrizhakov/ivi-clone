@@ -1,9 +1,4 @@
-@import '../../styles/variables.scss';
-
-.p {
-  margin: 0;
-  color: #a5a1b2;
-}
+@import '@/styles/variables.scss';
 
 .S {
   font-size: 13px;
@@ -29,5 +24,14 @@
   color: #a5a1b2;
   &__light {
     color: $color-input;
+  }
+}
+
+.p {
+  margin: 0;
+  color: #a5a1b2;
+  @media screen and (max-width: $mobile) {
+    font-size: 0.7rem;
+    line-height: 0.7rem;
   }
 }
