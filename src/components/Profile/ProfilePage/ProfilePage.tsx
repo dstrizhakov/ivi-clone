@@ -23,8 +23,10 @@ import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelecto
 import EditProfile from '@/components/Profile/EditProfile';
 import ChecksButton from '@/components/Profile/ProfilePage/ProfileBtns/ChecksButton';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
+import { useTranslation } from 'react-i18next';
 
 const ProfilePage = ({ ...props }) => {
+  const { t } = useTranslation();
   const { data: session } = useSession();
 
   return (
@@ -99,9 +101,13 @@ const ProfilePage = ({ ...props }) => {
       <div className={styles.bottom}>
         {session && session?.user ? (
           <>
-            <Button appearance={BtnA.transparent} onClick={() => signOut()}>
+            <Button
+              appearance={BtnA.transparent}
+              onClick={() => signOut()}
+              title={t('buttons.logout') || 'Выйти'}
+            >
               <RiLogoutBoxRLine />
-              Выйти
+              {t('buttons.logout')}
             </Button>
             <div className={styles.id}>
               <P>uid: 2049522430</P>
