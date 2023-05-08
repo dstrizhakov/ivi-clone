@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styles from './User.module.scss';
-import { Button } from '../../Button/Button';
 import LinkCard from '@/components/Header/LinkCard/LinkCard';
 import { BiCertification, BiMoviePlay } from 'react-icons/bi';
 import { HiOutlineBookmark } from 'react-icons/hi2';
@@ -8,20 +7,14 @@ import { IoDiamondOutline, IoTimerOutline } from 'react-icons/io5';
 import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
-import { useAppDispatch } from '@/hooks/redux';
 import { useSession, signOut } from 'next-auth/react';
-import { setShowAuth } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
+import LoginButton from '@/components/Profile/LoginButton/LoginButton';
 
 const User: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch();
   const { data: session } = useSession();
-
   const { t } = useTranslation();
-  const login = () => {
-    dispatch(setShowAuth(true));
-  };
 
   return (
     <div className={styles.user__content}>
@@ -46,14 +39,7 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title={t('buttons.payment')} link="/purchases" />
         </div>
         <div className={styles.content__auth}>
-          {!session && (
-            <Link href={'/profile'}>
-              <Button size="L" appearance="red" onClick={() => login()}>
-                <span className={styles.content__nowrap}>{t('buttons.login-signup')}</span>
-              </Button>
-            </Link>
-          )}
-          {session && <ProfileSelector />}
+          {session ? <ProfileSelector /> : <LoginButton />}
           <div className={styles.content__links}>
             {session && (
               <Link href="https://www.ivi.tv/profile/profile_info">
@@ -62,7 +48,7 @@ const User: FC = (): JSX.Element => {
             )}
             <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
             <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
-            {session && <span onClick={() => signOut()}>Выйти</span>}
+            {session && <span onClick={() => signOut()}>{t('buttons.logout')}</span>}
           </div>
         </div>
       </div>
