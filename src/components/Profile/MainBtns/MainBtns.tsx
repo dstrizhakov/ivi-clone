@@ -31,7 +31,9 @@ const MainBtns = ({ ...props }) => {
     <div className={styles.profile__btns} {...props}>
       {session && (
         <div className={styles.select_profile}>
-          <ProfileSelector />
+          <div className={styles.select_container}>
+            <ProfileSelector />
+          </div>
         </div>
       )}
       {session && session?.user ? (
