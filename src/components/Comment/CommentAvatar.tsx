@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from '@/components/Comment/Comment.module.scss';
 import { FiUser } from 'react-icons/fi';
 import Image from 'next/image';
+import { IUser } from '@/types/types';
 
-const colors = [
+const colors: string[] = [
   '#313131',
   '#c74d1f',
   '#d0af23',
@@ -16,7 +17,11 @@ const colors = [
   '#1dbe6d',
 ];
 
-const CommentAvatar = ({ user }) => {
+export type CommentAvatarProps = {
+  user: IUser;
+};
+
+const CommentAvatar: FC<CommentAvatarProps> = ({ user }): JSX.Element => {
   const col = user?.userId ? String(user?.userId).split('').reverse()[0] : 0;
   return (
     <div className={styles.user_image}>
@@ -32,7 +37,7 @@ const CommentAvatar = ({ user }) => {
         <div
           className={styles.image_container}
           style={{
-            backgroundColor: `${colors[col]}`,
+            backgroundColor: `${colors[col as number]}`,
           }}
         >
           <div className={styles.image_text}>

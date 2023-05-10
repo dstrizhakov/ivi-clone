@@ -1,6 +1,7 @@
 import { Button } from '../../src/components/Button/Button';
 import { render, screen } from '@testing-library/react';
 import { BtnA } from '../../src/components/Button/Button.props';
+import React from 'react';
 
 describe('Button', () => {
   it('should be circle', () => {

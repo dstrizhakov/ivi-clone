@@ -1,10 +1,10 @@
 import styles from '@/components/Carousel/Carousel.module.scss';
 import { Button } from '@/components/Button/Button';
 import { MdArrowForwardIos } from 'react-icons/md';
-import React from 'react';
+import React, { FC } from 'react';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-const NextArrow = (props) => {
+const NextArrow: FC = (props): JSX.Element => {
   return (
     <div className={`${styles.arrow} ${styles.next}`} onClick={props.onClick}>
       <Button

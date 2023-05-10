@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import React from 'react';
 import Breadcrumbs from '../../src/components/Breadcrumbs/Breadcrumbs';
 import MovieBreadcrumbs from '../../src/components/Breadcrumbs/MovieBreadcrumbs';
 

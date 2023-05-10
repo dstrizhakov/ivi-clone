@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import CommentInput from '@/components/Comment/CommentInput';
 import Comment from '@/components/Comment/Comment';
 import styles from './Comment.module.scss';
@@ -78,7 +78,7 @@ const comments = [
   },
 ];
 
-const CommentSection = () => {
+const CommentSection: FC = (): JSX.Element => {
   return (
     <div className={styles.comment_section}>
       <CommentInput />

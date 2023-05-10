@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectModal, setShowFooterModal, setShowSearch } from '@/store/reducers/modals.slice';
 
-const FooterMobile: FC = () => {
+const FooterMobile: FC = (): JSX.Element => {
   const { t } = useTranslation();
   const { showSearch, showFooterModal } = useSelector(selectModal);
   const dispatch = useDispatch();

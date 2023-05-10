@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { iDesc } from '@/components/Description/Description.props';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-const Description: FC<iDesc> = ({ title, cut, children }) => {
+const Description: FC<iDesc> = ({ title, cut, children }): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
   const { t } = useTranslation();
   return (

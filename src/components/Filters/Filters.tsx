@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './Filters.module.scss';
 import Plank, { Planks } from '@/components/Filters/Plank/Plank';
 import { Button } from '@/components/Button/Button';
@@ -12,7 +12,7 @@ import { BtnA } from '@/components/Button/Button.props';
 
 //todo: add framer-motion filter animation
 
-const Filters = () => {
+const Filters: FC = (): JSX.Element => {
   const [openedFilter, setOpenedFilter] = useState(false);
   const [active, setActive] = useState<boolean>(false);
   const [chosen, setChosen] = useState([]);

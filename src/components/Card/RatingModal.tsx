@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import styles from './RatingModal.module.scss';
 import { Htag } from '@/components/Htag/Htag';
@@ -10,8 +10,8 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
 import { BtnA } from '@/components/Button/Button.props';
 
-const RatingModal: FC = () => {
-  const [active, setActive] = useState();
+const RatingModal: FC = (): JSX.Element => {
+  const [active, setActive] = useState<number | null>();
   const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { t } = useTranslation();
   const { showRating } = useAppSelector(selectModal);
@@ -20,8 +20,8 @@ const RatingModal: FC = () => {
     dispatch(setShowRating(false));
     setActive(null);
   };
-  const rate = (r) => {
-    setActive(() => r);
+  const rate = (rating: number) => {
+    setActive(() => rating);
   };
   const send = () => {
     dispatch(setShowRating(false));
@@ -34,14 +34,14 @@ const RatingModal: FC = () => {
         <Htag tag={'h2'}>{t('descriptions.your-rate')}</Htag>
         <P>{t('descriptions.rates-improvements')}</P>
         <div className={styles.picker}>
-          {rates.map((r) => (
+          {rates.map((rating) => (
             <Button
-              key={r}
+              key={rating}
               appearance={BtnA.transparent}
-              onClick={() => rate(r)}
-              className={r === active && styles.active}
+              onClick={() => rate(rating)}
+              className={rating === active ? styles.active : ''}
             >
-              {r}
+              {rating}
             </Button>
           ))}
         </div>
