@@ -27,6 +27,13 @@ export function makeStore() {
 
 export const store = makeStore();
 
+export const createReduxStore = (initialState = {}) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState: initialState,
+  });
+};
+
 export type RootStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<RootStore['getState']>;
 export type AppDispatch = typeof store.dispatch;

@@ -17,7 +17,7 @@ exports[`carousel number array 1`] = `
               title="title"
             >
               <h4
-                class="h4"
+                class="h h4"
               >
                 title
               </h4>
@@ -85,7 +85,7 @@ exports[`carousel number array 1`] = `
             title="title"
           >
             <h4
-              class="h4"
+              class="h h4"
             >
               title
             </h4>
@@ -210,7 +210,7 @@ exports[`carousel number array show all 1`] = `
               title="title"
             >
               <h4
-                class="h4"
+                class="h h4"
               >
                 title
               </h4>
@@ -307,7 +307,7 @@ exports[`carousel number array show all 1`] = `
             title="title"
           >
             <h4
-              class="h4"
+              class="h h4"
             >
               title
             </h4>
@@ -461,7 +461,7 @@ exports[`carousel number array show all 2`] = `
               title="title"
             >
               <h4
-                class="h4"
+                class="h h4"
               >
                 title
               </h4>
@@ -558,7 +558,7 @@ exports[`carousel number array show all 2`] = `
             title="title"
           >
             <h4
-              class="h4"
+              class="h h4"
             >
               title
             </h4>
