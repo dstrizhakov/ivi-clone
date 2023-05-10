@@ -116,5 +116,5 @@ export default NextAuth({
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
 });
