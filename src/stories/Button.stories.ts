@@ -60,6 +60,13 @@ export const Large: Story = {
   },
 };
 
+export const Medium: Story = {
+  args: {
+    size: 'M',
+    children: 'Button',
+  },
+};
+
 export const Small: Story = {
   args: {
     size: 'S',

@@ -41,7 +41,7 @@ export default NextAuth({
         }
       },
     }),
-    // OAuth autentification provoders...
+    // OAuth authentication providers...
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
@@ -116,5 +116,5 @@ export default NextAuth({
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
 });

@@ -8,9 +8,9 @@ import PrevArrow from '@/components/Carousel/PrevArrow';
 import { Button } from '@/components/Button/Button';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import PromotionButton from '@/components/Profile/MainBtns/ProfileBtns/PromotionButton';
+import PromotionButton from '@/components/Profile/ProfilePage/ProfileBtns/PromotionButton';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
-import ActivateCertificateButton from '@/components/Profile/MainBtns/ProfileBtns/ActivateCertificateButton';
+import ActivateCertificateButton from '@/components/Profile/ProfilePage/ProfileBtns/ActivateCertificateButton';
 import i18next from 'i18next';
 import Image from 'next/image';
 import { BtnA } from '@/components/Button/Button.props';
@@ -33,14 +33,15 @@ const PromoCarouselSlide: FC<iSlide> = ({ i }) => {
   return (
     <Link href={'/movies'}>
       <div className={styles.img}>
-        <Image
-          src={i.card_image}
-          alt={'watch more'}
-          width={1216}
-          height={524}
-          quality={100}
-          priority
-        />
+        <img src={i.card_image} alt={'watch more'} />
+        {/*<Image*/}
+        {/*  src={i.card_image}*/}
+        {/*  alt={'watch more'}*/}
+        {/*  width={1216}*/}
+        {/*  height={524}*/}
+        {/*  quality={100}*/}
+        {/*  priority*/}
+        {/*/>*/}
       </div>
       <div className={styles.items}>
         <div className={styles.content_container}>

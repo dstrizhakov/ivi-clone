@@ -10,7 +10,7 @@ const Admin = () => {
   const { t } = useTranslation();
   const { role } = useAppSelector(selectAuth);
 
-  if (role !== Roles.user) return <NotFoundPage />; //todo: fix when slice is ready
+  if (role !== Roles.unknown) return <NotFoundPage />; //todo: fix when slice is ready
   return (
     <>
       <Head>

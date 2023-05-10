@@ -3,7 +3,7 @@ import styles from '@/components/Breadcrumbs/Breadcrumbs.module.scss';
 import Link from 'next/link';
 import { BreadcrumbsProps } from '@/components/Breadcrumbs/Breadcrumbs.props';
 
-const MovieBreadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
+const MovieBreadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs = [] }) => {
   return (
     <div className={styles.container}>
       <ul className={styles.breadcrumbs}>

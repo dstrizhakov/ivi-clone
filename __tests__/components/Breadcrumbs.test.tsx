@@ -55,8 +55,8 @@ describe("movie's breadcrumbs", () => {
     const bc = render(<MovieBreadcrumbs breadcrumbs={breadcrumbsMockData} />);
     expect(bc).toMatchSnapshot();
   });
-  it('should be correct with 23', () => {
-    const breadcrumbsMockData = [];
+  it('should be correct with undefined', () => {
+    const breadcrumbsMockData = undefined;
     const bc = render(<MovieBreadcrumbs breadcrumbs={breadcrumbsMockData} />);
     expect(bc).toMatchSnapshot();
   });

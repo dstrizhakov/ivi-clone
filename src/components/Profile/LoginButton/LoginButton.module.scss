@@ -1,9 +1,6 @@
 .login {
   display: flex;
   button {
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
     padding: 20px 15px;
   }
 }

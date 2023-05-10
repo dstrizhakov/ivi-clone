@@ -1,30 +1,32 @@
 import React from 'react';
-import styles from './MainBtns.module.scss';
+import styles from './ProfilePage.module.scss';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import { BtnA } from '@/components/Button/Button.props';
 import { signOut, useSession } from 'next-auth/react';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
-import SubscriptionsButton from '@/components/Profile/MainBtns/ProfileBtns/SubscriptionsButton';
-import CertificatesButton from '@/components/Profile/MainBtns/ProfileBtns/CertificatesButton';
-import PresentSubscriptionButton from '@/components/Profile/MainBtns/ProfileBtns/PresentSubscriptionButton';
-import InviteFriendsButton from '@/components/Profile/MainBtns/ProfileBtns/InviteFriendsButton';
-import NotificationsButton from '@/components/Profile/MainBtns/ProfileBtns/NotificationsButton';
-import PurchasesButton from '@/components/Profile/MainBtns/ProfileBtns/PurchasesButton';
-import WatchLaterButton from '@/components/Profile/MainBtns/ProfileBtns/WatchLaterButton';
-import ViewedButton from '@/components/Profile/MainBtns/ProfileBtns/ViewedButton';
-import PaymentButton from '@/components/Profile/MainBtns/ProfileBtns/PaymentButton';
-import CodeLoginButton from '@/components/Profile/MainBtns/ProfileBtns/CodeLoginButton';
-import SettingsButton from '@/components/Profile/MainBtns/ProfileBtns/SettingsButton';
-import SupportButton from '@/components/Profile/MainBtns/ProfileBtns/SupportButton';
-import BalanceButton from '@/components/Profile/MainBtns/ProfileBtns/BalanceButton';
+import SubscriptionsButton from '@/components/Profile/ProfilePage/ProfileBtns/SubscriptionsButton';
+import CertificatesButton from '@/components/Profile/ProfilePage/ProfileBtns/CertificatesButton';
+import PresentSubscriptionButton from '@/components/Profile/ProfilePage/ProfileBtns/PresentSubscriptionButton';
+import InviteFriendsButton from '@/components/Profile/ProfilePage/ProfileBtns/InviteFriendsButton';
+import NotificationsButton from '@/components/Profile/ProfilePage/ProfileBtns/NotificationsButton';
+import PurchasesButton from '@/components/Profile/ProfilePage/ProfileBtns/PurchasesButton';
+import WatchLaterButton from '@/components/Profile/ProfilePage/ProfileBtns/WatchLaterButton';
+import ViewedButton from '@/components/Profile/ProfilePage/ProfileBtns/ViewedButton';
+import PaymentButton from '@/components/Profile/ProfilePage/ProfileBtns/PaymentButton';
+import CodeLoginButton from '@/components/Profile/ProfilePage/ProfileBtns/CodeLoginButton';
+import SettingsButton from '@/components/Profile/ProfilePage/ProfileBtns/SettingsButton';
+import SupportButton from '@/components/Profile/ProfilePage/ProfileBtns/SupportButton';
+import BalanceButton from '@/components/Profile/ProfilePage/ProfileBtns/BalanceButton';
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 import EditProfile from '@/components/Profile/EditProfile';
-import ChecksButton from '@/components/Profile/MainBtns/ProfileBtns/ChecksButton';
+import ChecksButton from '@/components/Profile/ProfilePage/ProfileBtns/ChecksButton';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
+import { useTranslation } from 'react-i18next';
 
-const MainBtns = ({ ...props }) => {
+const ProfilePage = ({ ...props }) => {
+  const { t } = useTranslation();
   const { data: session } = useSession();
 
   return (
@@ -99,9 +101,13 @@ const MainBtns = ({ ...props }) => {
       <div className={styles.bottom}>
         {session && session?.user ? (
           <>
-            <Button appearance={BtnA.transparent} onClick={() => signOut()}>
+            <Button
+              appearance={BtnA.transparent}
+              onClick={() => signOut()}
+              title={t('buttons.logout') || 'Выйти'}
+            >
               <RiLogoutBoxRLine />
-              Выйти
+              {t('buttons.logout')}
             </Button>
             <div className={styles.id}>
               <P>uid: 2049522430</P>
@@ -117,4 +123,4 @@ const MainBtns = ({ ...props }) => {
   );
 };
 
-export default MainBtns;
+export default ProfilePage;

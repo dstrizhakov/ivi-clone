@@ -44,3 +44,10 @@ export const Medium: Story = {
     children: 'text',
   },
 };
+
+export const Large: Story = {
+  args: {
+    size: 'L',
+    children: 'text',
+  },
+};

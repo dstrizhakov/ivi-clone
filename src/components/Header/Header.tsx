@@ -79,9 +79,11 @@ const Header: FC = () => {
             <LanguageSwitcher />
 
             <div className={styles.zindex}>
-              <Button size={BtnS.S} appearance={BtnA.red}>
-                {t('header.watch-free')}
-              </Button>
+              <div className={styles.watch_free}>
+                <Button size={BtnS.S} appearance={BtnA.red}>
+                  {t('header.watch-free')}
+                </Button>
+              </div>
             </div>
             <SearchButton />
           </div>

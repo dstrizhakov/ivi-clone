@@ -1,5 +1,4 @@
 import type { StorybookConfig } from '@storybook/nextjs';
-
 const previewAnnotations: { stories: string[]; framework: { name: string; options: {} }; docs: { autodocs: string }; addons: string[] } = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -7,14 +6,13 @@ const previewAnnotations: { stories: string[]; framework: { name: string; option
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-react-i18next',
-    'storybook-addon-next-router'
-  ],
+    '@tomfreudenberg/next-auth-mock/storybook'],
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {}
   },
   docs: {
-    autodocs: 'tag',
-  },
+    autodocs: 'tag'
+  }
 };
 export default previewAnnotations;

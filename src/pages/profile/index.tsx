@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import MainBtns from '@/components/Profile/MainBtns/MainBtns';
+import ProfilePage from '@/components/Profile/ProfilePage/ProfilePage';
 import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
@@ -10,7 +10,7 @@ const Profile = () => {
       <Head>
         <title>{t('title.profile')}</title>
       </Head>
-      <MainBtns />
+      <ProfilePage />
     </>
   );
 };

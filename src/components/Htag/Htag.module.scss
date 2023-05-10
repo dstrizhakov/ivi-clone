@@ -1,9 +1,11 @@
+@import '@/styles/variables.scss';
+
 .h1 {
   margin: 0;
-
   font-size: 56px;
   line-height: 56px;
   font-weight: 700;
+
 }
 
 .h2 {
@@ -28,4 +30,11 @@
   font-size: 20px;
   line-height: 24px;
   font-weight: 900;
+}
+
+.h {
+  @media screen and (max-width: $mobile) {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
 }
