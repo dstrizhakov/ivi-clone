@@ -1,10 +1,12 @@
-import type { Preview } from '@storybook/react';
 import i18n from './i18next.ts';
 import '@/styles/global.scss';
 import './stories.scss';
-import { RouterContext } from "next/dist/shared/lib/router-context";
+import { AppRouterContext } from "next/dist/shared/lib/app-router-context";
+import { Provider } from "react-redux";
+import { store } from "../src/store/store";
+import React from 'react';
 
-const preview: Preview = {
+const preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -16,15 +18,23 @@ const preview: Preview = {
   },
 };
 
+export const decorators = [
+  (Story) => (
+    <Provider store={store}>
+      <Story />
+    </Provider>
+  ),
+]
+
 export const parameters = {
   i18n,
-  locale: 'en',
+  locale: 'ru',
   locales: {
     ru: 'Russian',
     en: 'English',
   },
   nextRouter: {
-    Provider: RouterContext.Provider,
+    Provider: AppRouterContext.Provider,
   },
 };
 
