@@ -5,12 +5,13 @@ import { RootState } from '../store';
 export enum Roles {
   admin = 'admin',
   user = 'user',
+  unknown = 'unknown',
 }
 
 export interface IAuth {
   user: string | null;
   token: string | null;
-  role: Roles | null;
+  role: Roles;
   favorites: string[];
   watched: string[];
 }
@@ -18,7 +19,7 @@ export interface IAuth {
 const initialState: IAuth = {
   user: null,
   token: null,
-  role: Roles.user,
+  role: Roles.unknown,
   favorites: [],
   watched: [],
 };
