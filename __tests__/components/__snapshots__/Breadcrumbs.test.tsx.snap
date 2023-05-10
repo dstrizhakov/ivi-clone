@@ -743,7 +743,7 @@ exports[`movie's breadcrumbs should be correct with 3 1`] = `
 }
 `;
 
-exports[`movie's breadcrumbs should be correct with 23 1`] = `
+exports[`movie's breadcrumbs should be correct with undefined 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
