@@ -17,22 +17,16 @@ const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
 });
 
-export function makeStore() {
+export function makeStore(preloadedState = {}) {
   return configureStore({
     reducer: rootReducer,
+    preloadedState: preloadedState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(movieApi.middleware).concat(authApi.middleware),
   });
 }
 
 export const store = makeStore();
-
-export const createReduxStore = (initialState = {}) => {
-  return configureStore({
-    reducer: rootReducer,
-    preloadedState: initialState,
-  });
-};
 
 export type RootStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<RootStore['getState']>;
