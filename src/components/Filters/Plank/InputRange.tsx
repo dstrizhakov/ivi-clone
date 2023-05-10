@@ -27,7 +27,7 @@ const InputRange: FC<iRange> = ({ onChange, minLimit, maxLimit, range, children 
       <div className={styles.input_range}>
         <div className={styles.output}>
           <P color={'white'}>{children}</P>
-          <P color={'white'}>{inputValue}</P>
+          <P color={'white'}>&gt; {inputValue}</P>
         </div>
         <input
           className={styles.input}
