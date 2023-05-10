@@ -17,10 +17,9 @@ const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
 });
 
-export function makeStore(preloadedState = {}) {
+export function makeStore() {
   return configureStore({
     reducer: rootReducer,
-    preloadedState: preloadedState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(movieApi.middleware).concat(authApi.middleware),
   });
