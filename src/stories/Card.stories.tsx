@@ -1,7 +1,6 @@
 import Card from '@/components/Card/Card';
 import RatingModal from '@/components/Card/RatingModal';
 import { Meta } from '@storybook/react';
-import BackButton from '@/components/BackButton/BackButton';
 
 const card = {
   id: 1,
@@ -26,7 +25,7 @@ const CardWM = (args) => (
   </div>
 );
 
-const meta: Meta<typeof BackButton> = {
+const meta: Meta<typeof Card> = {
   title: 'Main/Card',
   component: CardWM,
 };

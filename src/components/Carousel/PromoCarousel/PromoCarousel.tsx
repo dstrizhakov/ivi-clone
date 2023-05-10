@@ -33,14 +33,15 @@ const PromoCarouselSlide: FC<iSlide> = ({ i }) => {
   return (
     <Link href={'/movies'}>
       <div className={styles.img}>
-        <Image
-          src={i.card_image}
-          alt={'watch more'}
-          width={1216}
-          height={524}
-          quality={100}
-          priority
-        />
+        <img src={i.card_image} alt={'watch more'} />
+        {/*<Image*/}
+        {/*  src={i.card_image}*/}
+        {/*  alt={'watch more'}*/}
+        {/*  width={1216}*/}
+        {/*  height={524}*/}
+        {/*  quality={100}*/}
+        {/*  priority*/}
+        {/*/>*/}
       </div>
       <div className={styles.items}>
         <div className={styles.content_container}>
