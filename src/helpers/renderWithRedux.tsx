@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { makeStore } from '@/src/store/store';
+import { makeStore } from '@/store/store';
 import { render } from '@testing-library/react';
 
 export const renderWithRedux = (component, initialState) => {
