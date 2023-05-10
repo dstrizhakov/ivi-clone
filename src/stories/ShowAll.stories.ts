@@ -9,6 +9,6 @@ const meta: Meta<typeof ShowAll> = {
 export default meta;
 type Story = StoryObj<typeof ShowAll>;
 
-export const ShowAllS: Story = {
+export const ShowAllCard: Story = {
   args: {},
 };

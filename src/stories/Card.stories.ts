@@ -29,7 +29,12 @@ const card = {
   persons: persons,
 };
 
-export const All: Story = {
+export const Hover: Story = {
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     card: card,
     hover: true,
@@ -44,37 +49,5 @@ export const NoHover: Story = {
   args: {
     card: card,
     hover: false,
-  },
-};
-
-export const Star: Story = {
-  args: {
-    card: card,
-    star: true,
-    hover: true,
-  },
-};
-
-export const Book: Story = {
-  args: {
-    card: card,
-    book: true,
-    hover: true,
-  },
-};
-
-export const Find: Story = {
-  args: {
-    card: card,
-    find: true,
-    hover: true,
-  },
-};
-
-export const Block: Story = {
-  args: {
-    card: card,
-    block: true,
-    hover: true,
   },
 };
