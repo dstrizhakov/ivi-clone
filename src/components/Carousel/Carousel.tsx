@@ -11,7 +11,13 @@ import ShowAll from '@/components/Card/ShowAll';
 import NextArrow from '@/components/Carousel/NextArrow';
 import PrevArrow from '@/components/Carousel/PrevArrow';
 
-const Carousel: FC<CarouselProps> = ({ title, route, showAll = false, children, settings }) => {
+const Carousel: FC<CarouselProps> = ({
+  title,
+  route,
+  showAll = false,
+  children,
+  settings,
+}): JSX.Element => {
   if (!settings)
     settings = {
       dots: false,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NextArrow } from '@/components/Carousel/NextArrow';
 import { PrevArrow } from '@/components/Carousel/PrevArrow';
 import styles from './Top10Carousel.module.scss';
@@ -9,7 +9,7 @@ import top10 from '@/../public/top10/top10.svg';
 import { Htag } from '@/components/Htag/Htag';
 import { carouselMock } from '@/mock/carouselMocks';
 
-const T10Card = (card) => {
+const T10Card: FC = (card): JSX.Element => {
   return (
     <div>
       <div>

@@ -20,9 +20,9 @@ import { usePreventScroll } from '@/hooks/usePreventScroll';
 import { selectModal, setShowFooterModal } from '@/store/reducers/modals.slice';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { BtnA } from '@/components/Button/Button.props';
+import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-const FooterModal: FC = () => {
+const FooterModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
   const { showFooterModal } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
@@ -33,11 +33,11 @@ const FooterModal: FC = () => {
       {showFooterModal && (
         <div className={styles.modal}>
           <div className={cn(styles.menuItem, styles.buttons)}>
-            <Button size="L" className={cn(styles.buttonSubscribe, styles.button)}>
+            <Button size={BtnS.L} className={cn(styles.buttonSubscribe, styles.button)}>
               <SlDiamond />
               {t('buttons.get-subscription')}
             </Button>
-            <Button size="L" className={styles.button}>
+            <Button size={BtnS.L} className={styles.button}>
               <FiAward />
               {t('footer.cert')}
             </Button>

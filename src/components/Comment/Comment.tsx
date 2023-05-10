@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Comment.module.scss';
 import { P } from '@/components/P/P';
 import { Button } from '@/components/Button/Button';
@@ -9,7 +9,7 @@ import DisLikeButton from '@/components/Comment/Buttons/DisLikeButton';
 import { useTranslation } from 'react-i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-const Comment = ({ comment, ...props }) => {
+const Comment: FC = ({ comment, ...props }): JSX.Element => {
   const [answer, setAnswer] = useState<boolean>(false);
   const value = Math.round(Math.random() * 200 - 100);
   const { t } = useTranslation();

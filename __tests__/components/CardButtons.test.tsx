@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import RateButton from '../../src/components/Card/CardButtons/RateButton';
 import { configureStore } from '@reduxjs/toolkit';
 import modalsReducer from '../../src/store/reducers/modals.slice';
+import React from 'react';
 
 const mockStore = configureStore({ reducer: { modalsReducer } });
 

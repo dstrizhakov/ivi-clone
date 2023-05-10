@@ -1,9 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import styles from './Breadcrumbs.module.scss';
 import { BreadcrumbsProps } from './Breadcrumbs.props';
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs = [] }) => {
+const Breadcrumbs: FC<BreadcrumbsProps> = ({ breadcrumbs = [] }): JSX.Element => {
   return (
     <>
       {breadcrumbs.length && (

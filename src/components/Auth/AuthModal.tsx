@@ -14,6 +14,7 @@ import { SlSocialVkontakte, SlSocialGoogle } from 'react-icons/sl';
 import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
+import { BtnA } from '../Button/Button.props';
 
 const AuthModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
@@ -122,7 +123,7 @@ const AuthModal: FC = (): JSX.Element => {
                   </div>
                 ) : (
                   <div className={styles.chat__row}>
-                    <Button appearance="circle" onClick={() => previousStep()}>
+                    <Button appearance={BtnA.circle} onClick={() => previousStep()}>
                       <BsPencil />
                     </Button>
                     <div className={styles.chat__answer}>

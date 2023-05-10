@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './Dropdown.module.scss';
 import { BsCheckLg } from 'react-icons/bs';
 import { categories } from '@/mock/filters';
 import Dropdown from '@/components/Filters/Dropdown/Dropdown';
 
-const ChooseDropdown = ({ state, plank, chosen, change }) => {
+const ChooseDropdown: FC = ({ state, plank, chosen, change }): JSX.Element => {
   return (
     <Dropdown state={state}>
       <div className={`${styles.dropdown} ${styles.choose}`}>

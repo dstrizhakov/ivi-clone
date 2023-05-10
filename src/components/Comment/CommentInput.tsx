@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import CommentAvatar from '@/components/Comment/CommentAvatar';
 import { Button } from '@/components/Button/Button';
 import styles from './Comment.module.scss';
 import { BtnA } from '@/components/Button/Button.props';
 import { useSession } from 'next-auth/react';
 
-const CommentInput = () => {
+const CommentInput: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
   const limit = 5;
   const { data: session } = useSession();
@@ -13,7 +13,7 @@ const CommentInput = () => {
   const validate = () => {
     return query?.length < limit && query?.length;
   };
-  const submit = (e) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.nativeEvent.preventDefault();
     setQuery(() => '');
   };

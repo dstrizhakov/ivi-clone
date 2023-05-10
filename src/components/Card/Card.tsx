@@ -19,7 +19,7 @@ const Card: FC<CardProps> = ({
   find = false,
   block = false,
   ...props
-}) => {
+}): JSX.Element => {
   return (
     <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>

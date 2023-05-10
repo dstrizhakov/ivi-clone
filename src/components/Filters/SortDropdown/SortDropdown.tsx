@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import styles from './SortDropdown.module.scss';
 import {
   MdOutlineKeyboardArrowDown,
@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { BtnA } from '@/components/Button/Button.props';
 
-const SortDropdown = () => {
+const SortDropdown: FC = (): JSX.Element => {
   const [sortDrop, setSortDrop] = useState(false);
   const { t } = useTranslation();
   const ref = useRef(null);

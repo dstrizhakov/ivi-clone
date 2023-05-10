@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Dropdown from '@/components/Filters/Dropdown/Dropdown';
 import styles from './Dropdown.module.scss';
 import { BsCheckLg } from 'react-icons/bs';
 import { categories } from '@/mock/filters';
 
-const SearchDropdown = ({ state, chosen, plank, change }) => {
+const SearchDropdown: FC = ({ state, chosen, plank, change }): JSX.Element => {
   const [val, setVal] = useState<string>('');
   const handler = (e) => {
     setVal(() => e.target.value);

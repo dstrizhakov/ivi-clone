@@ -10,7 +10,7 @@ interface iRange {
   children: ReactNode;
 }
 
-const InputRange: FC<iRange> = ({ onChange, minLimit, maxLimit, range, children }) => {
+const InputRange: FC<iRange> = ({ onChange, minLimit, maxLimit, range, children }): JSX.Element => {
   const [inputValue, setInputValue] = useState<number>(minLimit);
   const handler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.valueAsNumber < minLimit) {

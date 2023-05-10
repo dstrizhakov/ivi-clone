@@ -15,7 +15,7 @@ interface iPlank {
   type: Planks;
 }
 
-const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }) => {
+const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }): JSX.Element => {
   const [dropDownOpen, setDropDownOpen] = useState<boolean>();
   const ref = useRef(null);
   useOutsideClick(() => setDropDownOpen(() => false), ref);

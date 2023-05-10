@@ -10,7 +10,7 @@ import { movieCategories } from '@/mock/movieCategories';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
+const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }): JSX.Element => {
   const [isListOpen, setIsListOpen] = useState<boolean>(false);
   const IconComponent = icon ? icon : undefined;
   const { t } = useTranslation();

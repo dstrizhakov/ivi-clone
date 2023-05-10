@@ -5,6 +5,7 @@ import modalsReducer from '@/store/reducers/modals.slice';
 import { Provider } from 'react-redux';
 import { persons } from '../../src/mock/persons';
 import ShowAll from '../../src/components/Card/ShowAll';
+import React from 'react';
 
 const mockStore = configureStore({ reducer: { modalsReducer } });
 const mockCard = {

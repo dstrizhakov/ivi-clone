@@ -29,7 +29,7 @@ interface iSlide {
   i: iMockCarousel;
 }
 
-const PromoCarouselSlide: FC<iSlide> = ({ i }) => {
+const PromoCarouselSlide: FC<iSlide> = ({ i }): JSX.Element => {
   return (
     <Link href={'/movies'}>
       <div className={styles.img}>

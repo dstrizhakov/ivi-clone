@@ -20,7 +20,7 @@ import FooterMobile from './FooterMobile/FooterMobile';
 import { useTranslation } from 'react-i18next';
 import { BtnA } from '@/components/Button/Button.props';
 
-const Footer: FC = () => {
+const Footer: FC = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>

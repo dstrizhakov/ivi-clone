@@ -25,3 +25,10 @@ export interface IMovie {
   duration: string;
   persons: IPerson[];
 }
+
+export interface IUser {
+  userId: number;
+  image: string;
+  name: string;
+  email?: string;
+}
