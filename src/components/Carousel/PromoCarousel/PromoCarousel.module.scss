@@ -16,6 +16,9 @@
     padding: 0;
     width: 100%;
     max-height: 600px;
+    @media screen and (max-width: 1140px) {
+      padding: 0 20px;
+    }
   }
   .img {
     height: 370px;
@@ -42,6 +45,9 @@
       flex-direction: column;
       .logo {
         img {
+          display: flex;
+          align-items: center;
+          max-width: 384px;
           max-height: 200px !important;
           height: auto;
           width: 100%;
@@ -49,12 +55,15 @@
           position: static !important;
         }
       }
-      @media screen and (max-width: 1140px) {
+      @media screen and (max-width: 600px) {
         display: flex;
         flex-direction: column;
+        max-width: 100%;
+        padding: 20px;
+
         .logo {
-          max-height: 20% !important;
           img {
+            max-width: 384px;
             max-height: 50px;
             object-fit: contain;
             position: static !important;
@@ -102,5 +111,16 @@
     button {
       min-height: 42px;
     }
+  }
+}
+
+.left_banner, .right_banner {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 24px;
+  &:hover {
+    opacity: .72;
+    transition: opacity 80ms;
   }
 }
