@@ -1,6 +1,5 @@
 import React from 'react';
 import { Htag } from '@/components/Htag/Htag';
-import Image from 'next/image';
 import children from '../../../../public/children.png';
 import { useTranslation } from 'react-i18next';
 import { useSession } from 'next-auth/react';
@@ -26,7 +25,7 @@ const ProfileSelector = () => {
               <FiUser />
             </div>
           )}
-          <span>{session.user?.name || session.user?.email || t('sections.profile')}</span>
+          <span>{session?.user?.name || session?.user?.email || t('sections.profile')}</span>
         </div>
         <ProfileIcon image={children} name={t('sections.children')} isActive={false} />
         <ProfileIcon name={t('buttons.new-one')} isActive={false} />
