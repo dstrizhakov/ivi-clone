@@ -12,6 +12,18 @@
   }
 }
 
+.arrow_container {
+  &:hover {
+    .arrow {
+      opacity: 1;
+    }
+    .prev_banner, .next_banner {
+      opacity: .72;
+      transition: opacity 80ms;
+    }
+  }
+}
+
 .arrow {
   font-size: 0;
   line-height: 0;
@@ -28,9 +40,7 @@
   opacity: 0.7;
   transition: $time-main;
   z-index: 10;
-  &:hover {
-    opacity: 1;
-  }
+
   button {
     height: 100%;
     width: 100%;
@@ -67,12 +77,29 @@
   }
   &.prevPromo {
     padding: 10px;
-    left: calc(33% - 40px);
+    left: calc(33% - 30px);
     z-index: 10;
   }
   &.nextPromo {
     padding: 10px;
-    right: calc(33% - 40px);
+    right: calc(33% - 30px);
     z-index: 10;
   }
+}
+.prev_banner, .next_banner {
+  z-index: 12;
+  top: 0;
+  cursor: pointer;
+  height: calc(100% - 3px);
+  width: 100%;
+  position: absolute;
+  border-radius: 24px;
+}
+.next_banner {
+  background-image: linear-gradient(90deg,rgba(31,27,46,0) 0%,rgba(31,27,46,.92) 13%);
+  left: calc(70% - 130px);
+}
+.prev_banner {
+  background-image: linear-gradient(270deg,rgba(31,27,46,0) 0%,rgba(31,27,46,.92) 13%);
+  right: calc(70% - 130px);
 }
