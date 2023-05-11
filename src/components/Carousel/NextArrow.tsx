@@ -19,7 +19,7 @@ const NextArrow: FC<NextArrowProps> = ({ variant, ...props }): JSX.Element => {
           <MdArrowForwardIos size={30} />
         </Button>
       </div>
-      {variant == 'promo' && <div className={styles.right_banner} />}
+      {variant == 'promo' && <div className={styles.next_banner} />}
     </div>
   );
 };

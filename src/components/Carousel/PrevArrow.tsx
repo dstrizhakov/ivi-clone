@@ -20,7 +20,7 @@ const PrevArrow: FC<PrevArrowProps> = ({ variant, ...props }): JSX.Element => {
           <MdArrowBackIosNew size={30} />
         </Button>
       </div>
-      {variant == 'promo' && <div className={styles.left_banner} />}
+      {variant == 'promo' && <div className={styles.prev_banner} />}
     </div>
   );
 };
