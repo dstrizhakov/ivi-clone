@@ -4,9 +4,15 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import React, { FC } from 'react';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 
-const NextArrow: FC = (props): JSX.Element => {
+export type NextArrowProps = {
+  variant?: 'promo';
+};
+const NextArrow: FC<NextArrowProps> = ({ variant, ...props }): JSX.Element => {
   return (
-    <div className={`${styles.arrow} ${styles.next}`} onClick={props.onClick}>
+    <div
+      className={`${styles.arrow} ${variant === 'promo' ? styles.nextPromo : styles.next}`}
+      onClick={props.onClick}
+    >
       <Button
         size={BtnS.L}
         appearance={BtnA.transparent}
