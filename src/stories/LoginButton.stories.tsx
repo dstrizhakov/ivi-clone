@@ -12,7 +12,7 @@ const LoginWrapper = () => {
 };
 
 const meta: Meta<typeof LoginButton> = {
-  title: 'Main/Profile',
+  title: 'Main/Auth',
   component: LoginWrapper,
 };
 
@@ -20,6 +20,6 @@ export default meta;
 
 type Story = StoryObj<typeof LoginButton>;
 
-export const Login: Story = {
+export const Button: Story = {
   args: {},
 };

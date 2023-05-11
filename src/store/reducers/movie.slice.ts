@@ -2,7 +2,7 @@ import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
-import { RootState } from "@/store/store";
+import { RootState } from '@/store/store';
 
 export interface IMovieListType {
   movies: IMovie[];

@@ -43,9 +43,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>
-            {
-              'Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем качестве'
-            }
+            Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем
+            качестве
           </title>
         </Head>
         <div className={iviSans.className}>
