@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .carousel {
   -webkit-tap-highlight-color: transparent;
@@ -21,11 +21,12 @@
   padding: 0;
   cursor: pointer;
   color: transparent;
+  background: transparent;
   border: none;
   outline: none;
   opacity: 0.7;
   transition: $time-main;
-  background: transparent;
+  z-index: 10;
   &:hover {
     opacity: 1;
   }
@@ -34,7 +35,7 @@
     width: 100%;
     padding: 0;
     transition: $time-main;
-    &:disabled{
+    &:disabled {
       display: none;
     }
     &:active {
@@ -42,7 +43,8 @@
       transition: $time-main;
     }
   }
-  &.prev,&.next {
+  &.prev,
+  &.next {
     font-size: 0;
     line-height: 0;
     position: absolute;
@@ -61,5 +63,15 @@
   }
   &.next {
     right: -25px;
+  }
+  &.prevPromo {
+    padding: 10px;
+    left: calc(33% - 40px);
+    z-index: 10;
+  }
+  &.nextPromo {
+    padding: 10px;
+    right: calc(33% - 40px);
+    z-index: 10;
   }
 }

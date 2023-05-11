@@ -39,6 +39,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.1",
     "@storybook/addon-essentials": "^7.0.5",
     "@storybook/addon-interactions": "^7.0.5",
     "@storybook/addon-links": "^7.0.5",

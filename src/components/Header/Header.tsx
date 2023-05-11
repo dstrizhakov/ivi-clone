@@ -76,7 +76,9 @@ const Header: FC = () => {
                 </li>
               </ul>
             </nav>
-            <LanguageSwitcher />
+            <div className={styles.zindex}>
+              <LanguageSwitcher />
+            </div>
 
             <div className={styles.zindex}>
               <div className={styles.watch_free}>

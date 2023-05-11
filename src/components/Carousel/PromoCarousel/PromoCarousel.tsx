@@ -34,14 +34,14 @@ const PromoCarouselSlide: FC<iSlide> = ({ i }): JSX.Element => {
     <Link href={'/movies'}>
       <div className={styles.img}>
         <img src={i.card_image} alt={'watch more'} />
-        {/*<Image*/}
-        {/*  src={i.card_image}*/}
-        {/*  alt={'watch more'}*/}
-        {/*  width={1216}*/}
-        {/*  height={524}*/}
-        {/*  quality={100}*/}
-        {/*  priority*/}
-        {/*/>*/}
+        {/* <Image
+          src={i.card_image}
+          alt={'watch more'}
+          width={1216}
+          height={524}
+          quality={100}
+          priority
+        /> */}
       </div>
       <div className={styles.items}>
         <div className={styles.content_container}>
@@ -125,12 +125,14 @@ const PromoCarousel: FC = () => {
     },
   ];
   const settings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
     speed: 300,
     draggable: true,
     autoplay: true,
     autoplaySpeed: 10000,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow variant="promo" />,
+    prevArrow: <PrevArrow variant="promo" />,
   };
 
   return (
