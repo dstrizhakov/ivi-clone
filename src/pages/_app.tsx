@@ -5,7 +5,6 @@ import Head from 'next/head';
 import localFont from 'next/font/local';
 import { wrapper } from '@/store/store';
 import { SessionProvider } from 'next-auth/react';
-import { useTranslation } from 'react-i18next';
 import Modals from '@/components/Modals/Modals';
 import '@/i18n/i18n';
 import { Provider } from 'react-redux';
@@ -36,7 +35,6 @@ const iviSans = localFont({
 });
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  const { t } = useTranslation();
   const { store } = wrapper.useWrappedStore(pageProps);
 
   return (
@@ -45,8 +43,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>
-            {t('title.home') ||
-              'Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем качестве'}
+            Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем
+            качестве
           </title>
         </Head>
         <div className={iviSans.className}>
