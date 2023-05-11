@@ -8,7 +8,7 @@ const Notifications: FC = () => {
   return (
     <>
       <Head>
-        <title>{t('title.profile')}</title>
+        <title>{t('title.profile') || 'Мой профиль / ivi.ru'}</title>
       </Head>
       <EmptyNotifications />
     </>
