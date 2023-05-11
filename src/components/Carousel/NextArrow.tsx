@@ -8,13 +8,15 @@ export type NextArrowProps = {
   variant?: 'promo';
 };
 const NextArrow: FC<NextArrowProps> = ({ variant, ...props }): JSX.Element => {
+  const { className, onClick } = props;
+
   return (
-    <div onClick={props.onClick} className={styles.arrow_container}>
+    <div onClick={onClick} className={styles.arrow_container}>
       <div className={`${styles.arrow} ${variant === 'promo' ? styles.nextPromo : styles.next}`}>
         <Button
           size={BtnS.L}
           appearance={BtnA.transparent}
-          disabled={props.className.split(' ')[2] === 'slick-disabled'}
+          disabled={className.split(' ')[2] === 'slick-disabled'}
         >
           <MdArrowForwardIos size={30} />
         </Button>
