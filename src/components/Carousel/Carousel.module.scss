@@ -22,6 +22,12 @@
       transition: opacity 80ms;
     }
   }
+  &:active {
+    .arrow button {
+      transform: scale(0.5);
+      transition: $time-main;
+    }
+  }
 }
 
 .arrow {
