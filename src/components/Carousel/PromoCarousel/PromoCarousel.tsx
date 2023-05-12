@@ -26,34 +26,33 @@ interface iMockCarousel {
 }
 
 interface iSlide {
-  i: iMockCarousel;
+  slide: iMockCarousel;
 }
 
-const PromoCarouselSlide: FC<iSlide> = ({ i }): JSX.Element => {
+const PromoCarouselSlide: FC<iSlide> = ({ slide }): JSX.Element => {
   return (
-    <Link href={'/movies'}>
+    <Link href={'/movies'} className={styles.item}>
       <div className={styles.img}>
-        <img src={i.card_image} alt={'watch more'} />
-        {/* <Image
-          src={i.card_image}
+        <Image
+          src={slide.card_image}
           alt={'watch more'}
           width={1216}
           height={524}
           quality={100}
           priority
-        /> */}
+        />
       </div>
-      <div className={styles.items}>
+      <div className={styles.information}>
         <div className={styles.content_container}>
           <div className={styles.logo}>
-            <Image src={i.logo} alt="logo" width={330} height={330} />
+            <Image src={slide.logo} alt="logo" width={330} height={330} />
           </div>
           <div className={styles.synopsis}>
-            {i18next.language == 'ru' ? i.description : i.enDescription}
+            {i18next.language == 'ru' ? slide.description : slide.enDescription}
           </div>
         </div>
-        <Button appearance={BtnA.red} title={i.btn}>
-          {i.btn}
+        <Button appearance={BtnA.red} title={slide.btn}>
+          {slide.btn}
         </Button>
       </div>
     </Link>
@@ -129,7 +128,7 @@ const PromoCarousel: FC = () => {
     slidesToScroll: 1,
     speed: 300,
     draggable: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 10000,
     nextArrow: <NextArrow variant="promo" />,
     prevArrow: <PrevArrow variant="promo" />,
@@ -139,10 +138,8 @@ const PromoCarousel: FC = () => {
     <>
       <div className={styles.carousel}>
         <Slider {...settings}>
-          {mockCarousel.map((i: iMockCarousel) => (
-            <div className={styles.item} key={i.id}>
-              <PromoCarouselSlide i={i} />
-            </div>
+          {mockCarousel.map((slide: iMockCarousel) => (
+            <PromoCarouselSlide slide={slide} key={slide.id} />
           ))}
         </Slider>
       </div>

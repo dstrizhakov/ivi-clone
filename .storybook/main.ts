@@ -5,7 +5,6 @@ const previewAnnotations: { stories: string[]; framework: { name: string; option
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-react-i18next',
     '@tomfreudenberg/next-auth-mock/storybook'],
   framework: {
     name: '@storybook/nextjs',
