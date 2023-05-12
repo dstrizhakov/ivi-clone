@@ -31,7 +31,7 @@ interface iSlide {
 
 const PromoCarouselSlide: FC<iSlide> = ({ i }): JSX.Element => {
   return (
-    <Link href={'/movies'}>
+    <Link href={'/movies'} className={styles.item}>
       <div className={styles.img}>
         <img src={i.card_image} alt={'watch more'} />
         {/* <Image
@@ -43,7 +43,7 @@ const PromoCarouselSlide: FC<iSlide> = ({ i }): JSX.Element => {
           priority
         /> */}
       </div>
-      <div className={styles.items}>
+      <div className={styles.information}>
         <div className={styles.content_container}>
           <div className={styles.logo}>
             <Image src={i.logo} alt="logo" width={330} height={330} />
@@ -129,7 +129,7 @@ const PromoCarousel: FC = () => {
     slidesToScroll: 1,
     speed: 300,
     draggable: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 10000,
     nextArrow: <NextArrow variant="promo" />,
     prevArrow: <PrevArrow variant="promo" />,
@@ -140,9 +140,7 @@ const PromoCarousel: FC = () => {
       <div className={styles.carousel}>
         <Slider {...settings}>
           {mockCarousel.map((i: iMockCarousel) => (
-            <div className={styles.item} key={i.id}>
-              <PromoCarouselSlide i={i} />
-            </div>
+            <PromoCarouselSlide i={i} key={i.id} />
           ))}
         </Slider>
       </div>

@@ -28,6 +28,11 @@
       transition: $time-main;
     }
   }
+  @media screen and (max-width: 1140px) {
+    .prev_banner, .next_banner {
+      display: none;
+    }
+  }
 }
 
 .arrow {
@@ -83,12 +88,12 @@
   }
   &.prevPromo {
     padding: 10px;
-    left: calc(33% - 30px);
+    left: calc(33% - 35px);
     z-index: 10;
   }
   &.nextPromo {
     padding: 10px;
-    right: calc(33% - 30px);
+    right: calc(33% - 35px);
     z-index: 10;
   }
 }
@@ -96,7 +101,7 @@
   z-index: 12;
   top: 0;
   cursor: pointer;
-  height: calc(100% - 3px);
+  height: calc(100%);
   width: 100%;
   position: absolute;
   border-radius: 24px;
