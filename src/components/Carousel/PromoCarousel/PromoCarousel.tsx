@@ -128,7 +128,7 @@ const PromoCarousel: FC = () => {
     slidesToScroll: 1,
     speed: 300,
     draggable: true,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 10000,
     nextArrow: <NextArrow variant="promo" />,
     prevArrow: <PrevArrow variant="promo" />,
