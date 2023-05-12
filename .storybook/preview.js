@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "../src/store/store";
 import { useEffect, Suspense } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import * as nextImage from "next/image"
 
 import i18n from '../src/i18n/i18n';
 
@@ -70,6 +71,16 @@ const reduxStoryDecorator = (Story) => (
     <Story />
   </Provider>
 );
+
+
+Object.defineProperty(nextImage, "default", {
+  configurable: true,
+  value: props => {
+    return (
+      <img {...props} alt={props.alt}/>
+    )
+  },
+})
 
 export default preview;
 export const decorators = [
