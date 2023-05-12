@@ -37,10 +37,6 @@
   }
   .information {
     max-height: 524px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
     max-width: 80%;
     padding: 20px;
     position: absolute;
@@ -119,16 +115,5 @@
     button {
       min-height: 42px;
     }
-  }
-}
-
-.left_banner, .right_banner {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  border-radius: 24px;
-  &:hover {
-    opacity: .72;
-    transition: opacity 80ms;
   }
 }
