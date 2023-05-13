@@ -15,7 +15,7 @@ const LoginButton = () => {
     dispatch(setShowAuth(true));
   };
   return (
-    <div className={styles.login}>
+    <div className={styles.login} data-testid={'login-button'}>
       <Button
         onClick={() => openLoginModal()}
         size={BtnS.S}

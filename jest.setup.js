@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
+import 'cross-fetch/polyfill';
+import '@testing-library/jest-dom';
 
 window.matchMedia =
   window.matchMedia ||
@@ -9,6 +11,21 @@ window.matchMedia =
       removeListener: function () {},
     };
   };
+
+jest.mock('next-auth/react', () => {
+  const originalModule = jest.requireActual('next-auth/react');
+  const mockSession = {
+    expires: new Date(Date.now() + 2 * 86400).toISOString(),
+    user: { name: 'admin', image: '', email: 'a@a.a' },
+  };
+  return {
+    __esModule: true,
+    ...originalModule,
+    useSession: jest.fn(() => {
+      return { data: mockSession, status: 'authenticated' };
+    }),
+  };
+});
 
 jest.mock('next/navigation', () => ({
   useRouter() {

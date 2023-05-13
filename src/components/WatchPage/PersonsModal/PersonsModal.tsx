@@ -7,7 +7,6 @@ import { P } from '@/components/P/P';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Button } from '@/components/Button/Button';
 import { HiChevronLeft } from 'react-icons/hi';
-import { usePreventScroll } from '@/hooks/usePreventScroll';
 import BarGraph from '@/components/BarGraph/BarGraph';
 import { selectModal, setShowPersonsModal } from '@/store/reducers/modals.slice';
 import { useTranslation } from 'react-i18next';
@@ -15,12 +14,13 @@ import { useEscapeKey } from '@/hooks/useEscapeKey';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { nameToLink } from '@/helpers/nameToLink';
 import CommentSection from '@/components/Comment/CommentSection';
+import { usePreventScrollFixed } from '@/hooks/usePreventScrollFixed';
 
 const PersonsModal: FC = () => {
   const dispatch = useAppDispatch();
   const { personModalItem, showPersonsModal } = useAppSelector(selectModal);
   const { t, i18n } = useTranslation();
-  usePreventScroll(showPersonsModal);
+  usePreventScrollFixed(showPersonsModal);
   const close = () => {
     dispatch(setShowPersonsModal(false));
   };
@@ -57,22 +57,24 @@ const PersonsModal: FC = () => {
               <TabPanel className={styles.tabs__content}>
                 <Htag tag="h3">{t('categories.actors')}</Htag>
                 <div className={styles.cards} onClick={() => close()}>
-                  {personModalItem?.persons.map((p) => {
+                  {personModalItem?.persons.map((person) => {
                     return (
                       <Link
-                        href={`/person/${nameToLink(p.enName)}`}
-                        key={Math.random() * p.id}
+                        href={`/person/${nameToLink(person.enName)}`}
+                        key={Math.random() * person.id}
                         className={styles.link}
                       >
                         <div className={styles.card}>
-                          <img src={p.url} alt="" />
+                          <img src={person.url} alt="" />
                         </div>
                         <div>
-                          {(i18n.language == 'en' ? p.enName : p.name).split(' ').map((n) => (
-                            <p key={Math.random() * p.id} className={styles.name}>
-                              {n}
-                            </p>
-                          ))}
+                          {(i18n.language == 'en' ? person.enName : person.name)
+                            .split(' ')
+                            .map((n) => (
+                              <p key={Math.random() * person.id} className={styles.name}>
+                                {n}
+                              </p>
+                            ))}
                           <P size="S">3 {i18n.language == 'en' ? 'movies' : 'фильма'}</P>
                         </div>
                       </Link>
