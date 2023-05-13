@@ -12,14 +12,12 @@
     cursor: pointer;
     position: relative;
     border-radius: 24px;
+    display: flex;
     padding: 0;
     width: 100%;
     height: 100%;
     max-width: 1216px;
     max-height: 524px;
-    @media screen and (max-width: 1140px) {
-      padding: 0 20px;
-    }
   }
   .img {
     height: 524px;
@@ -36,17 +34,20 @@
     }
   }
   .information {
-    max-height: 524px;
-    max-width: 80%;
-    padding: 20px;
+    max-height: 100%;
+    padding: 0 20px;
     position: absolute;
     bottom: 0;
-
+    height: 100%;
+    width: 100%;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
     .content_container {
-      margin-bottom: 5%;
       max-width: 50%;
-      display: flex;
-      flex-direction: column;
+      margin-bottom: 20px;
       .logo {
         img {
           display: flex;
@@ -59,26 +60,27 @@
           position: static !important;
         }
       }
-      @media screen and (max-width: 600px) {
-        display: flex;
-        flex-direction: column;
-        //max-width: 100%;
-        padding: 20px;
-
-        .logo {
-          img {
-            max-width: 384px;
-            max-height: 50px;
-            object-fit: contain;
-            position: static !important;
-          }
-        }
-      }
+      //@media screen and (max-width: 600px) {
+      //  display: flex;
+      //  flex-direction: column;
+      //  //max-width: 100%;
+      //  padding: 20px;
+      //
+      //  .logo {
+      //    img {
+      //      max-width: 384px;
+      //      max-height: 50px;
+      //      object-fit: contain;
+      //      position: static !important;
+      //    }
+      //  }
+      //}
     }
     button {
       display: flex;
       font-size: 1rem;
       padding: 10px;
+      margin-bottom: 20px;
       @media screen and (max-width: 600px) {
         display: none;
       }
@@ -115,5 +117,16 @@
     button {
       min-height: 42px;
     }
+  }
+}
+
+.left_banner, .right_banner {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 24px;
+  &:hover {
+    opacity: .72;
+    transition: opacity 80ms;
   }
 }

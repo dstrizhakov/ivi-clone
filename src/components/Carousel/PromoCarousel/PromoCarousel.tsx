@@ -14,6 +14,7 @@ import ActivateCertificateButton from '@/components/Profile/ProfilePage/ProfileB
 import i18next from 'i18next';
 import Image from 'next/image';
 import { BtnA } from '@/components/Button/Button.props';
+import { P } from '@/components/P/P';
 
 interface iMockCarousel {
   id: number;
@@ -47,9 +48,9 @@ const PromoCarouselSlide: FC<iSlide> = ({ slide }): JSX.Element => {
           <div className={styles.logo}>
             <Image src={slide.logo} alt="logo" width={330} height={330} />
           </div>
-          <div className={styles.synopsis}>
+          <P color={'white'} className={styles.synopsis}>
             {i18next.language == 'ru' ? slide.description : slide.enDescription}
-          </div>
+          </P>
         </div>
         <Button appearance={BtnA.red} title={slide.btn}>
           {slide.btn}
