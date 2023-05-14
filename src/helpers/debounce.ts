@@ -1,10 +1,10 @@
-export const debounce = <Fn extends (...args: any[]) => any>(fn: Fn, ms: number) => {
+export const debounce = <Fn extends (...args: unknown[]) => unknown>(fn: Fn, ms: number) => {
   let timeout: NodeJS.Timeout;
 
-  const debounced = (...args: any[]) => {
+  const debounced = (...args: unknown[]) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => fn(...args), ms);
   };
 
-  return debounced as (...args: Parameters<Fn>) => ReturnType<Fn>;
+  return debounced as (...args) => ReturnType<Fn>;
 };
