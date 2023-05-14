@@ -28,7 +28,7 @@ const CommentAvatar: FC<CommentAvatarProps> = ({ user }): JSX.Element => {
       {user?.image ? (
         <Image
           src={user.image}
-          alt="user"
+          alt={'user'}
           width={20}
           height={20}
           className={styles.image_container}
@@ -41,7 +41,7 @@ const CommentAvatar: FC<CommentAvatarProps> = ({ user }): JSX.Element => {
           }}
         >
           <div className={styles.image_text}>
-            {user && user.name ? user?.name[0].toUpperCase() : <FiUser />}
+            {user && user?.name ? user.name[0].toUpperCase() : <FiUser />}
           </div>
         </div>
       )}
