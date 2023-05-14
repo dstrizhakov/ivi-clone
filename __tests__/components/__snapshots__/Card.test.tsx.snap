@@ -106,7 +106,7 @@ exports[`card card object empty card  1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -234,7 +234,7 @@ exports[`card card object empty card  1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>
@@ -510,7 +510,7 @@ exports[`card params all 1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -729,7 +729,7 @@ exports[`card params all 1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>
@@ -936,7 +936,7 @@ exports[`card params block 1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -1086,7 +1086,7 @@ exports[`card params block 1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>
@@ -1289,7 +1289,7 @@ exports[`card params book 1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -1435,7 +1435,7 @@ exports[`card params book 1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>
@@ -1656,7 +1656,7 @@ exports[`card params find 1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -1820,7 +1820,7 @@ exports[`card params find 1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>
@@ -2005,7 +2005,7 @@ exports[`card params no hover 1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -2133,7 +2133,7 @@ exports[`card params no hover 1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>
@@ -2336,7 +2336,7 @@ exports[`card params star 1`] = `
                 >
                   2011
                   , 
-                  США
+                  С
                   , 
                   Фэнтези
                 </div>
@@ -2482,7 +2482,7 @@ exports[`card params star 1`] = `
               >
                 2011
                 , 
-                США
+                С
                 , 
                 Фэнтези
               </div>

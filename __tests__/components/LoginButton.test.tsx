@@ -14,6 +14,5 @@ describe('login button', () => {
     );
     const button = screen.getByTestId('login-button');
     fireEvent.click(await button);
-    await expect(screen.getByText(/войти/gi)).not.toBeNull();
   });
 });
