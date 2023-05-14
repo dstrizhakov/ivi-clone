@@ -56,7 +56,7 @@ const Card: FC<CardProps> = ({
             </div>
             <div className={styles.info__text}>
               <div className={styles.info__row}>
-                {card.year}, {card.countries}, {card.genres[0]}
+                {card.year}, {card.countries[0]}, {card.genres[0]}
               </div>
               <div className={styles.info__row}>{card.duration}</div>
             </div>

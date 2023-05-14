@@ -19,7 +19,7 @@ export interface IMovie {
   trailer: string;
   card_image: string;
   year: string;
-  countries: string | string[];
+  countries: string[]; //всегда массив (иначе лищняя проверка типа), в карточках используем первое значение
   rating: string;
   genres: string[];
   duration: string;
@@ -27,8 +27,8 @@ export interface IMovie {
 }
 
 export interface IUser {
-  userId: number;
-  image: string;
-  name: string;
-  email?: string;
+  userId?: number | null;
+  image?: string | null; //
+  name?: string | null;
+  email?: string | null;
 }
