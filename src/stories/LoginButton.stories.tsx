@@ -14,6 +14,7 @@ const LoginWrapper = () => {
 const meta: Meta<typeof LoginButton> = {
   title: 'Main/Auth',
   component: LoginWrapper,
+  tags: ['autodocs'],
 };
 
 export default meta;

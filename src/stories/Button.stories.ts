@@ -6,13 +6,13 @@ import { ButtonProps } from '@/components/Button/Button.props';
 interface iButton extends ButtonProps {
   title: string;
   component: Button;
-  tags: [];
   argTypes?: ButtonProps;
 }
 
 const meta: Meta<iButton> = {
   title: 'Main/Button',
   component: Button,
+  tags: ['autodocs'],
 };
 
 export default meta;
