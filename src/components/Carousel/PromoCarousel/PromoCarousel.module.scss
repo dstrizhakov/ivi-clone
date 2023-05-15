@@ -2,79 +2,67 @@
 
 .carousel {
   width: 300%;
-  position: relative;
   transform: translateX(-33.3333%);
   -webkit-tap-highlight-color: transparent;
-  margin: 20px 0;
   display: flex;
   flex-direction: column;
   .item {
-    cursor: pointer;
-    position: relative;
-    border-radius: 24px;
     display: flex;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    max-width: 1216px;
-    max-height: 524px;
+    justify-content: center;
   }
   .img {
+    box-sizing: content-box;
+    margin: 0 20px;
     height: 524px;
-    margin: 0 10px;
-    @media screen and ( max-width: 1140px) {
-      height: 100%;
-    }
-    img {
+    position: relative;
+    > img {
       // position: static !important;
       width: 100%;
       height: 100%;
       object-fit: cover; // чтобы не сжимало пропорции
       border-radius: 24px;
     }
+    @media screen and ( max-width: 1140px) {
+      height: 100%;
+    }
+    @media screen and ( max-width: 600px) {
+      aspect-ratio: 164/183;
+      max-height: 328px;
+    }
   }
   .information {
-    max-height: 100%;
-    padding: 0 20px;
-    position: absolute;
     bottom: 0;
-    height: 100%;
-    width: 100%;
+    position: absolute;
     margin: 0 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
     .content_container {
+      bottom: 0;
+      padding: 20px 0;
+      position: relative;
       max-width: 50%;
-      margin-bottom: 20px;
       .logo {
+        @media screen and (max-width: 1140px) {
+          display: none;
+        }
         img {
           display: flex;
           align-items: center;
           max-width: 384px;
           max-height: 200px !important;
-          height: auto;
-          width: 100%;
+          height: auto!important;
           object-fit: contain;
           position: static !important;
         }
       }
-      //@media screen and (max-width: 600px) {
-      //  display: flex;
-      //  flex-direction: column;
-      //  //max-width: 100%;
-      //  padding: 20px;
-      //
-      //  .logo {
-      //    img {
-      //      max-width: 384px;
-      //      max-height: 50px;
-      //      object-fit: contain;
-      //      position: static !important;
-      //    }
-      //  }
-      //}
+    }
+    @media screen and ( max-width: 600px) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+      .content_container {
+        max-width: 100%;
+        text-align: center;
+      }
     }
     button {
       display: flex;
@@ -116,6 +104,13 @@
     margin: 0 10px;
     button {
       min-height: 42px;
+    }
+  }
+  @media screen and (max-width: 1140px) {
+    flex-direction: column;
+    a {
+      width: 100%;
+      margin-bottom: 12px;
     }
   }
 }

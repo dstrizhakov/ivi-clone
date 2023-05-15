@@ -42,19 +42,19 @@ const PromoCarouselSlide: FC<iSlide> = ({ slide }): JSX.Element => {
           quality={100}
           priority
         />
-      </div>
-      <div className={styles.information}>
-        <div className={styles.content_container}>
-          <div className={styles.logo}>
-            <Image src={slide.logo} alt="logo" width={330} height={330} />
+        <div className={styles.information}>
+          <div className={styles.content_container}>
+            <div className={styles.logo}>
+              <Image src={slide.logo} alt="logo" fill />
+            </div>
+            <P color={'white'} className={styles.synopsis}>
+              {i18next.language == 'ru' ? slide.description : slide.enDescription}
+            </P>
           </div>
-          <P color={'white'} className={styles.synopsis}>
-            {i18next.language == 'ru' ? slide.description : slide.enDescription}
-          </P>
+          <Button appearance={BtnA.red} title={slide.btn}>
+            {slide.btn}
+          </Button>
         </div>
-        <Button appearance={BtnA.red} title={slide.btn}>
-          {slide.btn}
-        </Button>
       </div>
     </Link>
   );
