@@ -119,14 +119,3 @@
     }
   }
 }
-
-.left_banner, .right_banner {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  border-radius: 24px;
-  &:hover {
-    opacity: .72;
-    transition: opacity 80ms;
-  }
-}

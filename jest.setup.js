@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
 import 'cross-fetch/polyfill';
-import '@testing-library/jest-dom';
 
 window.matchMedia =
   window.matchMedia ||
