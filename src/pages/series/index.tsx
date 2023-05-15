@@ -13,7 +13,7 @@ const Series = () => {
   return (
     <>
       <Head>
-        <title> {t('title.series') || 'Сериалы смотреть онлайн'}</title>
+        <title>{t('title.series') || 'Сериалы смотреть онлайн'}</title>
       </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <SeriesPageDescription />

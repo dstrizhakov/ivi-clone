@@ -9,10 +9,10 @@ import { selectModal, setShowRating } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
 import { BtnA } from '@/components/Button/Button.props';
+const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const RatingModal: FC = (): JSX.Element => {
   const [active, setActive] = useState<number | null>();
-  const rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { t } = useTranslation();
   const { showRating } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();

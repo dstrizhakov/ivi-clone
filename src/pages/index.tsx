@@ -6,11 +6,11 @@ import PromoCarousel from '@/components/Carousel/PromoCarousel/PromoCarousel';
 import Card from '@/components/Card/Card';
 import { wrapper } from '@/store/store';
 import { GetServerSideProps } from 'next';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { moviesData } from '@/mock/moviesData';
 
-export default function Home() {
-  const { movies } = useSelector((state) => state.movieReducer);
+const Home = () => {
+  const movies = moviesData;
   const { t } = useTranslation();
   return (
     <>
@@ -24,6 +24,7 @@ export default function Home() {
           <Card card={card} star book find block key={card.id} />
         ))}
       </Carousel>
+      {/*<Top10Carousel />*/}
       <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
         {movies.slice(0, 15).map((card) => (
           <Card card={card} star book find block key={card.id} />
@@ -31,7 +32,9 @@ export default function Home() {
       </Carousel>
     </>
   );
-}
+};
+
+export default Home;
 
 //.. тут будем проверять авторизован ли пользователь и сохранять данные о нем
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
