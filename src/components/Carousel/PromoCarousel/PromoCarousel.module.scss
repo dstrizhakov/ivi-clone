@@ -9,9 +9,9 @@
   .item {
     display: flex;
     justify-content: center;
+    margin: 0 10px;
   }
   .img {
-    margin: 0 20px;
     height: 524px;
     position: relative;
     > img {
@@ -23,7 +23,6 @@
     }
     @media screen and ( max-width: 1140px) {
       height: 100%;
-      padding: 0 20px;
     }
     @media screen and ( max-width: 600px) {
       aspect-ratio: 164/183;
@@ -34,14 +33,17 @@
     bottom: 0;
     position: absolute;
     margin: 0 20px;
+    max-height: 100%;
+    max-width: 100%;
     .content_container {
       bottom: 0;
       padding: 20px 0;
       position: relative;
       max-width: 50%;
       .logo {
-        @media screen and (max-width: 1140px) {
-          display: none;
+        h2 {
+          color: inherit;
+          line-height: 100%;
         }
         img {
           display: flex;
@@ -51,6 +53,12 @@
           height: auto!important;
           object-fit: contain;
           position: static !important;
+          width: unset!important;
+        }
+        @media screen and (max-width: 1140px) {
+          img {
+            max-height: 150px!important;
+          }
         }
       }
     }
@@ -93,6 +101,7 @@
 .promo_buttons {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100%;
   margin: 20px 0;
   a {
