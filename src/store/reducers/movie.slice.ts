@@ -5,14 +5,14 @@ import { RootState } from '@/store/store';
 
 export interface IMovieListType {
   movies: IMovie[] | null;
-  genres: string[] | null; //? для удобства можем хранить список жанров среди из полученных фильмов
-  years: string[] | null; //? годы
+  genres: string[]; //? для удобства можем хранить список жанров среди из полученных фильмов
+  years: string[]; //? годы
 }
 
 const initialState: IMovieListType = {
   movies: null, //moviesData: huge data on first load
-  genres: null,
-  years: null,
+  genres: [],
+  years: [],
 };
 
 export const moviesSlice = createSlice({
