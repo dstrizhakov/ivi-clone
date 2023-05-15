@@ -11,12 +11,11 @@
     justify-content: center;
   }
   .img {
-    box-sizing: content-box;
     margin: 0 20px;
     height: 524px;
     position: relative;
     > img {
-      // position: static !important;
+      object-position: 85% 0;
       width: 100%;
       height: 100%;
       object-fit: cover; // чтобы не сжимало пропорции
@@ -24,6 +23,7 @@
     }
     @media screen and ( max-width: 1140px) {
       height: 100%;
+      padding: 0 20px;
     }
     @media screen and ( max-width: 600px) {
       aspect-ratio: 164/183;
@@ -86,11 +86,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    @media screen and (max-width: 600px) {
-      * {
-        font-size: 0.7rem !important;
-      }
-    }
+
   }
 }
 
