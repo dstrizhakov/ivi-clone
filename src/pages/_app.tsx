@@ -5,6 +5,9 @@ import Head from 'next/head';
 import localFont from 'next/font/local';
 import { wrapper } from '@/store/store';
 import { SessionProvider } from 'next-auth/react';
+import Modals from '@/components/Modals/Modals';
+import '@/i18n/i18n';
+import { Provider } from 'react-redux';
 
 const iviSans = localFont({
   src: [
@@ -32,18 +35,27 @@ const iviSans = localFont({
 });
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const { store } = wrapper.useWrappedStore(pageProps);
+
   return (
-    <SessionProvider session={session}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <div className={iviSans.className}>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-      </div>
-    </SessionProvider>
+    <Provider store={store}>
+      <SessionProvider session={session}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>
+            Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем
+            качестве
+          </title>
+        </Head>
+        <div className={iviSans.className}>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+          <Modals />
+        </div>
+      </SessionProvider>
+    </Provider>
   );
 }
 //Provider передает store внутри wrapper согласно документации https://github.com/kirill-konshin/next-redux-wrapper/
-export default wrapper.withRedux(App);
+export default App;

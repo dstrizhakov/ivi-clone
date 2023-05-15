@@ -41,7 +41,7 @@ export default NextAuth({
         }
       },
     }),
-    // OAuth autentification provoders...
+    // OAuth authentication providers...
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
@@ -88,18 +88,33 @@ export default NextAuth({
     // async redirect({ url, baseUrl }) {
     //   return baseUrl;
     // },
-    async session({ session, token }) {
-      session.user = token;
-      return session;
+
+    // async session({ session, token }) {
+    //   // session.user = token;
+    //   return session;
+    // },
+    // async jwt({ token, user }) {
+    //   console.log('ACCESS TOKEN', token);
+    //   return { ...token, ...user };
+    // },
+
+    async jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token;
+        token.idToken = account.id_token;
+      }
+      return token;
     },
-    async jwt({ token, user }) {
+    async session({ session, token }) {
+      // Send properties to the client, like an access_token from a provider.
       console.log(token);
-      return { ...token, ...user };
+      return session;
     },
   },
 
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
 });

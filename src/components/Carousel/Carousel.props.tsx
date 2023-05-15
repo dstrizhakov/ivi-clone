@@ -1,6 +1,9 @@
+import { ReactNode } from 'react';
+
 export interface CarouselProps {
-  title: string;
-  route: string;
+  title?: string;
+  route?: string;
   showAll?: boolean;
-  //movies: iMovie[]; from back
+  children: ReactNode;
+  settings?: object;
 }

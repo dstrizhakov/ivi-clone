@@ -1,10 +1,26 @@
 import React from 'react';
 import NotFoundPage from '@/pages/404';
+import Head from 'next/head';
+import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '@/hooks/redux';
+import { Roles, selectAuth } from '@/store/reducers/auth.slice';
+import { Htag } from '@/components/Htag/Htag';
 
 const Admin = () => {
-  const auth = true;
-  if (!auth) return <NotFoundPage />;
-  return <div>страница админки</div>;
+  const { t } = useTranslation();
+  const { role } = useAppSelector(selectAuth);
+
+  if (role !== Roles.unknown) return <NotFoundPage />; //todo: fix when slice is ready
+  return (
+    <>
+      <Head>
+        <title>{t('title.admin')}</title>
+      </Head>
+      <div>
+        <Htag tag={'h3'}>{t('descriptions.admin')}</Htag>
+      </div>
+    </>
+  );
 };
 
 export default Admin;

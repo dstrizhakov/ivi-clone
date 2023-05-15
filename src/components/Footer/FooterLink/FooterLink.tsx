@@ -1,11 +1,10 @@
 import { FC } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import styles from './FooterLink.module.scss';
 import { FooterLinkProps } from './FooterLink.props';
 
-const FooterLink: FC<FooterLinkProps> = ({ title, href, icon, openModal, isOpen }) => {
+const FooterLink: FC<FooterLinkProps> = ({ title, href, icon, openModal, isOpen }): JSX.Element => {
   const IconComponent = icon;
   const router = useRouter();
   return (

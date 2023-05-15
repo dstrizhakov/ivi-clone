@@ -10,7 +10,7 @@ export const PersonList: FC<PersonListProps> = ({ list, rating }) => {
       <>
         <PersonCard>{rating}</PersonCard>
         {list.slice(0, 4).map((item) => {
-          return <PersonCard key={item.enName} person={item} />;
+          return <PersonCard key={item.id} person={item} />;
         })}
       </>
     </div>

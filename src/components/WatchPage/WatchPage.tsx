@@ -1,54 +1,66 @@
-import React, { FC, useState } from 'react';
-import { Htag } from '../Htag/Htag';
-import { P } from '../P/P';
+import React, { FC, useEffect, useState } from 'react';
 import Player from '../Player/Player';
 import styles from './WatchPage.module.scss';
-import { PersonList } from './PersonList/PersonList';
 import Carousel from '../Carousel/Carousel';
 import { WatchPageProps } from './WatchPage.props';
-import { PersonsGallery } from './PersonsGallery/PersonsGallery';
-import { PersonsModal } from './PersonsModal/PersonsModal';
+import Card from '@/components/Card/Card';
+import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGallery';
+import i18next from 'i18next';
+import { setPersonItems } from '@/store/reducers/modals.slice';
+import { useAppDispatch } from '@/hooks/redux';
+import { moviesData } from '@/mock/moviesData';
+import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
+import { FastAverageColor } from 'fast-average-color';
 
-const WatchPage: FC<WatchPageProps> = ({ item }) => {
-  const { name, enName, descr, trailer, year, countrys, rating, genres, duration, persons } = item;
-  const [isOpen, setIsOpen] = useState(false);
+const WatchPage: FC<WatchPageProps> = ({ movie }) => {
+  const dispatch = useAppDispatch();
+  const [bgColor, setBgColor] = useState('');
+
+  useEffect(() => {
+    const fac = new FastAverageColor();
+
+    dispatch(setPersonItems(movie));
+    fac
+      .getColorAsync(movie.card_image, {
+        algorithm: 'simple',
+      })
+      .then((color) => {
+        setBgColor(() => color.hex);
+      });
+  }, [dispatch, movie]);
+
+  const { name, enName, trailer, persons } = movie;
 
   return (
     <>
-      <PersonsModal isOpen={isOpen} item={item} closeModal={() => setIsOpen(false)} />
-
+      <div
+        className={styles.bg_container}
+        style={{
+          background: `linear-gradient(${bgColor} 0%, transparent 100%)`,
+        }}
+      />
       <section className={styles.watch}>
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
             <div className={styles.watch__player}>
               <Player url={trailer} />
             </div>
-            <div className={styles.watch__info}>
-              <div className={styles.watch__title}>
-                <Htag tag="h2">{`Фильм ${name} смотреть онлайн`}</Htag>{' '}
-                <div className={styles.watch__params}>
-                  <P>
-                    {year} {duration}
-                  </P>
-                  <P>
-                    {countrys} {genres}
-                  </P>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className={styles.watch__rating}>
-                <PersonList list={persons} rating={rating} />
-              </div>
-              <div className={styles.watch__description}>
-                <P>{descr}</P>
-              </div>
-              <div className={styles.watch__medallions}></div>
-            </div>
+            <MovieInfo movie={movie} />
           </div>
         </div>
-        <Carousel title={`С фильмом «${name}» смотрят`} route={'/'} />
-        <PersonsGallery list={persons} openModal={() => setIsOpen(true)} />
+        <Carousel
+          title={
+            i18next.language == 'en'
+              ? `Movies similar to «${enName ? enName : name}»`
+              : `С фильмом «${name}» смотрят`
+          }
+          route={'/'}
+        >
+          {moviesData.slice(0, 15).map((card) => (
+            <Card card={card} book key={card.id} />
+          ))}
+        </Carousel>
+        <PersonsGallery list={persons} />
       </section>
     </>
   );

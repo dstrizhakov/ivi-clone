@@ -1,17 +1,20 @@
-@import '../../../styles/variables';
+@import '@/styles/variables.scss';
 @import '@/styles/mixins.scss';
 
 .submenu {
   flex: 0 0 40px;
+  .submenu__body {
+    @media screen and (max-width: $pc) {
+      display: none;
+    }
+  }
   &:hover {
     .submenu__body {
       transition: all 0.05s ease-out;
       opacity: 1;
       visibility: visible;
       pointer-events: all;
-      @media screen and (max-width: 1159px) {
-        display: none;
-      }
+      filter: drop-shadow(0 20px 96px #12101b);
     }
   }
   &__button {
@@ -92,6 +95,7 @@
     z-index: 10;
   }
   &__content {
+    z-index: 800;
     width: 100%;
     flex: 1 1 auto;
     display: flex;

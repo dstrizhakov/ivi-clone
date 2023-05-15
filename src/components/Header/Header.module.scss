@@ -8,6 +8,10 @@
 }
 
 .body {
+  overflow: hidden;
+  * {
+    z-index: inherit;
+  }
   flex: 1 1 auto;
   display: flex;
   justify-content: space-between;
@@ -21,17 +25,34 @@
   z-index: 10;
 }
 
+.watch_free {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: flex;
+  button {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media (max-width: $mobile) {
+      font-size: 10px;
+    }
+  }
+}
+
 .zindex {
   z-index: 10;
 }
 .menu {
   flex: 1 1 auto;
+  @media (max-width: $pc) {
+    display: none;
+  }
   &__list {
     display: flex;
     align-items: center;
-    @media (max-width: $pc) {
-      display: none;
-    }
+
   }
   &__item a {
     position: relative;

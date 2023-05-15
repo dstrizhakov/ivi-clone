@@ -3,7 +3,6 @@ import styles from './AuthModal.module.scss';
 import { CgClose } from 'react-icons/cg';
 import { BiUser } from 'react-icons/bi';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
-import { AuthModalProps } from './AuthModal.props';
 import { P } from '../P/P';
 import BarGraph from '@/components/BarGraph/BarGraph';
 import { useSession, signIn, signOut } from 'next-auth/react';
@@ -12,13 +11,26 @@ import { BsPencil } from 'react-icons/bs';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { TbReload } from 'react-icons/tb';
 import { SlSocialVkontakte, SlSocialGoogle } from 'react-icons/sl';
+import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useTranslation } from 'react-i18next';
+import { BtnA } from '../Button/Button.props';
 
-const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
+const AuthModal: FC = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const { showAuth } = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
+  const close = () => {
+    dispatch(setShowAuth(false));
+    setStep(() => 1);
+  };
 
   const { data: session, status } = useSession();
 
@@ -56,157 +68,153 @@ const AuthModal: FC<AuthModalProps> = ({ isOpen, close }): JSX.Element => {
     }
   }, [step]);
 
-  async function handleGoogleSingin() {
+  async function handleGoogleSingIn() {
     await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
   }
-  async function handleVkSingin() {
+  async function handleVkSingIn() {
     await signIn('vk', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
   }
 
   return (
-    <>
-      <FullScreenModal isOpen={isOpen} closeModal={close}>
-        <div className={styles.chat}>
-          <div className={styles.chat__header}>
-            {step > 1 ? (
-              <div className={styles.chat__welcome}>
-                <h5 className={styles.chat__title}>Здравствуйте</h5>
-                {login && <P size="S">{login}</P>}
-              </div>
-            ) : (
-              <div className={styles.chat__welcome}>
-                <h5 className={styles.chat__title}>Вход или регистрация</h5>
-              </div>
-            )}
-            <div className={styles.chat__close}>
-              <CgClose onClick={close} />
+    <FullScreenModal isOpen={showAuth} closeModal={close}>
+      <div className={styles.chat}>
+        <div className={styles.chat__header}>
+          {step > 1 ? (
+            <div className={styles.chat__welcome}>
+              <h5 className={styles.chat__title}>{t('sections.hello')}</h5>
+              {login && <P size="S">{login}</P>}
             </div>
-            <div className={styles.chat__progress}>
-              <BarGraph width={progress} />
+          ) : (
+            <div className={styles.chat__welcome}>
+              <h5 className={styles.chat__title}>{t('buttons.login-signup')}</h5>
             </div>
+          )}
+          <div className={styles.chat__close}>
+            <CgClose onClick={close} />
           </div>
-          <div className={styles.chat__body}>
-            {session ? (
-              <div className={styles.chat__message}>
-                <h1 onClick={() => signOut()}>Вы уже авторизованы</h1>
-              </div>
-            ) : (
-              <>
-                {step >= 1 && (
-                  <div className={styles.chat__message}>
-                    <h5>Войдите или зарегистрируйтесь</h5>
-                    {step <= 1 && <P>чтобы пользоваться сервисом на любом устройстве</P>}
-                  </div>
-                )}
-                {step < 2 ? (
-                  <div className={styles.input}>
-                    <BiUser className={styles.input__icon} />
-                    <input
-                      type="text"
-                      value={login}
-                      onChange={(e) => setLogin(e.target.value)}
-                      className={!!login ? styles.input__active : ''}
-                    />
-                    <label>Через email или телефон</label>
-                  </div>
-                ) : (
-                  <div className={styles.chat__row}>
-                    <Button appearance="circle" onClick={() => previousStep()}>
-                      <BsPencil />
-                    </Button>
-                    <div className={styles.chat__answer}>
-                      <h5>{login}</h5>
-                    </div>
-                  </div>
-                )}
-                {step >= 2 && (
-                  <>
-                    <div className={styles.chat__message}>
-                      <h5>Введите пароль чтобы войти</h5>
-                    </div>
-                    <div className={`${styles.input} ${styles.password}`}>
-                      <input
-                        type={showPassword ? 'text' : 'password'}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className={!!password ? styles.input__active : ''}
-                      />
-                      <label>Введите пароль</label>
-                      {!showPassword ? (
-                        <AiOutlineEye
-                          className={`${styles.input__show} ${
-                            !!password && styles.input__showActive
-                          }`}
-                          onClick={toggleShowPassword}
-                        />
-                      ) : (
-                        <AiOutlineEyeInvisible
-                          className={`${styles.input__show} ${
-                            !!password && styles.input__showActive
-                          }`}
-                          onClick={toggleShowPassword}
-                        />
-                      )}
-                    </div>
-                  </>
-                )}
-                {step < 2 ? (
-                  <button disabled={!login} className={styles.button} onClick={nextStep}>
-                    Продолжить
-                  </button>
-                ) : (
-                  <button disabled={!login} className={styles.button} onClick={nextStep}>
-                    Войти
-                  </button>
-                )}
-                {step < 2 ? (
-                  <>
-                    <div className={styles.chat__oauth}>
-                      <button className={styles.button} onClick={() => handleGoogleSingin()}>
-                        <span>Войти через Google</span>
-                        <SlSocialGoogle />
-                      </button>
-                      <button className={styles.button} onClick={() => handleVkSingin()}>
-                        <span>Войти через Google</span>
-                        <SlSocialVkontakte />
-                      </button>
-                    </div>
-                    <div className={styles.chat__confidential}>
-                      <p>Нажимая «Продолжить», я соглашаюсь</p>
-                      <p>
-                        <span>c </span>
-                        <a
-                          href="https://www.ivi.tv/info/confidential"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Политикой конфиденциальности
-                        </a>
-                      </p>
-                      <p>
-                        <span>и </span>
-                        <a
-                          href="https://www.ivi.tv/info/agreement"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Пользовательским соглашением
-                        </a>
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  <div className={styles.chat__recover}>
-                    <TbReload />
-                    <h5>Восстановить пароль</h5>
-                  </div>
-                )}
-              </>
-            )}
+          <div className={styles.chat__progress}>
+            <BarGraph width={progress} />
           </div>
         </div>
-      </FullScreenModal>
-    </>
+        <div className={styles.chat__body}>
+          {session ? (
+            <div className={styles.chat__message}>
+              <h1 onClick={() => signOut()}>{t('sections.already-signed')}</h1>
+            </div>
+          ) : (
+            <>
+              {step >= 1 && (
+                <div className={styles.chat__message}>
+                  <h5>{t('buttons.login-signup-person')}</h5>
+                  {step <= 1 && <P>{t('sections.use-service-any-device')}</P>}
+                </div>
+              )}
+              {step < 2 ? (
+                <div className={styles.input}>
+                  <BiUser className={styles.input__icon} />
+                  <input
+                    type="text"
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)}
+                    className={!!login ? styles.input__active : ''}
+                  />
+                  <label>{t('buttons.email-or-phone')}</label>
+                </div>
+              ) : (
+                <div className={styles.chat__row}>
+                  <Button appearance={BtnA.circle} onClick={() => previousStep()}>
+                    <BsPencil />
+                  </Button>
+                  <div className={styles.chat__answer}>
+                    <h5>{login}</h5>
+                  </div>
+                </div>
+              )}
+              {step >= 2 && (
+                <>
+                  <div className={styles.chat__message}>
+                    <h5>
+                      {t('buttons.enter-password')} {t('buttons.to-login')}
+                    </h5>
+                  </div>
+                  <div className={`${styles.input} ${styles.password}`}>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className={!!password ? styles.input__active : ''}
+                    />
+                    <label>{t('buttons.enter-password')}</label>
+                    {!showPassword ? (
+                      <AiOutlineEye
+                        className={`${styles.input__show} ${
+                          !!password && styles.input__showActive
+                        }`}
+                        onClick={toggleShowPassword}
+                      />
+                    ) : (
+                      <AiOutlineEyeInvisible
+                        className={`${styles.input__show} ${
+                          !!password && styles.input__showActive
+                        }`}
+                        onClick={toggleShowPassword}
+                      />
+                    )}
+                  </div>
+                </>
+              )}
+              {step < 2 ? (
+                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                  {t('buttons.continue')}
+                </button>
+              ) : (
+                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                  {t('buttons.login')}
+                </button>
+              )}
+              {step < 2 ? (
+                <>
+                  <div className={styles.chat__oauth}>
+                    <button className={styles.button} onClick={() => handleGoogleSingIn()}>
+                      <span>{t('buttons.login-with')} Google</span>
+                      <SlSocialGoogle />
+                    </button>
+                    <button className={styles.button} onClick={() => handleVkSingIn()}>
+                      <span>{t('buttons.login-with')} VK</span>
+                      <SlSocialVkontakte />
+                    </button>
+                  </div>
+                  <div className={styles.chat__confidential}>
+                    <p>{t('sections.click-continue-agree')}</p>
+                    <p>
+                      <span>c </span>
+                      <a
+                        href="https://www.ivi.tv/info/confidential"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t('sections.privacy-policy')}
+                      </a>
+                    </p>
+                    <p>
+                      <span>{t('sections.and')} </span>
+                      <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
+                        {t('sections.user-agreement')}
+                      </a>
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <div className={styles.chat__recover}>
+                  <TbReload />
+                  <h5>{t('buttons.reset-password')}</h5>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </FullScreenModal>
   );
 };
 

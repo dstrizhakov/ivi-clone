@@ -1,4 +1,4 @@
-@import '@/styles/variables';
+@import '@/styles/variables.scss';
 @import '@/styles/mixins.scss';
 
 .content {
@@ -9,6 +9,7 @@
     flex: 1 1 55%;
     display: flex;
   }
+  &__item {}
   &__collections {
     padding: 0 rem(15);
     border-left: 1px solid rgba(255, 255, 255, 0.5);

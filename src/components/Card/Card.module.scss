@@ -2,7 +2,9 @@
 
 .card {
   cursor: pointer;
+  padding: 20px 10px 0 10px;
   font-size: 1em;
+  max-width: 234px;
   color: #d9d7e0;
   transform-origin: 50% 50%;
   transition-property: transform;
@@ -20,6 +22,13 @@
     }
   }
   .imageSection {
+    aspect-ratio: 13/20;
+    position: relative;
+    background-color: #1f1b2e;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 234px;
+    max-height: 360px;
     &.show {
       font-weight: 600;
       display: flex;
@@ -32,74 +41,86 @@
       }
     }
     img {
-      width: 100%;
-    }
-    aspect-ratio: 13/20;
-    position: relative;
-    background-color: #1f1b2e;
-    border-radius: 8px;
-    overflow: hidden;
-    .props {
+      width: auto;
       height: 100%;
+    }
+    .placeholder {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 0;
-      text-align: center;
-      transition: $time-main;
-      z-index: 90;
-      opacity: 0;
-      padding: 10%;
-      align-items: flex-end;
-      visibility: hidden;
-      .btns {
-        z-index: 25;
-        display: flex;
-        flex-direction: column;
-        width: 40%;
-        button {
-          justify-content: flex-end;
-          margin-top: 5px;
-        }
-      }
-      .info {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        position: relative;
+      height: 100%;
+      background:
+        repeating-linear-gradient(135deg, #4e4e59 0 10px, rgba(78, 78, 89, 0.9) 0 20px) left/0% 100% no-repeat,
+        repeating-linear-gradient(135deg, #3f3f49 0 10px, rgba(63, 63, 73, 0.9) 0 20px) left/100% 100%;
+      animation: p3 2s infinite;
+    }
+    @keyframes p3 {
+      100% {background-size:100% 100%}
+    }
+    @media screen and (min-width: $mobile) {
+      &.hover .props{
         height: 100%;
-        padding: 10px;
-        @media screen and (max-width: 600px) {
-          bottom: 30%;
-        }
-        &__text {
-          text-align: start;
-          font-size: 0.6rem;
-        }
-        &__row {
-          margin-top: 4px;
-          white-space: pre-wrap;
-          text-overflow: ellipsis;
-        }
-        .ratings {
-          font-size: 1.4rem;
-          width: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        transition: $time-main;
+        z-index: 90;
+        opacity: 0;
+        padding: 10%;
+        align-items: flex-start;
+        visibility: hidden;
+        .btns {
           display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          align-items: flex-end;
-          .graphs {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 15%;
+          &__container {
             display: flex;
-            min-width: 25%;
-            flex-direction: column;
+            width: 100%;
+            justify-content: flex-end;
+          }
+          button {
+            margin-top: 5px;
+          }
+        }
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          position: relative;
+          height: 100%;
+          padding: 10px;
+          &__text {
+            text-align: start;
+            font-size: 0.6rem;
+          }
+          &__row {
+            margin-top: 4px;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+          }
+          .ratings {
+            font-size: 1.4rem;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            .graphs {
+              display: flex;
+              min-width: 25%;
+              flex-direction: column;
+            }
           }
         }
       }
     }
   }
   .textSection {
+    margin-top: 10px;
     p {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -146,3 +167,5 @@
 .mirrored {
   transform: scale(-1, 1)
 }
+.hover.props{.btns{&__container{}button{}}.info{&__text{}&__row {}.ratings{.graphs {}}}} //prevent webstorm commit errors
+

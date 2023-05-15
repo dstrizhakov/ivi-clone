@@ -6,40 +6,51 @@ import styles from './PersonsGallery.module.scss';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { nameToLink } from '@/helpers/nameToLink';
+import { setShowPersonsModal } from '@/store/reducers/modals.slice';
+import { useDispatch } from 'react-redux';
 
-export const PersonsGallery: FC<PersonsGalleryProps> = ({ list, openModal }) => {
+export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const open = () => {
+    dispatch(setShowPersonsModal(true));
+  };
   return (
     <div className={styles.wrap}>
-      <div className={styles.title} onClick={() => openModal()}>
-        <Htag tag={'h4'}>Актёры и создатели</Htag>
+      <div className={styles.title} onClick={() => open()}>
+        <Htag tag={'h4'}>
+          {i18next.language == 'en' ? 'Actors and creators' : 'Актёры и создатели'}
+        </Htag>
       </div>
       <div className={styles.list}>
         <div className={styles.list__wrap}>
-          {list.map((person) => {
+          {[...new Set(list)].map((person) => {
             return (
               <Link
                 href={`/person/${nameToLink(person.enName)}`}
-                key={person.enName}
+                key={person.id}
                 className={styles.link}
               >
                 <div className={styles.card}>
                   <img src={person.url} alt="" />
                 </div>
                 <div>
-                  {person.name.split(' ').map((n) => (
-                    <p key={person.enName} className={styles.name}>
+                  {(i18next.language == 'en' ? person.enName : person.name).split(' ').map((n) => (
+                    <p key={person.id + n} className={styles.name}>
                       {n}
                     </p>
                   ))}
-                  <P size="S">актёр</P>
+                  <P size="S">{i18next.language == 'en' ? 'actor' : 'актер'}</P>
                 </div>
               </Link>
             );
           })}
         </div>
-        <div className={cn(styles.card, styles.card__text)} onClick={() => openModal()}>
-          Ещё
+        <div className={cn(styles.card, styles.card__text)} onClick={() => open()}>
+          {t('buttons.more')}
         </div>
       </div>
     </div>

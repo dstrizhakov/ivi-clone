@@ -1,3 +1,1 @@
-const REGEX_ANY = /^.*$/;
-
-export { REGEX_ANY };
+export const REGEX_ANY = /^.*$/;

@@ -1,53 +1,89 @@
-import React, { useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './Filters.module.scss';
-import Plank from '@/components/Filters/Plank/Plank';
-import Sausage from '@/components/Filters/Sausage/Sausage';
+import Plank, { Planks } from '@/components/Filters/Plank/Plank';
 import { Button } from '@/components/Button/Button';
 import { RxCross2 } from 'react-icons/rx';
+import { planks } from '@/mock/filters';
+import { useTranslation } from 'react-i18next';
+import InputRange from '@/components/Filters/Plank/InputRange';
+import { GoSettings } from 'react-icons/go';
+import SortDropdown from '@/components/Filters/SortDropdown/SortDropdown';
+import { BtnA } from '@/components/Button/Button.props';
 
-const Filters = () => {
-  const [active, setActive] = useState(true); //mock
-  const sausages = [
-    { id: 1, title: 'Бесплатные' },
-    { id: 2, title: 'По подписке' },
-    { id: 3, title: 'На языке оригинала' },
-    { id: 4, title: 'С субтитрами' },
-    { id: 5, title: 'Объёмный звук' },
-  ];
-  const planks = [
-    { id: 1, title: 'Жанры' },
-    { id: 2, title: 'Поджанры' },
-    { id: 3, title: 'Страны' },
-    { id: 4, title: 'Годы' },
-    { id: 5, title: 'Рейтинг иви' },
-  ];
+//todo: add framer-motion filter animation
+
+const Filters: FC = (): JSX.Element => {
+  const [openedFilter, setOpenedFilter] = useState(false);
+  const [active, setActive] = useState<boolean>(false);
+  const [chosen, setChosen] = useState([]);
+  const [chosenSausages, setSausages] = useState([]);
+  const { t } = useTranslation();
+  useEffect(() => {
+    setActive(
+      () =>
+        chosen.find((i) => i.category.length)?.category?.length ||
+        chosenSausages.find((item) => item.id)
+    );
+  }, [chosen, chosenSausages]);
+  const reset = () => {
+    setChosen(() => []);
+    setSausages(() => []);
+    setActive(() => false);
+  };
   return (
-    <div className={styles.filters}>
-      <div className={styles.plank_list}>
-        {planks.map((i) => (
-          <div className={styles.plank_item} key={'p' + i.id}>
-            <Plank plank={i} />
+    <>
+      <div className={styles.openers}>
+        <Button appearance={BtnA.transparent} onClick={() => setOpenedFilter(!openedFilter)}>
+          <div className={styles.filters__icon}>
+            <GoSettings />
+            <div className={styles.open_filter}>
+              {openedFilter ? t('buttons.collapse') : t('buttons.filters')}
+            </div>
           </div>
-        ))}
+        </Button>
+        <SortDropdown />
       </div>
-      <div className={styles.sausage_list}>
-        {sausages.map((i) => (
-          <div className={styles.sausage} key={'s' + i.id}>
-            <Sausage sausage={i} />
+
+      {openedFilter && (
+        <div className={styles.filters}>
+          <div className={styles.plank_list}>
+            <div className={styles.plank_item}>
+              <Plank plank={planks[0]} chosen={chosen} setChosen={setChosen} type={Planks.choose} />
+            </div>
+            <div className={styles.plank_item}>
+              <Plank plank={planks[1]} chosen={chosen} setChosen={setChosen} type={Planks.find} />
+            </div>
+            <div className={styles.plank_item}>
+              <Plank plank={planks[2]} chosen={chosen} setChosen={setChosen} type={Planks.find} />
+            </div>
+            <div className={styles.plank_item}>
+              <Plank plank={planks[3]} chosen={chosen} setChosen={setChosen} type={Planks.choose} />
+            </div>
+            <div className={styles.plank_item}>
+              <InputRange minLimit={6.7} maxLimit={10} range={0.1}>
+                {t('sections.rating')}
+              </InputRange>
+            </div>
+            <div className={styles.plank_item}>
+              <InputRange minLimit={0} maxLimit={1_000_000} range={993}>
+                {t('sections.rates-amount')}
+              </InputRange>
+            </div>
           </div>
-        ))}
-      </div>
-      <Button
-        appearance={'transparent'}
-        className={`${styles.reset} ${active && styles.active}`}
-        onClick={() => setActive((a) => !a)}
-      >
-        <div>
-          <RxCross2 size={'20px'} />
+          <Button
+            appearance={BtnA.transparent}
+            className={styles.reset}
+            onClick={() => reset()}
+            disabled={!active}
+          >
+            <div>
+              <RxCross2 size={'20px'} />
+            </div>
+            <div>{t('buttons.reset-filters')}</div>
+          </Button>
         </div>
-        <div>Сбросить фильтры</div>
-      </Button>
-    </div>
+      )}
+    </>
   );
 };
 

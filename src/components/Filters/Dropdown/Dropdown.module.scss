@@ -1,0 +1,114 @@
+@import "@/styles/variables.scss";
+
+.find {
+  background-color: $color-card-hover;
+  width: 180%;
+  @media screen and (max-width: 879px){
+    width: 100%;
+  }
+  input {
+    width: 100%;
+    background-color: rgb(42, 33, 63);
+    color: $color-input;
+    padding: 10px;
+  }
+}
+
+.choose {
+  width: 40vw;
+  @media screen and (max-width: 879px){
+    width: 100%;
+  }
+}
+
+.dropdown_out {
+  user-select: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  padding-top: 4px;
+  z-index: 99;
+}
+
+.dropdown {
+  background: #312b45;
+  border-radius: 4px;
+  box-shadow: 0 16px 32px rgba(7,5,14,.4);
+  padding: 16px;
+}
+
+.list_container {
+  margin-top: 5px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,.32);
+  ul {
+    display: grid;
+    grid-column-gap: 40px;
+    grid-template-columns: repeat(3,1fr);
+    &.one_lane {
+      grid-template-columns: repeat(1,1fr);
+    }
+    @media screen and (max-width: 1120px){
+      grid-template-columns: repeat(2,1fr);
+      grid-column-gap: 10px;
+
+    }
+    li {
+      list-style: none;
+      margin-top: 12px;
+      label {
+        position: relative;
+        display: block;
+
+      }
+      .input_text {
+        cursor: pointer;
+        color: rgba(217,215,224,.8);
+        max-width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      input {
+        display: none;
+      }
+      .checkbox {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        color: #fff;
+        opacity: 0;
+        &_selected {
+          position: relative;
+          width: 16px;
+          height: 16px;
+          font-size: 16px;
+          line-height: 16px;
+          display: inline-block;
+          svg {
+            display: block;
+          }
+        }
+      }
+      &:hover {
+        .input_text {
+          color: rgb(217,215,224);
+        }
+        .checkbox {
+          opacity: .32;
+        }
+      }
+    }
+    .checked {
+      .checkbox {
+        opacity: 1!important;
+      }
+      .input_text {
+        color: white!important;
+      }
+    }
+  }
+}
+

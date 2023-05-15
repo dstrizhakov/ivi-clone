@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+interface iLogin {
+  email: string;
+  password: string;
+}
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
@@ -7,7 +12,7 @@ export const authApi = createApi({
   }),
   endpoints: (build) => ({
     loginUser: build.mutation({
-      query: (body: { email: string; password: string }) => {
+      query: (body: iLogin) => {
         return {
           url: '/user/signin',
           method: 'post',
@@ -16,7 +21,7 @@ export const authApi = createApi({
       },
     }),
     registerUser: build.mutation({
-      query: (body: { email: string; password: string }) => {
+      query: (body: iLogin) => {
         return {
           url: '/user/signup',
           method: 'post',

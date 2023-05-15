@@ -7,11 +7,13 @@ import { P } from '@/components/P/P';
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import { ILink } from '@/types/types';
 import { movieCategories } from '@/mock/movieCategories';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
-const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
+const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }): JSX.Element => {
   const [isListOpen, setIsListOpen] = useState<boolean>(false);
   const IconComponent = icon ? icon : undefined;
-
+  const { t } = useTranslation();
   const variants = {
     visible: {
       paddingTop: 20,
@@ -43,14 +45,14 @@ const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
         animate={isListOpen ? 'visible' : 'hidden'}
         variants={variants}
       >
-        {isFilms ? (
+        {isFilms && (
           <>
             <Link href={'#'} className={styles.list__link}>
-              Все {title}
+              {i18next.language == 'en' ? `All ${title}` : `Все ${title}`}
             </Link>
             <ul className={styles.list}>
               <li className={styles.list__item}>
-                <P className={styles.list__title}>Жанры</P>
+                <P className={styles.list__title}>{t('categories.genres')}</P>
                 {movieCategories?.genres &&
                   movieCategories?.genres.map((item: ILink) => (
                     <Link className={styles.list__link} key={item.title} href={item.link}>
@@ -61,7 +63,7 @@ const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
               <li className={styles.flex}>
                 <ul>
                   <li className={styles.list__item}>
-                    <P className={styles.list__title}>Страны</P>
+                    <P className={styles.list__title}>{t('categories.countries')}</P>
                     {movieCategories?.countries &&
                       movieCategories?.countries.map((item: ILink) => (
                         <Link className={styles.list__link} key={item.title} href={item.link}>
@@ -70,7 +72,7 @@ const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
                       ))}
                   </li>
                   <li className={styles.list__item}>
-                    <P className={styles.list__title}>Годы</P>
+                    <P className={styles.list__title}>{t('categories.years')}</P>
                     {movieCategories?.years &&
                       movieCategories?.years.map((item: ILink) => (
                         <Link className={styles.list__link} key={item.title} href={item.link}>
@@ -90,8 +92,6 @@ const ModalList: FC<ModalListProps> = ({ children, title, icon, isFilms }) => {
               </li>
             </ul>
           </>
-        ) : (
-          <></>
         )}
         {children}
       </motion.div>

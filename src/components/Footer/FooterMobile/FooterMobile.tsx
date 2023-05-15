@@ -1,62 +1,61 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import styles from './FooterMobile.module.scss';
-import SearchModal from '@/components/Header/Search/SearchModal/SearchModal';
-import FooterModal from '../FooterModal/FooterModal';
 import FooterLink from '../FooterLink/FooterLink';
 import { BiSearch } from 'react-icons/bi';
 import { HiOutlineFolder } from 'react-icons/hi2';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { IoCloseOutline, IoTvOutline } from 'react-icons/io5';
 import { RiHome6Line } from 'react-icons/ri';
+import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModal, setShowFooterModal, setShowSearch } from '@/store/reducers/modals.slice';
 
-const FooterMobile: FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+const FooterMobile: FC = (): JSX.Element => {
+  const { t } = useTranslation();
+  const { showSearch, showFooterModal } = useSelector(selectModal);
+  const dispatch = useDispatch();
+  const openFooter = () => {
+    if (showFooterModal) {
+      dispatch(setShowFooterModal(false));
+    } else {
+      dispatch(setShowFooterModal(true));
+    }
+  };
+  const openSearch = () => {
+    dispatch(setShowFooterModal(false));
+    if (showSearch) {
+      dispatch(setShowSearch(false));
+    } else {
+      dispatch(setShowSearch(true));
+    }
+  };
   return (
-    <>
-      <FooterModal isOpen={isModalOpen} />
-      <SearchModal isOpen={isSearchOpen} closeSearch={() => setIsSearchOpen(false)} />
-      <div className={styles.footerMobile}>
-        <div className={styles.menu}>
-          <Link href={'/'} className={styles.link}>
-            <FooterLink title={'Мой Иви'} href={'/'} icon={RiHome6Line} />
-          </Link>
-          <Link href={'/movies'} className={styles.link}>
-            <FooterLink title={'Каталог'} href={'/movies'} icon={HiOutlineFolder} />
-          </Link>
-          <FooterLink
-            title={'Поиск'}
-            isOpen={isSearchOpen}
-            icon={BiSearch}
-            openModal={
-              isSearchOpen
-                ? () => setIsSearchOpen(false)
-                : () => {
-                    setIsSearchOpen(true);
-                    setIsModalOpen(false);
-                  }
-            }
-          />
-          <Link href={'https://www.ivi.ru/tvplus'} className={styles.link}>
-            <FooterLink href={'https://www.ivi.ru/tvplus'} title={'TV+'} icon={IoTvOutline} />
-          </Link>
-          <FooterLink
-            title={isModalOpen ? 'Закрыть' : 'Ещё'}
-            isOpen={isModalOpen}
-            openModal={
-              isModalOpen
-                ? () => setIsModalOpen(false)
-                : () => {
-                    setIsModalOpen(true);
-                    setIsSearchOpen(false);
-                  }
-            }
-            icon={isModalOpen ? IoCloseOutline : HiDotsHorizontal}
-          />
-        </div>
+    <div className={styles.footerMobile}>
+      <div className={styles.menu}>
+        <Link href={'/'} className={styles.link}>
+          <FooterLink title={t('sections.my-ivi')} href={'/'} icon={RiHome6Line} />
+        </Link>
+        <Link href={'/movies'} className={styles.link}>
+          <FooterLink title={t('sections.catalog')} href={'/movies'} icon={HiOutlineFolder} />
+        </Link>
+        <FooterLink
+          title={t('sections.search')}
+          href={showSearch ? '' : '?search'}
+          icon={BiSearch}
+          openModal={() => openSearch()}
+        />
+        <Link href={'https://www.ivi.ru/tvplus'} className={styles.link}>
+          <FooterLink title={'TV+'} href={'https://www.ivi.ru/tvplus'} icon={IoTvOutline} />
+        </Link>
+        <FooterLink
+          title={showFooterModal ? t('footer.close-btn') : t('footer.open-btn')}
+          href={showFooterModal ? '' : '?navigation'}
+          openModal={() => openFooter()}
+          icon={showFooterModal ? IoCloseOutline : HiDotsHorizontal}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

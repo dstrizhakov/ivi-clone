@@ -1,30 +1,31 @@
-import { ButtonProps } from './Button.props';
+import { BtnA, BtnS, ButtonProps } from './Button.props';
 import styles from './Button.module.scss';
 import cn from 'classnames';
+import { FC } from 'react';
 
-export const Button = ({
+export const Button: FC<ButtonProps> = ({
   children,
-  appearance = 'rectangle',
-  size = 'M',
+  appearance = BtnA.rectangle,
+  size = BtnS.M,
   className,
   ...props
-}: ButtonProps): JSX.Element => {
+}): JSX.Element => {
   return (
     <button
       className={cn(
         styles.button,
         className,
         {
-          [styles.rectangle]: appearance == 'rectangle',
-          [styles.square]: appearance == 'square',
-          [styles.circle]: appearance == 'circle',
-          [styles.red]: appearance == 'red',
-          [styles.transparent]: appearance == 'transparent',
+          [styles.rectangle]: appearance == BtnA.rectangle,
+          [styles.square]: appearance == BtnA.square,
+          [styles.circle]: appearance == BtnA.circle,
+          [styles.red]: appearance == BtnA.red,
+          [styles.transparent]: appearance == BtnA.transparent,
         },
         {
-          [styles.S]: size == 'S',
-          [styles.M]: size == 'M',
-          [styles.L]: size == 'L',
+          [styles.S]: size == BtnS.S,
+          [styles.M]: size == BtnS.M,
+          [styles.L]: size == BtnS.L,
         }
       )}
       {...props}
