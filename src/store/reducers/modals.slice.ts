@@ -24,7 +24,7 @@ export const modalsSlice = createSlice({
   name: 'modals',
   initialState,
   reducers: {
-    setPersonItems: (state, action: PayloadAction<boolean>) => {
+    setPersonItems: (state, action: PayloadAction<IMovie>) => {
       state.personModalItem = action.payload;
     },
     setShowAuth: (state, action: PayloadAction<boolean>) => {

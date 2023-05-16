@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -14,13 +14,16 @@ import ActivateCertificateButton from '@/components/Profile/ProfilePage/ProfileB
 import i18next from 'i18next';
 import Image from 'next/image';
 import { BtnA } from '@/components/Button/Button.props';
+import { P } from '@/components/P/P';
+import { FastAverageColor } from 'fast-average-color';
+import { Htag } from '@/components/Htag/Htag';
 
 interface iMockCarousel {
   id: number;
   name: string;
   description: string;
   enDescription: string;
-  logo: string;
+  logo: string | null;
   card_image: string;
   btn: string;
 }
@@ -30,6 +33,19 @@ interface iSlide {
 }
 
 const PromoCarouselSlide: FC<iSlide> = ({ slide }): JSX.Element => {
+  const [color, setColor] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fac = new FastAverageColor();
+
+    fac
+      .getColorAsync(slide.card_image, {
+        algorithm: 'simple',
+      })
+      .then((color) => {
+        setColor(() => color.isDark);
+      });
+  }, [slide.card_image]);
   return (
     <Link href={'/movies'} className={styles.item}>
       <div className={styles.img}>
@@ -41,19 +57,23 @@ const PromoCarouselSlide: FC<iSlide> = ({ slide }): JSX.Element => {
           quality={100}
           priority
         />
-      </div>
-      <div className={styles.information}>
-        <div className={styles.content_container}>
-          <div className={styles.logo}>
-            <Image src={slide.logo} alt="logo" width={330} height={330} />
+        <div className={styles.information}>
+          <div className={styles.content_container}>
+            <div className={styles.logo} style={{ color: `${color ? 'white' : 'black'}` }}>
+              {slide.logo ? (
+                <Image src={slide.logo} alt="logo" fill />
+              ) : (
+                <Htag tag={'h2'}>{slide.name}</Htag>
+              )}
+            </div>
+            <P className={styles.synopsis} style={{ color: `${color ? 'white' : 'black'}` }}>
+              {i18next.language == 'ru' ? slide.description : slide.enDescription}
+            </P>
           </div>
-          <div className={styles.synopsis}>
-            {i18next.language == 'ru' ? slide.description : slide.enDescription}
-          </div>
+          <Button appearance={BtnA.red} title={slide.btn}>
+            {slide.btn}
+          </Button>
         </div>
-        <Button appearance={BtnA.red} title={slide.btn}>
-          {slide.btn}
-        </Button>
       </div>
     </Link>
   );
@@ -100,7 +120,7 @@ const PromoCarousel: FC = () => {
     },
     {
       id: 4,
-      name: 'Изумитьельный Морис',
+      name: 'Изумительный Морис',
       description:
         'Обаятельный кот и умные крысы проворачивают хитрые аферы. По книге Терри Пратчетта',
       enDescription:
@@ -120,6 +140,16 @@ const PromoCarousel: FC = () => {
       logo: 'https://thumbs.dfs.ivi.ru/storage4/contents/7/f/856da932e9a08d6dd0fbb80fa73ddd.png/x200/',
       card_image:
         'https://thumbs.dfs.ivi.ru/storage9/contents/1/e/4f4ce4b4ce28c5a287bd461172f714.jpg/1216x524/?q=85',
+      btn: t('buttons.watch-sub'),
+    },
+    {
+      id: 6,
+      name: 'Совсем не большие города',
+      description: 'Лучшие сериалы про провинцию',
+      enDescription: 'Best series about the province',
+      logo: null,
+      card_image:
+        'https://thumbs.dfs.ivi.ru/storage8/contents/3/6/67f58162d55e13452d1dde96870d88.jpg/1216x524/?q=85',
       btn: t('buttons.watch-sub'),
     },
   ];

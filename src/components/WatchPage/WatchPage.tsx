@@ -13,11 +13,12 @@ import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
-  const [bgColor, setBgColor] = useState('#01a9b8');
-  const fac = new FastAverageColor();
-
   const dispatch = useAppDispatch();
+  const [bgColor, setBgColor] = useState('');
+
   useEffect(() => {
+    const fac = new FastAverageColor();
+
     dispatch(setPersonItems(movie));
     fac
       .getColorAsync(movie.card_image, {
@@ -26,7 +27,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
       .then((color) => {
         setBgColor(() => color.hex);
       });
-  }, [movie]);
+  }, [dispatch, movie]);
 
   const { name, enName, trailer, persons } = movie;
 

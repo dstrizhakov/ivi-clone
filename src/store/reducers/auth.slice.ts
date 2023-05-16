@@ -28,23 +28,14 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (
-      state,
-      action: PayloadAction<{
-        user: string;
-        role: 'user' | 'admin' | null;
-        favorites: string[];
-        watched: string[];
-        accessToken: string;
-      }>
-    ) => {
+    setUser: (state, action: PayloadAction<IAuth>) => {
       const { user, role, favorites, watched, accessToken } = action.payload;
       state.token = accessToken;
       state.user = user;
       state.role = role;
       state.favorites = favorites;
       state.watched = watched;
-      console.log(user);
+      console.log('user:', user);
     },
     logout: (state) => {
       state.token = null;

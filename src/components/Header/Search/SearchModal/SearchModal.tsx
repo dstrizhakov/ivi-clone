@@ -18,34 +18,35 @@ const SearchModal: FC = (): JSX.Element => {
     dispatch(setShowSearch(false));
   };
 
+  const changeQuery = (e) => {
+    setQuery(() => e.target.value);
+  };
   const clearQuery = (): void => {
     setQuery('');
   };
   usePreventScroll(showSearch);
   return (
-    <>
-      <FullScreenModal isOpen={showSearch} closeModal={() => close()}>
-        <div className={styles.body}>
-          <h3>{t('sections.search')}</h3>
-          <div className={styles.input}>
-            <input
-              className={!!query ? styles.input__active : ''}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <label>
-              {i18next.language == 'ru' ? 'Фильмы, персоны, жанры' : 'Movies, persons, genres'}
-            </label>
-            {!!query ? (
-              <CgClose className={styles.input__icon} onClick={clearQuery} />
-            ) : (
-              <IoSearchOutline className={styles.input__icon} />
-            )}
-          </div>
+    <FullScreenModal isOpen={showSearch} closeModal={() => close()}>
+      <div className={styles.body}>
+        <h3>{t('sections.search')}</h3>
+        <div className={styles.input}>
+          <input
+            className={!!query ? styles.input__active : ''}
+            type="text"
+            value={query}
+            onChange={(e) => changeQuery(e)}
+          />
+          <label>
+            {i18next.language == 'ru' ? 'Фильмы, персоны, жанры' : 'Movies, persons, genres'}
+          </label>
+          {!!query ? (
+            <CgClose className={styles.input__icon} onClick={clearQuery} />
+          ) : (
+            <IoSearchOutline className={styles.input__icon} />
+          )}
         </div>
-      </FullScreenModal>
-    </>
+      </div>
+    </FullScreenModal>
   );
 };
 

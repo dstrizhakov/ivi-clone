@@ -5,11 +5,10 @@ import MoviesPageDescription from '@/components/MoviesPage/MoviesPageDescription
 import Filters from '../../components/Filters/Filters';
 import { useTranslation } from 'react-i18next';
 import Grid from '@/components/Grid/Grid';
-import { useSelector } from 'react-redux';
+import { moviesData } from '@/mock/moviesData';
 
 const Movies = () => {
   const { t } = useTranslation();
-  const { movies } = useSelector((state) => state.movieReducer);
   const breadcrumbs = [
     { name: t('sections.my-ivi'), path: '/' },
     { name: t('sections.movies'), path: '/movies' },
@@ -17,12 +16,12 @@ const Movies = () => {
   return (
     <>
       <Head>
-        <title> {t('title.movies') || 'Смотреть фильмы онлайн'} </title>
+        <title>{t('title.movies') || 'Смотреть фильмы онлайн'}</title>
       </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />
       <Filters />
-      <Grid array={movies} />
+      <Grid array={moviesData} />
     </>
   );
 };

@@ -7,9 +7,9 @@ import { BtnA, BtnS } from '@/components/Button/Button.props';
 export type NextArrowProps = {
   variant?: 'promo';
 };
+
 const NextArrow: FC<NextArrowProps> = ({ variant, ...props }): JSX.Element => {
   const { className, onClick } = props;
-
   return (
     <div onClick={onClick} className={styles.arrow_container}>
       <div className={`${styles.arrow} ${variant === 'promo' ? styles.nextPromo : styles.next}`}>

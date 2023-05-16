@@ -14,7 +14,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -32,7 +32,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -50,7 +50,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/d/b/c72516e5e3a696a49e49c2901ccb1a.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
@@ -68,7 +68,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -86,7 +86,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -104,7 +104,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/d/b/c72516e5e3a696a49e49c2901ccb1a.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
@@ -122,7 +122,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -140,7 +140,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -158,7 +158,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/d/b/c72516e5e3a696a49e49c2901ccb1a.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
@@ -176,7 +176,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -194,7 +194,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -212,7 +212,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/d/b/c72516e5e3a696a49e49c2901ccb1a.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
@@ -230,7 +230,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -248,7 +248,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -266,7 +266,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/d/b/c72516e5e3a696a49e49c2901ccb1a.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
@@ -284,7 +284,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -302,7 +302,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -320,7 +320,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/d/b/c72516e5e3a696a49e49c2901ccb1a.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
@@ -338,7 +338,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85',
     year: '2011',
-    countries: 'США',
+    countries: ['США'],
     rating: '9,5',
     genres: ['Фэнтези'],
     duration: '2ч 50мин',
@@ -356,7 +356,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85',
     year: '2012',
-    countries: 'США',
+    countries: ['США'],
     rating: '7,2',
     genres: ['Приключения'],
     duration: '2ч 50мин',
@@ -374,7 +374,7 @@ export const moviesData: IMovie[] = [
     card_image:
       'https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/234x360/?q=85',
     year: '2023',
-    countries: 'Россия',
+    countries: ['Россия'],
     rating: '6.3',
     genres: ['Комедии'],
     duration: '3 сезона',
