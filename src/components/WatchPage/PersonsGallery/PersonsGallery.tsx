@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { nameToLink } from '@/helpers/nameToLink';
 import { setShowPersonsModal } from '@/store/reducers/modals.slice';
 import { useDispatch } from 'react-redux';
+import Image from 'next/image';
 
 export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
   const { t, i18n } = useTranslation();
@@ -33,16 +34,14 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
                     className={styles.link}
                   >
                     <div className={styles.card}>
-                      <img src={person.url} alt="" />
+                      <Image src={person.url} width={88} height={88} alt="" />
                     </div>
                     <div>
-                      {(i18n.language == 'en' ? person.enName : person.name)
-                        .split(' ')
-                        .map((n) => (
-                          <p key={person.id + n} className={styles.name}>
-                            {n}
-                          </p>
-                        ))}
+                      {(i18n.language == 'en' ? person.enName : person.name).split(' ').map((n) => (
+                        <p key={person.id + n} className={styles.name}>
+                          {n}
+                        </p>
+                      ))}
                       <P size="S">{i18n.language == 'en' ? 'actor' : 'актер'}</P>
                     </div>
                   </Link>
