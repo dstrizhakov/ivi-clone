@@ -8,10 +8,10 @@ export interface IPerson {
   name: string;
   enName: string;
   description: string;
-  films: any; //todo: change to IMovie
+  films: unknown; //todo: change to IMovie
 }
 export interface IMovie {
-  id: number;
+  id: number | string;
   name: string;
   enName: string;
   description: string;

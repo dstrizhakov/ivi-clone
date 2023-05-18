@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
@@ -15,8 +15,10 @@ import { Button } from '@/components/Button/Button';
 import { BtnA } from '@/components/Button/Button.props';
 import { BsTrash } from 'react-icons/bs';
 import { persons } from '@/mock/persons';
-
-const movie = {
+import { useSearchParamsState } from '@/hooks/useSearchParamsState';
+import { IMovie } from '@/types/types';
+const movie: IMovie = {
+  id: 1,
   name: 'Гарри Поттер и Дары Смерти: Часть I',
   enName: 'Harry Potter and the Deathly Hallows: Part I',
   description:
@@ -35,9 +37,8 @@ const movie = {
 };
 
 const Admin = () => {
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
   const { t } = useTranslation();
+  const [page, setPage] = useSearchParamsState({ name: 'page' });
   const { role } = useAppSelector(selectAuth);
   const [addNewMovie] = useAddOneMovieMutation();
   const [deleteMovie] = useDeleteOneMovieMutation();
@@ -46,9 +47,8 @@ const Admin = () => {
     error,
     isLoading,
   } = useFetchAllMoviesQuery({
-    limit: limit,
+    limit: 10,
     page: page,
-    genres: ['test1', 'test2'],
   });
   const del = (id) => {
     try {
@@ -59,20 +59,12 @@ const Admin = () => {
   };
   const create = () => {
     try {
+      movie.id = self.crypto.randomUUID();
       addNewMovie(movie);
     } catch (e) {
       console.log(e);
     }
   };
-  useEffect(() => {
-    movie.id = self.crypto.randomUUID();
-  }, [movies, addNewMovie]);
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     window.scrollTo({ top: 0, behavior: 'smooth' });
-  //   }
-  // }, [page]);
 
   if (role !== Roles.unknown) return <NotFoundPage />; //todo: fix when slice is ready
   return (
