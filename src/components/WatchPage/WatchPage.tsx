@@ -8,14 +8,14 @@ import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGal
 import i18next from 'i18next';
 import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
-import { moviesData } from '@/mock/moviesData';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
+import { useFetchAllMoviesQuery } from '@/services/movie.api';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
+  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({ limit: 15 });
   const dispatch = useAppDispatch();
   const [bgColor, setBgColor] = useState('');
-
   useEffect(() => {
     const fac = new FastAverageColor();
 
@@ -56,7 +56,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
           }
           route={'/'}
         >
-          {moviesData.slice(0, 15).map((card) => (
+          {!isLoading && !error && movies.map((card) => (
             <Card card={card} book key={card.id} />
           ))}
         </Carousel>
