@@ -6,18 +6,19 @@ interface iAuth {
   password: string;
 }
 
+// prepareHeaders: (headers, { getState }) => {
+//   const token = getState().auth.token;
+//   if (token) {
+//     headers.set('authorization', `Bearer ${token}`);
+//   }
+//   return headers;
+// },
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:7000',
   }),
-  prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth.token;
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`);
-    }
-    return headers;
-  },
   endpoints: (build) => ({
     register: build.mutation({
       query: (body: iAuth) => {
@@ -76,4 +77,4 @@ const reauthApi = async (args, api, extraOptions) => {
   return result;
 };
 
-export const { useLoginUserMutation, useLogoutUserMutation, useRegisterUserMutation } = authApi;
+export const { useLoginUserMutation, useLogoutUserMutation, useRegisterUserMutation } = reauthApi;
