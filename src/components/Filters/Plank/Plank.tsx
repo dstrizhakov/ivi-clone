@@ -9,16 +9,22 @@ export enum Planks {
   find = 'find',
 }
 interface iPlank {
-  plank: any;
-  chosen: any;
-  setChosen: (p: (ch) => any[]) => void;
+  plank: unknown;
+  chosen: unknown;
+  setChosen: (p: (ch) => unknown[]) => void;
   type: Planks;
 }
 
 const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }): JSX.Element => {
-  const [dropDownOpen, setDropDownOpen] = useState<boolean>();
+  const [dropDownOpen, setDropDownOpen] = useState<boolean>(false);
+  const change = () => {
+    setDropDownOpen((d) => !d);
+  };
+  const close = () => {
+    setDropDownOpen(() => false);
+  };
   const ref = useRef(null);
-  useOutsideClick(() => setDropDownOpen(() => false), ref);
+  useOutsideClick(close, ref);
   const changePressed = (i) => {
     setChosen((ch) =>
       [
@@ -51,10 +57,7 @@ const Plank: FC<iPlank> = ({ plank, chosen, setChosen, type }): JSX.Element => {
       ) : (
         <SearchDropdown state={dropDownOpen} chosen={chosen} plank={plank} change={changePressed} />
       )}
-      <button
-        className={`${styles.plank} ${dropDownOpen && styles.active}`}
-        onClick={() => setDropDownOpen((d) => !d)}
-      >
+      <button className={`${styles.plank} ${dropDownOpen && styles.active}`} onClick={change}>
         <div className={styles.info}>
           <div className={styles.title}>{plank.title}</div>
           {chosen && (

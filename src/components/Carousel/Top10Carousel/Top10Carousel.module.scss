@@ -11,3 +11,32 @@
     }
   }
 }
+
+.card {
+  width: 100%;
+  height: 100%;
+  .fade {
+    background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
+    transition-duration: .4s;
+    &_footer {
+      background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
+      transition-duration: .4s;
+    }
+  }
+  &_image {
+    border-radius: 8px 8px 0 0;
+    display: flex;
+  }
+  .logo {
+    position: relative;
+    top: -80px;
+    &_image{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+}

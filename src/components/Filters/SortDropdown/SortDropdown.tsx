@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import styles from './SortDropdown.module.scss';
 import {
   MdOutlineKeyboardArrowDown,
@@ -14,7 +14,13 @@ const SortDropdown: FC = (): JSX.Element => {
   const [sortDrop, setSortDrop] = useState(false);
   const { t } = useTranslation();
   const ref = useRef(null);
-  useOutsideClick(() => setSortDrop(() => false), ref);
+  const close = () => {
+    setSortDrop(() => false);
+  };
+  const change = () => {
+    setSortDrop((d) => !d);
+  };
+  useOutsideClick(close, ref);
 
   const sorts = [
     { id: 1, title: t('sections.by-amount') },
@@ -33,30 +39,41 @@ const SortDropdown: FC = (): JSX.Element => {
     } else {
       setCurrent(() => i.id);
     }
+    if (current === 0) {
+      setTimeout(() => {
+        close();
+      }, 150);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      close();
+    }, 150);
+  }, [current]);
 
   return (
     <div className={styles.drop} ref={ref}>
-      <Button appearance={BtnA.transparent} onClick={() => setSortDrop(!sortDrop)}>
+      <Button appearance={BtnA.transparent} onClick={change}>
         <div className={styles.filters__icon}>
           <div className={styles.icon}>
             <MdOutlineSort />
           </div>
-          {sorts.find((item) => item.id === current).title}
+          <div className={styles.head_title}>{sorts.find((sort) => sort.id === current).title}</div>
           {!sortDrop ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowUp />}
         </div>
       </Button>
       <div className={`${styles.drop_container} ${sortDrop ? styles.opened : ''}`}>
         <div className={styles.dropdown__title}>{t('buttons.sort')}</div>
-        {sorts.map((i) => (
+        {sorts.map((sort) => (
           <button
-            className={`${styles.dropdown__item} ${i.id == current ? styles.active : ''}`}
-            key={i.id}
-            onClick={() => handler(i)}
+            className={`${styles.dropdown__item} ${sort.id == current ? styles.active : ''}`}
+            key={sort.id}
+            onClick={() => handler(sort)}
           >
-            <div className={i.id == current ? styles.stripe : ''} />
-            <div className={styles.dropdown__item__itemText} key={i.id}>
-              {i.title}
+            <div className={sort.id == current ? styles.stripe : ''} />
+            <div className={styles.dropdown__item__itemText} key={sort.id}>
+              {sort.title}
             </div>
           </button>
         ))}
