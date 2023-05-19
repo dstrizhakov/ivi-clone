@@ -18,7 +18,7 @@ export const personApi = createApi({
         url: `/persons`,
         params: {
           _name: nameToLink(name),
-        }
+        },
       }),
       providesTags: (result) => ['Person'],
     }),
