@@ -29,7 +29,7 @@ const Card: FC<CardProps> = ({
           width={234}
           height={360}
           quality={85}
-          loading={'lazy'}
+          priority
         />
         <div className={styles.props}>
           <div className={styles.btns__container}>

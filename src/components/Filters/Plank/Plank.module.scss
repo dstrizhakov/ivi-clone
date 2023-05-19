@@ -58,8 +58,9 @@
   justify-content: space-around;
   cursor: pointer;
   p {
+    text-align: start;
     margin-top: 0;
-    max-width: 50%;
+    max-width: 45%;
     font-size: 11px;
     white-space: pre-wrap;
     line-height: 1;
@@ -76,7 +77,6 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
   }
 
   input[type=range] {

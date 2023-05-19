@@ -57,5 +57,5 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     </Provider>
   );
 }
-//Provider передает store внутри wrapper согласно документации https://github.com/kirill-konshin/next-redux-wrapper/
+
 export default App;

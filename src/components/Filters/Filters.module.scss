@@ -3,6 +3,7 @@
 .openers {
   display: flex;
   flex-direction: row;
+  margin-bottom: 12px;
   @media screen and (max-width: 600px) {
     justify-content: space-between;
   }

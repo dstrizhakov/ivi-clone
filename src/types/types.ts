@@ -8,10 +8,10 @@ export interface IPerson {
   name: string;
   enName: string;
   description: string;
-  films: any; //todo: change to IMovie
+  films: IMovie[]; //todo: change to IMovie
 }
 export interface IMovie {
-  id: number;
+  id: number | string;
   name: string;
   enName: string;
   description: string;
@@ -27,8 +27,8 @@ export interface IMovie {
 }
 
 export interface IUser {
-  userId: number;
-  image?: string; //
-  name?: string;
-  email?: string;
+  userId?: number; //нет в сессии
+  image?: string | null; //
+  name?: string | null;
+  email?: string | null;
 }

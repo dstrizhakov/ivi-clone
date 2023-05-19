@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { IMovie } from '@/types/types';
+import { HYDRATE } from 'next-redux-wrapper';
 
 interface iModal {
   showAuth: boolean;
@@ -42,6 +43,15 @@ export const modalsSlice = createSlice({
     setShowFooterModal: (state, action: PayloadAction<boolean>) => {
       state.showFooterModal = action.payload;
     },
+  },
+  //>>>>>>
+  extraReducers: (builder) => {
+    builder.addCase(HYDRATE, (state, action) => {
+      return {
+        ...state,
+        ...action.payload.modalsReducer,
+      };
+    });
   },
 });
 

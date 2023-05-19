@@ -10,7 +10,7 @@ const BarGraph: FC<BarGraphProps> = ({ width }): JSX.Element => {
   }
   return (
     <div className={styles.bar}>
-      <div className={styles.barValue} style={{ width: `${width}%` }} data-testid={'bar'}></div>
+      <div className={styles.barValue} style={{ width: `${width}%` }} data-testid={'bar'} />
     </div>
   );
 };
