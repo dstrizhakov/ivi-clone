@@ -18,7 +18,7 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/getuser`, {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -83,15 +83,6 @@ export default NextAuth({
     // },
     // async redirect({ url, baseUrl }) {
     //   return baseUrl;
-    // },
-
-    // async session({ session, token }) {
-    //   // session.user = token;
-    //   return session;
-    // },
-    // async jwt({ token, user }) {
-    //   console.log('ACCESS TOKEN', token);
-    //   return { ...token, ...user };
     // },
 
     async jwt({ token, account }) {

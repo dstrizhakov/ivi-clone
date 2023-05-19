@@ -9,11 +9,11 @@ export enum Roles {
 }
 
 export interface IAuth {
-  user: string | null;
+  user: object | null;
   token: string | null;
   role: Roles;
-  favorites: string[];
-  watched: string[];
+  favorites?: string[];
+  watched?: string[];
 }
 
 const initialState: IAuth = {
@@ -35,7 +35,6 @@ export const authSlice = createSlice({
       state.role = role;
       state.favorites = favorites;
       state.watched = watched;
-      console.log('user:', user);
     },
     logout: (state) => {
       state.token = null;

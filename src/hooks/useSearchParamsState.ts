@@ -40,8 +40,8 @@ export function useSearchParamsState<Value>({
   const router = useRouter();
   const [value, setValue] = useState(() => {
     return deserialize
-      ? deserialize(getSearchParam(`?${router.asPath.split('?')[1]}`, name))
-      : defaultDeserialize(getSearchParam(`?${router.asPath.split('?')[1]}`, name));
+      ? deserialize(getSearchParam(router.asPath.split('?')[1], name))
+      : defaultDeserialize(getSearchParam(router.asPath.split('?')[1], name));
   });
 
   const updateValue = useEvent((newValue: React.SetStateAction<Value>) => {
