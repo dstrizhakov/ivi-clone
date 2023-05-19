@@ -37,9 +37,9 @@ const movie: IMovie = {
 };
 
 const Admin = () => {
+  const { role } = useAppSelector(selectAuth);
   const { t } = useTranslation();
   const [page, setPage] = useSearchParamsState({ name: 'page' });
-  const { role } = useAppSelector(selectAuth);
   const [addNewMovie] = useAddOneMovieMutation();
   const [deleteMovie] = useDeleteOneMovieMutation();
   const {
@@ -50,6 +50,8 @@ const Admin = () => {
     limit: 10,
     page: page,
   });
+  if (role !== Roles.unknown) return <NotFoundPage />; //todo: fix when slice is ready
+
   const del = (id) => {
     try {
       deleteMovie(id);
@@ -66,7 +68,6 @@ const Admin = () => {
     }
   };
 
-  if (role !== Roles.unknown) return <NotFoundPage />; //todo: fix when slice is ready
   return (
     <>
       <Head>

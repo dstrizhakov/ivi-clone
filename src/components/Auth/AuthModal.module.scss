@@ -86,10 +86,7 @@
     align-self: flex-start;
     width: 70%;
     max-height: rem(700);
-    border-top-left-radius: rem(16);
-    border-top-right-radius: rem(16);
-    border-bottom-right-radius: rem(16);
-    border-bottom-left-radius: 0;
+    border-radius: rem(16) rem(16) rem(16) 0;
     background-color: #312b45;
     position: relative;
     padding: rem(16);
@@ -119,10 +116,7 @@
   &__answer {
     align-self: flex-end;
     width: 60%;
-    border-top-left-radius: rem(16);
-    border-top-right-radius: rem(16);
-    border-bottom-right-radius: rem(0);
-    border-bottom-left-radius: rem(16);
+    border-radius: rem(16) rem(16) rem(0) rem(16);
     background-color: #231f31;
     position: relative;
     padding: rem(16);

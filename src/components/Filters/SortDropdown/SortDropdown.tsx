@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './SortDropdown.module.scss';
 import {
   MdOutlineKeyboardArrowDown,
@@ -14,13 +14,13 @@ const SortDropdown: FC = (): JSX.Element => {
   const [sortDrop, setSortDrop] = useState(false);
   const { t } = useTranslation();
   const ref = useRef(null);
-  const close = () => {
+  const closeState = () => {
     setSortDrop(() => false);
   };
-  const change = () => {
+  const changeState = () => {
     setSortDrop((d) => !d);
   };
-  useOutsideClick(close, ref);
+  useOutsideClick(closeState, ref);
 
   const sorts = [
     { id: 1, title: t('sections.by-amount') },
@@ -33,28 +33,31 @@ const SortDropdown: FC = (): JSX.Element => {
   ];
   const [current, setCurrent] = useState(0);
 
-  const handler = (i) => {
-    if (current === i.id) {
-      setCurrent(() => 0);
-    } else {
-      setCurrent(() => i.id);
-    }
-    if (current === 0) {
-      setTimeout(() => {
-        close();
-      }, 150);
-    }
-  };
+  const handler = useCallback(
+    (i) => {
+      if (current === i.id) {
+        setCurrent(() => 0);
+      } else {
+        setCurrent(() => i.id);
+      }
+      if (current === 0) {
+        setTimeout(() => {
+          closeState();
+        }, 150);
+      }
+    },
+    [current]
+  );
 
   useEffect(() => {
     setTimeout(() => {
-      close();
+      closeState();
     }, 150);
   }, [current]);
 
   return (
     <div className={styles.drop} ref={ref}>
-      <Button appearance={BtnA.transparent} onClick={change}>
+      <Button appearance={BtnA.transparent} onClick={changeState}>
         <div className={styles.filters__icon}>
           <div className={styles.icon}>
             <MdOutlineSort />

@@ -27,8 +27,8 @@ export interface IMovie {
 }
 
 export interface IUser {
-  userId: number;
-  image?: string; //
-  name?: string;
-  email?: string;
+  userId?: number; //нет в сессии
+  image?: string | null; //
+  name?: string | null;
+  email?: string | null;
 }

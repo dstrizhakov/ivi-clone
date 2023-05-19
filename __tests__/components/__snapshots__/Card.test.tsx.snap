@@ -17,8 +17,8 @@ exports[`card card object empty card  1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -49,7 +49,6 @@ exports[`card card object empty card  1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -58,7 +57,6 @@ exports[`card card object empty card  1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -67,7 +65,6 @@ exports[`card card object empty card  1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -76,7 +73,6 @@ exports[`card card object empty card  1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -93,7 +89,6 @@ exports[`card card object empty card  1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -145,8 +140,8 @@ exports[`card card object empty card  1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -177,7 +172,6 @@ exports[`card card object empty card  1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -186,7 +180,6 @@ exports[`card card object empty card  1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -195,7 +188,6 @@ exports[`card card object empty card  1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -204,7 +196,6 @@ exports[`card card object empty card  1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -221,7 +212,6 @@ exports[`card card object empty card  1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>
@@ -330,8 +320,8 @@ exports[`card params all 1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -453,7 +443,6 @@ exports[`card params all 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -462,7 +451,6 @@ exports[`card params all 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -471,7 +459,6 @@ exports[`card params all 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -480,7 +467,6 @@ exports[`card params all 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -497,7 +483,6 @@ exports[`card params all 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -549,8 +534,8 @@ exports[`card params all 1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -672,7 +657,6 @@ exports[`card params all 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -681,7 +665,6 @@ exports[`card params all 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -690,7 +673,6 @@ exports[`card params all 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -699,7 +681,6 @@ exports[`card params all 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -716,7 +697,6 @@ exports[`card params all 1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>
@@ -825,8 +805,8 @@ exports[`card params block 1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -879,7 +859,6 @@ exports[`card params block 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -888,7 +867,6 @@ exports[`card params block 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -897,7 +875,6 @@ exports[`card params block 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -906,7 +883,6 @@ exports[`card params block 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -923,7 +899,6 @@ exports[`card params block 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -975,8 +950,8 @@ exports[`card params block 1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -1029,7 +1004,6 @@ exports[`card params block 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -1038,7 +1012,6 @@ exports[`card params block 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -1047,7 +1020,6 @@ exports[`card params block 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -1056,7 +1028,6 @@ exports[`card params block 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -1073,7 +1044,6 @@ exports[`card params block 1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>
@@ -1182,8 +1152,8 @@ exports[`card params book 1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -1232,7 +1202,6 @@ exports[`card params book 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -1241,7 +1210,6 @@ exports[`card params book 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -1250,7 +1218,6 @@ exports[`card params book 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -1259,7 +1226,6 @@ exports[`card params book 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -1276,7 +1242,6 @@ exports[`card params book 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -1328,8 +1293,8 @@ exports[`card params book 1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -1378,7 +1343,6 @@ exports[`card params book 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -1387,7 +1351,6 @@ exports[`card params book 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -1396,7 +1359,6 @@ exports[`card params book 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -1405,7 +1367,6 @@ exports[`card params book 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -1422,7 +1383,6 @@ exports[`card params book 1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>
@@ -1531,8 +1491,8 @@ exports[`card params find 1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -1599,7 +1559,6 @@ exports[`card params find 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -1608,7 +1567,6 @@ exports[`card params find 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -1617,7 +1575,6 @@ exports[`card params find 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -1626,7 +1583,6 @@ exports[`card params find 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -1643,7 +1599,6 @@ exports[`card params find 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -1695,8 +1650,8 @@ exports[`card params find 1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -1763,7 +1718,6 @@ exports[`card params find 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -1772,7 +1726,6 @@ exports[`card params find 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -1781,7 +1734,6 @@ exports[`card params find 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -1790,7 +1742,6 @@ exports[`card params find 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -1807,7 +1758,6 @@ exports[`card params find 1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>
@@ -1916,8 +1866,8 @@ exports[`card params no hover 1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -1948,7 +1898,6 @@ exports[`card params no hover 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -1957,7 +1906,6 @@ exports[`card params no hover 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -1966,7 +1914,6 @@ exports[`card params no hover 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -1975,7 +1922,6 @@ exports[`card params no hover 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -1992,7 +1938,6 @@ exports[`card params no hover 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -2044,8 +1989,8 @@ exports[`card params no hover 1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -2076,7 +2021,6 @@ exports[`card params no hover 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -2085,7 +2029,6 @@ exports[`card params no hover 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -2094,7 +2037,6 @@ exports[`card params no hover 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -2103,7 +2045,6 @@ exports[`card params no hover 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -2120,7 +2061,6 @@ exports[`card params no hover 1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>
@@ -2229,8 +2169,8 @@ exports[`card params star 1`] = `
             alt="Гарри Поттер и Дары Смерти: Часть I"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="360"
-            loading="lazy"
             src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
             srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
             style="color: transparent;"
@@ -2279,7 +2219,6 @@ exports[`card params star 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 62.8%;"
                     />
                   </div>
@@ -2288,7 +2227,6 @@ exports[`card params star 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 80.8%;"
                     />
                   </div>
@@ -2297,7 +2235,6 @@ exports[`card params star 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 100%;"
                     />
                   </div>
@@ -2306,7 +2243,6 @@ exports[`card params star 1`] = `
                   >
                     <div
                       class="barValue"
-                      data-testid="bar"
                       style="width: 71.8%;"
                     />
                   </div>
@@ -2323,7 +2259,6 @@ exports[`card params star 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 89.8%;"
                   />
                 </div>
@@ -2375,8 +2310,8 @@ exports[`card params star 1`] = `
           alt="Гарри Поттер и Дары Смерти: Часть I"
           data-nimg="1"
           decoding="async"
+          fetchpriority="high"
           height="360"
-          loading="lazy"
           src="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85"
           srcset="/_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=256&q=85 1x, /_next/image?url=https%3A%2F%2Fthumbs.dfs.ivi.ru%2Fstorage2%2Fcontents%2F5%2Fb%2F1a320c6f0240982ad3f287e19afa91.jpg%2F234x360%2F%3Fq%3D85&w=640&q=85 2x"
           style="color: transparent;"
@@ -2425,7 +2360,6 @@ exports[`card params star 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 62.8%;"
                   />
                 </div>
@@ -2434,7 +2368,6 @@ exports[`card params star 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 80.8%;"
                   />
                 </div>
@@ -2443,7 +2376,6 @@ exports[`card params star 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 100%;"
                   />
                 </div>
@@ -2452,7 +2384,6 @@ exports[`card params star 1`] = `
                 >
                   <div
                     class="barValue"
-                    data-testid="bar"
                     style="width: 71.8%;"
                   />
                 </div>
@@ -2469,7 +2400,6 @@ exports[`card params star 1`] = `
               >
                 <div
                   class="barValue"
-                  data-testid="bar"
                   style="width: 89.8%;"
                 />
               </div>

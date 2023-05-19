@@ -15,6 +15,7 @@ import { selectModal, setShowAuth } from '@/store/reducers/modals.slice';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import { BtnA } from '../Button/Button.props';
+import Link from 'next/link';
 
 const AuthModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
@@ -187,20 +188,24 @@ const AuthModal: FC = (): JSX.Element => {
                   <div className={styles.chat__confidential}>
                     <p>{t('sections.click-continue-agree')}</p>
                     <p>
-                      <span>c </span>
-                      <a
+                      <span>{t('sections.descriptions.with')} </span>
+                      <Link
                         href="https://www.ivi.tv/info/confidential"
                         target="_blank"
                         rel="noreferrer"
                       >
                         {t('sections.privacy-policy')}
-                      </a>
+                      </Link>
                     </p>
                     <p>
                       <span>{t('sections.and')} </span>
-                      <a href="https://www.ivi.tv/info/agreement" target="_blank" rel="noreferrer">
+                      <Link
+                        href="https://www.ivi.tv/info/agreement"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         {t('sections.user-agreement')}
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </>

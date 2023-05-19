@@ -1,5 +1,5 @@
 import Card from '@/components/Card/Card';
-import RatingModal from '@/components/Card/RatingModal';
+import RatingModal from '@/components/Modals/RatingModal/RatingModal';
 import { Meta } from '@storybook/react';
 
 const card = {

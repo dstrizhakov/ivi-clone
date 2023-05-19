@@ -56,9 +56,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
           }
           route={'/'}
         >
-          {!isLoading && !error && movies.map((card) => (
-            <Card card={card} book key={card.id} />
-          ))}
+          {!isLoading && !error && movies.map((card) => <Card card={card} book key={card.id} />)}
         </Carousel>
         <PersonsGallery list={persons} />
       </section>

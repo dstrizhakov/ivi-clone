@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import NextArrow from '@/components/Carousel/NextArrow';
-import PrevArrow from '@/components/Carousel/PrevArrow';
+import NextArrow from '@/components/Carousel/Arrows/NextArrow';
+import PrevArrow from '@/components/Carousel/Arrows/PrevArrow';
 import styles from './Top10Carousel.module.scss';
 import Slider from 'react-slick';
 import Image from 'next/image';
