@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { nameToLink } from '@/helpers/nameToLink';
 import CommentSection from '@/components/Comment/CommentSection';
 import { usePreventScrollFixed } from '@/hooks/usePreventScrollFixed';
+import Image from 'next/image';
 
 const PersonsModal: FC = () => {
   const dispatch = useAppDispatch();
@@ -66,6 +67,7 @@ const PersonsModal: FC = () => {
                       >
                         <div className={styles.card}>
                           <img src={person.url} alt="" />
+                          {/*todo: change to Image*/}
                         </div>
                         <div>
                           {(i18n.language == 'en' ? person.enName : person.name)
@@ -83,7 +85,7 @@ const PersonsModal: FC = () => {
                 </div>
               </TabPanel>
               <TabPanel className={styles.tabs__content}>
-                <div style={{ maxWidth: '695px' }}>
+                <div style={{ maxWidth: '65vw' }}>
                   <CommentSection />
                 </div>
               </TabPanel>
@@ -95,7 +97,9 @@ const PersonsModal: FC = () => {
               </TabPanel>
             </Tabs>
             <div className={styles.movie}>
-              <img
+              <Image
+                width={128}
+                height={196}
                 onClick={() => close()}
                 className={styles.movie__img}
                 src={personModalItem?.card_image} //"https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
