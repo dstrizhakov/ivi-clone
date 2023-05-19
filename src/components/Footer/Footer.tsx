@@ -22,6 +22,70 @@ import { BtnA } from '@/components/Button/Button.props';
 
 const Footer: FC = (): JSX.Element => {
   const { t } = useTranslation();
+  const first_links = [
+    {
+      href: 'https://corp.ivi.ru/',
+      title: t('footer.about-company'),
+    },
+    {
+      href: 'https://corp.ivi.ru/career/#career-vacancy-block',
+      title: t('footer.vacancies'),
+    },
+    {
+      href: 'https://www.ivi.ru/pages/beta/',
+      title: t('footer.beta'),
+    },
+    {
+      href: 'https://www.ivi.ru/info/partners',
+      title: t('footer.partners'),
+    },
+    {
+      href: 'https://corp.ivi.ru/advertisers/',
+      title: t('footer.advertisers'),
+    },
+    {
+      href: 'https://www.ivi.ru/info/agreement',
+      title: t('footer.agreement'),
+    },
+    {
+      href: 'https://www.ivi.ru/info/confidential',
+      title: t('footer.confidential'),
+    },
+    {
+      href: 'https://www.ivi.ru/info/goryachaya-liniya-komplaens',
+      title: t('footer.compliance'),
+    },
+  ];
+  const second_links = [
+    {
+      href: '/',
+      title: t('sections.my-ivi'),
+    },
+    {
+      href: 'https://www.ivi.ru/new',
+      title: t('sections.whats-new'),
+    },
+    {
+      href: '/movies',
+      title: t('sections.movies'),
+    },
+    {
+      href: '/series',
+      title: t('sections.series'),
+    },
+    {
+      href: '/animation',
+      title: t('sections.animation'),
+    },
+    {
+      href: 'https://www.ivi.ru/tvplus',
+      title: t('sections.tv-plus'),
+    },
+    {
+      href: 'https://www.ivi.ru/goodmovies',
+      title: t('sections.good-movies'),
+    },
+  ];
   return (
     <>
       <footer className={styles.footer}>
@@ -29,60 +93,19 @@ const Footer: FC = (): JSX.Element => {
           <div className={styles.footer__container}>
             <ul className={styles.list}>
               <span className={styles.listTitle}>{t('footer.about-us')}</span>
-              <li className={styles.link}>
-                <Link href={'https://corp.ivi.ru/'}>{t('footer.about-company')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://corp.ivi.ru/career/#career-vacancy-block'}>
-                  {t('footer.vacancies')}
-                </Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/pages/beta/'}>{t('footer.beta')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/partners'}>{t('footer.partners')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://corp.ivi.ru/advertisers/'}>{t('footer.advertisers')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/agreement'}>{t('footer.agreement')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/confidential'}>
-                  {t('footer.confidential')}
-                </Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}>
-                  {t('footer.compliance')}
-                </Link>
-              </li>
+              {first_links.map((link, index) => (
+                <li className={styles.link} key={index}>
+                  <Link href={link.href}>{link.title}</Link>
+                </li>
+              ))}
             </ul>
             <ul className={styles.list}>
               <span className={styles.listTitle}>{t('footer.sections')}</span>
-              <li className={styles.link}>
-                <Link href={'#'}>{t('sections.my-ivi')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/new'}>{t('sections.whats-new')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'/movies'}>{t('sections.movies')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'/series'}>{t('sections.series')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'/animation'}>{t('sections.animation')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/tvplus'}>{t('sections.tv-plus')}</Link>
-              </li>
-              <li className={styles.link}>
-                <Link href={'https://www.ivi.ru/goodmovies'}>{t('sections.good-movies')}</Link>
-              </li>
+              {second_links.map((link, index) => (
+                <li className={styles.link} key={index}>
+                  <Link href={link.href}>{link.title}</Link>
+                </li>
+              ))}
               <li className={styles.link}>
                 <Link href={'https://www.ivi.ru/cert'} className={styles.certLink}>
                   {t('footer.cert')}
