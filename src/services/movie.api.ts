@@ -44,7 +44,7 @@ export const movieApi = createApi({
       }),
       providesTags: (result) => ['Movie'],
     }),
-    fetchOneMovie: build.query<IMovie, number>({
+    fetchOneMovie: build.query<IMovie, string | number>({
       query: (id) => ({
         url: `/movies/${id}`,
       }),

@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IPerson } from '@/types/types';
-import { nameToLink } from '@/helpers/nameToLink';
 
 export const personApi = createApi({
-  reducerPath: 'movieApi',
+  reducerPath: 'personApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000' }),
   tagTypes: ['Person'],
   endpoints: (build) => ({
@@ -13,19 +12,13 @@ export const personApi = createApi({
       }),
       providesTags: (result) => ['Person'],
     }),
-    fetchOnePerson: build.query<IPerson, string>({
-      query: (name) => ({
-        url: `/persons`,
-        params: {
-          _name: nameToLink(name),
-        },
+    fetchOnePerson: build.query<IPerson, number | string>({
+      query: (id) => ({
+        url: `/persons/${id}`,
       }),
       providesTags: (result) => ['Person'],
     }),
   }),
 });
 
-export const {
-  useFetchAllPersonsQuery,
-  useFetchOnePersonQuery,
-} = personApi;
+export const { useFetchAllPersonsQuery, useFetchOnePersonQuery } = personApi;

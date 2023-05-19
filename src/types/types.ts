@@ -8,7 +8,7 @@ export interface IPerson {
   name: string;
   enName: string;
   description: string;
-  films: unknown; //todo: change to IMovie
+  films: IMovie[]; //todo: change to IMovie
 }
 export interface IMovie {
   id: number | string;

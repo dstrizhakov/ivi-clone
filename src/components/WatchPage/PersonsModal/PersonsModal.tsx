@@ -12,7 +12,6 @@ import { selectModal, setShowPersonsModal } from '@/store/reducers/modals.slice'
 import { useTranslation } from 'react-i18next';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { nameToLink } from '@/helpers/nameToLink';
 import CommentSection from '@/components/Comment/CommentSection';
 import { usePreventScrollFixed } from '@/hooks/usePreventScrollFixed';
 import Image from 'next/image';
@@ -61,13 +60,12 @@ const PersonsModal: FC = () => {
                   {personModalItem?.persons.map((person) => {
                     return (
                       <Link
-                        href={`/person/${nameToLink(person.enName)}`}
+                        href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
                         key={Math.random() * person.id}
                         className={styles.link}
                       >
                         <div className={styles.card}>
-                          <img src={person.url} alt="" />
-                          {/*todo: change to Image*/}
+                          <Image width={120} height={144} src={person.url} alt="" />
                         </div>
                         <div>
                           {(i18n.language == 'en' ? person.enName : person.name)

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import { P } from '@/components/P/P';
 import { useTranslation } from 'react-i18next';
-import { nameToLink } from '@/helpers/nameToLink';
 import { setShowPersonsModal } from '@/store/reducers/modals.slice';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
@@ -29,7 +28,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
               {[...new Set(list)].map((person) => {
                 return (
                   <Link
-                    href={`/person/${nameToLink(person.enName)}`}
+                    href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
                     key={person.id}
                     className={styles.link}
                   >
