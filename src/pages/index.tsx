@@ -20,21 +20,21 @@ const Home = () => {
       </Head>
       <PromoCarousel />
       <MainPageDescription />
-      <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
-        {!error &&
-          !isLoading &&
-          movies
-            .slice(0, 15)
-            .map((card) => <Card card={card} star book find block key={card.id} />)}
-      </Carousel>
+      {!error && !isLoading && (
+        <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
+          {movies.slice(0, 15).map((card) => (
+            <Card card={card} star book find block key={card.id} />
+          ))}
+        </Carousel>
+      )}
       {/*<Top10Carousel />*/}
-      <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
-        {!error &&
-          !isLoading &&
-          movies
-            .slice(0, 15)
-            .map((card) => <Card card={card} star book find block key={card.id} />)}
-      </Carousel>
+      {!error && !isLoading && (
+        <Carousel title={t('carousels.adventures')} route={'/movies'}>
+          {movies.slice(0, 15).map((card) => (
+            <Card card={card} star book find block key={card.id} />
+          ))}
+        </Carousel>
+      )}
     </>
   );
 };
