@@ -17,7 +17,7 @@ interface iAuth {
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:7000',
+    baseUrl: process.env.SERVER + '/auth',
   }),
   endpoints: (build) => ({
     register: build.mutation({
