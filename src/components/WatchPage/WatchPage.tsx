@@ -29,7 +29,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
       });
   }, [dispatch, movie]);
 
-  const { name, enName, trailer, persons } = movie;
+  const { title, originalTitle, trailer, persons } = movie;
 
   return (
     <>
@@ -51,8 +51,8 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         <Carousel
           title={
             i18next.language == 'en'
-              ? `Movies similar to «${enName ? enName : name}»`
-              : `С фильмом «${name}» смотрят`
+              ? `Movies similar to «${originalTitle ? originalTitle : title}»`
+              : `С фильмом «${title}» смотрят`
           }
           route={'/'}
         >

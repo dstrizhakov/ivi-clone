@@ -1,18 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IPerson } from '@/types/types';
+import { IPersonOld } from '@/types/types';
 
 export const personApi = createApi({
   reducerPath: 'personApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVER }),
   tagTypes: ['Person'],
   endpoints: (build) => ({
-    fetchAllPersons: build.query<IPerson[]>({
+    fetchAllPersons: build.query<IPersonOld[]>({
       query: () => ({
         url: '/persons',
       }),
       providesTags: (result) => ['Person'],
     }),
-    fetchOnePerson: build.query<IPerson, number | string>({
+    fetchOnePerson: build.query<IPersonOld, number | string>({
       query: (id) => ({
         url: `/persons/${id}`,
       }),

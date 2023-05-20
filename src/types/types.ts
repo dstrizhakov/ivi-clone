@@ -2,20 +2,15 @@ export interface ILink {
   title: string;
   link: string;
 }
-export interface IPerson {
-  id: number;
-  url: string;
-  name: string;
-  enName: string;
-  description: string;
-  films: IMovie[]; //todo: change to IMovie
-}
-export interface IMovie {
+
+//старые типы:
+
+export interface IMovieOld {
   id: number | string;
-  name: string;
-  enName: string;
-  description: string;
-  enDescription?: string;
+  title: string;
+  originalTitle: string;
+  slogan: string;
+  originalSlogan: string;
   trailer: string;
   card_image: string;
   year: string;
@@ -23,12 +18,133 @@ export interface IMovie {
   rating: string;
   genres: string[];
   duration: string;
-  persons: IPerson[];
+  persons: IPersonOld[];
+}
+
+export interface IPersonOld {
+  id: number;
+  url: string;
+  name: string;
+  enName: string;
+  description: string;
+  films: IMovieOld[];
+}
+
+//типы по документации:
+
+export interface IFilmViews {
+  //просмотры фильма
+  id: number;
+  countryId: number;
+  premiere_date: string;
+  premiere_place: string;
+  viewersCount: number;
+}
+
+export interface IGenres {
+  //жанры
+  id: number;
+  genreName: string;
+  genreNameEn: string;
+}
+
+export interface IRole {
+  //роль
+  id: number;
+  roleName: string;
+}
+
+export interface IActor {
+  //актер
+  id: number;
+  fullName: string;
+  fullNameEn: string;
+  photo: string;
+  personInFilm: string[];
+  role: IRole;
+}
+
+export interface IPersonsInFilm {
+  //персоны
+  id: number;
+  filmId: number;
+  actorId: number;
+  roleId: number;
+  roleNotes: string;
+  film: string;
+  actor: IActor;
+}
+
+export interface ICountry {
+  //страна
+  id: number;
+  filmsCreated: string[];
+  filmViews: IFilmViews[];
+}
+
+export interface IAgeRestriction {
+  //ограничение по возрасту
+  id: number;
+  url: string;
+  abbreviation: string;
+  minAge: string;
+  description: string;
+}
+
+export interface IComment {
+  //комментарии к отзыву
+  id: number;
+  reviewId: number;
+  parentCommentId: number;
+  profile: number;
+  text: string;
+  review: string;
+  parentComment: string;
+  children: IComment[];
+}
+
+export interface IReviews {
+  //отзыв к фильму
+  id: number;
+  url: string;
+  title: string;
+  text: string;
+  filmId: number;
+  profileId: number;
+  isPositive: boolean;
+  comments: IComment[];
+  film: string;
+}
+
+export interface IMovie {
+  //фильм
+  id: number | string; //
+  year: number;
+  title: string;
+  originalTitle?: string;
+  slogan: string;
+  originalSlogan?: string;
+  trailer: string;
+  countryId: number;
+  ageRestrictionId: number;
+  personsInFilm: IPersonsInFilm[];
+  filmGenres: IGenres[];
+  duration: string;
+  ageRestriction: IAgeRestriction[];
+  reviews: IReviews[];
+  country: ICountry;
+  card_image: string; //нет в документации
 }
 
 export interface IUser {
-  userId?: number; //нет в сессии
-  image?: string | null; //
-  name?: string | null;
-  email?: string | null;
+  // userId?: number;
+  email: string | null;
+  password: string;
+  name: string;
+  surname: string;
+  nickname: string;
+  country: string;
+  city: string;
+  role: IRole[];
+  photo: string;
 }
