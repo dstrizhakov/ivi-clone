@@ -16,14 +16,14 @@ import { BtnA } from '@/components/Button/Button.props';
 import { BsTrash } from 'react-icons/bs';
 import { persons } from '@/mock/persons';
 import { useSearchParamsState } from '@/hooks/useSearchParamsState';
-import { IMovie } from '@/types/types';
-const movie: IMovie = {
+import { IMovieOld } from '@/types/types';
+const movie: IMovieOld = {
   id: 1,
-  name: 'Гарри Поттер и Дары Смерти: Часть I',
-  enName: 'Harry Potter and the Deathly Hallows: Part I',
-  description:
+  title: 'Гарри Поттер и Дары Смерти: Часть I',
+  originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+  slogan:
     'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война.',
-  enDescription:
+  originalSlogan:
     'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
   trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
   card_image:

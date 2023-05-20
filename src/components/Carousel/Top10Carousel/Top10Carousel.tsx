@@ -45,7 +45,7 @@ const T10Card: FC<iCard> = ({ card, index, ...props }): JSX.Element => {
   return (
     <div className={styles.card} {...props}>
       <div className={styles.card_image}>
-        <Image src={card.card_image} alt={card.name} width={234} height={360} />
+        <Image src={card.card_image} alt={card.title} width={234} height={360} />
       </div>
       <div className={styles.fade} />
       <div className={styles.fade_footer} />

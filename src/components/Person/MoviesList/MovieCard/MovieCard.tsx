@@ -13,9 +13,10 @@ const MovieCard: FC<MovieCardProps> = ({ card }) => {
     <Link href={`/watch/${card.id}`} className={styles.card} key={card.id}>
       <div className={styles.info}>
         <img src={card.card_image} alt="" className={styles.card_image} />
+        {/*todo: change to Image*/}
         <div>
           <P color={'white'}>{card.year}</P>
-          <P color={'white'}>{card.name}</P>
+          <P color={'white'}>{card.title}</P>
           <P size={'S'}>
             {t('categories.rating')}: {card.rating}
           </P>

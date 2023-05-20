@@ -12,10 +12,10 @@ interface iInfo {
 
 const MovieInfo: FC<iInfo> = ({ movie }) => {
   const {
-    name,
-    enName,
-    description,
-    enDescription,
+    title,
+    originalTitle,
+    slogan,
+    originalSlogan,
     year,
     countries,
     rating,
@@ -28,8 +28,8 @@ const MovieInfo: FC<iInfo> = ({ movie }) => {
       <div className={styles.watch__title}>
         <Htag tag="h2">
           {i18next.language == 'en'
-            ? `Movie ${enName ? enName : name} watch online`
-            : `Фильм ${name} смотреть онлайн`}
+            ? `Movie ${originalTitle ? originalTitle : title} watch online`
+            : `Фильм ${title} смотреть онлайн`}
         </Htag>
       </div>
       <div className={styles.watch__params}>
@@ -44,7 +44,7 @@ const MovieInfo: FC<iInfo> = ({ movie }) => {
         <PersonList list={persons} rating={rating} />
       </div>
       <div className={styles.watch__description}>
-        <P>{i18next.language == 'en' ? enDescription && enDescription : description}</P>
+        <P>{i18next.language == 'en' ? originalSlogan && originalSlogan : slogan}</P>
       </div>
       <div className={styles.watch__medallions}></div>
     </div>
