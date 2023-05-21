@@ -8,6 +8,7 @@ import { wrapper } from '@/store/store';
 import { GetServerSideProps } from 'next';
 import { useTranslation } from 'react-i18next';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import CardLoader from '@/components/Card/CardLoader';
 
 const Home = () => {
   const { data: movies, error, isLoading } = useFetchAllMoviesQuery({});
@@ -27,12 +28,17 @@ const Home = () => {
           ))}
         </Carousel>
       )}
+      <Carousel title={t('carousels.adventures')} route={'/movies'}>
+        {[...new Array(15)].map((i, index) => (
+          <CardLoader key={index} />
+        ))}
+      </Carousel>
       {/*<Top10Carousel />*/}
-      {!error && !isLoading && (
+      {!error && (
         <Carousel title={t('carousels.adventures')} route={'/movies'}>
-          {movies.slice(0, 15).map((card) => (
-            <Card card={card} star book find block key={card.id} />
-          ))}
+          {!isLoading
+            ? movies.map((card) => <Card card={card} star book find block key={card.id} />)
+            : [...new Array(15)].map((i, index) => <CardLoader key={index} />)}
         </Carousel>
       )}
     </>

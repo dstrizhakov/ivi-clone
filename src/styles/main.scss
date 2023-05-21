@@ -42,3 +42,14 @@ main {
   margin: 0 20px;
   z-index: 3;
 }
+
+.loader {
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(-45deg, #362f50 0 15px,#0000 0 20px) left/200% 100%;
+  animation: loading 3s infinite linear;
+}
+
+@keyframes loading {
+  100% {background-position:right}
+}

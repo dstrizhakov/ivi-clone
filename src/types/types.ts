@@ -14,7 +14,7 @@ export interface IMovieOld {
   trailer: string;
   card_image: string;
   year: string;
-  countries: string[]; //всегда массив (иначе лищняя проверка типа), в карточках используем первое значение
+  countries: string[]; //всегда массив (иначе лишняя проверка типа), в карточках используем первое значение
   rating: string;
   genres: string[];
   duration: string;

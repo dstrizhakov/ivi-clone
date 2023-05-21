@@ -14,7 +14,6 @@ const Movies = () => {
     { name: t('sections.my-ivi'), path: '/' },
     { name: t('sections.movies'), path: '/movies' },
   ];
-
   return (
     <>
       <Head>
@@ -23,7 +22,7 @@ const Movies = () => {
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />
       <Filters />
-      {movies && !error && !isLoading && <Grid array={movies} />}
+      {!error && <Grid array={movies} loading={isLoading} />}
     </>
   );
 };

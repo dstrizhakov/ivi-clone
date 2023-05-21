@@ -65,9 +65,21 @@ const Card: FC<CardProps> = ({
       </div>
       <div
         className={styles.textSection}
-        title={i18next.language == 'en' ? (card.originalTitle ? card.originalTitle : card.title) : card.title}
+        title={
+          i18next.language == 'en'
+            ? card.originalTitle
+              ? card.originalTitle
+              : card.title
+            : card.title
+        }
       >
-        <P>{i18next.language == 'en' ? (card.originalTitle ? card.originalTitle : card.title) : card.title}</P>
+        <P>
+          {i18next.language == 'en'
+            ? card.originalTitle
+              ? card.originalTitle
+              : card.title
+            : card.title}
+        </P>
       </div>
     </Link>
   );
