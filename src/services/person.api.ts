@@ -3,18 +3,20 @@ import { IPersonOld } from '@/types/types';
 
 export const personApi = createApi({
   reducerPath: 'personApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVER }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:3001/persons',
+  }),
   tagTypes: ['Person'],
   endpoints: (build) => ({
     fetchAllPersons: build.query<IPersonOld[]>({
       query: () => ({
-        url: '/persons',
+        url: '/',
       }),
       providesTags: (result) => ['Person'],
     }),
     fetchOnePerson: build.query<IPersonOld, number | string>({
       query: (id) => ({
-        url: `/persons/${id}`,
+        url: `/${id}`,
       }),
       providesTags: (result) => ['Person'],
     }),

@@ -24,10 +24,20 @@ import EditProfile from '@/components/Profile/EditProfile';
 import ChecksButton from '@/components/Profile/ProfilePage/ProfileBtns/ChecksButton';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch } from "@/hooks/redux";
+import { logout } from '@/store/reducers/auth.slice';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
   const { data: session } = useSession();
+  const dispatch = useAppDispatch();
+
+  const logoutFunc = () => {
+    signOut().then(() => {
+      dispatch(logout());
+    });
+
+  }
 
   return (
     <div className={styles.profile__btns} {...props}>
@@ -103,7 +113,7 @@ const ProfilePage = ({ ...props }) => {
           <>
             <Button
               appearance={BtnA.transparent}
-              onClick={() => signOut()}
+              onClick={logoutFunc}
               title={t('buttons.logout') || 'Выйти'}
             >
               <RiLogoutBoxRLine />

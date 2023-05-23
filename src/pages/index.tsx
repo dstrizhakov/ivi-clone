@@ -9,6 +9,8 @@ import { GetServerSideProps } from 'next';
 import { useTranslation } from 'react-i18next';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
 import CardLoader from '@/components/Card/CardLoader';
+import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
+import { moviesData } from '@/mock/moviesData';
 
 const Home = () => {
   const { data: movies, error, isLoading } = useFetchAllMoviesQuery({});
@@ -21,26 +23,23 @@ const Home = () => {
       </Head>
       <PromoCarousel />
       <MainPageDescription />
-      {!error && !isLoading && (
-        <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
-          {movies.slice(0, 15).map((card) => (
-            <Card card={card} star book find block key={card.id} />
-          ))}
-        </Carousel>
-      )}
+      <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
+        {!error && !isLoading
+          ? movies.map((card) => <Card card={card} star book find block key={card.id} />)
+          : [...new Array(15)].map((i, index) => <CardLoader key={index} />)}
+      </Carousel>
+      <Top10Carousel />
       <Carousel title={t('carousels.adventures')} route={'/movies'}>
-        {[...new Array(15)].map((i, index) => (
-          <CardLoader key={index} />
+        {!error && !isLoading
+          ? movies.map((card) => <Card card={card} star book find block key={card.id} />)
+          : [...new Array(15)].map((i, index) => <CardLoader key={index} />)}
+      </Carousel>
+
+      <Carousel title={t('carousels.adventures')} route={'/movies'}>
+        {moviesData.map((card) => (
+          <Card card={card} star book find block key={card.id} />
         ))}
       </Carousel>
-      {/*<Top10Carousel />*/}
-      {!error && (
-        <Carousel title={t('carousels.adventures')} route={'/movies'}>
-          {!isLoading
-            ? movies.map((card) => <Card card={card} star book find block key={card.id} />)
-            : [...new Array(15)].map((i, index) => <CardLoader key={index} />)}
-        </Carousel>
-      )}
     </>
   );
 };

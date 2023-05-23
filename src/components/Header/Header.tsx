@@ -18,10 +18,14 @@ import { useTranslation } from 'react-i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import { useSession } from 'next-auth/react';
+import { useAppSelector } from '@/hooks/redux';
+import { selectAuth } from '@/store/reducers/auth.slice';
 
 const Header: FC = () => {
   const { t } = useTranslation();
   const { data: session } = useSession();
+  const { user, token, roles } = useAppSelector(selectAuth);
+  console.log(user, token, roles);
   return (
     <header className="header">
       <div className="container">

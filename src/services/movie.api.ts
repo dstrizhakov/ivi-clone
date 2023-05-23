@@ -14,9 +14,21 @@ export type QueryParams = {
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVER + '/film' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:3001' + '/film',
+  }),
   tagTypes: ['Movie'],
   endpoints: (build) => ({
+    fetchAllFilms: build.query<IMovie[], unknown>({
+      query: ({ genres, limit = 15 }) => ({
+        url: '/',
+        params: {
+          _genres: genres,
+          _limit: limit,
+        },
+        providesTags: (result) => ['Movie'],
+      }),
+    }),
     fetchAllMovies: build.query<IMovie[], QueryParams>({
       query: ({
         limit = 100,
@@ -50,9 +62,75 @@ export const movieApi = createApi({
       }),
       providesTags: (result) => ['Movie'],
     }),
+    fetchAllCartoons: build.query<IMovie[], QueryParams>({
+      query: ({
+        limit = 100,
+        page = 1,
+        persons,
+        actors,
+        countries,
+        rating,
+        rates_amount,
+        genres,
+        years,
+      }) => ({
+        url: '/cartoons',
+        params: {
+          _limit: limit,
+          _page: page,
+          _directors: persons,
+          _actors: actors,
+          _countries: countries,
+          _rates_amount: rates_amount,
+          _genres: genres,
+          _rating: rating,
+          _year: years,
+        },
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
+    fetchOneCartoon: build.query<IMovie, string | number>({
+      query: (id) => ({
+        url: `/cartoons/${id}`,
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
+    fetchAllSeries: build.query<IMovie[], QueryParams>({
+      query: ({
+        limit = 100,
+        page = 1,
+        persons,
+        actors,
+        countries,
+        rating,
+        rates_amount,
+        genres,
+        years,
+      }) => ({
+        url: '/series',
+        params: {
+          _limit: limit,
+          _page: page,
+          _directors: persons,
+          _actors: actors,
+          _countries: countries,
+          _rates_amount: rates_amount,
+          _genres: genres,
+          _rating: rating,
+          _year: years,
+        },
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
+    fetchOneSeries: build.query<IMovie, string | number>({
+      query: (id) => ({
+        url: `/movies/${id}`,
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
     addOneMovie: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
-        url: '/movies',
+        url: '/',
         method: 'POST',
         body: movie,
       }),
@@ -60,7 +138,7 @@ export const movieApi = createApi({
     }),
     updateMovie: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
-        url: `/movies/${movie.id}`,
+        url: `/${movie.id}`,
         method: 'PUT',
         body: movie,
       }),
@@ -68,7 +146,7 @@ export const movieApi = createApi({
     }),
     deleteOneMovie: build.mutation<IMovie, number>({
       query: (id) => ({
-        url: `/movies/${id}`,
+        url: `/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Movie'],
