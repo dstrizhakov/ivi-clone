@@ -16,26 +16,31 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import { BtnA } from '../Button/Button.props';
 import Link from 'next/link';
+import { useLoginMutation } from '@/services/auth.api';
+import { useRouter } from 'next/router';
+import { setUser } from '@/store/reducers/auth.slice';
+import { REGEX_EMAIL, REGEX_PASSWORD } from '@/constants/Constants';
 
 const AuthModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
 
+  const router = useRouter();
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
-
   const { showAuth } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShowAuth(false));
     setStep(() => 1);
   };
+  const [loginFunc] = useLoginMutation();
 
   const { data: session, status } = useSession();
 
-  console.log(status, session);
+  // console.log(status, session);
 
   const nextStep = () => {
     if (step < 4) {
@@ -60,17 +65,29 @@ const AuthModal: FC = (): JSX.Element => {
       case 2:
         setProgress(50);
         break;
+      // case 3:
+      //   setProgress(75);
+      //   break;
       case 3:
-        setProgress(70);
-        break;
-      case 4:
         setProgress(100);
+
+        loginFunc({ email: login, password })
+          .unwrap()
+          .then((res) => {
+            console.log(res);
+            dispatch(setUser(res));
+            close();
+            setPassword(() => '');
+            setLogin(() => '');
+          })
+          .catch((rejected) => console.error(rejected));
         break;
     }
   }, [step]);
 
   async function handleGoogleSingIn() {
-    await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
+    await router.push('http://localhost:3001/auth/google/redirect');
+    //await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
   }
   async function handleVkSingIn() {
     await signIn('vk', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
@@ -149,6 +166,7 @@ const AuthModal: FC = (): JSX.Element => {
                     {!showPassword ? (
                       <AiOutlineEye
                         className={`${styles.input__show} ${
+                          //todo: менять цвет при невалидных данных (!login.match(REGEX_EMAIL))
                           !!password && styles.input__showActive
                         }`}
                         onClick={toggleShowPassword}
@@ -165,11 +183,19 @@ const AuthModal: FC = (): JSX.Element => {
                 </>
               )}
               {step < 2 ? (
-                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                <button
+                  disabled={!login.match(REGEX_EMAIL)}
+                  className={styles.button}
+                  onClick={nextStep}
+                >
                   {t('buttons.continue')}
                 </button>
               ) : (
-                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                <button
+                  disabled={!password.match(REGEX_PASSWORD)}
+                  className={styles.button}
+                  onClick={nextStep}
+                >
                   {t('buttons.login')}
                 </button>
               )}
@@ -188,7 +214,7 @@ const AuthModal: FC = (): JSX.Element => {
                   <div className={styles.chat__confidential}>
                     <p>{t('sections.click-continue-agree')}</p>
                     <p>
-                      <span>{t('sections.descriptions.with')} </span>
+                      <span>{t('descriptions.with')} </span>
                       <Link
                         href="https://www.ivi.tv/info/confidential"
                         target="_blank"
