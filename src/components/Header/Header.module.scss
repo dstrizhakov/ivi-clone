@@ -52,7 +52,6 @@
   &__list {
     display: flex;
     align-items: center;
-
   }
   &__item a {
     position: relative;
@@ -79,6 +78,5 @@
   display: flex;
   align-items: center;
   @media (max-width: $mobile) {
-    display: none;
   }
 }

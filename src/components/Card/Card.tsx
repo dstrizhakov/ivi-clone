@@ -21,11 +21,11 @@ const Card: FC<CardProps> = ({
   ...props
 }): JSX.Element => {
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
+    <Link href={`/watch/${card?.id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
         <Image
-          src={card.card_image}
-          alt={card.title}
+          src={card?.card_image}
+          alt={card?.title}
           width={234}
           height={360}
           quality={85}
@@ -42,21 +42,21 @@ const Card: FC<CardProps> = ({
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
-              {card.rating}
+              {card?.rating}
               <div className={styles.graphs}>
-                <BarGraph width={+card.rating[0] * 0.7 * 10 - 0.2} />
-                <BarGraph width={+card.rating[0] * 0.9 * 10 - 0.2} />
-                <BarGraph width={+card.rating[0] * 1.2 * 10 - 0.2} />
-                <BarGraph width={+card.rating[0] * 0.8 * 10 - 0.2} />
+                <BarGraph width={+card?.rating[0] * 0.7 * 10 - 0.2} />
+                <BarGraph width={+card?.rating[0] * 0.9 * 10 - 0.2} />
+                <BarGraph width={+card?.rating[0] * 1.2 * 10 - 0.2} />
+                <BarGraph width={+card?.rating[0] * 0.8 * 10 - 0.2} />
               </div>
             </div>
             <div className={styles.singleGraph}>
               <span>{i18next.language == 'en' ? 'actors' : 'актёры'}</span>
-              <BarGraph width={+card.rating[0] * 10 - 0.2} />
+              <BarGraph width={+card?.rating[0] * 10 - 0.2} />
             </div>
             <div className={styles.info__text}>
               <div className={styles.info__row}>
-                {card.year}, {card.countries[0]}, {card.genres[0]}
+                {card?.year}, {card?.countries[0]}, {card?.genres[0]}
               </div>
               <div className={styles.info__row}>{card.duration}</div>
             </div>
@@ -67,18 +67,18 @@ const Card: FC<CardProps> = ({
         className={styles.textSection}
         title={
           i18next.language == 'en'
-            ? card.originalTitle
-              ? card.originalTitle
-              : card.title
-            : card.title
+            ? card?.originalTitle
+              ? card?.originalTitle
+              : card?.title
+            : card?.title
         }
       >
         <P>
           {i18next.language == 'en'
-            ? card.originalTitle
-              ? card.originalTitle
-              : card.title
-            : card.title}
+            ? card?.originalTitle
+              ? card?.originalTitle
+              : card?.title
+            : card?.title}
         </P>
       </div>
     </Link>

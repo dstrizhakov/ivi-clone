@@ -10,33 +10,69 @@
       margin-right: 10px;
     }
   }
+  .card {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+  }
+
 }
 
 .card {
-  width: 100%;
-  height: 100%;
+  margin-top: 10px;
+  margin-bottom: 100px;////
+  cursor: pointer;
+  position: relative;
+  padding: 0 10px 10px 0;
+  &:hover {
+    transform: scale(1.04) translateY(0);
+  }
   .fade {
     background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
-    transition-duration: .4s;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
     &_footer {
-      background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
       transition-duration: .4s;
+      background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
     }
   }
   &_image {
+    background-color: #1f1b2e;
     border-radius: 8px 8px 0 0;
-    display: flex;
+    aspect-ratio: 13/20;
+    position: relative;
+    overflow: hidden;
+    max-width: 234px;
+    max-height: 360px;
+    img {
+      width: auto;
+      height: 100%;
+    }
   }
   .logo {
     position: relative;
     top: -80px;
     &_image{
+      align-items: flex-end;
       display: flex;
-      flex-direction: row;
       justify-content: center;
-      align-items: center;
-      width: 100%;
     }
+  }
+  .place_number {
+    display: flex;
+    bottom: -33px;
+    height: 66px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    transition-duration: .4s;
   }
 
 }

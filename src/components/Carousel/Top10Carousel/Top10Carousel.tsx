@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import Image from 'next/image';
 import { Htag } from '@/components/Htag/Htag';
 import { moviesData } from '@/mock/moviesData';
-import { IMovie } from '@/types/types';
+import { IMovieOld } from '@/types/types';
 
 import top10 from '@/../public/top10/top10.svg';
 import zero from '@/../public/top10/number0.svg';
@@ -19,6 +19,8 @@ import six from '@/../public/top10/number6.svg';
 import seven from '@/../public/top10/number7.svg';
 import eight from '@/../public/top10/number8.svg';
 import nine from '@/../public/top10/number9.svg';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const top = [
   <Image width={32} height={44} alt={`top1`} src={one} key={1} />,
@@ -37,26 +39,28 @@ const top = [
 ];
 
 interface iCard {
-  card: IMovie;
+  card: IMovieOld;
   index: number;
 }
 
 const T10Card: FC<iCard> = ({ card, index, ...props }): JSX.Element => {
   return (
-    <div className={styles.card} {...props}>
+    <Link href={`/watch/${card.id}`} className={styles.card} {...props}>
       <div className={styles.card_image}>
         <Image src={card.card_image} alt={card.title} width={234} height={360} />
       </div>
       <div className={styles.fade} />
       <div className={styles.fade_footer} />
       <div className={styles.logo}>
-        <div className={styles.logo_image}>{top[index]}</div>
+        <div className={styles.logo_image}></div>
       </div>
-    </div>
+      <div className={styles.place_number}>{top[index]}</div>
+    </Link>
   );
 };
 
 const Top10Carousel = () => {
+  const { t } = useTranslation();
   const settings = {
     dots: false,
     infinite: false,
@@ -96,11 +100,11 @@ const Top10Carousel = () => {
     <div className={styles.carousel}>
       <div className={styles.title}>
         <Image src={top10} alt={'top10'} />
-        <Htag tag={'h3'}>за неделю</Htag>
+        <Htag tag={'h3'}>{t('sections.during-week')}</Htag>
       </div>
       <Slider {...settings}>
-        {moviesData.slice(0, 10).map((i: IMovie, index: number) => (
-          <T10Card card={i} index={index} key={i.id} alt={'asd'} />
+        {moviesData.slice(0, 10).map((card: IMovieOld, index: number) => (
+          <T10Card card={card} index={index} key={card.id} />
         ))}
       </Slider>
     </div>
