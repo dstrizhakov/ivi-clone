@@ -8,7 +8,7 @@ import Grid from '@/components/Grid/Grid';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
 
 const Movies = () => {
-  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({});
+  const { data: movies } = useFetchAllMoviesQuery({});
   const { t } = useTranslation();
   const breadcrumbs = [
     { name: t('sections.my-ivi'), path: '/' },
@@ -22,7 +22,7 @@ const Movies = () => {
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />
       <Filters />
-      {!error && <Grid array={movies} loading={isLoading} />}
+      <Grid array={movies || [...new Array(30)]} />
     </>
   );
 };

@@ -8,7 +8,6 @@ import { wrapper } from '@/store/store';
 import { GetServerSideProps } from 'next';
 import { useTranslation } from 'react-i18next';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
-import CardLoader from '@/components/Card/CardLoader';
 import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
 import { moviesData } from '@/mock/moviesData';
 
@@ -24,18 +23,18 @@ const Home = () => {
       <PromoCarousel />
       <MainPageDescription />
       <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
-        {!error && !isLoading
-          ? movies.map((card) => <Card card={card} star book find block key={card.id} />)
-          : [...new Array(15)].map((i, index) => <CardLoader key={index} />)}
+        {(movies?.length ? movies : [...new Array(15)]).map((card, index) => (
+          <Card card={card} star book find block key={card?.id || index} />
+        ))}
       </Carousel>
       <Top10Carousel />
-      <Carousel title={t('carousels.adventures')} route={'/movies'}>
-        {!error && !isLoading
-          ? movies.map((card) => <Card card={card} star book find block key={card.id} />)
-          : [...new Array(15)].map((i, index) => <CardLoader key={index} />)}
+      <Carousel title={t('carousels.adventures')} route={'/movies'} showAll={movies?.length}>
+        {(movies?.length ? movies : [...new Array(15)]).map((card, index) => (
+          <Card card={card} star book find block key={card?.id || index} />
+        ))}
       </Carousel>
 
-      <Carousel title={t('carousels.adventures')} route={'/movies'}>
+      <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
         {moviesData.map((card) => (
           <Card card={card} star book find block key={card.id} />
         ))}
