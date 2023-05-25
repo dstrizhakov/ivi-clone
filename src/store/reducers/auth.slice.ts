@@ -1,19 +1,17 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
-import { RootState } from '../store';
-import { authApi } from "@/services/auth.api";
-
-export enum Roles {
-  admin = 'admin',
-  user = 'user',
-  unknown = 'unknown',
-}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
+import { IUser } from "@/types/types";
 
 export interface IAuth {
-  user: object | null;
+  user: IUser | null;
   token: string | null;
   favorites?: string[];
   watched?: string[];
+}
+
+interface ISign {
+  profileInfo: IUser;
+  token: { token: string };
 }
 
 const initialState: IAuth = {
@@ -27,31 +25,29 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<IAuth>) => {
-      const { user, token } = action.payload;
-      state.user = user;
-      state.token = token;
-      if (typeof action.payload.token === 'string') {
-        localStorage.setItem('token', action.payload.token);
-      } ///
+    setUser: (state: IAuth, action: PayloadAction<ISign>) => {
+      state.user = action.payload.profileInfo;
+      state.token = action.payload.token.token;
+      localStorage.setItem('token', state.token);
     },
-    setToken: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
-    },
-    logout: (state) => {
-      state = initialState;
+    logout: (state: IAuth) => {
+      state.user = null;
+      state.token = null;
+      state.favorites = [];
+      state.watched = [];
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(HYDRATE, (state, action) => {
-      return {
-        ...state,
-        ...action.payload.authReducer,
-      };
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(HYDRATE, (state, action) => {
+  //     console.log('HYDRATE');
+  //     // return {
+  //     //   ...state,
+  //     //   ...action.payload.authReducer,
+  //     // };
+  //   });
+  // },
 });
 
 export const selectAuth = (state: RootState) => state.authReducer;
-export const { setUser, setToken, logout } = authSlice.actions;
+export const { setUser, logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -9,7 +9,7 @@ const NotificationsButton = () => {
   const { t } = useTranslation();
 
   return (
-    <Link href={'https://www.ivi.ru/profile/pull_notifications'} target={'_blank'}>
+    <Link href={'/notifications'} target={'_blank'}>
       <ProfileButton type={iCardEnum.rect_icon} icon={TbBellRinging}>
         {t('buttons.notifications')}
       </ProfileButton>

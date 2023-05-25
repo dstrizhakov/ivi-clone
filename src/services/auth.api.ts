@@ -14,7 +14,7 @@ interface iRegister {
   surname?: string;
   country?: string;
   city?: string;
-  photo?: string;
+  photo?: unknown;
 }
 
 // prepareHeaders: (headers, { getState }) => {
@@ -47,7 +47,7 @@ export const authApi = createApi({
     register: build.mutation({
       query: (body: iRegister) => {
         return {
-          url: '/auth/register',
+          url: '/registration',
           method: 'POST',
           body,
         };
@@ -72,14 +72,6 @@ export const authApi = createApi({
       },
       providesTags: (result) => ['Auth'],
     }),
-    async onQueryStarted(args, { dispatch, queryFulfilled }) {
-      try {
-        const { data } = await queryFulfilled;
-        dispatch(setUser(data.token));
-      } catch (error) {
-        console.log(error); ///
-      }
-    },
   }),
 });
 

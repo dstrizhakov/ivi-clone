@@ -12,7 +12,7 @@ import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
 import { moviesData } from '@/mock/moviesData';
 
 const Home = () => {
-  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({});
+  const { data: movies } = useFetchAllMoviesQuery({});
 
   const { t } = useTranslation();
   return (

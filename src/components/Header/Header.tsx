@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from "react";
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
 import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
@@ -17,15 +17,14 @@ import logo from '@/../public/iviLogo.svg';
 import { useTranslation } from 'react-i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
-import { useSession } from 'next-auth/react';
 import { useAppSelector } from '@/hooks/redux';
 import { selectAuth } from '@/store/reducers/auth.slice';
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
-  const { user, token, roles } = useAppSelector(selectAuth);
-  console.log(user, token, roles);
+  const { user, token } = useAppSelector(selectAuth);
+  console.log('user:', user, 'token:', token?.token);
+
   return (
     <header className="header">
       <div className="container">
@@ -97,7 +96,7 @@ const Header: FC = () => {
             <Submenu icon={MdNotificationsNone} link={'/notifications'}>
               <Alerts />
             </Submenu>
-            <Submenu icon={BiUser} user={session?.user?.image || null} link={'/profile'} outline>
+            <Submenu icon={BiUser} user={user?.photo || null} link={'/profile'} outline>
               <User />
             </Submenu>
           </div>

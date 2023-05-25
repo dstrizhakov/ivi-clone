@@ -18,7 +18,7 @@ import { BtnA } from '../Button/Button.props';
 import Link from 'next/link';
 import { useLoginMutation } from '@/services/auth.api';
 import { useRouter } from 'next/router';
-import { setUser } from '@/store/reducers/auth.slice';
+import { selectAuth, setToken, setUser } from "@/store/reducers/auth.slice";
 import { REGEX_EMAIL, REGEX_PASSWORD } from '@/constants/Constants';
 
 const AuthModal: FC = (): JSX.Element => {
@@ -36,11 +36,13 @@ const AuthModal: FC = (): JSX.Element => {
     dispatch(setShowAuth(false));
     setStep(() => 1);
   };
+  const { user } = useAppSelector(selectAuth);
+
   const [loginFunc] = useLoginMutation();
 
-  const { data: session, status } = useSession();
-
-  // console.log(status, session);
+  const logout = () => {
+    dispatch(logout());
+  };
 
   const nextStep = () => {
     if (step < 4) {
@@ -74,7 +76,7 @@ const AuthModal: FC = (): JSX.Element => {
         loginFunc({ email: login, password })
           .unwrap()
           .then((res) => {
-            console.log(res);
+            console.log(res.token.token);
             dispatch(setUser(res));
             close();
             setPassword(() => '');
@@ -115,9 +117,9 @@ const AuthModal: FC = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.chat__body}>
-          {session ? (
+          {user ? (
             <div className={styles.chat__message}>
-              <h1 onClick={() => signOut()}>{t('sections.already-signed')}</h1>
+              <h1 onClick={logout}>{t('sections.already-signed')}</h1>
             </div>
           ) : (
             <>

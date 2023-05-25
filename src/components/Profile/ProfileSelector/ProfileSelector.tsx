@@ -2,13 +2,15 @@ import React from 'react';
 import { Htag } from '@/components/Htag/Htag';
 import children from '../../../../public/children.png';
 import { useTranslation } from 'react-i18next';
-import { useSession } from 'next-auth/react';
 import styles from './ProfileSelector.module.scss';
 import { FiUser } from 'react-icons/fi';
 import ProfileIcon from '@/components/Auth/SelectProfile/ProfileIcon/ProfileIcon';
+import { useAppSelector } from '@/hooks/redux';
+import { selectAuth } from '@/store/reducers/auth.slice';
 
 const ProfileSelector = () => {
-  const { data: session } = useSession();
+  const { user } = useAppSelector(selectAuth);
+
   const { t } = useTranslation();
 
   return (
@@ -18,14 +20,14 @@ const ProfileSelector = () => {
       </div>
       <div className={styles.profile__row}>
         <div className={styles.profile__user}>
-          {session?.user && session?.user?.image ? (
-            <ProfileIcon image={session.user.image} name={''} isActive={true} />
+          {user && user?.photo ? (
+            <ProfileIcon image={user.photo} name={''} isActive={true} />
           ) : (
             <div className={`${styles.profile__image} ${styles.no_image}`}>
               <FiUser />
             </div>
           )}
-          <span>{session?.user?.name || session?.user?.email || t('sections.profile')}</span>
+          <span>{user?.nickname || user?.name || user?.email || t('sections.profile')}</span>
         </div>
         <ProfileIcon image={children} name={t('sections.children')} isActive={false} />
         <ProfileIcon name={t('buttons.new-one')} isActive={false} />

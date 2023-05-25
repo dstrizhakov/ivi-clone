@@ -8,16 +8,32 @@ import { HiOutlinePencil } from 'react-icons/hi';
 import { BsEnvelope, BsPhone } from 'react-icons/bs';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 import { useTranslation } from 'react-i18next';
-import { useSession } from 'next-auth/react';
+import { useAppSelector } from '@/hooks/redux';
+import { selectAuth } from '@/store/reducers/auth.slice';
 
 const EditProfile = () => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
+  const { user } = useAppSelector(selectAuth);
+
+  const finalName = () => {
+    if (user?.name) {
+      if (user?.surname) {
+        return `${user.name} ${user.surname}`;
+      } else {
+        return user.name;
+      }
+    } else if (user?.nickname) {
+      return user.nickname;
+    } else {
+      return t('sections.profile');
+    }
+  };
+
   return (
     <div className={styles.userinfo}>
       <div className={styles.userinfo__title}>
         <div className={styles.title__text}>
-          <Htag tag={'h2'}>{session?.user?.name ? session.user.name : t('sections.profile')}</Htag>
+          <Htag tag={'h2'}>{finalName()}</Htag>
           <P>{t('sections.main-profile')}</P>
         </div>
         <Link href={'/profile'}>
@@ -30,8 +46,8 @@ const EditProfile = () => {
       <div className={styles.userinfo__information}>
         <div className={styles.info}>
           <BsEnvelope />
-          {session && session.user?.email ? (
-            <P size={'S'}>{session.user?.email}</P>
+          {user?.email ? (
+            <P size={'S'}>{user?.email}</P>
           ) : (
             <Button
               appearance={BtnA.transparent}

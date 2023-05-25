@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ProfilePage.module.scss';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
@@ -24,31 +24,63 @@ import EditProfile from '@/components/Profile/EditProfile';
 import ChecksButton from '@/components/Profile/ProfilePage/ProfileBtns/ChecksButton';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch } from "@/hooks/redux";
-import { logout } from '@/store/reducers/auth.slice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { logout, selectAuth, setUser } from '@/store/reducers/auth.slice';
+import { useRegisterMutation } from '@/services/auth.api';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
+  const { user, token } = useAppSelector(selectAuth);
+
   const dispatch = useAppDispatch();
 
   const logoutFunc = () => {
-    signOut().then(() => {
-      dispatch(logout());
-    });
+    dispatch(logout());
+  };
 
-  }
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [register] = useRegisterMutation();
+  const test = () => {
+    const dto = {
+      email: `test${Date.now()}@aaa.aaa`,
+      password: 'aaaa1111',
+      name: 'TestName',
+      surname: 'TestSurname',
+      nickname: `test${Date.now()}Nickname`,
+      country: 'Россия',
+      city: 'Москва',
+      photo: selectedImage,
+    };
+    console.log(dto);
+    register(dto)
+      .unwrap()
+      .then((res) => {
+        dispatch(setUser(res));
+        console.log(res.profileInfo);
+      })
+      .catch((rejected) => console.error(rejected));
+  };
 
   return (
     <div className={styles.profile__btns} {...props}>
-      {session && (
+      <div>
+        <img src={user?.photo} alt="img" />
+        {selectedImage && (
+          <img alt="img" width={'250px'} src={URL.createObjectURL(selectedImage)} />
+        )}
+        <br />
+        <br />
+        <input type="file" name="myImage" onChange={(e) => setSelectedImage(e.target.files[0])} />
+        <button onClick={test}>send</button>
+      </div>
+      {user && (
         <div className={styles.select_profile}>
           <div className={styles.select_container}>
             <ProfileSelector />
           </div>
         </div>
       )}
-      {session && session?.user ? (
+      {user ? (
         <EditProfile />
       ) : (
         <div className={styles.login_button}>
@@ -96,7 +128,7 @@ const ProfilePage = ({ ...props }) => {
         <li className={`${styles.list__item} ${styles.smalls}`}>
           <CodeLoginButton />
         </li>
-        {session && session?.user && (
+        {user && (
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <ChecksButton />
           </li>
@@ -109,7 +141,7 @@ const ProfilePage = ({ ...props }) => {
         </li>
       </ul>
       <div className={styles.bottom}>
-        {session && session?.user ? (
+        {user ? (
           <>
             <Button
               appearance={BtnA.transparent}
