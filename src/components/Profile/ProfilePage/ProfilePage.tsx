@@ -4,7 +4,6 @@ import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import { BtnA } from '@/components/Button/Button.props';
-import { signOut, useSession } from 'next-auth/react';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 import SubscriptionsButton from '@/components/Profile/ProfilePage/ProfileBtns/SubscriptionsButton';
 import CertificatesButton from '@/components/Profile/ProfilePage/ProfileBtns/CertificatesButton';
@@ -30,7 +29,7 @@ import { useRegisterMutation } from '@/services/auth.api';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
-  const { user, token } = useAppSelector(selectAuth);
+  const { user } = useAppSelector(selectAuth);
 
   const dispatch = useAppDispatch();
 
@@ -40,7 +39,8 @@ const ProfilePage = ({ ...props }) => {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [register] = useRegisterMutation();
-  const test = () => {
+
+  const testReg = () => {
     const dto = {
       email: `test${Date.now()}@aaa.aaa`,
       password: 'aaaa1111',
@@ -51,27 +51,28 @@ const ProfilePage = ({ ...props }) => {
       city: 'Москва',
       photo: selectedImage,
     };
-    console.log(dto);
+    console.log(dto.photo);
+
     register(dto)
       .unwrap()
       .then((res) => {
         dispatch(setUser(res));
-        console.log(res.profileInfo);
       })
       .catch((rejected) => console.error(rejected));
   };
 
   return (
     <div className={styles.profile__btns} {...props}>
-      <div>
+      <div className={'test'}>
         <img src={user?.photo} alt="img" />
         {selectedImage && (
           <img alt="img" width={'250px'} src={URL.createObjectURL(selectedImage)} />
         )}
+        <div>Тест регистрации с фото</div>
         <br />
         <br />
         <input type="file" name="myImage" onChange={(e) => setSelectedImage(e.target.files[0])} />
-        <button onClick={test}>send</button>
+        <Button onClick={testReg}>send</Button>
       </div>
       {user && (
         <div className={styles.select_profile}>
@@ -166,3 +167,13 @@ const ProfilePage = ({ ...props }) => {
 };
 
 export default ProfilePage;
+
+// const fd = new FormData();
+// fd.append('email', `test${Date.now()}@aaa.aaa`);
+// fd.append('password', `aaaa1111`);
+// fd.append('name', `TestName`);
+// fd.append('surname', `TestSurname`);
+// fd.append('nickname', `test${Date.now()}@aaa.aaa`);
+// fd.append('country', `Россия`);
+// fd.append('city', `Москва`);
+// fd.append('photo', selectedImage);

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useEffect } from "react";
+import React, { FC } from 'react';
 import styles from './Header.module.scss';
 import { Button } from '../Button/Button';
 import SearchButton from '@/components/Header/Search/SearchButton/SearchButton';
@@ -22,8 +22,7 @@ import { selectAuth } from '@/store/reducers/auth.slice';
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const { user, token } = useAppSelector(selectAuth);
-  console.log('user:', user, 'token:', token?.token);
+  const { user } = useAppSelector(selectAuth);
 
   return (
     <header className="header">

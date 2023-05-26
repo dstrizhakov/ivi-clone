@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
-import { IUser } from "@/types/types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
+import { IUser } from '@/types/types';
 
 export interface IAuth {
   user: IUser | null;
@@ -26,8 +26,9 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state: IAuth, action: PayloadAction<ISign>) => {
-      state.user = action.payload.profileInfo;
-      state.token = action.payload.token.token;
+      const { profileInfo, token } = action.payload;
+      state.user = profileInfo;
+      state.token = token.token;
       localStorage.setItem('token', state.token);
     },
     logout: (state: IAuth) => {
@@ -35,6 +36,7 @@ export const authSlice = createSlice({
       state.token = null;
       state.favorites = [];
       state.watched = [];
+      localStorage.removeItem('token');
     },
   },
   // extraReducers: (builder) => {

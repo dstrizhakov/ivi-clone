@@ -204,10 +204,10 @@ const AuthModal: FC = (): JSX.Element => {
               {step < 2 ? (
                 <>
                   <div className={styles.chat__oauth}>
-                    <button className={styles.button} onClick={() => handleGoogleSingIn()}>
+                    <Link className={styles.button} target={'_blank'} href={'http://localhost:3001/auth/google/redirect'}>
                       <span>{t('buttons.login-with')} Google</span>
                       <SlSocialGoogle />
-                    </button>
+                    </Link>
                     <button className={styles.button} onClick={() => handleVkSingIn()}>
                       <span>{t('buttons.login-with')} VK</span>
                       <SlSocialVkontakte />
