@@ -34,9 +34,7 @@ const AuthModal: FC = (): JSX.Element => {
     setStep(() => 1);
   };
 
-  const { data: session, status } = useSession();
-
-  console.log(status, session);
+  const { data: session } = useSession();
 
   const nextStep = () => {
     if (step < 4) {

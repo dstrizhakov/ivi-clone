@@ -11,8 +11,7 @@ export default NextAuth({
         email: { label: 'email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
-        console.log('authorize', credentials);
+      async authorize(credentials, req) {
         const res = await fetch('http://localhost:3001/auth/login', {
           method: 'POST',
           headers: {
@@ -23,10 +22,15 @@ export default NextAuth({
             password: credentials?.password,
           }),
         });
-        const user = await res.json();
-        console.log(res, user);
+        const body = await res.json();
 
-        if (res.ok && user) {
+        if (res.ok && body) {
+          const user = {
+            id: body.profileInfo.id,
+            name: body.profileInfo.nickname,
+            email: credentials?.email,
+            photo: body.profileInfo.photo,
+          };
           return user;
         }
         return null;
@@ -73,14 +77,16 @@ export default NextAuth({
   },
 
   callbacks: {
-    // async signIn({ user, account, profile, email, credentials }) {
-    //   return true;
-    // },
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log('SIGNIN:', user, account, profile, email, credentials);
+      return true;
+    },
     // async redirect({ url, baseUrl }) {
     //   return baseUrl;
     // },
 
     async jwt({ token, account }) {
+      console.log('TOKEN:', token, account);
       // Persist the OAuth access_token to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
@@ -88,9 +94,9 @@ export default NextAuth({
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token, user }) {
       // Send properties to the client, like an access_token from a provider.
-      console.log(token);
+      console.log('SESSION:', token, user);
       return session;
     },
   },

@@ -21,7 +21,8 @@ import { useSession } from 'next-auth/react';
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  console.log(status, session);
   return (
     <header className="header">
       <div className="container">
