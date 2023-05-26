@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+  console.log('LOGIN', req);
   const username = req.body.username;
   const password = req.body.password;
 
