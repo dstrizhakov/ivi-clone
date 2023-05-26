@@ -17,13 +17,13 @@ interface iAuth {
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.SERVER + '/auth',
+    baseUrl: process.env.SERVER,
   }),
   endpoints: (build) => ({
     register: build.mutation({
       query: (body: iAuth) => {
         return {
-          url: '/user/signup',
+          url: '/registration',
           method: 'POST',
           body,
         };
@@ -32,7 +32,7 @@ export const authApi = createApi({
     login: build.mutation({
       query: (body: iAuth) => {
         return {
-          url: '/user/signin',
+          url: '/auth/login',
           method: 'POST',
           body,
           credentials: 'include',

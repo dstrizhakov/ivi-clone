@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import { BtnA } from '../Button/Button.props';
 import Link from 'next/link';
+import { Router } from 'next/router';
 
 const AuthModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
@@ -74,6 +75,22 @@ const AuthModal: FC = (): JSX.Element => {
   }
   async function handleVkSingIn() {
     await signIn('vk', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
+  }
+
+  async function handleAuth() {
+    const credentials = { email: login, password };
+    console.log('handleAuth', login, password);
+    signIn('credentials', {
+      ...credentials,
+      // redirect: false,
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile`,
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -169,7 +186,7 @@ const AuthModal: FC = (): JSX.Element => {
                   {t('buttons.continue')}
                 </button>
               ) : (
-                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                <button disabled={!login} className={styles.button} onClick={() => handleAuth()}>
                   {t('buttons.login')}
                 </button>
               )}
