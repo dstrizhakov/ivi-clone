@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { logout, setUser } from '@/store/reducers/auth.slice';
 
 interface iAuth {
   email: string;
@@ -30,10 +31,10 @@ export const authApi = createApi({
     baseUrl: 'http://localhost:3001',
     credentials: 'same-origin',
     prepareHeaders: (headers) => {
-      const accessToken = localStorage.getItem('token');
-      if (accessToken) {
-        headers.set('authorization', `Bearer ${accessToken}`);
-      }
+      // const accessToken = localStorage.getItem('token');
+      // if (accessToken) {
+      //   headers.set('authorization', `Bearer ${accessToken}`);
+      // }
       headers.set('Content-Type', 'application/json');
       headers.set('Access-Control-Allow-Origin', '*');
       headers.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
@@ -62,6 +63,14 @@ export const authApi = createApi({
       },
       providesTags: (result) => ['Auth'],
     }),
+    googleLogin: build.query({
+      query: () => {
+        return {
+          url: '/auth/google/login',
+        };
+      },
+      providesTags: (result) => ['Auth'],
+    }),
     logout: build.mutation({
       query: () => {
         return {
@@ -73,4 +82,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useGoogleLoginQuery, useLogoutMutation, useRegisterMutation } = authApi;

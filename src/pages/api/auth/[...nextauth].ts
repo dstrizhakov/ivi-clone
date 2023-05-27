@@ -6,32 +6,27 @@ import VkProvider from 'next-auth/providers/vk';
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. "Sign in with...")
       name: 'Credentials',
-      // `credentials` is used to generate a form on the sign in page.
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: 'Username', type: 'text', placeholder: ' ' },
+        email: { label: 'email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/login`, {
+      async authorize(credentials) {
+        console.log('authorize', credentials);
+        const res = await fetch('http://localhost:3001/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: credentials?.username,
+            email: credentials?.email,
             password: credentials?.password,
           }),
         });
         const user = await res.json();
+        console.log(res, user);
 
         if (res.ok && user) {
-          // Any object returned will be saved in `user` property of the JWT
           return user;
         }
         return null;

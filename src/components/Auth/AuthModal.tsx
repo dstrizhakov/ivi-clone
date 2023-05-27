@@ -16,9 +16,9 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import { BtnA } from '../Button/Button.props';
 import Link from 'next/link';
-import { useLoginMutation } from '@/services/auth.api';
+import { useGoogleLoginQuery, useLoginMutation } from '@/services/auth.api';
 import { useRouter } from 'next/router';
-import { selectAuth, setToken, setUser } from "@/store/reducers/auth.slice";
+import { logout, selectAuth, setUser } from '@/store/reducers/auth.slice';
 import { REGEX_EMAIL, REGEX_PASSWORD } from '@/constants/Constants';
 
 const AuthModal: FC = (): JSX.Element => {
@@ -39,8 +39,10 @@ const AuthModal: FC = (): JSX.Element => {
   const { user } = useAppSelector(selectAuth);
 
   const [loginFunc] = useLoginMutation();
+  const { data: googleLogin } = useGoogleLoginQuery();
 
-  const logout = () => {
+  const logoutFunc = () => {
+    router.push('');
     dispatch(logout());
   };
 
@@ -88,11 +90,26 @@ const AuthModal: FC = (): JSX.Element => {
   }, [step]);
 
   async function handleGoogleSingIn() {
-    await router.push('http://localhost:3001/auth/google/redirect');
-    //await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
+    await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
   }
   async function handleVkSingIn() {
     await signIn('vk', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile` });
+  }
+
+  async function handleAuth() {
+    const credentials = { email: login, password };
+    console.log('handleAuth', login, password);
+    signIn('credentials', {
+      ...credentials,
+      // redirect: false,
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}/profile`,
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -204,10 +221,18 @@ const AuthModal: FC = (): JSX.Element => {
               {step < 2 ? (
                 <>
                   <div className={styles.chat__oauth}>
-                    <Link className={styles.button} target={'_blank'} href={'http://localhost:3001/auth/google/redirect'}>
-                      <span>{t('buttons.login-with')} Google</span>
+                    <Link
+                      href={'http://localhost:3001/auth/google/login'}
+                      target={'_blank'}
+                      className={styles.button}
+                    >
+                      <span>{t('buttons.login-with')} Google backend</span>
                       <SlSocialGoogle />
                     </Link>
+                    <button className={styles.button} onClick={() => handleGoogleSingIn()}>
+                      <span>{t('buttons.login-with')} Google nextauth</span>
+                      <SlSocialGoogle />
+                    </button>
                     <button className={styles.button} onClick={() => handleVkSingIn()}>
                       <span>{t('buttons.login-with')} VK</span>
                       <SlSocialVkontakte />
