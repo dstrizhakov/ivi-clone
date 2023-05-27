@@ -2,7 +2,6 @@
 @import '@/styles/mixins.scss';
 
 .submenu {
-  flex: 0 0 40px;
   .submenu__body {
     @media screen and (max-width: $pc) {
       display: none;
