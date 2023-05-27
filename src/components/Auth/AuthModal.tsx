@@ -38,12 +38,15 @@ const AuthModal: FC = (): JSX.Element => {
   };
   const { user } = useAppSelector(selectAuth);
 
+  const { data: session } = useSession();
   const [loginFunc] = useLoginMutation();
   const { data: googleLogin } = useGoogleLoginQuery();
 
   const logoutFunc = () => {
-    router.push('');
-    dispatch(logout());
+    // router.push('');
+    signOut().then(() => {
+      dispatch(logout());
+    });
   };
 
   const nextStep = () => {
@@ -70,9 +73,9 @@ const AuthModal: FC = (): JSX.Element => {
         setProgress(50);
         break;
       // case 3:
-      //   setProgress(75);
+      //   setProgress(70);
       //   break;
-      case 3:
+      case 4:
         setProgress(100);
 
         loginFunc({ email: login, password })
@@ -134,9 +137,11 @@ const AuthModal: FC = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.chat__body}>
-          {user ? (
+          {session ? (
             <div className={styles.chat__message}>
-              <h1 onClick={logout}>{t('sections.already-signed')}</h1>
+              <h1 onClick={() => logoutFunc()} title={'Нажмите, чтобы выйти из аккаунта'}>
+                {t('sections.already-signed')}
+              </h1>
             </div>
           ) : (
             <>

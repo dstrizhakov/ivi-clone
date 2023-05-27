@@ -19,11 +19,14 @@ import { BtnA, BtnS } from '@/components/Button/Button.props';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 import { useAppSelector } from '@/hooks/redux';
 import { selectAuth } from '@/store/reducers/auth.slice';
+import { useSession } from "next-auth/react";
 
 const Header: FC = () => {
   const { t } = useTranslation();
   const { user } = useAppSelector(selectAuth);
 
+  const { data: session, status } = useSession();
+  console.log(status, session);
   return (
     <header className="header">
       <div className="container">
