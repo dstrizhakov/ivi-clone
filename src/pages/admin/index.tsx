@@ -3,7 +3,7 @@ import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '@/hooks/redux';
-import { Roles, selectAuth } from '@/store/reducers/auth.slice';
+import { selectAuth } from '@/store/reducers/auth.slice';
 import { Htag } from '@/components/Htag/Htag';
 import {
   useAddOneMovieMutation,
@@ -37,9 +37,9 @@ const movie: IMovieOld = {
 };
 
 const Admin = () => {
-  const { role } = useAppSelector(selectAuth);
+  const { user } = useAppSelector(selectAuth);
   const { t } = useTranslation();
-  const [page, setPage] = useSearchParamsState({ name: 'page' });
+  const [page, setPage] = useSearchParamsState<number>({ name: 'page' });
   const [addNewMovie] = useAddOneMovieMutation();
   const [deleteMovie] = useDeleteOneMovieMutation();
   const {
@@ -50,9 +50,9 @@ const Admin = () => {
     limit: 10,
     page: page,
   });
-  if (role !== Roles.unknown) return <NotFoundPage />; //todo: fix when slice is ready
+  if (!user) return <NotFoundPage />; //todo: fix when slice is ready
 
-  const del = (id) => {
+  const del = (id: number) => {
     try {
       deleteMovie(id);
     } catch (e) {

@@ -72,16 +72,13 @@ const AuthModal: FC = (): JSX.Element => {
       case 2:
         setProgress(50);
         break;
-      // case 3:
-      //   setProgress(70);
-      //   break;
       case 3:
-        setProgress(100);
+        setProgress(75);
 
         loginFunc({ email: login, password })
           .unwrap()
           .then((res) => {
-            console.log(res.token.token);
+            setProgress(100);
             dispatch(setUser(res));
             close();
             setPassword(() => '');

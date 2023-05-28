@@ -16,6 +16,17 @@ export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001' + '/film',
+    credentials: 'same-origin',
+    prepareHeaders: (headers) => {
+      const accessToken = localStorage.getItem('token');
+      if (accessToken) {
+        headers.set('authorization', `Bearer ${accessToken}`);
+      }
+      headers.set('Content-Type', 'application/json');
+      headers.set('Access-Control-Allow-Origin', '*');
+      headers.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+      return headers;
+    },
   }),
   tagTypes: ['Movie'],
   endpoints: (build) => ({
