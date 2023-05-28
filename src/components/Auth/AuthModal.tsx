@@ -43,9 +43,9 @@ const AuthModal: FC = (): JSX.Element => {
   const { data: googleLogin } = useGoogleLoginQuery();
 
   const logoutFunc = () => {
-    // router.push('');
     signOut().then(() => {
       dispatch(logout());
+      router.push('/profile').then(() => {});
     });
   };
 
@@ -75,7 +75,7 @@ const AuthModal: FC = (): JSX.Element => {
       // case 3:
       //   setProgress(70);
       //   break;
-      case 4:
+      case 3:
         setProgress(100);
 
         loginFunc({ email: login, password })
@@ -137,7 +137,7 @@ const AuthModal: FC = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.chat__body}>
-          {session ? (
+          {user ? (
             <div className={styles.chat__message}>
               <h1 onClick={() => logoutFunc()} title={'Нажмите, чтобы выйти из аккаунта'}>
                 {t('sections.already-signed')}
