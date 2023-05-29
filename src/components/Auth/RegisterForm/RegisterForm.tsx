@@ -23,6 +23,10 @@ const RegisterForm = () => {
   };
 
   const registerHandler = () => {
+    formData.append('email', login);
+    formData.append('password', password);
+    formData.append('nickname', username);
+    profilePicture && formData.append('photo', profilePicture);
     register(formData)
       .unwrap()
       .then((response) => {
@@ -30,10 +34,6 @@ const RegisterForm = () => {
         clearInputs();
       })
       .catch((rejected) => console.error(rejected));
-    formData.append('email', login);
-    formData.append('password', password);
-    formData.append('nickname', username);
-    profilePicture && formData.append('photo', profilePicture);
   };
   return (
     <div className={styles.register}>
