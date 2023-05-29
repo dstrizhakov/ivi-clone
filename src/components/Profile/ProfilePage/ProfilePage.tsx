@@ -65,6 +65,7 @@ const ProfilePage = ({ ...props }) => {
       .unwrap()
       .then((res) => {
         dispatch(setUser(res));
+        console.log(photo);
       })
       .catch((rejected) => console.error(rejected));
   };

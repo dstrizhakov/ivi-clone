@@ -3,6 +3,8 @@ import { IconType } from 'react-icons';
 import styles from './Submenu.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAppSelector } from "@/hooks/redux";
+import { selectAuth } from "@/store/reducers/auth.slice";
 
 export interface SubmenuProps {
   icon?: IconType;
@@ -15,6 +17,7 @@ export interface SubmenuProps {
 
 const Submenu: FC<SubmenuProps> = ({ icon, user, title, link, outline, children }): JSX.Element => {
   const IconComponent = icon || undefined;
+  const { photo } = useAppSelector(selectAuth);
 
   if (!user) {
     return (
@@ -52,7 +55,7 @@ const Submenu: FC<SubmenuProps> = ({ icon, user, title, link, outline, children 
           (link ? (
             <Link href={link}>
               <Image
-                src={user}
+                src={photo}
                 alt="user"
                 width={48}
                 height={48}
@@ -61,7 +64,7 @@ const Submenu: FC<SubmenuProps> = ({ icon, user, title, link, outline, children 
             </Link>
           ) : (
             <Image
-              src={user}
+              src={photo}
               alt="user"
               width={48}
               height={48}

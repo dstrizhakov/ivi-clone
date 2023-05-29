@@ -146,5 +146,4 @@ export interface IUser {
   country: string;
   city: string;
   role: IRole[];
-  photo: string;
 }

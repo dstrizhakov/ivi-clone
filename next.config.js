@@ -8,7 +8,14 @@ const nextConfig = {
       'sun6-22.userapi.com',
       'vk.com',
       'thumbs.dfs.ivi.ru',
-      'localhost',
+    ],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3001',
+        pathname: '/photo/**',
+      },
     ],
   },
 };
