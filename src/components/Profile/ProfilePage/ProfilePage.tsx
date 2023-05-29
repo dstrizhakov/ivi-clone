@@ -26,10 +26,12 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { logout, selectAuth, setUser } from '@/store/reducers/auth.slice';
 import { useRegisterMutation } from '@/services/auth.api';
+import InputFileButton from '@/components/InputFileButton/InputFileButton';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
   const { user, photo } = useAppSelector(selectAuth);
+  const [selectedImage, setSelectedImage] = useState<null | File | undefined>(null);
 
   const dispatch = useAppDispatch();
 
@@ -37,20 +39,9 @@ const ProfilePage = ({ ...props }) => {
     dispatch(logout());
   };
 
-  const [selectedImage, setSelectedImage] = useState(null);
   const [register] = useRegisterMutation();
 
   const testReg = () => {
-    const dto = {
-      email: `test${Date.now()}@aaa.aaa`,
-      password: 'aaaa1111',
-      name: 'TestName',
-      surname: 'TestSurname',
-      nickname: `test${Date.now()}Nickname`,
-      country: 'Россия',
-      city: 'Москва',
-      photo: selectedImage,
-    };
     const fd = new FormData();
     fd.append('email', `test${Date.now()}@aaa.aaa`);
     fd.append('password', `aaaa1111`);
@@ -72,17 +63,6 @@ const ProfilePage = ({ ...props }) => {
 
   return (
     <div className={styles.profile__btns} {...props}>
-      <div className={'test'}>
-        {photo && <img src={photo} alt="img" />}
-        {selectedImage && (
-          <img alt="img" width={'250px'} src={URL.createObjectURL(selectedImage)} />
-        )}
-        <div>Тест регистрации с фото</div>
-        <br />
-        <br />
-        <input type="file" name="myImage" onChange={(e) => setSelectedImage(e.target.files[0])} />
-        <Button onClick={testReg}>send</Button>
-      </div>
       {user && (
         <div className={styles.select_profile}>
           <div className={styles.select_container}>
@@ -90,6 +70,10 @@ const ProfilePage = ({ ...props }) => {
           </div>
         </div>
       )}
+      <div className={'test'} style={{ display: 'flex' }}>
+        <InputFileButton setSelected={setSelectedImage} />
+        <Button onClick={testReg}>send</Button>
+      </div>
       {user ? (
         <EditProfile />
       ) : (
