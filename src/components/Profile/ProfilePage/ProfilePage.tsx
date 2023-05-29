@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProfilePage.module.scss';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
@@ -24,41 +24,17 @@ import ChecksButton from '@/components/Profile/ProfilePage/ProfileBtns/ChecksBut
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { logout, selectAuth, setUser } from '@/store/reducers/auth.slice';
-import { useRegisterMutation } from '@/services/auth.api';
-import InputFileButton from '@/components/InputFileButton/InputFileButton';
+import { logout, selectAuth } from '@/store/reducers/auth.slice';
+import RegisterForm from '@/components/Auth/RegisterForm/RegisterForm';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
-  const { user, photo } = useAppSelector(selectAuth);
-  const [selectedImage, setSelectedImage] = useState<null | File | undefined>(null);
+  const { user } = useAppSelector(selectAuth);
 
   const dispatch = useAppDispatch();
 
   const logoutFunc = () => {
     dispatch(logout());
-  };
-
-  const [register] = useRegisterMutation();
-
-  const testReg = () => {
-    const fd = new FormData();
-    fd.append('email', `test${Date.now()}@aaa.aaa`);
-    fd.append('password', `aaaa1111`);
-    fd.append('name', `TestName`);
-    fd.append('surname', `TestSurname`);
-    fd.append('nickname', `test${Date.now()}@aaa.aaa`);
-    fd.append('country', `Россия`);
-    fd.append('city', `Москва`);
-    selectedImage && fd.append('photo', selectedImage);
-
-    register(fd)
-      .unwrap()
-      .then((res) => {
-        dispatch(setUser(res));
-        console.log(photo);
-      })
-      .catch((rejected) => console.error(rejected));
   };
 
   return (
@@ -70,10 +46,7 @@ const ProfilePage = ({ ...props }) => {
           </div>
         </div>
       )}
-      <div className={'test'} style={{ display: 'flex' }}>
-        <InputFileButton setSelected={setSelectedImage} />
-        <Button onClick={testReg}>send</Button>
-      </div>
+      <RegisterForm />
       {user ? (
         <EditProfile />
       ) : (
