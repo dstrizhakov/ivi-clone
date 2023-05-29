@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { logout, setUser } from '@/store/reducers/auth.slice';
 
 interface iAuth {
   email: string;
@@ -31,11 +30,11 @@ export const authApi = createApi({
     baseUrl: 'http://localhost:3001',
     credentials: 'same-origin',
     prepareHeaders: (headers) => {
-      // const accessToken = localStorage.getItem('token');
-      // if (accessToken) {
-      //   headers.set('authorization', `Bearer ${accessToken}`);
-      // }
-      headers.set('Content-Type', 'application/json');
+      const accessToken = localStorage.getItem('token');
+      if (accessToken) {
+        headers.set('authorization', `Bearer ${accessToken}`);
+        //headers.set('Content-Type', 'application/json');
+      }
       headers.set('Access-Control-Allow-Origin', '*');
       headers.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
       return headers;
@@ -82,4 +81,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useGoogleLoginQuery, useLogoutMutation, useRegisterMutation } = authApi;
+export const { useRegisterMutation, useLoginMutation, useGoogleLoginQuery, useLogoutMutation } = authApi;

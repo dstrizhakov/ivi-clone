@@ -9,8 +9,8 @@ import { useAppSelector } from '@/hooks/redux';
 import { selectAuth } from '@/store/reducers/auth.slice';
 
 const ProfileSelector = () => {
-  const { user } = useAppSelector(selectAuth);
-
+  const { user, photo } = useAppSelector(selectAuth);
+  console.log(photo)
   const { t } = useTranslation();
 
   return (
@@ -20,8 +20,8 @@ const ProfileSelector = () => {
       </div>
       <div className={styles.profile__row}>
         <div className={styles.profile__user}>
-          {user && user?.photo ? (
-            <ProfileIcon image={user.photo} name={''} isActive={true} />
+          {user && photo ? (
+            <ProfileIcon image={photo} name={''} isActive={true} />
           ) : (
             <div className={`${styles.profile__image} ${styles.no_image}`}>
               <FiUser />

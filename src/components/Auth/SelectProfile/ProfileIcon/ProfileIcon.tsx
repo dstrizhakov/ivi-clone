@@ -15,7 +15,7 @@ const ProfileIcon: FC<ProfileIconProps> = ({ image, name, isActive = false }) =>
         {image ? (
           <Image className={styles.profile__image} src={image} alt="user" width={48} height={48} />
         ) : (
-          <span className={styles.profile__add}></span>
+          <span className={styles.profile__add} />
         )}
       </div>
       <span>{name}</span>

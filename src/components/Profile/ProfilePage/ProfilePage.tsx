@@ -29,7 +29,7 @@ import { useRegisterMutation } from '@/services/auth.api';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
-  const { user } = useAppSelector(selectAuth);
+  const { user, photo } = useAppSelector(selectAuth);
 
   const dispatch = useAppDispatch();
 
@@ -51,9 +51,17 @@ const ProfilePage = ({ ...props }) => {
       city: 'Москва',
       photo: selectedImage,
     };
-    console.log(dto.photo);
+    const fd = new FormData();
+    fd.append('email', `test${Date.now()}@aaa.aaa`);
+    fd.append('password', `aaaa1111`);
+    fd.append('name', `TestName`);
+    fd.append('surname', `TestSurname`);
+    fd.append('nickname', `test${Date.now()}@aaa.aaa`);
+    fd.append('country', `Россия`);
+    fd.append('city', `Москва`);
+    selectedImage && fd.append('photo', selectedImage);
 
-    register(dto)
+    register(fd)
       .unwrap()
       .then((res) => {
         dispatch(setUser(res));
@@ -64,7 +72,7 @@ const ProfilePage = ({ ...props }) => {
   return (
     <div className={styles.profile__btns} {...props}>
       <div className={'test'}>
-        <img src={user?.photo} alt="img" />
+        {photo && <img src={photo} alt="img" />}
         {selectedImage && (
           <img alt="img" width={'250px'} src={URL.createObjectURL(selectedImage)} />
         )}

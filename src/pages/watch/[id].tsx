@@ -12,20 +12,21 @@ const Movie = () => {
   const { data: movie, error, isLoading } = useFetchOneMovieQuery(router.query.id);
   const { t, i18n } = useTranslation();
   if (error) return <NotFoundPage />;
-  if (isLoading) return <div>Loading</div>;
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')
-    { name: movie.genres[0], path: '/movies' },
+    { name: movie.filmGenres[0], path: '/movies' },
   ];
   return (
     <>
       <Head>
         <title>
-          {i18n.language == 'en' ? movie.enName && `Movie ${movie.enName}` : `Фильм ${movie.name}`}
+          {i18n.language == 'en'
+            ? movie.originalTitle && `Movie ${movie.originalTitle}`
+            : `Фильм ${movie.title}`}
         </title>
       </Head>
       <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
-      <WatchPage movie={movie} />
+      {!isLoading && <WatchPage movie={movie} />}
     </>
   );
 };

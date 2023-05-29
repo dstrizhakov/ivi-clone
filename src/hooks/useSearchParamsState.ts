@@ -8,12 +8,12 @@ import { useRouter } from 'next/router';
 // });
 // query: ?query=input_value
 
-function getSearchParam(search, param) {
+function getSearchParam(search: string, param: string) {
   const searchParams = new URLSearchParams(search);
   return searchParams.get(param);
 }
 
-function setSearchParam(search, param, value) {
+function setSearchParam(search: string, param: string, value: string) {
   const searchParams = new URLSearchParams(search);
   searchParams.set(param, value);
   return searchParams.toString();
@@ -28,7 +28,7 @@ interface UseSearchParamsStateOptions<Value> {
   deserialize?: (value: string | null) => Value;
 }
 
-function isFunction(value: unknown): value is (...args: unknown) => unknown {
+function isFunction(value: any): value is (...args: any) => any {
   return typeof value === 'function';
 }
 
@@ -38,23 +38,22 @@ export function useSearchParamsState<Value>({
   deserialize = defaultDeserialize,
 }: UseSearchParamsStateOptions<Value>) {
   const router = useRouter();
+  const searchParam = getSearchParam(router.asPath.split('?')[1], name);
   const [value, setValue] = useState(() => {
-    return deserialize
-      ? deserialize(getSearchParam(router.asPath.split('?')[1], name))
-      : defaultDeserialize(getSearchParam(router.asPath.split('?')[1], name));
+    return deserialize ? deserialize(searchParam) : defaultDeserialize(searchParam);
   });
 
   const updateValue = useEvent((newValue: React.SetStateAction<Value>) => {
     if (typeof window == undefined) {
       return;
     }
-    const search = window?.location?.search;
+    const search: string = window?.location?.search;
 
-    const actualNewValue = isFunction(newValue) ? newValue(value) : newValue;
+    const actualNewValue: Value = isFunction(newValue) ? newValue(value) : newValue;
 
     setValue(actualNewValue);
 
-    const newSearch = setSearchParam(
+    const newSearch: string = setSearchParam(
       search,
       name,
       serialize ? serialize(actualNewValue) : defaultSerialize(actualNewValue)

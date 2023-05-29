@@ -22,7 +22,7 @@ const Movies = () => {
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />
       <Filters />
-      <Grid array={movies || [...new Array(30)]} />
+      <Grid array={movies?.length ? movies : [...new Array(30)]} />
     </>
   );
 };

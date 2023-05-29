@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { IUser } from '@/types/types';
+import profile from "@/pages/profile";
 
 export interface IAuth {
   user: IUser | null;
+  photo: string | null;
   token: string | null;
   favorites?: string[];
   watched?: string[];
@@ -16,6 +18,7 @@ interface ISign {
 
 const initialState: IAuth = {
   user: null,
+  photo: null,
   token: null,
   favorites: [],
   watched: [],
@@ -28,6 +31,9 @@ export const authSlice = createSlice({
     setUser: (state: IAuth, action: PayloadAction<ISign>) => {
       const { profileInfo, token } = action.payload;
       state.user = profileInfo;
+      if (profileInfo.photo) {
+        state.photo = `http://localhost:3001/photo/${profileInfo.photo}`;
+      }
       state.token = token.token;
       localStorage.setItem('token', state.token);
     },

@@ -52,7 +52,7 @@ const User: FC = (): JSX.Element => {
               </Link>
             )}
             <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
-            <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
+            <Link href={'/admin'}>{t('buttons.support')}</Link>
             {user && <span onClick={logoutFunc}>{t('buttons.logout')}</span>}
           </div>
         </div>
