@@ -7,7 +7,6 @@ import { useAppDispatch } from '@/hooks/redux';
 import styles from './RegisterForm.module.scss';
 
 const RegisterForm = () => {
-  const formData = new FormData();
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState<string>('');
   const [login, setLogin] = useState<string>('');
@@ -16,13 +15,14 @@ const RegisterForm = () => {
   const [register] = useRegisterMutation();
 
   const clearInputs = () => {
-    setUsername('');
-    setLogin('');
-    setPassword('');
-    setProfilePicture(null);
+    setUsername(() => '');
+    setLogin(() => '');
+    setPassword(() => '');
+    setProfilePicture(() => null);
   };
 
   const registerHandler = () => {
+    const formData = new FormData();
     formData.append('email', login);
     formData.append('password', password);
     formData.append('nickname', username);
@@ -40,14 +40,21 @@ const RegisterForm = () => {
       <input
         type="text"
         placeholder={'Имя пользователя'}
+        value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
         type="email"
         placeholder={'Электронная почта'}
+        value={login}
         onChange={(e) => setLogin(e.target.value)}
       />
-      <input type="password" placeholder={'Пароль'} onChange={(e) => setPassword(e.target.value)} />
+      <input
+        type="password"
+        placeholder={'Пароль'}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <InputFileButton setSelected={setProfilePicture} />
       <Button onClick={registerHandler}>Регистрация</Button>
     </div>

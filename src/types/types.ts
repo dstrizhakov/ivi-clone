@@ -144,6 +144,7 @@ export interface IUser {
   surname: string;
   nickname: string;
   country: string;
+  photo?: string;
   city: string;
   role: IRole[];
 }

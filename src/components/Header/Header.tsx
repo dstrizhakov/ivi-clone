@@ -22,7 +22,7 @@ import { selectAuth } from '@/store/reducers/auth.slice';
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const { user } = useAppSelector(selectAuth);
+  const { photo } = useAppSelector(selectAuth);
   return (
     <header className="header">
       <div className="container">
@@ -94,7 +94,7 @@ const Header: FC = () => {
             <Submenu icon={MdNotificationsNone} link={'/notifications'}>
               <Alerts />
             </Submenu>
-            <Submenu icon={BiUser} user={user?.photo || null} link={'/profile'} outline>
+            <Submenu icon={BiUser} user={photo || null} link={'/profile'} outline>
               <User />
             </Submenu>
           </div>

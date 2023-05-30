@@ -10,7 +10,6 @@ import { selectAuth } from '@/store/reducers/auth.slice';
 
 const ProfileSelector = () => {
   const { user, photo } = useAppSelector(selectAuth);
-  console.log(photo)
   const { t } = useTranslation();
 
   return (

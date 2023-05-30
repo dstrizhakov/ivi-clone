@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { IUser } from '@/types/types';
-import profile from "@/pages/profile";
 
 export interface IAuth {
   user: IUser | null;
@@ -40,6 +39,7 @@ export const authSlice = createSlice({
     logout: (state: IAuth) => {
       state.user = null;
       state.token = null;
+      state.photo = null;
       state.favorites = [];
       state.watched = [];
       localStorage.removeItem('token');
