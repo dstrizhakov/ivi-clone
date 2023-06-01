@@ -5,7 +5,6 @@ import styles from './Top10Carousel.module.scss';
 import Slider from 'react-slick';
 import Image from 'next/image';
 import { Htag } from '@/components/Htag/Htag';
-import { moviesData } from '@/mock/moviesData';
 import { IMovieOld } from '@/types/types';
 
 import top10 from '@/../public/top10/top10.svg';
@@ -65,7 +64,25 @@ const T10Card: FC<iCard> = ({ card, index, ...props }): JSX.Element => {
   );
 };
 
-const Top10Carousel = () => {
+const T10CardLoader: FC<iCard> = ({ index, ...props }): JSX.Element => {
+  return (
+    <div className={styles.card} {...props}>
+      <div className={`${styles.card_image} loader`} />
+      <div className={styles.fade} />
+      <div className={styles.fade_footer} />
+      <div className={styles.logo}>
+        <div className={`${styles.logo_title} loader`} />
+      </div>
+      <div className={styles.place_number}>{top[index]}</div>
+    </div>
+  );
+};
+
+interface iCarousel {
+  data?: IMovieOld[];
+}
+
+const Top10Carousel: FC<iCarousel> = ({ data }) => {
   const { t } = useTranslation();
   const settings = {
     dots: false,
@@ -109,9 +126,15 @@ const Top10Carousel = () => {
         <Htag tag={'h3'}>{t('sections.during-week')}</Htag>
       </div>
       <Slider {...settings}>
-        {moviesData.slice(0, 10).map((card: IMovieOld, index: number) => (
-          <T10Card card={card} index={index} key={card.id} />
-        ))}
+        {data
+          ? data
+              .slice(0, 10)
+              .map((card: IMovieOld, index: number) => (
+                <T10Card card={card} index={index} key={card.id} />
+              ))
+          : [...new Array(10)].map((card, index) => (
+              <T10CardLoader card={card} index={index} key={index} />
+            ))}
       </Slider>
     </div>
   );
