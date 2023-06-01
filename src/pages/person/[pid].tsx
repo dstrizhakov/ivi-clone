@@ -7,14 +7,15 @@ import { useRouter } from 'next/router';
 
 const Person = () => {
   const router = useRouter();
-  const { data: person, isLoading, error } = useFetchOnePersonQuery(router.query.pid);
+  const pid = router.query.pid;
+  const { data: person, isLoading, error } = useFetchOnePersonQuery(pid);
   if (error) return <NotFoundPage />;
   if (isLoading) return <div>Loading..</div>;
 
   return (
     <>
       <Head>
-        <title>{i18next.language == 'en' ? person.enName : person.name}</title>
+        <title>{person ? (i18next.language == 'en' ? person.enName : person.name) : ''}</title>
       </Head>
       <PersonInfo person={person} />
     </>

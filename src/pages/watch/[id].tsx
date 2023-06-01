@@ -9,24 +9,32 @@ import { useRouter } from 'next/router';
 
 const Movie = () => {
   const router = useRouter();
-  const { data: movie, error, isLoading } = useFetchOneMovieQuery(router.query.id);
+  const id = router?.query?.id;
+  const { data: movie, error, isLoading } = useFetchOneMovieQuery(id);
   const { t, i18n } = useTranslation();
   if (error) return <NotFoundPage />;
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')
-    { name: movie.filmGenres[0], path: '/movies' },
+    {
+      name: movie
+        ? i18n.language == 'ru'
+          ? movie.filmGenres[0].genreName
+          : movie.filmGenres[0].genreNameEn
+        : '',
+      path: '/movies',
+    },
   ];
   return (
     <>
       <Head>
         <title>
           {i18n.language == 'en'
-            ? movie.originalTitle && `Movie ${movie.originalTitle}`
-            : `Фильм ${movie.title}`}
+            ? movie?.originalTitle && `Movie ${movie?.originalTitle}`
+            : `Фильм ${movie?.title}`}
         </title>
       </Head>
       <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
-      {!isLoading && <WatchPage movie={movie} />}
+      {!isLoading && movie && <WatchPage movie={movie} />}
     </>
   );
 };

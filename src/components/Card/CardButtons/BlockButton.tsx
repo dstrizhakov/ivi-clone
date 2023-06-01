@@ -6,7 +6,7 @@ import { BtnA } from '@/components/Button/Button.props';
 const BlockButton = () => {
   const [blocked, setBlocked] = useState<boolean>(false);
 
-  const blockMovie = (e) => {
+  const blockMovie = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBlocked((blocked) => !blocked);
