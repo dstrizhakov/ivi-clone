@@ -40,7 +40,7 @@ const Home = () => {
         ))}
       </Carousel>
       <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
-        {moviesData.map((card: IMovie) => (
+        {moviesData.map((card) => (
           <Card card={card} star book find block key={card.id} />
         ))}
       </Carousel>
