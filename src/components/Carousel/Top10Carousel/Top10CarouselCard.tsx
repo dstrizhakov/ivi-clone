@@ -42,9 +42,6 @@ const T10CardLoader: FC<iLoader> = ({ index }): JSX.Element => {
       <div className={`${styles.card_image} loader`} />
       <div className={styles.fade} />
       <div className={styles.fade_footer} />
-      <div className={styles.logo}>
-        <div className={`${styles.logo_title} loader`} />
-      </div>
       <div className={styles.place_number}>{top[index]}</div>
     </div>
   );
