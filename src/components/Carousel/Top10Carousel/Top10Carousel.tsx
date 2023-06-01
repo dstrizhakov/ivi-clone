@@ -52,7 +52,13 @@ const T10Card: FC<iCard> = ({ card, index, ...props }): JSX.Element => {
       <div className={styles.fade} />
       <div className={styles.fade_footer} />
       <div className={styles.logo}>
-        <div className={styles.logo_image}></div>
+        {card?.logo ? (
+          <div className={styles.logo_image}>
+            <Image src={card.logo} alt={card.title} />
+          </div>
+        ) : (
+          <div className={styles.logo_title}>{card.title}</div>
+        )}
       </div>
       <div className={styles.place_number}>{top[index]}</div>
     </Link>

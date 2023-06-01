@@ -1,3 +1,5 @@
+@import '@/styles/variables.scss';
+
 .carousel {
   -webkit-tap-highlight-color: transparent;
   .title {
@@ -23,22 +25,21 @@
 .card {
   cursor: pointer;
   position: relative;
-  margin-bottom: 40px;
-  padding: 0 10px 10px;
+  padding: 15px 10px 10px;
   &:hover {
     transform: scale(1.04) translateY(0);
   }
-  .fade {
-    background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
-    bottom: 0;
+  .fade, .fade_footer {
+    height: 50%;
+    bottom: 40px;
     left: 0;
     position: absolute;
     right: 0;
+  }
+  .fade {
+    background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
+    height: 100%;
     &_footer {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
       transition-duration: .4s;
       background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
     }
@@ -49,7 +50,6 @@
     aspect-ratio: 13/20;
     position: relative;
     overflow: hidden;
-    max-width: 234px;
     max-height: 360px;
     img {
       width: 100%;
@@ -58,16 +58,23 @@
   }
   .logo {
     position: relative;
-    top: -80px;
+    top: -85px;
+    padding: 0 20px;
     &_image{
       align-items: flex-end;
       display: flex;
       justify-content: center;
     }
+    &_title {
+      text-align: center;
+      display: flex;
+      font-weight: 700;
+      color: $color-input;
+    }
   }
   .place_number {
     display: flex;
-    bottom: -33px;
+    bottom: 20px;
     height: 66px;
     left: 50%;
     position: absolute;
