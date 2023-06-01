@@ -121,6 +121,7 @@ export interface IMovie {
   id: number | string; //
   year: number;
   title: string;
+  preview: string;
   originalTitle?: string;
   slogan: string;
   originalSlogan?: string;
@@ -133,7 +134,9 @@ export interface IMovie {
   ageRestriction: IAgeRestriction[];
   reviews: IReviews[];
   country: ICountry;
-  card_image: string; //нет в документации
+  //нет в документации
+  card_image: string;
+  logo?: string;
 }
 
 export interface IUser {

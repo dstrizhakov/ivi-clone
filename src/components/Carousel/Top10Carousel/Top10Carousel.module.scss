@@ -19,13 +19,14 @@
     vertical-align: top;
     white-space: normal;
   }
-
 }
 
 .card {
   cursor: pointer;
   position: relative;
   padding: 15px 10px 10px;
+  height: 100%;
+  width: 100%;
   &:hover {
     transform: scale(1.04) translateY(0);
   }
@@ -86,5 +87,4 @@
     white-space: nowrap;
     transition-duration: .4s;
   }
-
 }
