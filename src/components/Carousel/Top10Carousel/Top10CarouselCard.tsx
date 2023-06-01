@@ -50,10 +50,10 @@ const T10CardLoader: FC<iLoader> = ({ index }): JSX.Element => {
   );
 };
 
-export const T10Card: FC<iCard> = ({ card, index, ...props }): JSX.Element => {
+export const T10Card: FC<iCard> = ({ card, index }): JSX.Element => {
   if (!card?.id) return <T10CardLoader index={index} />;
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} {...props}>
+    <Link href={`/watch/${card.id}`} className={styles.card}>
       <div className={styles.card_image}>
         <Image src={card.card_image} alt={card.title} width={234} height={360} />
       </div>
