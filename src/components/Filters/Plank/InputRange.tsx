@@ -37,6 +37,12 @@ const InputRange: FC<iRange> = ({ onChange, minLimit, maxLimit, range, children 
           max={maxLimit}
           step={range}
           value={inputValue}
+          style={{
+            background: `linear-gradient(90deg, #A2002DFF ${
+              ((inputValue - minLimit) * 100) / (maxLimit - minLimit)
+            }%, #1f1b2d 0%)`,
+            zIndex: 100,
+          }}
         />
       </div>
     </div>
