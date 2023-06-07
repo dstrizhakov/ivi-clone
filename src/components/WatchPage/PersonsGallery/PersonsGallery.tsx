@@ -25,29 +25,25 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
           </div>
           <div className={styles.list}>
             <div className={styles.list__wrap}>
-              {[...new Set(list)].map((person) => {
-                return (
-                  <Link
-                    href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
-                    key={person.id}
-                    className={styles.link}
-                  >
-                    <div className={styles.card}>
-                      <Image src={person.url} width={88} height={88} alt="" />
-                    </div>
-                    <div>
-                      {(i18n.language == 'en' ? person.enName : person.name).split(' ').map((n) => (
+              {[...new Set(list)].map((person) => (
+                <Link href={`/person/${person.id}`} key={person.id} className={styles.link}>
+                  <div className={styles.card}>
+                    <Image src={person?.url} width={88} height={88} alt="" />
+                  </div>
+                  <div>
+                    {(i18n.language == 'en' ? person.fullName : person.fullNameEn)
+                      .split(' ')
+                      .map((n) => (
                         <p key={person.id + n} className={styles.name}>
                           {n}
                         </p>
                       ))}
-                      <P size="S">{i18n.language == 'en' ? 'actor' : 'актер'}</P>
-                    </div>
-                  </Link>
-                );
-              })}
+                    <P size="S">{i18n.language == 'en' ? 'actor' : 'актер'}</P>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <div className={cn(styles.card, styles.card__text)} onClick={() => open()}>
+            <div className={cn(styles.card, styles.card__text)} onClick={open}>
               {t('buttons.more')}
             </div>
           </div>

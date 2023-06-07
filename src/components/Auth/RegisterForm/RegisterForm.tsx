@@ -30,7 +30,7 @@ const RegisterForm = () => {
     register(formData)
       .unwrap()
       .then((response) => {
-        dispatch(setUser(response));
+        dispatch(setUser(response, response));
         clearInputs();
       })
       .catch((rejected) => console.error(rejected));

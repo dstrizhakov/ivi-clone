@@ -9,9 +9,10 @@ export const PersonList: FC<PersonListProps> = ({ list, rating }) => {
     <div className={styles.list}>
       <>
         <PersonCard>{rating}</PersonCard>
-        {list.slice(0, 4).map((item) => {
-          return <PersonCard key={item.id} person={item} />;
-        })}
+        {list.length &&
+          list.slice(0, 4).map((item) => {
+            return <PersonCard key={item.id} person={item} />;
+          })}
       </>
     </div>
   );

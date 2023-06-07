@@ -11,6 +11,7 @@ import { useFetchAllMoviesQuery } from '@/services/movie.api';
 import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
 import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
+import Loader from '@/components/Loader/Loader';
 
 const Home = () => {
   const { data: movies } = useFetchAllMoviesQuery({});
@@ -30,15 +31,21 @@ const Home = () => {
       </Carousel>
       <Top10Carousel data={moviesData.slice(0, 10)} />
       <Top10Carousel data={movies?.length ? movies : [...new Array(10)]} />
-      <Carousel
-        title={t('carousels.adventures')}
-        route={'/movies'}
-        showAll={Boolean(movies?.length)}
-      >
-        {(movies?.length ? movies : [...new Array(15)]).map((card: IMovie, index: number) => (
-          <Card card={card} star book find block key={card?.id || index} />
-        ))}
-      </Carousel>
+
+      {movies?.length ? (
+        <Carousel
+          title={t('carousels.adventures')}
+          route={'/movies'}
+          showAll={Boolean(movies?.length)}
+        >
+          {movies.map((card: IMovie, index: number) => (
+            <Card card={card} star book find block key={card?.id || index} />
+          ))}
+        </Carousel>
+      ) : (
+        <Loader />
+      )}
+
       <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
         {moviesData.map((card) => (
           <Card card={card} star book find block key={card.id} />

@@ -34,17 +34,17 @@ const MovieInfo: FC<iInfo> = ({ movie }) => {
       </div>
       <div className={styles.watch__params}>
         <P>
-          {year} {duration}
+          {year}, {duration}
         </P>
         <P>
-          {countries} {genres}
+          {countries} {genres.map((genre) => genre.name)}
         </P>
       </div>
       <div className={styles.watch__rating}>
         <PersonList list={persons} rating={rating} />
       </div>
       <div className={styles.watch__description}>
-        <P>{i18next.language == 'en' ? originalSlogan && originalSlogan : slogan}</P>
+        <P>{i18next.language == 'en' ? originalSlogan || slogan : slogan}</P>
       </div>
       <div className={styles.watch__medallions}></div>
     </div>

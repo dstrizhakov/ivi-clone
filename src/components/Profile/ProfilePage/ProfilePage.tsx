@@ -133,13 +133,3 @@ const ProfilePage = ({ ...props }) => {
 };
 
 export default ProfilePage;
-
-// const fd = new FormData();
-// fd.append('email', `test${Date.now()}@aaa.aaa`);
-// fd.append('password', `aaaa1111`);
-// fd.append('name', `TestName`);
-// fd.append('surname', `TestSurname`);
-// fd.append('nickname', `test${Date.now()}@aaa.aaa`);
-// fd.append('country', `Россия`);
-// fd.append('city', `Москва`);
-// fd.append('photo', selectedImage);

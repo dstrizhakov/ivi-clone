@@ -20,13 +20,15 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
     const fac = new FastAverageColor();
 
     dispatch(setPersonItems(movie));
-    fac
-      .getColorAsync(movie.card_image, {
-        algorithm: 'simple',
-      })
-      .then((color) => {
-        setBgColor(() => color.hex);
-      });
+    if (movie.card_image) {
+      fac
+        .getColorAsync(movie.card_image, {
+          algorithm: 'simple',
+        })
+        .then((color) => {
+          setBgColor(() => color.hex);
+        });
+    }
   }, [dispatch, movie]);
 
   const { title, originalTitle, trailer, persons } = movie;
@@ -58,7 +60,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         >
           {!isLoading && !error && movies.map((card) => <Card card={card} book key={card.id} />)}
         </Carousel>
-        <PersonsGallery list={persons} />
+        <PersonsGallery list={[...persons.actor, ...persons.director]} />
       </section>
     </>
   );

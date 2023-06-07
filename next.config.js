@@ -8,6 +8,7 @@ const nextConfig = {
       'sun6-22.userapi.com',
       'vk.com',
       'thumbs.dfs.ivi.ru',
+      'www.kinopoisk.ru',
     ],
     remotePatterns: [
       {

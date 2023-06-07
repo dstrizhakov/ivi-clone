@@ -56,7 +56,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  cursor: pointer;
   p {
     text-align: start;
     margin-top: 0;
@@ -69,6 +68,7 @@
   .input {
     width: 100%;
     border-radius: 12px;
+    cursor: pointer;
   }
   .output {
     display: flex;
@@ -83,7 +83,6 @@
   input[type=range] {
     background: transparent;
     -webkit-appearance: none;
-    width: 100%;
   }
   input[type=range]:focus {
     outline: none;

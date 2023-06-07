@@ -6,21 +6,22 @@ import { useTranslation } from 'react-i18next';
 import MovieBreadcrumbs from '@/components/Breadcrumbs/MovieBreadcrumbs';
 import { useFetchOneMovieQuery } from '@/services/movie.api';
 import { useRouter } from 'next/router';
+import { data } from '@/mock/data';
 
 const Movie = () => {
   const router = useRouter();
   const id = router?.query?.id;
-  const { data: movie, error, isLoading } = useFetchOneMovieQuery(id);
+  //const { data: movie, error, isLoading } = useFetchOneMovieQuery(id);
+  const movie = data;
+  const error = false;
+  const isLoading = false;
   const { t, i18n } = useTranslation();
   if (error) return <NotFoundPage />;
+  const { genres, originalTitle, title } = movie;
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')
     {
-      name: movie
-        ? i18n.language == 'ru'
-          ? movie.filmGenres[0].genreName
-          : movie.filmGenres[0].genreNameEn
-        : '',
+      name: (i18n.language == 'ru' ? genres[0].genreName : genres[0].genreNameEn) || '',
       path: '/movies',
     },
   ];
@@ -28,9 +29,7 @@ const Movie = () => {
     <>
       <Head>
         <title>
-          {i18n.language == 'en'
-            ? movie?.originalTitle && `Movie ${movie?.originalTitle}`
-            : `Фильм ${movie?.title}`}
+          {i18n.language == 'en' ? originalTitle && `Movie ${originalTitle}` : `Фильм ${title}`}
         </title>
       </Head>
       <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
