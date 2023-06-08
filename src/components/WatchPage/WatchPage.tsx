@@ -10,10 +10,10 @@ import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
-import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import { useFetchAllFilmsQuery } from "@/services/movie.api";
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
-  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({ limit: 15 });
+  const { data: movies, error, isLoading } = useFetchAllFilmsQuery({ limit: 15 });
   const dispatch = useAppDispatch();
   const [bgColor, setBgColor] = useState('');
   useEffect(() => {
@@ -45,7 +45,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
             <div className={styles.watch__player}>
-              <Player url={trailer} />
+              <Player url={trailer || 'https://www.youtube.com/watch?v=ysz5S6PUM-U'} />
             </div>
             <MovieInfo movie={movie} />
           </div>
@@ -60,7 +60,9 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         >
           {!isLoading && !error && movies.map((card) => <Card card={card} book key={card.id} />)}
         </Carousel>
-        <PersonsGallery list={[...persons.actor, ...persons.director]} />
+        <PersonsGallery
+          list={persons?.actor && persons?.director ? [...persons.actor, ...persons.director] : []}
+        />
       </section>
     </>
   );

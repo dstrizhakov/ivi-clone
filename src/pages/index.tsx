@@ -7,14 +7,14 @@ import Card from '@/components/Card/Card';
 import { wrapper } from '@/store/store';
 import { GetServerSideProps } from 'next';
 import { useTranslation } from 'react-i18next';
-import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
 import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import Loader from '@/components/Loader/Loader';
 
 const Home = () => {
-  const { data: movies } = useFetchAllMoviesQuery({});
+  const { data: movies } = useFetchAllFilmsQuery({});
 
   const { t } = useTranslation();
   return (
@@ -33,11 +33,7 @@ const Home = () => {
       <Top10Carousel data={movies?.length ? movies : [...new Array(10)]} />
 
       {movies?.length ? (
-        <Carousel
-          title={t('carousels.adventures')}
-          route={'/movies'}
-          showAll={Boolean(movies?.length)}
-        >
+        <Carousel title={t('carousels.adventures')} route={'/movies'} showAll={movies?.length > 15}>
           {movies.map((card: IMovie, index: number) => (
             <Card card={card} star book find block key={card?.id || index} />
           ))}

@@ -26,7 +26,7 @@ const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
       ) : (
         <>
           <div className={styles.wrapCard}>
-            <div className={styles.rating}>{children}</div>
+            <div className={styles.rating}>{children || '9.0'}</div>
           </div>
           <div className={styles.card_name} title={t('categories.rating')}>
             {t('categories.rating')}

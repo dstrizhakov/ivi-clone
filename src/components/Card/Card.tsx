@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({
   if (!card?.id) return <CardLoader />;
   const { id, card_image, rating, country, genres, year, duration, originalTitle, title } = card;
   const i18nTitle = i18next.language == 'en' ? originalTitle || title : title || '';
-
+  const rate = rating?.length ? rating[0] : 9.0;
   return (
     <Link href={`/watch/${id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
@@ -40,24 +40,26 @@ const Card: FC<CardProps> = ({
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
-              {rating || 9.0}
+              {rate%1 ? rate : `${rate}.0`}
               <div className={styles.graphs}>
-                <BarGraph width={(+rating[0] || 9.0) * 0.7 * 10 - 0.2} />
-                <BarGraph width={(+rating[0] || 9.0) * 0.9 * 10 - 0.2} />
-                <BarGraph width={(+rating[0] || 9.0) * 1.2 * 10 - 0.2} />
-                <BarGraph width={(+rating[0] || 9.0) * 0.8 * 10 - 0.2} />
+                <BarGraph width={rate * 0.7 * 10 - 0.2} />
+                <BarGraph width={rate * 0.9 * 10 - 0.2} />
+                <BarGraph width={rate * 1.2 * 10 - 0.2} />
+                <BarGraph width={rate * 0.8 * 10 - 0.2} />
               </div>
             </div>
             <div className={styles.singleGraph}>
               <span>{i18next.language == 'en' ? 'actors' : 'актёры'}</span>
-              <BarGraph width={(+rating[0] || 9.0) * 10 - 0.2} />
+              <BarGraph width={(rate || 9.0) * 10 - 0.2} />
             </div>
-            <div className={styles.info__text}>
+            <section className={styles.info__text}>
               <div className={styles.info__row}>
-                {year}, {country}, {genres[0]}
+                {year && `${year}, `}
+                {country && `${country}, `}
+                {genres?.length && `${genres[0]}`}
               </div>
-              <div className={styles.info__row}>{duration}</div>
-            </div>
+              <div className={styles.info__row}>{duration.hours}</div>
+            </section>
           </div>
         </div>
       </div>

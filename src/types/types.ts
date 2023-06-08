@@ -115,6 +115,9 @@ export interface IReviews {
   comments: IComment[];
   film: string;
 }
+export interface IDuration {
+  hours: number;
+}
 
 export interface IMovie {
   //фильм
@@ -130,7 +133,7 @@ export interface IMovie {
   ageRestrictionId: number;
   personsInFilm: IPersonsInFilm[];
   filmGenres: IGenres[];
-  duration: string;
+  duration: IDuration;
   ageRestriction: IAgeRestriction[];
   reviews: IReviews[];
   country: ICountry;

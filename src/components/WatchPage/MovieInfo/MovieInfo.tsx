@@ -34,10 +34,10 @@ const MovieInfo: FC<iInfo> = ({ movie }) => {
       </div>
       <div className={styles.watch__params}>
         <P>
-          {year}, {duration}
+          {year}, {duration.hours} часа
         </P>
         <P>
-          {countries} {genres.map((genre) => genre.name)}
+          {countries} {genres?.length && genres.map((genre) => genre.name)}
         </P>
       </div>
       <div className={styles.watch__rating}>

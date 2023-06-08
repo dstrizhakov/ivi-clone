@@ -18,10 +18,6 @@ export const movieApi = createApi({
     baseUrl: 'http://localhost:3001' + '/film',
     credentials: 'same-origin',
     prepareHeaders: (headers) => {
-      const accessToken = localStorage.getItem('token');
-      if (accessToken) {
-        headers.set('authorization', `Bearer ${accessToken}`);
-      }
       headers.set('Content-Type', 'application/json');
       headers.set('Access-Control-Allow-Origin', '*');
       headers.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
@@ -30,12 +26,18 @@ export const movieApi = createApi({
   }),
   tagTypes: ['Movie'],
   endpoints: (build) => ({
+    fetchOneFilm: build.query<IMovie, string | number>({
+      query: ({ id }) => ({
+        url: `/${id}`,
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
     fetchAllFilms: build.query<IMovie[], unknown>({
       query: ({ genres, limit = 15 }) => ({
         url: '/',
         params: {
-          _genres: genres,
-          _limit: limit,
+          genres: genres,
+          limit: limit,
         },
         providesTags: (result) => ['Movie'],
       }),
@@ -54,22 +56,16 @@ export const movieApi = createApi({
       }) => ({
         url: '/movies',
         params: {
-          _limit: limit,
-          _page: page,
-          _directors: persons,
-          _actors: actors,
-          _countries: countries,
-          _rates_amount: rates_amount,
-          _genres: genres,
-          _rating: rating,
-          _year: years,
+          limit: limit,
+          page: page,
+          directors: persons,
+          actors: actors,
+          countries: countries,
+          rates_amount: rates_amount,
+          genres: genres,
+          rating: rating,
+          year: years,
         },
-      }),
-      providesTags: (result) => ['Movie'],
-    }),
-    fetchOneMovie: build.query<IMovie, string | number>({
-      query: (id) => ({
-        url: `/movies/${id}`,
       }),
       providesTags: (result) => ['Movie'],
     }),
@@ -87,22 +83,16 @@ export const movieApi = createApi({
       }) => ({
         url: '/cartoons',
         params: {
-          _limit: limit,
-          _page: page,
-          _directors: persons,
-          _actors: actors,
-          _countries: countries,
-          _rates_amount: rates_amount,
-          _genres: genres,
-          _rating: rating,
-          _year: years,
+          limit: limit,
+          page: page,
+          directors: persons,
+          actors: actors,
+          countries: countries,
+          rates_amount: rates_amount,
+          genres: genres,
+          rating: rating,
+          year: years,
         },
-      }),
-      providesTags: (result) => ['Movie'],
-    }),
-    fetchOneCartoon: build.query<IMovie, string | number>({
-      query: (id) => ({
-        url: `/cartoons/${id}`,
       }),
       providesTags: (result) => ['Movie'],
     }),
@@ -133,13 +123,7 @@ export const movieApi = createApi({
       }),
       providesTags: (result) => ['Movie'],
     }),
-    fetchOneSeries: build.query<IMovie, string | number>({
-      query: (id) => ({
-        url: `/movies/${id}`,
-      }),
-      providesTags: (result) => ['Movie'],
-    }),
-    addOneMovie: build.mutation<IMovie, IMovie>({
+    addOneFilm: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
         url: '/',
         method: 'POST',
@@ -155,7 +139,7 @@ export const movieApi = createApi({
       }),
       invalidatesTags: ['Movie'],
     }),
-    deleteOneMovie: build.mutation<IMovie, number>({
+    deleteOneFilm: build.mutation<IMovie, number>({
       query: (id) => ({
         url: `/${id}`,
         method: 'DELETE',
@@ -166,8 +150,11 @@ export const movieApi = createApi({
 });
 
 export const {
+  useFetchOneFilmQuery,
+  useFetchAllFilmsQuery,
   useFetchAllMoviesQuery,
-  useFetchOneMovieQuery,
-  useDeleteOneMovieMutation,
-  useAddOneMovieMutation,
+  useFetchAllSeriesQuery,
+  useFetchAllCartoonsQuery,
+  useDeleteOneFilmMutation,
+  useAddOneFilmMutation,
 } = movieApi;
