@@ -7,7 +7,7 @@ import { BtnA } from '@/components/Button/Button.props';
 const LanguageSwitcher = () => {
   useEffect(() => {
     const language = localStorage.getItem('language') || 'ru';
-    i18next.changeLanguage(language).then((r) => console.log(r()));
+    i18next.changeLanguage(language).then(() => {});
   }, []);
   const changeLanguage = async (e, language) => {
     e.preventDefault();

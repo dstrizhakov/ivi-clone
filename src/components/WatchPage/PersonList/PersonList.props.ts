@@ -1,6 +1,6 @@
-import { IPerson } from '@/types/types';
+import { IPersonOld } from '@/types/types';
 
 export interface PersonListProps {
-  list: IPerson[];
+  list: IPersonOld[];
   rating: string;
 }

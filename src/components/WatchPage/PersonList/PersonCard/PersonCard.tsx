@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import styles from './PersonCard.module.scss';
 import { PersonCardProps } from './PersonCard.props';
-
 import Link from 'next/link';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { nameToLink } from '@/helpers/nameToLink';
+import Image from 'next/image';
 
 const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
   const { t } = useTranslation();
@@ -14,9 +13,11 @@ const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
       {person ? (
         <>
           <div className={styles.wrapCard}>
-            <Link href={`/person/${nameToLink(person.enName)}`}>
+            <Link
+              href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
+            >
               <div className={styles.person}>
-                <img src={person.url} alt={person.name} />
+                <Image width={44} height={44} src={person.url} alt={person.name} />
               </div>
             </Link>
           </div>

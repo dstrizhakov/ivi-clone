@@ -25,11 +25,11 @@ const Card: FC<CardProps> = ({
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
         <Image
           src={card.card_image}
-          alt={card.name}
+          alt={card.title}
           width={234}
           height={360}
           quality={85}
-          loading={'lazy'}
+          priority
         />
         <div className={styles.props}>
           <div className={styles.btns__container}>
@@ -65,9 +65,9 @@ const Card: FC<CardProps> = ({
       </div>
       <div
         className={styles.textSection}
-        title={i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}
+        title={i18next.language == 'en' ? (card.originalTitle ? card.originalTitle : card.title) : card.title}
       >
-        <P>{i18next.language == 'en' ? (card.enName ? card.enName : card.name) : card.name}</P>
+        <P>{i18next.language == 'en' ? (card.originalTitle ? card.originalTitle : card.title) : card.title}</P>
       </div>
     </Link>
   );

@@ -1,11 +1,11 @@
-import { IPerson } from '@/types/types';
+import { IPersonOld } from '@/types/types';
 
 const src1 =
   'https://thumbs.dfs.ivi.ru/storage31/contents/1/a/930dc6b17e3a89b29615929bd86041.jpg/234x360/?q=85';
 const src2 =
   'https://thumbs.dfs.ivi.ru/storage28/contents/0/8/3d2850061083ba6946ad877bc9102d.jpg/234x360/?q=85';
 
-export const persons: IPerson[] = [
+export const persons: IPersonOld[] = [
   {
     id: 1,
     url: 'https://thumbs.dfs.ivi.ru/storage5/contents/9/6/b7f9eef3eaeb3d500cd994fb130047.jpg/120x144/?q=85',

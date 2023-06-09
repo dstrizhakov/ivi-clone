@@ -1,14 +1,15 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import CommentAvatar from '@/components/Comment/CommentAvatar';
 import { Button } from '@/components/Button/Button';
 import styles from './Comment.module.scss';
 import { BtnA } from '@/components/Button/Button.props';
 import { useSession } from 'next-auth/react';
-import { useDebounce } from '@/hooks/useDebounce';
+import { useTranslation } from 'react-i18next';
 
 const LIMIT = 5;
 
 const CommentInput: FC = (): JSX.Element => {
+  const { t, i18n } = useTranslation();
   const [query, setQuery] = useState<string>('');
   const { data: session } = useSession();
   const validate = () => {
@@ -18,17 +19,10 @@ const CommentInput: FC = (): JSX.Element => {
     e.nativeEvent.preventDefault();
     setQuery(() => '');
   };
-  const sendValue = useDebounce((text: string) => {
-    console.log(text);
-  }, 500);
-
-  useEffect(() => {
-    sendValue(query);
-  });
 
   return (
     <form className={styles.comment_form} onSubmit={(e) => submit(e)}>
-      <CommentAvatar user={session?.user ? session.user : null} />
+      <CommentAvatar user={session?.user || null} />
       <div className={styles.input_container}>
         <div className={`${styles.input} ${validate() ? styles.invalid : ''}`}>
           <input
@@ -37,15 +31,19 @@ const CommentInput: FC = (): JSX.Element => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <label>Написать комментарий</label>
+          <label>{t('buttons.write-comment')}</label>
           <div className={styles.stripe} />
         </div>
         <div className={`${styles.caption} ${styles.danger}`}>
-          {validate() ? `Минимум ${LIMIT} символов, вы ввели ${query.length}` : ''}
+          {validate()
+            ? i18n.language == 'en'
+              ? `At least ${LIMIT} characters, you entered ${query.length}`
+              : `Минимум ${LIMIT} символов, вы ввели ${query.length}`
+            : ''}
         </div>
       </div>
       <Button appearance={BtnA.red} disabled={!!(validate() || !query?.length)}>
-        Отправить
+        {t('buttons.send')}
       </Button>
     </form>
   );

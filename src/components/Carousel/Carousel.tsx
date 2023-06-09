@@ -8,8 +8,8 @@ import { CarouselProps } from '@/components/Carousel/Carousel.props';
 import Link from 'next/link';
 import { Htag } from '@/components/Htag/Htag';
 import ShowAll from '@/components/Card/ShowAll';
-import NextArrow from '@/components/Carousel/NextArrow';
-import PrevArrow from '@/components/Carousel/PrevArrow';
+import NextArrow from '@/components/Carousel/Arrows/NextArrow';
+import PrevArrow from '@/components/Carousel/Arrows/PrevArrow';
 
 const Carousel: FC<CarouselProps> = ({
   title,

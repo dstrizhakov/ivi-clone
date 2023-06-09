@@ -32,6 +32,9 @@ main {
   max-width: $maxWidthContainer + px;
   box-sizing: content-box;
   margin: 0 auto;
+  @media screen and (max-width: 1160px) {
+    margin-bottom: 60px; //footer
+  }
 }
 
 .header {

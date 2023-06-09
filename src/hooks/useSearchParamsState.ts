@@ -1,6 +1,6 @@
-import { usePathname, useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
-import { useLatest } from '@/hooks/useLatest';
+import React, { useState } from 'react';
+import { useEvent } from '@/hooks/useEvent';
+import { useRouter } from 'next/router';
 
 // can save state in url, example:
 // const [query, setQuery] = useSearchParamsState({
@@ -19,38 +19,49 @@ function setSearchParam(search, param, value) {
   return searchParams.toString();
 }
 
-const defaultDeserialize = (v) => v;
+const defaultDeserialize = <Value>(v: string | null) => v as Value;
 const defaultSerialize = String;
 
-export function useSearchParamsState({
+interface UseSearchParamsStateOptions<Value> {
+  name: string;
+  serialize?: (value: Value) => string;
+  deserialize?: (value: string | null) => Value;
+}
+
+function isFunction(value: unknown): value is (...args: unknown) => unknown {
+  return typeof value === 'function';
+}
+
+export function useSearchParamsState<Value>({
   name,
   serialize = defaultSerialize,
   deserialize = defaultDeserialize,
-}) {
+}: UseSearchParamsStateOptions<Value>) {
   const router = useRouter();
-  const path = usePathname();
   const [value, setValue] = useState(() => {
-    return deserialize(getSearchParam(path, name));
+    return deserialize
+      ? deserialize(getSearchParam(router.asPath.split('?')[1], name))
+      : defaultDeserialize(getSearchParam(router.asPath.split('?')[1], name));
   });
 
-  const latestValue = useLatest(value);
+  const updateValue = useEvent((newValue: React.SetStateAction<Value>) => {
+    if (typeof window == undefined) {
+      return;
+    }
+    const search = window?.location?.search;
 
-  const updateValue = useCallback(
-    (newValue) => {
-      const search = path.search;
-      const actualNewValue =
-        typeof newValue === 'function' ? newValue(latestValue.current) : newValue;
+    const actualNewValue = isFunction(newValue) ? newValue(value) : newValue;
 
-      setValue(actualNewValue);
+    setValue(actualNewValue);
 
-      const newSearch = setSearchParam(search, name, serialize(actualNewValue));
+    const newSearch = setSearchParam(
+      search,
+      name,
+      serialize ? serialize(actualNewValue) : defaultSerialize(actualNewValue)
+    );
 
-      router.replace({
-        search: newSearch,
-      });
-    },
-    [path.search, latestValue, name, serialize, router]
-  );
+    history.pushState(null, '', `?${newSearch}`);
+  });
 
   return [value, updateValue];
 }

@@ -1,24 +1,21 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import { useAppSelector } from '@/hooks/redux';
+import { Roles, selectAuth } from '@/store/reducers/auth.slice';
 
 const withAuth = <T extends object>(WrappedComponent: React.ComponentType<T>) => {
-  const AuthComponent = (props: T) => {
+  return (props: T) => {
     // todo: определиться со структурой стора
-    const isAuthenticated = true;
-    // const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+    const { role } = useAppSelector(selectAuth);
     const router = useRouter();
 
-    if (!isAuthenticated) {
+    if (role == Roles.unknown) {
       router.push('/login');
       return null;
     }
 
     return <WrappedComponent {...props} />;
   };
-
-  return AuthComponent;
 };
 
 export default withAuth;

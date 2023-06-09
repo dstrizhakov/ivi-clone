@@ -1,14 +1,14 @@
-import { IMovie } from '@/types/types';
+import { IMovieOld } from '@/types/types';
 import { persons } from './persons';
 
-export const moviesData: IMovie[] = [
+export const moviesData: IMovieOld[] = [
   {
     id: 1,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война.',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -22,11 +22,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 2,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -40,11 +40,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 3,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -58,11 +58,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 4,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -76,11 +76,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 5,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -94,11 +94,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 6,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -112,11 +112,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 7,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -130,11 +130,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 8,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -148,11 +148,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 9,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -166,11 +166,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 10,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -184,11 +184,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 11,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -202,11 +202,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 12,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -220,11 +220,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 13,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -238,11 +238,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 14,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -256,11 +256,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 15,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -274,11 +274,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 16,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -292,11 +292,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 17,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -310,11 +310,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 18,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -328,11 +328,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 19,
-    name: 'Гарри Поттер и Дары Смерти: Часть I',
-    enName: 'Harry Potter and the Deathly Hallows: Part I',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть I',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part I',
+    slogan:
       'Заключительный фильм «поттерианы» о волшебном мире Дж.К. Роулинг и верных друзьях Гарри Поттере, Роне Уизли и Гермионе Грейнджер. Продолжается магическая война. Т',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -346,11 +346,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 20,
-    name: 'Гарри Поттер и Дары Смерти: Часть II',
-    enName: 'Harry Potter and the Deathly Hallows: Part II',
-    description:
+    title: 'Гарри Поттер и Дары Смерти: Часть II',
+    originalTitle: 'Harry Potter and the Deathly Hallows: Part II',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся. В мире магии началась Вторая Война Волшебников, последствия которой замечают даже маглы в обычном людском мире. Тем не менее, в Хогвартсе стартует учебный год, и преподаватели бросают все силы на то, чтобы оградить учеников от опасностей. ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:
@@ -364,11 +364,11 @@ export const moviesData: IMovie[] = [
   },
   {
     id: 21,
-    name: 'Гарри Поттер и Принц-полукровка',
-    enName: 'Harry Potter and the Half-Blood Prince',
-    description:
+    title: 'Гарри Поттер и Принц-полукровка',
+    originalTitle: 'Harry Potter and the Half-Blood Prince',
+    slogan:
       'Гарри Поттер и принц-полукровка» – шестая лента о приключениях Гарри, Рона и Гермионы в волшебном мире Хогвартса. Темный Лорд вернулся.  ',
-    enDescription:
+    originalSlogan:
       'The final "Potter" film about the magical world of J.K. Rowling and faithful friends Harry Potter, Ron Weasley, and Hermione Granger. The magical war continues.',
     trailer: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     card_image:

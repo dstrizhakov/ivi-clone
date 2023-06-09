@@ -1,7 +1,7 @@
-import { IPerson } from '@/types/types';
+import { IPersonOld } from '@/types/types';
 import { ReactNode } from 'react';
 
 export interface PersonCardProps {
-  person?: IPerson;
+  person?: IPersonOld;
   children?: ReactNode;
 }

@@ -6,38 +6,16 @@ import VkProvider from 'next-auth/providers/vk';
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. "Sign in with...")
       name: 'Credentials',
-      // `credentials` is used to generate a form on the sign in page.
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+        email: { label: 'email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/auth/login`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: credentials?.username,
-            password: credentials?.password,
-          }),
-        });
-        const user = await res.json();
-
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
+      async authorize(credentials) {
+        if (credentials?.email && credentials?.password) {
+          return await SignInUser(credentials.email, credentials.password);
         } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+          throw new Error('Не введен email или пароль');
         }
       },
     }),
@@ -89,17 +67,24 @@ export default NextAuth({
     //   return baseUrl;
     // },
 
-    // async session({ session, token }) {
-    //   // session.user = token;
-    //   return session;
-    // },
-    // async jwt({ token, user }) {
-    //   console.log('ACCESS TOKEN', token);
-    //   return { ...token, ...user };
-    // },
-
     async jwt({ token, account }) {
       // Persist the OAuth access_token to the token right after signin
+      console.log('====================================================');
+      console.log('JWT TOKEN:', token);
+      console.log('ACCOUNT:', account);
+      // Пример ответа от сервера 3001
+      //       JWT TOKEN: {
+      //   name: undefined,
+      //   email: undefined,
+      //   picture: undefined,
+      //   sub: undefined
+      // }
+      // ACCOUNT: {
+      //   providerAccountId: undefined,
+      //   type: 'credentials',
+      //   provider: 'credentials'
+      console.log('====================================================');
+
       if (account) {
         token.accessToken = account.access_token;
         token.idToken = account.id_token;
@@ -108,7 +93,15 @@ export default NextAuth({
     },
     async session({ session, token }) {
       // Send properties to the client, like an access_token from a provider.
-      console.log(token);
+      console.log('====================================================');
+      console.log('SESSION TOKEN:', token);
+      // Пример ответа от сервера 3001
+      //       SESSION TOKEN: {
+      //   iat: 1685435580,
+      //   exp: 1688027580,
+      //   jti: 'c70d4fa0-f608-4a11-b5b4-45014cecc2af'
+      // }
+      console.log('====================================================');
       return session;
     },
   },
@@ -118,3 +111,52 @@ export default NextAuth({
   events: {},
   debug: process.env.NODE_ENV !== 'production',
 });
+
+const SignInUser = async (email: string, password: string) => {
+  const url = `http://localhost:3001/auth/login`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  const user = await res.json();
+  console.log('====================================================');
+  console.log('USER:', user);
+  // Пример ответа от сервера 3001
+  //   {
+  //   token: {
+  //     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5ydSIsImlkIjoxLCJpYXQiOjE2ODU0MzUzMzcsImV4cCI6MTY4NTUyMTczN30.9b2y9u24gR_Dnjt7mtWrbeWVifHdE3Z1RTEe20h1P2s'
+  //   },
+  //   profileInfo: {
+  //     id: 1,
+  //     url: '',
+  //     name: 'Александр',
+  //     surname: 'Иванов',
+  //     nickname: 'stas9n',
+  //     country: 'Россия',
+  //     city: 'Москва',
+  //     createdAt: '2023-05-29T20:55:09.408Z',
+  //     photo: null,
+  //     userId: 1
+  //   }
+  // }
+  console.log('====================================================');
+
+  if (res.ok && user) {
+    const currentUser = {
+      name: user.profileInfo.name,
+      email: email,
+      picture: user.profileInfo.photo,
+      sub: undefined,
+      token: user.token.token,
+    };
+    return currentUser;
+    // return user;
+  }
+  return null;
+};

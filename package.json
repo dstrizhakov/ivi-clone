@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "client": "next dev -p 7000",
     "dev": "next dev",
     "build": "next build",
+    "server": "json-server --watch db.json --port 7000",
     "start": "next start",
     "test": "jest --watch=false",
     "coverage": "jest --watch=false --coverage",

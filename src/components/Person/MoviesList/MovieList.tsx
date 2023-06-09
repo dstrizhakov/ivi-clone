@@ -17,20 +17,21 @@ const MovieList: FC<MovieListProps> = ({ list }) => {
       <div className={styles.title}>
         <Htag tag={'h3'}>{t('descriptions.complete-filmography')}</Htag>
         <P>
-          {list.length} {i18next.language == 'en' ? 'movies' : 'фильмов'}
+          {list?.length} {i18next.language == 'en' ? 'movies' : 'фильмов'}
         </P>
       </div>
       <div className={styles.line}></div>
       <div className={styles.cards}>
-        {list.slice(0, 8).map((card) => {
+        {list?.slice(0, 8).map((card) => {
           return <MovieCard key={card.id} card={card} />;
         })}
-        {!isOpen && list.length > 8 ? (
+        {!isOpen && list?.length > 8 ? (
           <P onClick={() => setIsOpen(true)} className={styles.link}>
-            {t('buttons.more')} {list.length - 8} {i18next.language == 'en' ? 'movies' : 'фильма'}
+            {t('buttons.more')} {list?.length - 8}
+            {i18next.language == 'en' ? ' movies' : ` фильм${list?.length < 1 ? 'а' : ''}`}
           </P>
         ) : (
-          list.slice(8, list.length).map((card) => {
+          list?.slice(8, list?.length).map((card) => {
             return <MovieCard key={card.id} card={card} />;
           })
         )}

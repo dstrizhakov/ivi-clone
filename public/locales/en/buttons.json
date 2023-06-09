@@ -40,6 +40,7 @@
   "reset-password": "Reset password",
   "reset-filters": "Reset filters",
   "settings": "Settings",
+  "send": "Send",
   "show-all": "Show all",
   "show-more": "Show more",
   "sort": "Sort by",
@@ -57,5 +58,6 @@
   "watch-free": "Watch for free",
   "watch-later": "Watch later",
   "watch-more": "Watch more",
-  "watch-sub": "Watch by subscription"
+  "watch-sub": "Watch by subscription",
+  "write-comment": "Write a comment"
 }

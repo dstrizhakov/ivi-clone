@@ -8,14 +8,14 @@ import { PersonsGallery } from '@/components/WatchPage/PersonsGallery/PersonsGal
 import i18next from 'i18next';
 import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
-import { moviesData } from '@/mock/moviesData';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
+import { useFetchAllMoviesQuery } from '@/services/movie.api';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
+  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({ limit: 15 });
   const dispatch = useAppDispatch();
   const [bgColor, setBgColor] = useState('');
-
   useEffect(() => {
     const fac = new FastAverageColor();
 
@@ -29,7 +29,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
       });
   }, [dispatch, movie]);
 
-  const { name, enName, trailer, persons } = movie;
+  const { title, originalTitle, trailer, persons } = movie;
 
   return (
     <>
@@ -51,14 +51,12 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         <Carousel
           title={
             i18next.language == 'en'
-              ? `Movies similar to «${enName ? enName : name}»`
-              : `С фильмом «${name}» смотрят`
+              ? `Movies similar to «${originalTitle ? originalTitle : title}»`
+              : `С фильмом «${title}» смотрят`
           }
           route={'/'}
         >
-          {moviesData.slice(0, 15).map((card) => (
-            <Card card={card} book key={card.id} />
-          ))}
+          {!isLoading && !error && movies.map((card) => <Card card={card} book key={card.id} />)}
         </Carousel>
         <PersonsGallery list={persons} />
       </section>
