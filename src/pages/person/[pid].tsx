@@ -4,13 +4,14 @@ import Head from 'next/head';
 import i18next from 'i18next';
 import { useFetchOnePersonQuery } from '@/services/person.api';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader/Loader';
+import React from 'react';
 
 const Person = () => {
   const router = useRouter();
   const pid = router.query.pid;
   const { data: person, isLoading, error } = useFetchOnePersonQuery(pid);
   if (error) return <NotFoundPage />;
-  if (isLoading) return <div>Loading..</div>;
 
   return (
     <>
@@ -19,7 +20,8 @@ const Person = () => {
           {person ? (i18next.language == 'en' ? person.fullNameEn : person.fullName) : ''}
         </title>
       </Head>
-      <PersonInfo person={person} />
+      {isLoading && <Loader />}
+      {!isLoading && person && <PersonInfo person={person} />}
     </>
   );
 };

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import MovieBreadcrumbs from '@/components/Breadcrumbs/MovieBreadcrumbs';
 import { useFetchOneFilmQuery } from '@/services/movie.api';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader/Loader';
 
 const Movie = () => {
   const router = useRouter();
@@ -32,6 +33,7 @@ const Movie = () => {
         </title>
       </Head>
       <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
+      {isLoading && <Loader />}
       {!isLoading && movie && <WatchPage movie={movie} />}
     </>
   );
