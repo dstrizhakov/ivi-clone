@@ -26,6 +26,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { logout, selectAuth } from '@/store/reducers/auth.slice';
 import RegisterForm from '@/components/Auth/RegisterForm/RegisterForm';
+import Link from 'next/link';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
@@ -54,7 +55,9 @@ const ProfilePage = ({ ...props }) => {
           <LoginButton />
         </div>
       )}
-
+      <Link href={'/admin'}>
+        <Button>admin</Button>{' '}
+      </Link>
       <ul className={styles.list}>
         <li className={`${styles.list__item} ${styles.subscription}`}>
           <SubscriptionsButton />

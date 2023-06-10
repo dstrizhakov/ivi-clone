@@ -9,11 +9,6 @@ export default async function handler(req, res) {
   const fieldsExisting = password && username;
 
   if (isPOST && isJSON && fieldsExisting) {
-    const { createHmac } = await import('crypto');
-
-    //hashing password
-    const hash = createHmac('md5', password).digest('hex');
-
     const results = [{ username: 'asd' }]; //get from db
     if (!results) {
       res.status(404).json({ error: 'Not found' });

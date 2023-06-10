@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { logout, selectAuth } from '@/store/reducers/auth.slice';
 
 const User: FC = (): JSX.Element => {

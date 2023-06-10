@@ -1,4 +1,3 @@
-import type { StorybookConfig } from '@storybook/nextjs';
 const previewAnnotations: { stories: string[]; framework: { name: string; options: {} }; docs: { autodocs: string }; addons: string[] } = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [

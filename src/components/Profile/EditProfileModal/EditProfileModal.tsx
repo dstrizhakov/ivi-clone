@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './EditUser.module.scss';
 import FullScreenModal from '@/components/Modals/FullScreenModal/FullScreenModal';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { selectModal, setShowEditProfile } from '@/store/reducers/modals.slice';

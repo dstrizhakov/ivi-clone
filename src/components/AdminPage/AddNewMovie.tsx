@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/Button/Button';
-import { useAddOneMovieMutation } from '@/services/movie.api';
+import { useAddOneFilmMutation } from '@/services/movie.api';
 import { persons } from '@/mock/persons';
 import { IMovieOld } from '@/types/types';
 const movie: IMovieOld = {
@@ -23,7 +23,7 @@ const movie: IMovieOld = {
 };
 
 const AddNewMovie = () => {
-  const [addNewMovie] = useAddOneMovieMutation();
+  const [addNewMovie] = useAddOneFilmMutation();
 
   const create = () => {
     try {

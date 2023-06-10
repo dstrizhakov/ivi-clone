@@ -7,14 +7,16 @@ import MovieBreadcrumbs from '@/components/Breadcrumbs/MovieBreadcrumbs';
 import { useFetchOneFilmQuery } from '@/services/movie.api';
 import { useRouter } from 'next/router';
 import Loader from '@/components/Loader/Loader';
+import { moviesData } from '@/mock/moviesData';
 
 const Movie = () => {
   const router = useRouter();
   const id = router?.query?.id;
-  const { data: movie, error, isLoading } = useFetchOneFilmQuery({ id });
+  const { data: movie, isLoading } = useFetchOneFilmQuery({ id });
 
   const { t, i18n } = useTranslation();
-  if (error) return <NotFoundPage />;
+  const caughtMovie = movie?.id ? movie : moviesData[0];
+  if (!caughtMovie?.id) return <NotFoundPage />;
   const genres = movie?.genres?.length ? movie?.genres[0] : '';
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')
@@ -28,13 +30,13 @@ const Movie = () => {
       <Head>
         <title>
           {i18n.language == 'en'
-            ? movie?.originalTitle && `Movie ${movie?.originalTitle}`
-            : `Фильм ${movie?.title}`}
+            ? movie?.originalTitle && `Movie ${caughtMovie?.originalTitle}`
+            : `Фильм ${caughtMovie?.title}`}
         </title>
       </Head>
       <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
       {isLoading && <Loader />}
-      {!isLoading && movie && <WatchPage movie={movie} />}
+      {!isLoading && <WatchPage movie={caughtMovie} />}
     </>
   );
 };

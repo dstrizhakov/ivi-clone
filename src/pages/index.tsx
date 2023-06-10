@@ -4,8 +4,6 @@ import Carousel from '@/components/Carousel/Carousel';
 import MainPageDescription from '@/components/MainPage/MainPageDescription';
 import PromoCarousel from '@/components/Carousel/PromoCarousel/PromoCarousel';
 import Card from '@/components/Card/Card';
-import { wrapper } from '@/store/store';
-import { GetServerSideProps } from 'next';
 import { useTranslation } from 'react-i18next';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
@@ -52,12 +50,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//.. тут будем проверять авторизован ли пользователь и сохранять данные о нем
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-  (store) => async (context) => {
-    // console.log('CONTEXT', context);
-    // console.log('STORE', store);
-    return { props: {} };
-  }
-);

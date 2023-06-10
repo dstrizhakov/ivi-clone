@@ -9,6 +9,7 @@ import { IMovie } from '@/types/types';
 import { useTranslation } from 'react-i18next';
 import { T10Card } from './Top10CarouselCard';
 import top10 from '@/../public/top10/top10.svg';
+import Link from 'next/link';
 interface iCarousel {
   data: IMovie[];
 }
@@ -53,8 +54,12 @@ const Top10Carousel: FC<iCarousel> = ({ data }) => {
   return (
     <div className={styles.carousel}>
       <div className={styles.title}>
-        <Image src={top10} alt={'top10'} />
-        <Htag tag={'h3'}>{t('sections.during-week')}</Htag>
+        <Link href={'/movies'}>
+          <Image src={top10} alt={'top10'} />
+        </Link>
+        <Link href={'/movies'}>
+          <Htag tag={'h3'}>{t('sections.during-week')}</Htag>
+        </Link>
       </div>
       <Slider {...settings}>
         {data.slice(0, 10).map((card: IMovie, index: number) => (

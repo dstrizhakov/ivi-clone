@@ -6,6 +6,7 @@ import Filters from '../../components/Filters/Filters';
 import { useTranslation } from 'react-i18next';
 import Grid from '@/components/Grid/Grid';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import { moviesData } from '@/mock/moviesData';
 
 const Movies = () => {
   const { data: movies } = useFetchAllMoviesQuery({});
@@ -23,6 +24,7 @@ const Movies = () => {
       <MoviesPageDescription />
       <Filters />
       <Grid array={movies} />
+      <Grid array={moviesData} />
     </>
   );
 };

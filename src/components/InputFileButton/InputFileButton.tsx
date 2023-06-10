@@ -3,7 +3,7 @@ import styles from './InputFileButton.module.scss';
 import { useTranslation } from 'react-i18next';
 
 interface InputFileProps {
-  setSelected: any;
+  setSelected: unknown;
 }
 
 const InputFileButton: FC<InputFileProps> = ({ setSelected }) => {

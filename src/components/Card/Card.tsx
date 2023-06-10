@@ -40,7 +40,7 @@ const Card: FC<CardProps> = ({
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
-              {rate%1 ? rate : `${rate}.0`}
+              {rate % 1 ? rate : `${rate}.0`}
               <div className={styles.graphs}>
                 <BarGraph width={rate * 0.7 * 10 - 0.2} />
                 <BarGraph width={rate * 0.9 * 10 - 0.2} />

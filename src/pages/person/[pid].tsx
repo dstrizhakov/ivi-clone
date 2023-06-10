@@ -6,12 +6,14 @@ import { useFetchOnePersonQuery } from '@/services/person.api';
 import { useRouter } from 'next/router';
 import Loader from '@/components/Loader/Loader';
 import React from 'react';
+import { persons } from '@/mock/persons';
 
 const Person = () => {
   const router = useRouter();
   const pid = router.query.pid;
-  const { data: person, isLoading, error } = useFetchOnePersonQuery(pid);
-  if (error) return <NotFoundPage />;
+  const { data: person, isLoading } = useFetchOnePersonQuery(pid);
+  const caughtPerson = person?.id ? person : persons[0];
+  if (!caughtPerson) return <NotFoundPage />;
 
   return (
     <>
@@ -21,7 +23,7 @@ const Person = () => {
         </title>
       </Head>
       {isLoading && <Loader />}
-      {!isLoading && person && <PersonInfo person={person} />}
+      {!isLoading && caughtPerson && <PersonInfo person={caughtPerson} />}
     </>
   );
 };
