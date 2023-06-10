@@ -148,15 +148,13 @@ const SignInUser = async (email: string, password: string) => {
   console.log('====================================================');
 
   if (res.ok && user) {
-    const currentUser = {
+    return {
       name: user.profileInfo.name,
       email: email,
       picture: user.profileInfo.photo,
       sub: undefined,
       token: user.token.token,
     };
-    return currentUser;
-    // return user;
   }
   return null;
 };

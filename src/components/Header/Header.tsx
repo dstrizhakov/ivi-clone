@@ -17,11 +17,12 @@ import logo from '@/../public/iviLogo.svg';
 import { useTranslation } from 'react-i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
-import { useSession } from 'next-auth/react';
+import { useAppSelector } from '@/hooks/redux';
+import { selectAuth } from '@/store/reducers/auth.slice';
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
+  const { photo } = useAppSelector(selectAuth);
   return (
     <header className="header">
       <div className="container">
@@ -93,7 +94,7 @@ const Header: FC = () => {
             <Submenu icon={MdNotificationsNone} link={'/notifications'}>
               <Alerts />
             </Submenu>
-            <Submenu icon={BiUser} user={session?.user?.image || null} link={'/profile'} outline>
+            <Submenu icon={BiUser} user={photo || null} link={'/profile'} outline>
               <User />
             </Submenu>
           </div>

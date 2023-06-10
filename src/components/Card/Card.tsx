@@ -10,6 +10,7 @@ import FindSimilarButton from '@/components/Card/CardButtons/FindSimilarButton';
 import BlockButton from '@/components/Card/CardButtons/BlockButton';
 import styles from './Card.module.scss';
 import Image from 'next/image';
+import CardLoader from '@/components/Card/CardLoader';
 
 const Card: FC<CardProps> = ({
   card,
@@ -20,17 +21,14 @@ const Card: FC<CardProps> = ({
   block = false,
   ...props
 }): JSX.Element => {
+  if (!card?.id) return <CardLoader />;
+  const { id, card_image, rating, country, genres, year, duration, originalTitle, title } = card;
+  const i18nTitle = i18next.language == 'en' ? originalTitle || title : title || '';
+  const rate = rating?.length ? rating[0] : 9.0;
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} draggable="false" {...props}>
+    <Link href={`/watch/${id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
-        <Image
-          src={card.card_image}
-          alt={card.title}
-          width={234}
-          height={360}
-          quality={85}
-          priority
-        />
+        <Image src={card_image} alt={title} width={234} height={360} quality={85} priority />
         <div className={styles.props}>
           <div className={styles.btns__container}>
             <div className={styles.btns}>
@@ -42,32 +40,31 @@ const Card: FC<CardProps> = ({
           </div>
           <div className={styles.info}>
             <div className={styles.ratings}>
-              {card.rating}
+              {rate % 1 ? rate : `${rate}.0`}
               <div className={styles.graphs}>
-                <BarGraph width={+card.rating[0] * 0.7 * 10 - 0.2} />
-                <BarGraph width={+card.rating[0] * 0.9 * 10 - 0.2} />
-                <BarGraph width={+card.rating[0] * 1.2 * 10 - 0.2} />
-                <BarGraph width={+card.rating[0] * 0.8 * 10 - 0.2} />
+                <BarGraph width={rate * 0.7 * 10 - 0.2} />
+                <BarGraph width={rate * 0.9 * 10 - 0.2} />
+                <BarGraph width={rate * 1.2 * 10 - 0.2} />
+                <BarGraph width={rate * 0.8 * 10 - 0.2} />
               </div>
             </div>
             <div className={styles.singleGraph}>
               <span>{i18next.language == 'en' ? 'actors' : 'актёры'}</span>
-              <BarGraph width={+card.rating[0] * 10 - 0.2} />
+              <BarGraph width={(rate || 9.0) * 10 - 0.2} />
             </div>
-            <div className={styles.info__text}>
+            <section className={styles.info__text}>
               <div className={styles.info__row}>
-                {card.year}, {card.countries[0]}, {card.genres[0]}
+                {year && `${year}, `}
+                {country && `${country}, `}
+                {genres?.length && `${genres[0]}`}
               </div>
-              <div className={styles.info__row}>{card.duration}</div>
-            </div>
+              <div className={styles.info__row}>{duration.hours}</div>
+            </section>
           </div>
         </div>
       </div>
-      <div
-        className={styles.textSection}
-        title={i18next.language == 'en' ? (card.originalTitle ? card.originalTitle : card.title) : card.title}
-      >
-        <P>{i18next.language == 'en' ? (card.originalTitle ? card.originalTitle : card.title) : card.title}</P>
+      <div className={styles.textSection} title={i18nTitle}>
+        <P>{i18nTitle}</P>
       </div>
     </Link>
   );

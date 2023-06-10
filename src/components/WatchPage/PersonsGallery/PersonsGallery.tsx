@@ -20,34 +20,33 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
     <>
       {list.length > 0 && (
         <div className={styles.wrap}>
-          <div className={styles.title} onClick={() => open()}>
+          <div className={styles.title} onClick={open}>
             <Htag tag={'h4'}>{t('sections.actors-creators')}</Htag>
           </div>
           <div className={styles.list}>
             <div className={styles.list__wrap}>
               {[...new Set(list)].map((person) => {
+                const { id, url, fullName, fullNameEn, name, enName } = person;
                 return (
-                  <Link
-                    href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
-                    key={person.id}
-                    className={styles.link}
-                  >
+                  <Link href={`/person/${person.id}`} key={id} className={styles.link}>
                     <div className={styles.card}>
-                      <Image src={person.url} width={88} height={88} alt="" />
+                      <Image src={url} width={88} height={88} alt="" />
                     </div>
                     <div>
-                      {(i18n.language == 'en' ? person.enName : person.name).split(' ').map((n) => (
-                        <p key={person.id + n} className={styles.name}>
-                          {n}
-                        </p>
-                      ))}
+                      {(i18n.language == 'en' ? fullName || name : fullNameEn || enName)
+                        .split(' ')
+                        .map((n) => (
+                          <p key={id + n} className={styles.name}>
+                            {n}
+                          </p>
+                        ))}
                       <P size="S">{i18n.language == 'en' ? 'actor' : 'актер'}</P>
                     </div>
                   </Link>
                 );
               })}
             </div>
-            <div className={cn(styles.card, styles.card__text)} onClick={() => open()}>
+            <div className={cn(styles.card, styles.card__text)} onClick={open}>
               {t('buttons.more')}
             </div>
           </div>

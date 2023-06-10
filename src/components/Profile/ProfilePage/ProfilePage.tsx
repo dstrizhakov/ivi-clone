@@ -4,7 +4,6 @@ import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import { iCardEnum } from '@/components/Profile/ProfileButton/ProfileButtons.props';
 import { BtnA } from '@/components/Button/Button.props';
-import { signOut, useSession } from 'next-auth/react';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 import SubscriptionsButton from '@/components/Profile/ProfilePage/ProfileBtns/SubscriptionsButton';
 import CertificatesButton from '@/components/Profile/ProfilePage/ProfileBtns/CertificatesButton';
@@ -24,28 +23,41 @@ import EditProfile from '@/components/Profile/EditProfile';
 import ChecksButton from '@/components/Profile/ProfilePage/ProfileBtns/ChecksButton';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { logout, selectAuth } from '@/store/reducers/auth.slice';
+import RegisterForm from '@/components/Auth/RegisterForm/RegisterForm';
+import Link from 'next/link';
 
 const ProfilePage = ({ ...props }) => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
+  const { user } = useAppSelector(selectAuth);
+
+  const dispatch = useAppDispatch();
+
+  const logoutFunc = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className={styles.profile__btns} {...props}>
-      {session && (
+      {user && (
         <div className={styles.select_profile}>
           <div className={styles.select_container}>
             <ProfileSelector />
           </div>
         </div>
       )}
-      {session && session?.user ? (
+      <RegisterForm />
+      {user ? (
         <EditProfile />
       ) : (
         <div className={styles.login_button}>
           <LoginButton />
         </div>
       )}
-
+      <Link href={'/admin'}>
+        <Button>admin</Button>{' '}
+      </Link>
       <ul className={styles.list}>
         <li className={`${styles.list__item} ${styles.subscription}`}>
           <SubscriptionsButton />
@@ -86,7 +98,7 @@ const ProfilePage = ({ ...props }) => {
         <li className={`${styles.list__item} ${styles.smalls}`}>
           <CodeLoginButton />
         </li>
-        {session && session?.user && (
+        {user && (
           <li className={`${styles.list__item} ${styles.smalls}`}>
             <ChecksButton />
           </li>
@@ -99,11 +111,11 @@ const ProfilePage = ({ ...props }) => {
         </li>
       </ul>
       <div className={styles.bottom}>
-        {session && session?.user ? (
+        {user ? (
           <>
             <Button
               appearance={BtnA.transparent}
-              onClick={() => signOut()}
+              onClick={logoutFunc}
               title={t('buttons.logout') || 'Выйти'}
             >
               <RiLogoutBoxRLine />

@@ -9,6 +9,7 @@ interface iModal {
   showSearch: boolean;
   showPersonsModal: boolean;
   showFooterModal: boolean;
+  showEditProfile: boolean;
   personModalItem: IMovie | null;
 }
 
@@ -18,6 +19,7 @@ const initialState: iModal = {
   showSearch: false,
   showPersonsModal: false,
   showFooterModal: false,
+  showEditProfile: false,
   personModalItem: null,
 };
 
@@ -43,6 +45,9 @@ export const modalsSlice = createSlice({
     setShowFooterModal: (state, action: PayloadAction<boolean>) => {
       state.showFooterModal = action.payload;
     },
+    setShowEditProfile: (state, action: PayloadAction<boolean>) => {
+      state.showEditProfile = action.payload;
+    },
   },
   //>>>>>>
   extraReducers: (builder) => {
@@ -62,6 +67,7 @@ export const {
   setShowRating,
   setShowPersonsModal,
   setShowFooterModal,
+  setShowEditProfile,
   setPersonItems,
 } = modalsSlice.actions;
 export default modalsSlice.reducer;

@@ -1,4 +1,5 @@
 @use 'sass:math';
+@import '@/styles/variables.scss';
 
 #__next {
   height: 100%;
@@ -26,19 +27,33 @@ main {
   flex: 1 1 auto;
   margin: 0 20px;
   padding: 0 math.div($containerPadding, 2) + px;
+  @media screen and (max-width: 1160px) {
+    margin-bottom: 60px; //footer
+  }
 }
 
 .container {
   max-width: $maxWidthContainer + px;
   box-sizing: content-box;
   margin: 0 auto;
-  @media screen and (max-width: 1160px) {
-    margin-bottom: 60px; //footer
-  }
 }
 
 .header {
   padding: 0 math.div($containerPadding, 2) + px;
   margin: 0 20px;
   z-index: 3;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  background:
+          linear-gradient(to bottom right,#0000 calc(50% - 80px), #2a2849 50%,#0000 calc(60% + 80px))
+          bottom right/calc(200% + 160px) calc(200% + 160px)
+          #1f1b2e;
+  animation: loading 2s infinite ;
+}
+
+@keyframes loading {
+  100% {background-position: top left}
 }

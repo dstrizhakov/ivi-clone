@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
+import 'i18next';
 
 export interface CarouselProps {
-  title?: string;
+  title?: unknown;
   route?: string;
   showAll?: boolean;
   children: ReactNode;

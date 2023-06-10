@@ -2,7 +2,6 @@
 @import '@/styles/mixins.scss';
 
 .submenu {
-  flex: 0 0 40px;
   .submenu__body {
     @media screen and (max-width: $pc) {
       display: none;
@@ -72,6 +71,7 @@
     width: rem(48);
     height: rem(48);
     cursor: pointer;
+    object-fit: cover;
     transition: $time-main;
     & img {
       padding: rem(0);

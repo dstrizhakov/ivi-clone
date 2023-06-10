@@ -7,14 +7,19 @@ import { IoDiamondOutline, IoTimerOutline } from 'react-icons/io5';
 import { TbDeviceTvOld } from 'react-icons/tb';
 import { GoCreditCard } from 'react-icons/go';
 import Link from 'next/link';
-import { useSession, signOut } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
 import ProfileSelector from '@/components/Profile/ProfileSelector/ProfileSelector';
 import LoginButton from '@/components/Profile/LoginButton/LoginButton';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { logout, selectAuth } from '@/store/reducers/auth.slice';
 
 const User: FC = (): JSX.Element => {
-  const { data: session } = useSession();
   const { t } = useTranslation();
+  const { user } = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
+  const logoutFunc = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className={styles.user__content}>
@@ -39,16 +44,16 @@ const User: FC = (): JSX.Element => {
           <LinkCard icon={GoCreditCard} title={t('buttons.payment')} link="/purchases" />
         </div>
         <div className={styles.content__auth}>
-          {session ? <ProfileSelector /> : <LoginButton />}
+          {user ? <ProfileSelector /> : <LoginButton />}
           <div className={styles.content__links}>
-            {session && (
+            {user && (
               <Link href="https://www.ivi.tv/profile/profile_info">
                 {t('buttons.edit-profile')}
               </Link>
             )}
             <Link href={'https://www.ivi.tv/profile/settings'}>{t('buttons.settings')}</Link>
-            <Link href={'https://ask.ivi.ru/'}>{t('buttons.support')}</Link>
-            {session && <span onClick={() => signOut()}>{t('buttons.logout')}</span>}
+            <Link href={'/admin'}>{t('buttons.support')}</Link>
+            {user && <span onClick={logoutFunc}>{t('buttons.logout')}</span>}
           </div>
         </div>
       </div>
