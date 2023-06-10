@@ -3,9 +3,15 @@ import BreadCrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import Head from 'next/head';
 import SeriesPageDescription from '@/components/SeriesPage/SeriesPageDescription';
 import { useTranslation } from 'react-i18next';
+import Filters from '@/components/Filters/Filters';
+import Grid from '@/components/Grid/Grid';
+import { moviesData } from '@/mock/moviesData';
+import { useFetchAllMoviesQuery } from '@/services/movie.api';
 
 const Series = () => {
   const { t } = useTranslation();
+  const { data: movies } = useFetchAllMoviesQuery({});
+
   const breadcrumbs = [
     { name: t('sections.my-ivi'), path: '/' },
     { name: t('sections.series'), path: '/series' },
@@ -17,6 +23,9 @@ const Series = () => {
       </Head>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <SeriesPageDescription />
+      <Filters />
+      <Grid array={movies} />
+      <Grid array={moviesData} />
     </>
   );
 };

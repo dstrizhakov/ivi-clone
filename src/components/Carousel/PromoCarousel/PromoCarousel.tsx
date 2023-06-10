@@ -61,7 +61,12 @@ const PromoCarouselSlide: FC<iSlide> = ({ slide }): JSX.Element => {
           <div className={styles.content_container}>
             <div className={styles.logo} style={{ color: `${color ? 'white' : 'black'}` }}>
               {slide.logo ? (
-                <Image src={slide.logo} alt="logo" fill />
+                <Image
+                  src={slide.logo}
+                  alt="logo"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               ) : (
                 <Htag tag={'h2'}>{slide.name}</Htag>
               )}

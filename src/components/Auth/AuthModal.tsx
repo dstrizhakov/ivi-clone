@@ -16,27 +16,38 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useTranslation } from 'react-i18next';
 import { BtnA } from '../Button/Button.props';
 import Link from 'next/link';
-import { Router } from 'next/router';
+import { useGoogleLoginQuery, useLoginMutation } from '@/services/auth.api';
+import { useRouter } from 'next/router';
+import { logout, selectAuth, setUser } from '@/store/reducers/auth.slice';
+import { REGEX_EMAIL, REGEX_PASSWORD } from '@/constants/Constants';
 
 const AuthModal: FC = (): JSX.Element => {
   const { t } = useTranslation();
 
+  const router = useRouter();
   const [progress, setProgress] = useState<number>(5);
   const [step, setStep] = useState<number>(1);
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
-
   const { showAuth } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShowAuth(false));
     setStep(() => 1);
   };
+  const { user } = useAppSelector(selectAuth);
 
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
+  const [loginFunc] = useLoginMutation();
+  const { data: googleLogin } = useGoogleLoginQuery();
 
-  console.log(status, session);
+  const logoutFunc = () => {
+    signOut().then(() => {
+      dispatch(logout());
+      router.push('/profile').then(() => {});
+    });
+  };
 
   const nextStep = () => {
     if (step < 4) {
@@ -62,10 +73,18 @@ const AuthModal: FC = (): JSX.Element => {
         setProgress(50);
         break;
       case 3:
-        setProgress(70);
-        break;
-      case 4:
-        setProgress(100);
+        setProgress(75);
+
+        loginFunc({ email: login, password })
+          .unwrap()
+          .then((res) => {
+            setProgress(100);
+            dispatch(setUser(res));
+            close();
+            setPassword(() => '');
+            setLogin(() => '');
+          })
+          .catch((rejected) => console.error(rejected));
         break;
     }
   }, [step]);
@@ -115,9 +134,11 @@ const AuthModal: FC = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.chat__body}>
-          {session ? (
+          {user ? (
             <div className={styles.chat__message}>
-              <h1 onClick={() => signOut()}>{t('sections.already-signed')}</h1>
+              <h1 onClick={() => logoutFunc()} title={'Нажмите, чтобы выйти из аккаунта'}>
+                {t('sections.already-signed')}
+              </h1>
             </div>
           ) : (
             <>
@@ -166,6 +187,7 @@ const AuthModal: FC = (): JSX.Element => {
                     {!showPassword ? (
                       <AiOutlineEye
                         className={`${styles.input__show} ${
+                          //todo: менять цвет при невалидных данных (!login.match(REGEX_EMAIL))
                           !!password && styles.input__showActive
                         }`}
                         onClick={toggleShowPassword}
@@ -182,19 +204,35 @@ const AuthModal: FC = (): JSX.Element => {
                 </>
               )}
               {step < 2 ? (
-                <button disabled={!login} className={styles.button} onClick={nextStep}>
+                <button
+                  disabled={!login.match(REGEX_EMAIL)}
+                  className={styles.button}
+                  onClick={nextStep}
+                >
                   {t('buttons.continue')}
                 </button>
               ) : (
-                <button disabled={!login} className={styles.button} onClick={() => handleAuth()}>
+                <button
+                  disabled={!password.match(REGEX_PASSWORD)}
+                  className={styles.button}
+                  onClick={nextStep}
+                >
                   {t('buttons.login')}
                 </button>
               )}
               {step < 2 ? (
                 <>
                   <div className={styles.chat__oauth}>
+                    <Link
+                      href={'http://localhost:3001/auth/google/login'}
+                      target={'_blank'}
+                      className={styles.button}
+                    >
+                      <span>{t('buttons.login-with')} Google backend</span>
+                      <SlSocialGoogle />
+                    </Link>
                     <button className={styles.button} onClick={() => handleGoogleSingIn()}>
-                      <span>{t('buttons.login-with')} Google</span>
+                      <span>{t('buttons.login-with')} Google nextauth</span>
                       <SlSocialGoogle />
                     </button>
                     <button className={styles.button} onClick={() => handleVkSingIn()}>
@@ -205,7 +243,7 @@ const AuthModal: FC = (): JSX.Element => {
                   <div className={styles.chat__confidential}>
                     <p>{t('sections.click-continue-agree')}</p>
                     <p>
-                      <span>{t('sections.descriptions.with')} </span>
+                      <span>{t('descriptions.with')} </span>
                       <Link
                         href="https://www.ivi.tv/info/confidential"
                         target="_blank"

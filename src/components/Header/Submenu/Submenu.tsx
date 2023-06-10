@@ -15,7 +15,6 @@ export interface SubmenuProps {
 
 const Submenu: FC<SubmenuProps> = ({ icon, user, title, link, outline, children }): JSX.Element => {
   const IconComponent = icon || undefined;
-
   if (!user) {
     return (
       <div className={styles.submenu}>

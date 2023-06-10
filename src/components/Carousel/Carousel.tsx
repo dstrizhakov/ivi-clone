@@ -100,6 +100,7 @@ const Carousel: FC<CarouselProps> = ({
             </div>
             <MdArrowForwardIos />
           </Link>
+          <div />
         </div>
       )}
       <Slider {...settings}>

@@ -10,26 +10,30 @@ import { setPersonItems } from '@/store/reducers/modals.slice';
 import { useAppDispatch } from '@/hooks/redux';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
-import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import { useFetchAllFilmsQuery } from '@/services/movie.api';
+import { moviesData } from '@/mock/moviesData';
+import { persons } from '@/mock/persons';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
-  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({ limit: 15 });
+  const { data: movies, error, isLoading } = useFetchAllFilmsQuery({ limit: 15 });
   const dispatch = useAppDispatch();
   const [bgColor, setBgColor] = useState('');
   useEffect(() => {
     const fac = new FastAverageColor();
 
     dispatch(setPersonItems(movie));
-    fac
-      .getColorAsync(movie.card_image, {
-        algorithm: 'simple',
-      })
-      .then((color) => {
-        setBgColor(() => color.hex);
-      });
+    if (movie.card_image) {
+      fac
+        .getColorAsync(movie.card_image, {
+          algorithm: 'simple',
+        })
+        .then((color) => {
+          setBgColor(() => color.hex);
+        });
+    }
   }, [dispatch, movie]);
 
-  const { title, originalTitle, trailer, persons } = movie;
+  const { title, originalTitle, trailer, persons: personsData } = movie;
 
   return (
     <>
@@ -43,7 +47,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         <div className={styles.watch__content}>
           <div className={styles.watch__row}>
             <div className={styles.watch__player}>
-              <Player url={trailer} />
+              <Player url={trailer || 'https://www.youtube.com/watch?v=ysz5S6PUM-U'} />
             </div>
             <MovieInfo movie={movie} />
           </div>
@@ -56,9 +60,17 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
           }
           route={'/'}
         >
-          {!isLoading && !error && movies.map((card) => <Card card={card} book key={card.id} />)}
+          {!isLoading && !error && movies?.length
+            ? movies
+            : moviesData.map((card) => <Card card={card} book key={card.id} />)}
         </Carousel>
-        <PersonsGallery list={persons} />
+        <PersonsGallery
+          list={
+            personsData?.actor && personsData?.director
+              ? [...personsData.actor, ...personsData.director]
+              : persons
+          }
+        />
       </section>
     </>
   );

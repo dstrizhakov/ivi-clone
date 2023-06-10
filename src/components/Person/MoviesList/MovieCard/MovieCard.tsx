@@ -6,19 +6,20 @@ import Link from 'next/link';
 import { Button } from '@/components/Button/Button';
 import { P } from '@/components/P/P';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 
 const MovieCard: FC<MovieCardProps> = ({ card }) => {
   const { t } = useTranslation();
+  const { id, year, title, rating } = card;
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card} key={card.id}>
+    <Link href={`/watch/${id}`} className={styles.card} key={id}>
       <div className={styles.info}>
-        <img src={card.card_image} alt="" className={styles.card_image} />
-        {/*todo: change to Image*/}
+        <Image width={128} height={197} src={card.card_image} alt="" />
         <div>
-          <P color={'white'}>{card.year}</P>
-          <P color={'white'}>{card.title}</P>
+          <P color={'white'}>{year}</P>
+          <P color={'white'}>{title}</P>
           <P size={'S'}>
-            {t('categories.rating')}: {card.rating}
+            {t('categories.rating')}: {rating}
           </P>
         </div>
       </div>

@@ -6,7 +6,7 @@
   "reviews": "Отзывы",
   "novelties": "Новинки",
   "selections": "Подборки",
-  "rating": "Иви рейтинг",
+  "rating": "Рейтинг Кинопоиска",
   "trailers": "Трейлеры",
   "what-to-watch": "Что посмотреть",
   "hd-movies": "Фильмы в HD",
@@ -24,5 +24,4 @@
   "documentary": "Документальное",
   "ivi-rating-movies": "Иви.Рейтинг фильмы",
   "ivi-rating-series": "Иви.Рейтинг сериалы"
-
 }

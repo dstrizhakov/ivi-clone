@@ -1,3 +1,5 @@
+@import '@/styles/variables.scss';
+
 .carousel {
   -webkit-tap-highlight-color: transparent;
   .title {
@@ -8,35 +10,81 @@
     margin: 10px 0;
     img {
       margin-right: 10px;
+      user-select: none;
+      -webkit-user-drag: none;
     }
+  }
+  .card {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
   }
 }
 
 .card {
-  width: 100%;
+  cursor: pointer;
+  position: relative;
+  padding: 15px 10px 10px;
   height: 100%;
+  width: 100%;
+  &:hover {
+    transform: scale(1.04) translateY(0);
+  }
+  .fade, .fade_footer {
+    height: 80%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
   .fade {
+    height: 30%;
     background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
-    transition-duration: .4s;
     &_footer {
-      background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
       transition-duration: .4s;
+      background-image: linear-gradient(0deg,#100e19,rgba(16,14,25,0));
     }
   }
   &_image {
+    background-color: #1f1b2e;
     border-radius: 8px 8px 0 0;
-    display: flex;
-  }
-  .logo {
+    aspect-ratio: 13/20;
     position: relative;
-    top: -80px;
-    &_image{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+    overflow: hidden;
+    max-height: 360px;
+    height: 100%;
+    img {
       width: 100%;
+      height: 100%;
     }
   }
-
+  .logo {
+    left: 0;
+    bottom: 20%;
+    position: absolute;
+    right: 0;
+    padding: 0 20px;
+    &_image{
+      align-items: flex-end;
+      display: flex;
+      justify-content: center;
+    }
+    &_title {
+      text-align: center;
+      display: flex;
+      font-weight: 700;
+      color: $color-input;
+      min-height: 20px;
+    }
+  }
+  .place_number {
+    display: flex;
+    bottom: 0;
+    height: 66px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    transition-duration: .4s;
+  }
 }

@@ -8,8 +8,13 @@ import LikeButton from '@/components/Comment/Buttons/LikeButton';
 import DisLikeButton from '@/components/Comment/Buttons/DisLikeButton';
 import { useTranslation } from 'react-i18next';
 import { BtnA, BtnS } from '@/components/Button/Button.props';
+import { IComment } from '@/types/types';
 
-const Comment: FC = ({ comment, ...props }): JSX.Element => {
+interface iCommentComp {
+  comment: IComment;
+}
+
+const Comment: FC<iCommentComp> = ({ comment, ...props }): JSX.Element => {
   const [answer, setAnswer] = useState<boolean>(false);
   const value = Math.round(Math.random() * 200 - 100);
   const { t } = useTranslation();

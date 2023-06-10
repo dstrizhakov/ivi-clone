@@ -13,9 +13,7 @@ const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
       {person ? (
         <>
           <div className={styles.wrapCard}>
-            <Link
-              href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
-            >
+            <Link href={`/person/${person.id}`}>
               <div className={styles.person}>
                 <Image width={44} height={44} src={person.url} alt={person.name} />
               </div>
@@ -28,9 +26,11 @@ const PersonCard: FC<PersonCardProps> = ({ person, children }) => {
       ) : (
         <>
           <div className={styles.wrapCard}>
-            <div className={styles.rating}>{children}</div>
+            <div className={styles.rating}>{children || '9.0'}</div>
           </div>
-          <div className={styles.card_name}>{t('categories.rating')}</div>
+          <div className={styles.card_name} title={t('categories.rating')}>
+            {t('categories.rating')}
+          </div>
         </>
       )}
     </div>

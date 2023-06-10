@@ -14,9 +14,34 @@ export type QueryParams = {
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVER + '/film' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:3001' + '/film',
+    credentials: 'same-origin',
+    prepareHeaders: (headers) => {
+      headers.set('Content-Type', 'application/json');
+      headers.set('Access-Control-Allow-Origin', '*');
+      headers.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+      return headers;
+    },
+  }),
   tagTypes: ['Movie'],
   endpoints: (build) => ({
+    fetchOneFilm: build.query<IMovie, string | number>({
+      query: ({ id }) => ({
+        url: `/${id}`,
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
+    fetchAllFilms: build.query<IMovie[], unknown>({
+      query: ({ genres, limit = 15 }) => ({
+        url: '/',
+        params: {
+          genres: genres,
+          limit: limit,
+        },
+        providesTags: (result) => ['Movie'],
+      }),
+    }),
     fetchAllMovies: build.query<IMovie[], QueryParams>({
       query: ({
         limit = 100,
@@ -31,6 +56,60 @@ export const movieApi = createApi({
       }) => ({
         url: '/movies',
         params: {
+          limit: limit,
+          page: page,
+          directors: persons,
+          actors: actors,
+          countries: countries,
+          rates_amount: rates_amount,
+          genres: genres,
+          rating: rating,
+          year: years,
+        },
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
+    fetchAllCartoons: build.query<IMovie[], QueryParams>({
+      query: ({
+        limit = 100,
+        page = 1,
+        persons,
+        actors,
+        countries,
+        rating,
+        rates_amount,
+        genres,
+        years,
+      }) => ({
+        url: '/cartoons',
+        params: {
+          limit: limit,
+          page: page,
+          directors: persons,
+          actors: actors,
+          countries: countries,
+          rates_amount: rates_amount,
+          genres: genres,
+          rating: rating,
+          year: years,
+        },
+      }),
+      providesTags: (result) => ['Movie'],
+    }),
+    fetchAllSeries: build.query<IMovie[], QueryParams>({
+      query: ({
+        limit = 100,
+        page = 1,
+        persons,
+        actors,
+        countries,
+        rating,
+        rates_amount,
+        genres,
+        years,
+      }) => ({
+        url: '/series',
+        params: {
           _limit: limit,
           _page: page,
           _directors: persons,
@@ -44,15 +123,9 @@ export const movieApi = createApi({
       }),
       providesTags: (result) => ['Movie'],
     }),
-    fetchOneMovie: build.query<IMovie, string | number>({
-      query: (id) => ({
-        url: `/movies/${id}`,
-      }),
-      providesTags: (result) => ['Movie'],
-    }),
-    addOneMovie: build.mutation<IMovie, IMovie>({
+    addOneFilm: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
-        url: '/movies',
+        url: '/',
         method: 'POST',
         body: movie,
       }),
@@ -60,15 +133,15 @@ export const movieApi = createApi({
     }),
     updateMovie: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
-        url: `/movies/${movie.id}`,
+        url: `/${movie.id}`,
         method: 'PUT',
         body: movie,
       }),
       invalidatesTags: ['Movie'],
     }),
-    deleteOneMovie: build.mutation<IMovie, number>({
+    deleteOneFilm: build.mutation<IMovie, number>({
       query: (id) => ({
-        url: `/movies/${id}`,
+        url: `/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Movie'],
@@ -77,8 +150,11 @@ export const movieApi = createApi({
 });
 
 export const {
+  useFetchOneFilmQuery,
+  useFetchAllFilmsQuery,
   useFetchAllMoviesQuery,
-  useFetchOneMovieQuery,
-  useDeleteOneMovieMutation,
-  useAddOneMovieMutation,
+  useFetchAllSeriesQuery,
+  useFetchAllCartoonsQuery,
+  useDeleteOneFilmMutation,
+  useAddOneFilmMutation,
 } = movieApi;

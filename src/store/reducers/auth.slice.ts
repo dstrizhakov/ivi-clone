@@ -1,25 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
 import { RootState } from '../store';
-
-export enum Roles {
-  admin = 'admin',
-  user = 'user',
-  unknown = 'unknown',
-}
+import { IUser } from '@/types/types';
 
 export interface IAuth {
-  user: object | null;
+  user: IUser | null;
+  photo: string | null;
   token: string | null;
-  role: Roles;
   favorites?: string[];
   watched?: string[];
 }
 
+interface ISign {
+  profileInfo: IUser;
+  token: { token: string };
+}
+
 const initialState: IAuth = {
   user: null,
+  photo: null,
   token: null,
-  role: Roles.unknown,
   favorites: [],
   watched: [],
 };
@@ -28,30 +27,33 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<IAuth>) => {
-      const { user, role, favorites, watched, accessToken } = action.payload;
-      state.token = accessToken;
-      state.user = user;
-      state.role = role;
-      state.favorites = favorites;
-      state.watched = watched;
+    setUser: (state: IAuth, action: PayloadAction<ISign>) => {
+      const { profileInfo, token } = action.payload;
+      state.user = profileInfo;
+      if (profileInfo.photo) {
+        state.photo = `http://localhost:3001/photo/${profileInfo.photo}`;
+      }
+      state.token = token.token;
+      localStorage.setItem('token', state.token);
     },
-    logout: (state) => {
-      state.token = null;
+    logout: (state: IAuth) => {
       state.user = null;
-      state.role = null;
+      state.token = null;
+      state.photo = null;
       state.favorites = [];
       state.watched = [];
+      localStorage.removeItem('token');
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(HYDRATE, (state, action) => {
-      return {
-        ...state,
-        ...action.payload.authReducer,
-      };
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(HYDRATE, (state, action) => {
+  //     console.log('HYDRATE');
+  //     // return {
+  //     //   ...state,
+  //     //   ...action.payload.authReducer,
+  //     // };
+  //   });
+  // },
 });
 
 export const selectAuth = (state: RootState) => state.authReducer;

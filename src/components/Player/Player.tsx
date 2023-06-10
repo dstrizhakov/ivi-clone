@@ -3,11 +3,11 @@ import dynamic from 'next/dynamic';
 import { FC, useEffect, useState } from 'react';
 import { PlayerProps } from './Player.props';
 import { Button } from '../Button/Button';
-const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: true });
 import { IoPlayOutline } from 'react-icons/io5';
 import { FiUpload } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import AddToFavoritesButton from '@/components/Card/CardButtons/AddToFavoritesButton';
+const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: true });
 
 const Player: FC<PlayerProps> = ({ url }) => {
   const { t } = useTranslation();

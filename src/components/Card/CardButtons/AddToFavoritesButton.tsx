@@ -6,7 +6,7 @@ import { BtnA } from '@/components/Button/Button.props';
 const AddToFavoritesButton = () => {
   const [booked, setBooked] = useState<boolean>(false);
 
-  const addToFavorite = (e) => {
+  const addToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.nativeEvent.stopImmediatePropagation();
     setBooked((booked) => !booked);

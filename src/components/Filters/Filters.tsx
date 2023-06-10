@@ -19,11 +19,8 @@ const Filters: FC = (): JSX.Element => {
   const [chosenSausages, setSausages] = useState([]);
   const { t } = useTranslation();
   useEffect(() => {
-    setActive(
-      () =>
-        chosen.find((i) => i.category.length)?.category?.length ||
-        chosenSausages.find((item) => item.id)
-    );
+    const isAlreadyActive = chosen.find((i) => i.category.length)?.category?.length;
+    setActive(() => isAlreadyActive || chosenSausages.find((item) => item.id));
   }, [chosen, chosenSausages]);
   const reset = () => {
     setChosen(() => []);
@@ -73,7 +70,7 @@ const Filters: FC = (): JSX.Element => {
           <Button
             appearance={BtnA.transparent}
             className={styles.reset}
-            onClick={() => reset()}
+            onClick={reset}
             disabled={!active}
           >
             <div>

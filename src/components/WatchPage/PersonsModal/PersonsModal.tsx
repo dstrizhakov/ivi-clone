@@ -57,29 +57,30 @@ const PersonsModal: FC = () => {
               <TabPanel className={styles.tabs__content}>
                 <Htag tag="h3">{t('categories.actors')}</Htag>
                 <div className={styles.cards} onClick={() => close()}>
-                  {personModalItem?.persons.map((person) => {
-                    return (
-                      <Link
-                        href={`/person/${person.id}`} //href={`/person/${nameToLink(person.enName)}`}
-                        key={Math.random() * person.id}
-                        className={styles.link}
-                      >
-                        <div className={styles.card}>
-                          <Image width={120} height={144} src={person.url} alt="" />
-                        </div>
-                        <div>
-                          {(i18n.language == 'en' ? person.enName : person.name)
-                            .split(' ')
-                            .map((n) => (
-                              <p key={Math.random() * person.id} className={styles.name}>
-                                {n}
-                              </p>
-                            ))}
-                          <P size="S">3 {i18n.language == 'en' ? 'movies' : 'фильма'}</P>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                  {personModalItem?.persons.length &&
+                    personModalItem?.persons.map((person) => {
+                      return (
+                        <Link
+                          href={`/person/${person.id}`}
+                          key={person.id + 'id'}
+                          className={styles.link}
+                        >
+                          <div className={styles.card}>
+                            <Image width={120} height={144} src={person.url} alt="" />
+                          </div>
+                          <div>
+                            {(i18n.language == 'en' ? person.enName : person.name)
+                              .split(' ')
+                              .map((n) => (
+                                <p key={Math.random() * person.id} className={styles.name}>
+                                  {n}
+                                </p>
+                              ))}
+                            <P size="S">3 {i18n.language == 'en' ? 'movies' : 'фильма'}</P>
+                          </div>
+                        </Link>
+                      );
+                    })}
                 </div>
               </TabPanel>
               <TabPanel className={styles.tabs__content}>
@@ -95,15 +96,16 @@ const PersonsModal: FC = () => {
               </TabPanel>
             </Tabs>
             <div className={styles.movie}>
-              <Image
-                width={128}
-                height={196}
-                onClick={() => close()}
-                className={styles.movie__img}
-                src={personModalItem?.card_image} //"https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
-                alt=""
-              />
-
+              {personModalItem.card_image && (
+                <Image
+                  width={128}
+                  height={196}
+                  onClick={() => close()}
+                  className={styles.movie__img}
+                  src={personModalItem.card_image} //"https://thumbs.dfs.ivi.ru/storage2/contents/5/b/1a320c6f0240982ad3f287e19afa91.jpg/128x196/?q=85"
+                  alt=""
+                />
+              )}
               <div className={styles.movie__info}>
                 <div className={styles.graphs}>
                   <span>9,1</span>

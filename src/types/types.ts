@@ -14,7 +14,7 @@ export interface IMovieOld {
   trailer: string;
   card_image: string;
   year: string;
-  countries: string[]; //всегда массив (иначе лищняя проверка типа), в карточках используем первое значение
+  countries: string[]; //всегда массив (иначе лишняя проверка типа), в карточках используем первое значение
   rating: string;
   genres: string[];
   duration: string;
@@ -115,12 +115,16 @@ export interface IReviews {
   comments: IComment[];
   film: string;
 }
+export interface IDuration {
+  hours: number;
+}
 
 export interface IMovie {
   //фильм
   id: number | string; //
   year: number;
   title: string;
+  preview: string;
   originalTitle?: string;
   slogan: string;
   originalSlogan?: string;
@@ -129,11 +133,13 @@ export interface IMovie {
   ageRestrictionId: number;
   personsInFilm: IPersonsInFilm[];
   filmGenres: IGenres[];
-  duration: string;
+  duration: IDuration;
   ageRestriction: IAgeRestriction[];
   reviews: IReviews[];
   country: ICountry;
-  card_image: string; //нет в документации
+  //нет в документации
+  card_image: string;
+  logo?: string;
 }
 
 export interface IUser {
@@ -144,7 +150,7 @@ export interface IUser {
   surname: string;
   nickname: string;
   country: string;
+  photo?: string;
   city: string;
   role: IRole[];
-  photo: string;
 }

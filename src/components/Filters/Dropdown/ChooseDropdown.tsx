@@ -4,7 +4,14 @@ import { BsCheckLg } from 'react-icons/bs';
 import { categories } from '@/mock/filters';
 import Dropdown from '@/components/Filters/Dropdown/Dropdown';
 
-const ChooseDropdown: FC = ({ state, plank, chosen, change }): JSX.Element => {
+interface iChooseDropdown {
+  state: boolean;
+  plank: unknown[];
+  chosen: unknown[];
+  change: unknown;
+}
+
+const ChooseDropdown: FC<iChooseDropdown> = ({ state, plank, chosen, change }): JSX.Element => {
   return (
     <Dropdown state={state}>
       <div className={`${styles.dropdown} ${styles.choose}`}>

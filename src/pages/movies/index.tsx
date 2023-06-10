@@ -6,15 +6,15 @@ import Filters from '../../components/Filters/Filters';
 import { useTranslation } from 'react-i18next';
 import Grid from '@/components/Grid/Grid';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import { moviesData } from '@/mock/moviesData';
 
 const Movies = () => {
-  const { data: movies, error, isLoading } = useFetchAllMoviesQuery({});
+  const { data: movies } = useFetchAllMoviesQuery({});
   const { t } = useTranslation();
   const breadcrumbs = [
     { name: t('sections.my-ivi'), path: '/' },
     { name: t('sections.movies'), path: '/movies' },
   ];
-
   return (
     <>
       <Head>
@@ -23,7 +23,8 @@ const Movies = () => {
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <MoviesPageDescription />
       <Filters />
-      {movies && !error && !isLoading && <Grid array={movies} />}
+      <Grid array={movies} />
+      <Grid array={moviesData} />
     </>
   );
 };

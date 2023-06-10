@@ -4,19 +4,26 @@ import Head from 'next/head';
 import i18next from 'i18next';
 import { useFetchOnePersonQuery } from '@/services/person.api';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader/Loader';
+import React from 'react';
+import { persons } from '@/mock/persons';
 
 const Person = () => {
   const router = useRouter();
-  const { data: person, isLoading, error } = useFetchOnePersonQuery(router.query.pid);
-  if (error) return <NotFoundPage />;
-  if (isLoading) return <div>Loading..</div>;
+  const pid = router.query.pid;
+  const { data: person, isLoading } = useFetchOnePersonQuery(pid);
+  const caughtPerson = person?.id ? person : persons[0];
+  if (!caughtPerson) return <NotFoundPage />;
 
   return (
     <>
       <Head>
-        <title>{i18next.language == 'en' ? person.enName : person.name}</title>
+        <title>
+          {person ? (i18next.language == 'en' ? person.fullNameEn : person.fullName) : ''}
+        </title>
       </Head>
-      <PersonInfo person={person} />
+      {isLoading && <Loader />}
+      {!isLoading && caughtPerson && <PersonInfo person={caughtPerson} />}
     </>
   );
 };

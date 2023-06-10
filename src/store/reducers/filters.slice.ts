@@ -28,16 +28,16 @@ export const filtersSlice = createSlice({
     resetFilters: () => {
       return initialState;
     },
-    setGenres: (state, action) => {
+    setGenres: (state, action: PayloadAction<string[]>) => {
       state.genres = action.payload;
     },
-    setPersons: (state, action) => {
+    setPersons: (state, action: PayloadAction<string[]>) => {
       state.persons = action.payload;
     },
-    setActors: (state, action) => {
+    setActors: (state, action: PayloadAction<string[]>) => {
       state.actors = action.payload;
     },
-    setCountries: (state, action) => {
+    setCountries: (state, action: PayloadAction<string[]>) => {
       state.countries = action.payload;
     },
     setRating: (state, action: PayloadAction<number>) => {

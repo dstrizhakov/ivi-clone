@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-export function useEvent<T extends (...args: unknown[]) => unknown>(fn: T) {
+export function useEvent<T extends (...args: any[]) => any>(fn: T) {
   const ref = useRef(fn);
 
   useEffect(() => {
@@ -8,7 +8,7 @@ export function useEvent<T extends (...args: unknown[]) => unknown>(fn: T) {
   }, [fn]);
 
   return useCallback(
-    (...args) => {
+    (...args: any[]) => {
       return ref.current.apply(null, args);
     },
     [ref]
