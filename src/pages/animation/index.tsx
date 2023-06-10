@@ -7,10 +7,11 @@ import Filters from '@/components/Filters/Filters';
 import Grid from '@/components/Grid/Grid';
 import { moviesData } from '@/mock/moviesData';
 import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import Loader from '@/components/Loader/Loader';
 
 const Index = () => {
   const { t } = useTranslation();
-  const { data: movies } = useFetchAllMoviesQuery({});
+  const { data: movies, isLoading } = useFetchAllMoviesQuery({});
 
   const breadcrumbs = [
     { name: t('sections.my-ivi'), path: '/' },
@@ -24,7 +25,7 @@ const Index = () => {
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <AnimationPageDescription />
       <Filters />
-      <Grid array={movies} />
+      {isLoading ? <Loader /> : <Grid array={movies} />}
       <Grid array={moviesData} />
     </>
   );

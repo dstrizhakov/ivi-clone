@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { IMovie } from '@/types/types';
 import Card from '@/components/Card/Card';
 import { Button } from '@/components/Button/Button';
-import Loader from '@/components/Loader/Loader';
 
 interface iGrid {
   array: IMovie[];
@@ -27,7 +26,7 @@ const Grid: FC<iGrid> = ({ array }) => {
   return (
     <>
       <div className={styles.grid}>
-        {array?.length ? (
+        {array?.length && (
           <div className={styles.grid__container}>
             <ul className={styles.grid__list}>
               {array.slice(0, limit).map((card, index) => (
@@ -37,11 +36,8 @@ const Grid: FC<iGrid> = ({ array }) => {
               ))}
             </ul>
           </div>
-        ) : (
-          <Loader />
         )}
       </div>
-
       {array?.length > limit &&
         (isLoading ? (
           <div className={`${styles.open} loader`}></div>
