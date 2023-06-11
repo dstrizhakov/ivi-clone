@@ -49,20 +49,21 @@ const T10CardLoader: FC<iLoader> = ({ index }): JSX.Element => {
 
 export const T10Card: FC<iCard> = ({ card, index }): JSX.Element => {
   if (!card?.id) return <T10CardLoader index={index} />;
+  const { id, card_image, title, logo } = card;
   return (
-    <Link href={`/watch/${card.id}`} className={styles.card}>
+    <Link href={`/watch/${id}`} className={styles.card}>
       <div className={styles.card_image}>
-        <Image src={card.card_image} alt={card.title} width={234} height={360} />
+        <Image src={card_image} alt={title || 'title'} width={234} height={360} />
       </div>
       <div className={styles.fade} />
       <div className={styles.fade_footer} />
       <div className={styles.logo}>
-        {card?.logo ? (
+        {logo ? (
           <div className={styles.logo_image}>
-            <Image src={card.logo} alt={card.title} />
+            <Image src={logo} alt={title || 'title'} />
           </div>
         ) : (
-          <div className={styles.logo_title}>{card.title}</div>
+          <div className={styles.logo_title}>{title}</div>
         )}
       </div>
       <div className={styles.place_number}>{top[index]}</div>

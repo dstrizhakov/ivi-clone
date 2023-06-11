@@ -16,35 +16,50 @@ const MovieInfo: FC<iInfo> = ({ movie }) => {
     originalTitle,
     slogan,
     originalSlogan,
+    description,
+    enDescription,
     year,
     countries,
     rating,
     genres,
     duration,
     persons,
+    name,
+    enName,
   } = movie;
+  const filmName = title || name || null;
+  const enFilmName = originalTitle || enName || null;
+  const desc = slogan || description;
+  const enDesc = originalSlogan || enDescription;
+
+  const getCountries = () => {
+    //creates a string with all countries divided by comma
+    return countries.reduce((res, next, index) => {
+      return index ? res + ', ' + next : res + next;
+    }, '');
+  };
   return (
     <div className={styles.watch__info}>
       <div className={styles.watch__title}>
         <Htag tag="h2">
           {i18next.language == 'en'
-            ? `Movie ${originalTitle ? originalTitle : title} watch online`
-            : `Фильм ${title} смотреть онлайн`}
+            ? `Movie ${enFilmName || filmName} watch online`
+            : `Фильм ${filmName} смотреть онлайн`}
         </Htag>
       </div>
       <div className={styles.watch__params}>
         <P>
-          {year}, {duration.hours} часа
+          {year}, {typeof duration !== 'string' ? `${duration.hours} часа` : duration}
         </P>
         <P>
-          {countries} {genres?.length && genres.map((genre) => genre.name)}
+          {getCountries()} {genres?.length && genres.map((genre) => genre.name)}
         </P>
       </div>
       <div className={styles.watch__rating}>
         <PersonList list={persons} rating={rating} />
       </div>
       <div className={styles.watch__description}>
-        <P>{i18next.language == 'en' ? originalSlogan || slogan : slogan}</P>
+        <P>{i18next.language == 'en' ? enDesc || desc : desc}</P>
       </div>
       <div className={styles.watch__medallions}></div>
     </div>

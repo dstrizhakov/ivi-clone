@@ -94,7 +94,7 @@ const Carousel: FC<CarouselProps> = ({
     <div className={styles.carousel}>
       {title && (
         <div>
-          <Link href={route ? route : ''} className={styles.title}>
+          <Link href={route || ''} className={styles.title}>
             <div title={title}>
               <Htag tag={'h4'}>{title}</Htag>
             </div>
@@ -106,7 +106,7 @@ const Carousel: FC<CarouselProps> = ({
       <Slider {...settings}>
         {children}
         {showAll && (
-          <Link href={route ? route : ''}>
+          <Link href={route || ''}>
             <ShowAll />
           </Link>
         )}

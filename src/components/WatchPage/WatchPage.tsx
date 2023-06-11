@@ -11,8 +11,6 @@ import { useAppDispatch } from '@/hooks/redux';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
-import { moviesData } from '@/mock/moviesData';
-import { persons } from '@/mock/persons';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const { data: movies, error, isLoading } = useFetchAllFilmsQuery({ limit: 15 });
@@ -33,7 +31,9 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
     }
   }, [dispatch, movie]);
 
-  const { title, originalTitle, trailer, persons: personsData } = movie;
+  const { title, originalTitle, name, enName, trailer, persons: personsData } = movie;
+  const filmName = title || name || null;
+  const enFilmName = originalTitle || enName || null;
 
   return (
     <>
@@ -55,20 +55,19 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         <Carousel
           title={
             i18next.language == 'en'
-              ? `Movies similar to «${originalTitle ? originalTitle : title}»`
+              ? `Movies similar to «${enFilmName || filmName}»`
               : `С фильмом «${title}» смотрят`
           }
           route={'/'}
+          showAll
         >
-          {!isLoading && !error && movies?.length
-            ? movies
-            : moviesData.map((card) => <Card card={card} book key={card.id} />)}
+          {!isLoading && !error && movies.map((card) => <Card card={card} book key={card?.id} />)}
         </Carousel>
         <PersonsGallery
           list={
             personsData?.actor && personsData?.director
               ? [...personsData.actor, ...personsData.director]
-              : persons
+              : personsData
           }
         />
       </section>

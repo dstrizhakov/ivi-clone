@@ -7,12 +7,11 @@ import Card from '@/components/Card/Card';
 import { useTranslation } from 'react-i18next';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import Top10Carousel from '@/components/Carousel/Top10Carousel/Top10Carousel';
-import { moviesData } from '@/mock/moviesData';
 import { IMovie } from '@/types/types';
 import Loader from '@/components/Loader/Loader';
 
 const Home = () => {
-  const { data: movies } = useFetchAllFilmsQuery({});
+  const { data: movies } = useFetchAllFilmsQuery({ limit: 15 });
 
   const { t } = useTranslation();
   return (
@@ -22,14 +21,12 @@ const Home = () => {
       </Head>
       <PromoCarousel />
       <MainPageDescription />
+      <Top10Carousel data={movies?.length ? movies : [...new Array(10)]} />
       <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
         {(movies?.length ? movies : [...new Array(15)]).map((card, index) => (
           <Card card={card} star book find block key={card?.id || index} />
         ))}
       </Carousel>
-      <Top10Carousel data={moviesData.slice(0, 10)} />
-      <Top10Carousel data={movies?.length ? movies : [...new Array(10)]} />
-
       {movies?.length ? (
         <Carousel title={t('carousels.adventures')} route={'/movies'} showAll={movies?.length > 15}>
           {movies.map((card: IMovie, index: number) => (
@@ -39,12 +36,6 @@ const Home = () => {
       ) : (
         <Loader />
       )}
-
-      <Carousel title={t('carousels.adventures')} route={'/movies'} showAll>
-        {moviesData.map((card) => (
-          <Card card={card} star book find block key={card.id} />
-        ))}
-      </Carousel>
     </>
   );
 };

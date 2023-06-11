@@ -28,7 +28,14 @@ const Card: FC<CardProps> = ({
   return (
     <Link href={`/watch/${id}`} className={styles.card} draggable="false" {...props}>
       <div className={`${styles.imageSection} ${hover && styles.hover}`}>
-        <Image src={card_image} alt={title} width={234} height={360} quality={85} priority />
+        <Image
+          src={card_image}
+          alt={title || 'title'}
+          width={234}
+          height={360}
+          quality={85}
+          priority
+        />
         <div className={styles.props}>
           <div className={styles.btns__container}>
             <div className={styles.btns}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NotFoundPage from '@/pages/404';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ import { BtnA } from '@/components/Button/Button.props';
 import { BsTrash } from 'react-icons/bs';
 import { useSearchParamsState } from '@/hooks/useSearchParamsState';
 import AddNewMovie from '@/components/AdminPage/AddNewMovie';
-import { moviesData } from '@/mock/moviesData';
+import Loader from '@/components/Loader/Loader';
 
 const Admin = () => {
   const { user } = useAppSelector(selectAuth);
@@ -28,7 +28,6 @@ const Admin = () => {
     page: page,
   });
   if (user) return <NotFoundPage />; //todo: fix when slice is ready
-  //if (!user.roles.find(role => role.name === 'ADMIN')) return <NotFoundPage />;
   const del = (id: number) => {
     try {
       deleteMovie(id);
@@ -45,30 +44,35 @@ const Admin = () => {
       <div>
         <Htag tag={'h3'}>{t('descriptions.admin')}</Htag>
         <AddNewMovie />
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {(!error && !isLoading && movies?.length ? movies : moviesData).map((movie) => (
-            <div
-              key={movie.id}
-              style={{
-                margin: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Card card={movie} />
-              {!movies?.length && <div>mock data, unable to change</div>}
-              <Button
-                appearance={BtnA.circle}
-                style={{ margin: '3px' }}
-                onClick={() => del(movie.id)}
+        {error || isLoading || !movies?.length ? (
+          <Loader />
+        ) : (
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {movies.map((movie) => (
+              <div
+                key={movie.id}
+                style={{
+                  margin: '20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
               >
-                <BsTrash />
-              </Button>
-            </div>
-          ))}
-        </div>
+                <Card card={movie} />
+                {!movies?.length && <div>mock data, unable to change</div>}
+                <Button
+                  appearance={BtnA.circle}
+                  style={{ margin: '3px' }}
+                  onClick={() => del(movie.id)}
+                >
+                  <BsTrash />
+                </Button>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {[...Array(5)].map((i, index) => (
             <Button style={{ margin: '10px' }} key={index} onClick={() => setPage(() => index + 1)}>

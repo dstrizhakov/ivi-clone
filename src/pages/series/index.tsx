@@ -5,14 +5,12 @@ import SeriesPageDescription from '@/components/SeriesPage/SeriesPageDescription
 import { useTranslation } from 'react-i18next';
 import Filters from '@/components/Filters/Filters';
 import Grid from '@/components/Grid/Grid';
-import { moviesData } from '@/mock/moviesData';
-import { useFetchAllMoviesQuery } from '@/services/movie.api';
+import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import Loader from '@/components/Loader/Loader';
 
 const Series = () => {
   const { t } = useTranslation();
-  const { data: movies, isLoading } = useFetchAllMoviesQuery({});
-
+  const { data: movies, isLoading, error } = useFetchAllFilmsQuery({});
   const breadcrumbs = [
     { name: t('sections.my-ivi'), path: '/' },
     { name: t('sections.series'), path: '/series' },
@@ -25,8 +23,8 @@ const Series = () => {
       <BreadCrumbs breadcrumbs={breadcrumbs} />
       <SeriesPageDescription />
       <Filters />
-      {isLoading ? <Loader /> : <Grid array={movies} />}
-      <Grid array={moviesData} />
+      {(isLoading || error) && <Loader />}
+      {!isLoading && <Grid array={movies?.length ? movies : new Array(10)} />}
     </>
   );
 };

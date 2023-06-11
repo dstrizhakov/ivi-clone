@@ -16,112 +16,31 @@ export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001' + '/film',
-    credentials: 'same-origin',
-    prepareHeaders: (headers) => {
-      headers.set('Content-Type', 'application/json');
-      headers.set('Access-Control-Allow-Origin', '*');
-      headers.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-      return headers;
-    },
   }),
-  tagTypes: ['Movie'],
+  tagTypes: ['Movies'],
   endpoints: (build) => ({
     fetchOneFilm: build.query<IMovie, string | number>({
       query: ({ id }) => ({
         url: `/${id}`,
       }),
-      providesTags: (result) => ['Movie'],
+      providesTags: (result) =>
+        result
+          ? [...result.map(({ id }) => ({ type: 'Movies', id })), { type: 'Movies', id: 'LIST' }]
+          : [{ type: 'Movies', id: 'LIST' }],
     }),
     fetchAllFilms: build.query<IMovie[], unknown>({
-      query: ({ genres, limit = 15 }) => ({
+      query: ({ genres, limit = 15, page }) => ({
         url: '/',
         params: {
           genres: genres,
-          limit: limit,
-        },
-        providesTags: (result) => ['Movie'],
-      }),
-    }),
-    fetchAllMovies: build.query<IMovie[], QueryParams>({
-      query: ({
-        limit = 100,
-        page = 1,
-        persons,
-        actors,
-        countries,
-        rating,
-        rates_amount,
-        genres,
-        years,
-      }) => ({
-        url: '/movies',
-        params: {
-          limit: limit,
-          page: page,
-          directors: persons,
-          actors: actors,
-          countries: countries,
-          rates_amount: rates_amount,
-          genres: genres,
-          rating: rating,
-          year: years,
-        },
-      }),
-      providesTags: (result) => ['Movie'],
-    }),
-    fetchAllCartoons: build.query<IMovie[], QueryParams>({
-      query: ({
-        limit = 100,
-        page = 1,
-        persons,
-        actors,
-        countries,
-        rating,
-        rates_amount,
-        genres,
-        years,
-      }) => ({
-        url: '/cartoons',
-        params: {
-          limit: limit,
-          page: page,
-          directors: persons,
-          actors: actors,
-          countries: countries,
-          rates_amount: rates_amount,
-          genres: genres,
-          rating: rating,
-          year: years,
-        },
-      }),
-      providesTags: (result) => ['Movie'],
-    }),
-    fetchAllSeries: build.query<IMovie[], QueryParams>({
-      query: ({
-        limit = 100,
-        page = 1,
-        persons,
-        actors,
-        countries,
-        rating,
-        rates_amount,
-        genres,
-        years,
-      }) => ({
-        url: '/series',
-        params: {
           _limit: limit,
           _page: page,
-          _directors: persons,
-          _actors: actors,
-          _countries: countries,
-          _rates_amount: rates_amount,
-          _genres: genres,
-          _rating: rating,
-          _year: years,
         },
       }),
-      providesTags: (result) => ['Movie'],
+      providesTags: (result) =>
+        result
+          ? [...result.map(({ id }) => ({ type: 'Movies', id })), { type: 'Movies', id: 'LIST' }]
+          : [{ type: 'Movies', id: 'LIST' }],
     }),
     addOneFilm: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
@@ -129,7 +48,7 @@ export const movieApi = createApi({
         method: 'POST',
         body: movie,
       }),
-      invalidatesTags: ['Movie'],
+      invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
     }),
     updateMovie: build.mutation<IMovie, IMovie>({
       query: (movie) => ({
@@ -137,14 +56,14 @@ export const movieApi = createApi({
         method: 'PUT',
         body: movie,
       }),
-      invalidatesTags: ['Movie'],
+      invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
     }),
-    deleteOneFilm: build.mutation<IMovie, number>({
+    deleteOneFilm: build.mutation<IMovie, string>({
       query: (id) => ({
         url: `/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Movie'],
+      invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
     }),
   }),
 });
@@ -152,9 +71,6 @@ export const movieApi = createApi({
 export const {
   useFetchOneFilmQuery,
   useFetchAllFilmsQuery,
-  useFetchAllMoviesQuery,
-  useFetchAllSeriesQuery,
-  useFetchAllCartoonsQuery,
   useDeleteOneFilmMutation,
   useAddOneFilmMutation,
 } = movieApi;
