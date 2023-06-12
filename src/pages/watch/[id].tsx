@@ -26,8 +26,8 @@ const Movie = () => {
       <Head>
         <title>
           {i18n.language == 'en'
-            ? movie?.originalTitle && `Movie ${movie?.originalTitle}`
-            : `Фильм ${movie?.title}`}
+            ? movie?.originalTitle && `Movie ${movie?.originalTitle || movie?.enName}`
+            : `Фильм ${movie?.title || movie?.name}`}
         </title>
       </Head>
       <MovieBreadcrumbs breadcrumbs={breadcrumbs} />
