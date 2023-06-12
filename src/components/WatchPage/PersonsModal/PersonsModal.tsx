@@ -56,7 +56,7 @@ const PersonsModal: FC = () => {
 
               <TabPanel className={styles.tabs__content}>
                 <Htag tag="h3">{t('categories.actors')}</Htag>
-                <div className={styles.cards} onClick={() => close()}>
+                <div className={styles.cards} onClick={close}>
                   {personModalItem?.persons.length &&
                     personModalItem?.persons.map((person) => {
                       return (
@@ -84,7 +84,7 @@ const PersonsModal: FC = () => {
                 </div>
               </TabPanel>
               <TabPanel className={styles.tabs__content}>
-                <div style={{ maxWidth: '65vw' }}>
+                <div style={{ maxWidth: '30vw' }}>
                   <CommentSection />
                 </div>
               </TabPanel>

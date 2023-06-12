@@ -12,9 +12,12 @@ import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import CommentSection from '@/components/Comment/CommentSection';
+import { useTranslation } from 'react-i18next';
+import { Htag } from '@/components/Htag/Htag';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const { data: movies, error, isLoading } = useFetchAllFilmsQuery({ limit: 15 });
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [bgColor, setBgColor] = useState('');
   useEffect(() => {
@@ -71,6 +74,9 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
               : personsData
           }
         />
+        <div className={styles.comments}>
+          <Htag tag={'h4'}>{t('categories.comments')}</Htag>
+        </div>
         <CommentSection />
       </section>
     </>

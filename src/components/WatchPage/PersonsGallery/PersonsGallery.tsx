@@ -25,7 +25,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
           </div>
           <div className={styles.list}>
             <div className={styles.list__wrap}>
-              {[...new Set(list)].map((person) => {
+              {[...new Set(list)].slice(0, 9).map((person) => {
                 const { id, url, fullName, fullNameEn, name, enName } = person;
                 return (
                   <Link href={`/person/${person.id}`} key={id} className={styles.link}>

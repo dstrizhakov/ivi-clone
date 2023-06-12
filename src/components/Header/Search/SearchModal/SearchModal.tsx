@@ -16,7 +16,6 @@ import { P } from '@/components/P/P';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import { BsPersonCircle } from 'react-icons/bs';
 import { BiMoviePlay } from 'react-icons/bi';
-import Link from 'next/link';
 
 const SearchModal: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
@@ -60,10 +59,10 @@ const SearchModal: FC = (): JSX.Element => {
   };
   const router = useRouter();
   const redirect = (item) => {
-    if (item?.trailer) {
-      router.push(`/watch/${item.id}`);
+    if (item?.id) {
+      item?.trailer ? router.push(`/watch/${item.id}`) : router.push(`/person/${item.id}`);
     } else {
-      router.push(`/person/${item.id}`);
+      router.push(item);
     }
     setTimeout(() => {
       close();
@@ -98,9 +97,9 @@ const SearchModal: FC = (): JSX.Element => {
             {presets.map((preset, index) => (
               <div className={styles.preset} key={index}>
                 <div className={styles.preset_inner}>
-                  <Link className={styles.link} href={'/movies'}>
+                  <a className={styles.link} onClick={() => redirect('/movies')}>
                     {preset}
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}
@@ -115,7 +114,7 @@ const SearchModal: FC = (): JSX.Element => {
                     key={movie.id}
                   >
                     <BiMoviePlay />
-                    <P>{movie.name}</P>
+                    <P>{movie.name || movie.title}</P>
                   </Button>
                 ))
               : ''}
