@@ -11,6 +11,7 @@ import { useAppDispatch } from '@/hooks/redux';
 import MovieInfo from '@/components/WatchPage/MovieInfo/MovieInfo';
 import { FastAverageColor } from 'fast-average-color';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
+import CommentSection from '@/components/Comment/CommentSection';
 
 const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const { data: movies, error, isLoading } = useFetchAllFilmsQuery({ limit: 15 });
@@ -70,6 +71,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
               : personsData
           }
         />
+        <CommentSection />
       </section>
     </>
   );

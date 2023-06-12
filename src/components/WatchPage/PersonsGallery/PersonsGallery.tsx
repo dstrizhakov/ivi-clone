@@ -46,9 +46,11 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
                 );
               })}
             </div>
-            <div className={cn(styles.card, styles.card__text)} onClick={open}>
-              {t('buttons.more')}
-            </div>
+            {list?.length > 10 && (
+              <div className={cn(styles.card, styles.card__text)} onClick={open}>
+                {t('buttons.more')}
+              </div>
+            )}
           </div>
         </div>
       )}
