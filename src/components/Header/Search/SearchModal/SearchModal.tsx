@@ -60,7 +60,7 @@ const SearchModal: FC = (): JSX.Element => {
         return name?.match(regex);
       })
     );
-  }, [query]);
+  }, [movies, persons, query]);
   const clearQuery = (): void => {
     setQuery('');
   };
