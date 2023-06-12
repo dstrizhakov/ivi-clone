@@ -28,7 +28,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
               {[...new Set(list)].slice(0, 9).map((person) => {
                 const { id, url, fullName, fullNameEn, name, enName } = person;
                 return (
-                  <Link href={`/person/${person.id}`} key={id} className={styles.link}>
+                  <Link href={`/person/${id}`} key={id} className={styles.link}>
                     <div className={styles.card}>
                       <Image src={url} width={88} height={88} alt="" />
                     </div>

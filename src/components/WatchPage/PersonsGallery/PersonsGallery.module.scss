@@ -54,6 +54,10 @@
   height: 88px;
   overflow: hidden;
   border-radius: 50%;
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
   img {
     object-fit: cover;
   }
