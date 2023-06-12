@@ -21,7 +21,7 @@ const Home = () => {
       </Head>
       <PromoCarousel />
       <MainPageDescription />
-      <Top10Carousel data={movies?.length ? movies : [...new Array(10)]} />
+      <Top10Carousel data={movies} />
       <Carousel title={t('carousels.foreign-series')} route={'/movies'}>
         {(movies?.length ? movies : [...new Array(15)]).map((card, index) => (
           <Card card={card} star book find block key={card?.id || index} />

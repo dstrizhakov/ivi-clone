@@ -22,7 +22,18 @@ const Card: FC<CardProps> = ({
   ...props
 }): JSX.Element => {
   if (!card?.id) return <CardLoader />;
-  const { id, card_image, rating, country, genres, year, duration, originalTitle, title } = card;
+  const {
+    id,
+    card_image,
+    rating,
+    country,
+    countries,
+    genres,
+    year,
+    duration,
+    originalTitle,
+    title,
+  } = card;
   const i18nTitle = i18next.language == 'en' ? originalTitle || title : title || '';
   const rate = rating?.length ? rating[0] : 9.0;
   return (
@@ -62,7 +73,7 @@ const Card: FC<CardProps> = ({
             <section className={styles.info__text}>
               <div className={styles.info__row}>
                 {year && `${year}, `}
-                {country && `${country}, `}
+                {`${country || countries[0]}, `}
                 {genres?.length && `${genres[0]}`}
               </div>
               <div className={styles.info__row}>{duration.hours}</div>

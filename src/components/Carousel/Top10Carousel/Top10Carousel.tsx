@@ -62,9 +62,11 @@ const Top10Carousel: FC<iCarousel> = ({ data }) => {
         </Link>
       </div>
       <Slider {...settings}>
-        {data.slice(0, 10).map((card: IMovie, index: number) => (
-          <T10Card card={card} index={index} key={card?.id || index} />
-        ))}
+        {(data?.length ? data : new Array(10).fill(0))
+          .slice(0, 10)
+          .map((card: IMovie, index: number) => (
+            <T10Card card={card} index={index} key={card?.id || index} />
+          ))}
       </Slider>
     </div>
   );

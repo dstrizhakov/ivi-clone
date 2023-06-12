@@ -14,7 +14,7 @@ exports[`card card object empty card  1`] = `
           class="imageSection false"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -40,7 +40,7 @@ exports[`card card object empty card  1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -98,36 +98,29 @@ exports[`card card object empty card  1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -142,7 +135,7 @@ exports[`card card object empty card  1`] = `
         class="imageSection false"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -168,7 +161,7 @@ exports[`card card object empty card  1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -226,36 +219,29 @@ exports[`card card object empty card  1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,
@@ -327,7 +313,7 @@ exports[`card params all 1`] = `
           class="imageSection hover"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -444,7 +430,7 @@ exports[`card params all 1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -502,36 +488,29 @@ exports[`card params all 1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -546,7 +525,7 @@ exports[`card params all 1`] = `
         class="imageSection hover"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -663,7 +642,7 @@ exports[`card params all 1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -721,36 +700,29 @@ exports[`card params all 1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,
@@ -822,7 +794,7 @@ exports[`card params block 1`] = `
           class="imageSection hover"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -870,7 +842,7 @@ exports[`card params block 1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -928,36 +900,29 @@ exports[`card params block 1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -972,7 +937,7 @@ exports[`card params block 1`] = `
         class="imageSection hover"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -1020,7 +985,7 @@ exports[`card params block 1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -1078,36 +1043,29 @@ exports[`card params block 1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,
@@ -1179,7 +1137,7 @@ exports[`card params book 1`] = `
           class="imageSection hover"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -1223,7 +1181,7 @@ exports[`card params book 1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -1281,36 +1239,29 @@ exports[`card params book 1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -1325,7 +1276,7 @@ exports[`card params book 1`] = `
         class="imageSection hover"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -1369,7 +1320,7 @@ exports[`card params book 1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -1427,36 +1378,29 @@ exports[`card params book 1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,
@@ -1528,7 +1472,7 @@ exports[`card params find 1`] = `
           class="imageSection hover"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -1590,7 +1534,7 @@ exports[`card params find 1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -1648,36 +1592,29 @@ exports[`card params find 1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -1692,7 +1629,7 @@ exports[`card params find 1`] = `
         class="imageSection hover"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -1754,7 +1691,7 @@ exports[`card params find 1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -1812,36 +1749,29 @@ exports[`card params find 1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,
@@ -1913,7 +1843,7 @@ exports[`card params no hover 1`] = `
           class="imageSection false"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -1939,7 +1869,7 @@ exports[`card params no hover 1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -1997,36 +1927,29 @@ exports[`card params no hover 1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -2041,7 +1964,7 @@ exports[`card params no hover 1`] = `
         class="imageSection false"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -2067,7 +1990,7 @@ exports[`card params no hover 1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -2125,36 +2048,29 @@ exports[`card params no hover 1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,
@@ -2226,7 +2142,7 @@ exports[`card params star 1`] = `
           class="imageSection hover"
         >
           <img
-            alt="Гарри Поттер и Дары Смерти: Часть I"
+            alt="title"
             data-nimg="1"
             decoding="async"
             fetchpriority="high"
@@ -2270,7 +2186,7 @@ exports[`card params star 1`] = `
               <div
                 class="ratings"
               >
-                9,5
+                9.0
                 <div
                   class="graphs"
                 >
@@ -2328,36 +2244,29 @@ exports[`card params star 1`] = `
                   />
                 </div>
               </div>
-              <div
+              <section
                 class="info__text"
               >
                 <div
                   class="info__row"
                 >
-                  2011
-                  , 
-                  С
-                  , 
+                  2011, 
                   Фэнтези
                 </div>
                 <div
                   class="info__row"
-                >
-                  2ч 50мин
-                </div>
-              </div>
+                />
+              </section>
             </div>
           </div>
         </div>
         <div
           class="textSection"
-          title="Гарри Поттер и Дары Смерти: Часть I"
+          title=""
         >
           <p
             class="p M"
-          >
-            Гарри Поттер и Дары Смерти: Часть I
-          </p>
+          />
         </div>
       </a>
     </div>
@@ -2372,7 +2281,7 @@ exports[`card params star 1`] = `
         class="imageSection hover"
       >
         <img
-          alt="Гарри Поттер и Дары Смерти: Часть I"
+          alt="title"
           data-nimg="1"
           decoding="async"
           fetchpriority="high"
@@ -2416,7 +2325,7 @@ exports[`card params star 1`] = `
             <div
               class="ratings"
             >
-              9,5
+              9.0
               <div
                 class="graphs"
               >
@@ -2474,36 +2383,29 @@ exports[`card params star 1`] = `
                 />
               </div>
             </div>
-            <div
+            <section
               class="info__text"
             >
               <div
                 class="info__row"
               >
-                2011
-                , 
-                С
-                , 
+                2011, 
                 Фэнтези
               </div>
               <div
                 class="info__row"
-              >
-                2ч 50мин
-              </div>
-            </div>
+              />
+            </section>
           </div>
         </div>
       </div>
       <div
         class="textSection"
-        title="Гарри Поттер и Дары Смерти: Часть I"
+        title=""
       >
         <p
           class="p M"
-        >
-          Гарри Поттер и Дары Смерти: Часть I
-        </p>
+        />
       </div>
     </a>
   </div>,

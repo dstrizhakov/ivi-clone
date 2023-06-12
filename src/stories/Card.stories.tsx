@@ -50,6 +50,15 @@ export const Hover = {
   },
 };
 
+export const LoadingCard = {
+  title: 'Main/Card',
+  component: CardWM,
+  args: {
+    card: null,
+    hover: false,
+  },
+};
+
 export const NoHover = {
   args: {
     card: card,
