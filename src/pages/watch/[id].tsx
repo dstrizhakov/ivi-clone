@@ -26,7 +26,7 @@ const Movie = () => {
       <Head>
         <title>
           {i18n.language == 'en'
-            ? movie?.originalTitle && `Movie ${movie?.originalTitle || movie?.enName}`
+            ? `Movie ${movie?.originalTitle || movie?.enName}`
             : `Фильм ${movie?.title || movie?.name}`}
         </title>
       </Head>
