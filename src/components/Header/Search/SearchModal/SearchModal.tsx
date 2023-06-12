@@ -65,8 +65,10 @@ const SearchModal: FC = (): JSX.Element => {
     } else {
       router.push(`/person/${item.id}`);
     }
-    close();
-    clearQuery();
+    setTimeout(() => {
+      close();
+      clearQuery();
+    }, 300);
   };
   usePreventScroll(showSearch);
   const presets = ['Премьеры фильмов', 'Новинки подписки', 'Сериалы Amediateka', 'Высокий рейтинг'];
