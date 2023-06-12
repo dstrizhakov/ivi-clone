@@ -24,7 +24,7 @@ export const movieApi = createApi({
         url: `/${id}`,
       }),
       providesTags: (result) =>
-        result
+        result?.length
           ? [...result.map(({ id }) => ({ type: 'Movies', id })), { type: 'Movies', id: 'LIST' }]
           : [{ type: 'Movies', id: 'LIST' }],
     }),
@@ -38,7 +38,7 @@ export const movieApi = createApi({
         },
       }),
       providesTags: (result) =>
-        result
+        result?.length
           ? [...result.map(({ id }) => ({ type: 'Movies', id })), { type: 'Movies', id: 'LIST' }]
           : [{ type: 'Movies', id: 'LIST' }],
     }),
