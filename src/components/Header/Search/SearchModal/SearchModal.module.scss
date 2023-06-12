@@ -64,6 +64,7 @@
 }
 
 .body {
+  max-width: 860px;
   margin-top: rem(60);
   & h3 {
     font-size: rem(40);
@@ -79,4 +80,8 @@
   justify-items: start;
   overflow: hidden;
   white-space: nowrap;
+  button p:hover {
+    transition: .3s;
+    color: $color-input;
+  }
 }

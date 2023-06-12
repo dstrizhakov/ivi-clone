@@ -13,6 +13,7 @@ import { Button } from '@/components/Button/Button';
 import { BtnA } from '@/components/Button/Button.props';
 import { useRouter } from 'next/navigation';
 import { P } from '@/components/P/P';
+import { useFetchAllFilmsQuery } from '@/services/movie.api';
 
 const SearchModal: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
@@ -23,28 +24,56 @@ const SearchModal: FC = (): JSX.Element => {
     dispatch(setShowSearch(false));
   };
   const { data: persons } = useFetchAllPersonsQuery();
-  const [match, setMatch] = useState([]);
+  const { data: movies } = useFetchAllFilmsQuery({ limit: 100 });
+
+  const [personMatch, setPersonMatch] = useState([]);
+  const [movieMatch, setMovieMatch] = useState([]);
   const changeQuery = (e) => {
     setQuery(() => e.target.value);
   };
   useEffect(() => {
     if (query?.length) {
-      setMatch(
-        [...persons].filter((person) => {
+      setPersonMatch(() =>
+        persons.filter((item) => {
           const regex = new RegExp(query, 'gi');
-          return person?.name.match(regex);
+          const name =
+            item?.name ||
+            item?.enName ||
+            item?.fullName ||
+            item?.fullNameEn ||
+            item?.originalTitle ||
+            item?.title;
+          return name?.match(regex);
+        })
+      );
+      setMovieMatch(() =>
+        movies.filter((item) => {
+          const regex = new RegExp(query, 'gi');
+          const name =
+            item?.name ||
+            item?.enName ||
+            item?.fullName ||
+            item?.fullNameEn ||
+            item?.originalTitle ||
+            item?.title;
+          return name?.match(regex);
         })
       );
     } else {
-      setMatch(() => []);
+      setMovieMatch(() => []);
+      setPersonMatch(() => []);
     }
-  }, [persons, query]);
+  }, [movies, persons, query]);
   const clearQuery = (): void => {
     setQuery('');
   };
   const router = useRouter();
-  const redirect = (id) => {
-    router.push(`/person/${id}`);
+  const redirect = (item) => {
+    if (item?.trailer) {
+      router.push(`/watch/${item.id}`);
+    } else {
+      router.push(`/person/${item.id}`);
+    }
     dispatch(setShowSearch(false));
   };
   usePreventScroll(showSearch);
@@ -69,14 +98,13 @@ const SearchModal: FC = (): JSX.Element => {
           )}
         </div>
         <div className={styles.result}>
-          {match.slice(0, 10).map((person, index) => (
-            <Button
-              onClick={() => redirect(person.id)}
-              appearance={BtnA.transparent}
-              href={`person/${person.id}`}
-              key={person.id}
-            >
-              <P>{index + 1}.</P>
+          {movieMatch.slice(0, 15).map((movie) => (
+            <Button onClick={() => redirect(movie)} appearance={BtnA.transparent} key={movie.id}>
+              <P>{movie.name}</P>
+            </Button>
+          ))}
+          {personMatch.slice(0, 15).map((person) => (
+            <Button onClick={() => redirect(person)} appearance={BtnA.transparent} key={person.id}>
               <P>{person.name}</P>
             </Button>
           ))}
