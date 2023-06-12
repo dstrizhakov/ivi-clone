@@ -70,3 +70,13 @@
     margin-bottom: rem(40);
   }
 }
+
+.result {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  text-align: start;
+  justify-items: start;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -13,11 +13,12 @@ const Person = () => {
   const { data: person, isLoading } = useFetchOnePersonQuery(pid);
   if (!person?.id) return <NotFoundPage />;
 
+  const { fullNameEn, fullName, name, enName } = person;
   return (
     <>
       <Head>
         <title>
-          {person ? (i18next.language == 'en' ? person.fullNameEn : person.fullName) : ''}
+          {person ? (i18next.language == 'en' ? fullNameEn || enName : fullName || name) : ''}
         </title>
       </Head>
       {isLoading && <Loader />}
