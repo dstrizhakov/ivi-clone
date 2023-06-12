@@ -91,45 +91,46 @@ const SearchModal: FC = (): JSX.Element => {
           )}
         </div>
 
-        {!movieMatch?.length &&
-          !personMatch?.length &&
-          presets.map((preset, index) => (
-            <div className={styles.presets} key={index}>
-              <div className={styles.preset}>
+        {!movieMatch?.length && !personMatch?.length ? (
+          <div className={styles.presets}>
+            {presets.map((preset, index) => (
+              <div className={styles.preset} key={index}>
                 <div className={styles.preset_inner}>
                   <Link className={styles.link} href={'/movies'}>
                     {preset}
                   </Link>
                 </div>
               </div>
-            </div>
-          ))}
-        <div className={styles.result}>
-          {movieMatch?.length
-            ? movieMatch.slice(0, 15).map((movie) => (
-                <Button
-                  onClick={() => redirect(movie)}
-                  appearance={BtnA.transparent}
-                  key={movie.id}
-                >
-                  <BiMoviePlay />
-                  <P>{movie.name}</P>
-                </Button>
-              ))
-            : ''}
-          {personMatch?.length
-            ? personMatch.slice(0, 15).map((person) => (
-                <Button
-                  onClick={() => redirect(person)}
-                  appearance={BtnA.transparent}
-                  key={person.id}
-                >
-                  <BsPersonCircle />
-                  <P>{person.name}</P>
-                </Button>
-              ))
-            : ''}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.result}>
+            {movieMatch?.length
+              ? movieMatch.slice(0, 15).map((movie) => (
+                  <Button
+                    onClick={() => redirect(movie)}
+                    appearance={BtnA.transparent}
+                    key={movie.id}
+                  >
+                    <BiMoviePlay />
+                    <P>{movie.name}</P>
+                  </Button>
+                ))
+              : ''}
+            {personMatch?.length
+              ? personMatch.slice(0, 15).map((person) => (
+                  <Button
+                    onClick={() => redirect(person)}
+                    appearance={BtnA.transparent}
+                    key={person.id}
+                  >
+                    <BsPersonCircle />
+                    <P>{person.name}</P>
+                  </Button>
+                ))
+              : ''}
+          </div>
+        )}
       </div>
     </FullScreenModal>
   );
