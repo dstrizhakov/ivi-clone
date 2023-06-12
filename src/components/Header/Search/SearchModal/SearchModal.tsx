@@ -16,6 +16,7 @@ import { P } from '@/components/P/P';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
 import { BsPersonCircle } from 'react-icons/bs';
 import { BiMoviePlay } from 'react-icons/bi';
+import Link from 'next/link';
 
 const SearchModal: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
@@ -34,32 +35,25 @@ const SearchModal: FC = (): JSX.Element => {
     setQuery(() => e.target.value);
   };
   useEffect(() => {
-    setPersonMatch(() =>
-      persons?.filter((item) => {
-        const regex = new RegExp(query, 'gi');
-        const name =
-          item?.name ||
-          item?.enName ||
-          item?.fullName ||
-          item?.fullNameEn ||
-          item?.originalTitle ||
-          item?.title;
-        return name?.match(regex);
-      })
-    );
-    setMovieMatch(() =>
-      movies?.filter((item) => {
-        const regex = new RegExp(query, 'gi');
-        const name =
-          item?.name ||
-          item?.enName ||
-          item?.fullName ||
-          item?.fullNameEn ||
-          item?.originalTitle ||
-          item?.title;
-        return name?.match(regex);
-      })
-    );
+    if (query?.length) {
+      setPersonMatch(() =>
+        persons?.filter((item) => {
+          const regex = new RegExp(query, 'gi');
+          const name = item?.name || item?.enName || item?.fullName || item?.fullNameEn;
+          return name?.match(regex);
+        })
+      );
+      setMovieMatch(() =>
+        movies?.filter((item) => {
+          const regex = new RegExp(query, 'gi');
+          const name = item?.name || item?.enName || item?.originalTitle || item?.title;
+          return name?.match(regex);
+        })
+      );
+    } else {
+      setMovieMatch(() => []);
+      setPersonMatch(() => []);
+    }
   }, [movies, persons, query]);
   const clearQuery = (): void => {
     setQuery('');
@@ -75,6 +69,7 @@ const SearchModal: FC = (): JSX.Element => {
     clearQuery();
   };
   usePreventScroll(showSearch);
+  const presets = ['Премьеры фильмов', 'Новинки подписки', 'Сериалы Amediateka', 'Высокий рейтинг'];
   return (
     <FullScreenModal isOpen={showSearch} closeModal={() => close()}>
       <div className={styles.body}>
@@ -95,6 +90,20 @@ const SearchModal: FC = (): JSX.Element => {
             <IoSearchOutline className={styles.input__icon} />
           )}
         </div>
+
+        {!movieMatch?.length &&
+          !personMatch?.length &&
+          presets.map((preset, index) => (
+            <div className={styles.presets} key={index}>
+              <div className={styles.preset}>
+                <div className={styles.preset_inner}>
+                  <Link className={styles.link} href={'/movies'}>
+                    {preset}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         <div className={styles.result}>
           {movieMatch?.length
             ? movieMatch.slice(0, 15).map((movie) => (
