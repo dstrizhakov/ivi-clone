@@ -10,9 +10,9 @@ import Loader from '@/components/Loader/Loader';
 const Movie = () => {
   const router = useRouter();
   const id = router?.query?.id;
-  const { data: movie, isLoading } = useFetchOneFilmQuery({ id });
+  const { data: movie, isLoading, error } = useFetchOneFilmQuery({ id });
   const { t, i18n } = useTranslation();
-  if (!movie?.id) return <NotFoundPage />;
+  if (error) return <NotFoundPage />;
   const genres = movie?.genres?.length ? movie?.genres[0] : '';
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')

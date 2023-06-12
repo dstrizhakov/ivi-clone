@@ -1,6 +1,7 @@
 import { authApi } from '@/services/auth.api';
 import { movieApi } from '@/services/movie.api';
 import { personApi } from '@/services/person.api';
+import { commentsApi } from '@/services/comments.api';
 import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   movieReducer,
   modalsReducer,
   [movieApi.reducerPath]: movieApi.reducer,
+  [commentsApi.reducerPath]: commentsApi.reducer,
   [personApi.reducerPath]: personApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
 });
@@ -26,7 +28,8 @@ export function makeStore() {
       getDefaultMiddleware()
         .concat(movieApi.middleware)
         .concat(personApi.middleware)
-        .concat(authApi.middleware),
+        .concat(authApi.middleware)
+        .concat(commentsApi.middleware),
   });
 }
 

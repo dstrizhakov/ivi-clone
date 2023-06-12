@@ -21,9 +21,8 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
   const dispatch = useAppDispatch();
   const [bgColor, setBgColor] = useState('');
   useEffect(() => {
-    const fac = new FastAverageColor();
-
     dispatch(setPersonItems(movie));
+    const fac = new FastAverageColor();
     if (movie.card_image) {
       fac
         .getColorAsync(movie.card_image, {
@@ -35,7 +34,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
     }
   }, [dispatch, movie]);
 
-  const { title, originalTitle, name, enName, trailer, persons: personsData } = movie;
+  const { id, title, originalTitle, name, enName, trailer, persons: personsData } = movie;
   const filmName = title || name || null;
   const enFilmName = originalTitle || enName || null;
 
@@ -60,7 +59,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
           title={
             i18next.language == 'en'
               ? `Movies similar to «${enFilmName || filmName}»`
-              : `С фильмом «${title}» смотрят`
+              : `С фильмом «${filmName}» смотрят`
           }
           route={'/'}
           showAll
@@ -77,7 +76,7 @@ const WatchPage: FC<WatchPageProps> = ({ movie }) => {
         <div className={styles.comments}>
           <Htag tag={'h4'}>{t('categories.comments')}</Htag>
         </div>
-        <CommentSection />
+        <CommentSection id={id} />
       </section>
     </>
   );

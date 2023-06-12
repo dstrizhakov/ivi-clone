@@ -22,7 +22,8 @@ export type CommentAvatarProps = {
 };
 
 const CommentAvatar: FC<CommentAvatarProps> = ({ user }): JSX.Element => {
-  const color = user?.userId ? String(user?.userId).split('').reverse()[0] : 0;
+  let color = user?.userId ? String(user?.userId).split('').reverse()[0] : 0;
+  if (typeof color == 'string') color = 0;
   return (
     <div className={styles.user_image}>
       {user?.image ? (
