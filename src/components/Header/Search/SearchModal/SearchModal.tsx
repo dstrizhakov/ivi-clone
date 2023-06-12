@@ -14,6 +14,8 @@ import { BtnA } from '@/components/Button/Button.props';
 import { useRouter } from 'next/navigation';
 import { P } from '@/components/P/P';
 import { useFetchAllFilmsQuery } from '@/services/movie.api';
+import { BsPersonCircle } from 'react-icons/bs';
+import { BiMoviePlay } from 'react-icons/bi';
 
 const SearchModal: FC = (): JSX.Element => {
   const [query, setQuery] = useState<string>('');
@@ -32,38 +34,33 @@ const SearchModal: FC = (): JSX.Element => {
     setQuery(() => e.target.value);
   };
   useEffect(() => {
-    if (query?.length) {
-      setPersonMatch(() =>
-        persons.filter((item) => {
-          const regex = new RegExp(query, 'gi');
-          const name =
-            item?.name ||
-            item?.enName ||
-            item?.fullName ||
-            item?.fullNameEn ||
-            item?.originalTitle ||
-            item?.title;
-          return name?.match(regex);
-        })
-      );
-      setMovieMatch(() =>
-        movies.filter((item) => {
-          const regex = new RegExp(query, 'gi');
-          const name =
-            item?.name ||
-            item?.enName ||
-            item?.fullName ||
-            item?.fullNameEn ||
-            item?.originalTitle ||
-            item?.title;
-          return name?.match(regex);
-        })
-      );
-    } else {
-      setMovieMatch(() => []);
-      setPersonMatch(() => []);
-    }
-  }, [movies, persons, query]);
+    setPersonMatch(() =>
+      persons?.filter((item) => {
+        const regex = new RegExp(query, 'gi');
+        const name =
+          item?.name ||
+          item?.enName ||
+          item?.fullName ||
+          item?.fullNameEn ||
+          item?.originalTitle ||
+          item?.title;
+        return name?.match(regex);
+      })
+    );
+    setMovieMatch(() =>
+      movies?.filter((item) => {
+        const regex = new RegExp(query, 'gi');
+        const name =
+          item?.name ||
+          item?.enName ||
+          item?.fullName ||
+          item?.fullNameEn ||
+          item?.originalTitle ||
+          item?.title;
+        return name?.match(regex);
+      })
+    );
+  }, [query]);
   const clearQuery = (): void => {
     setQuery('');
   };
@@ -74,7 +71,8 @@ const SearchModal: FC = (): JSX.Element => {
     } else {
       router.push(`/person/${item.id}`);
     }
-    dispatch(setShowSearch(false));
+    close();
+    clearQuery();
   };
   usePreventScroll(showSearch);
   return (
@@ -98,16 +96,30 @@ const SearchModal: FC = (): JSX.Element => {
           )}
         </div>
         <div className={styles.result}>
-          {movieMatch.slice(0, 15).map((movie) => (
-            <Button onClick={() => redirect(movie)} appearance={BtnA.transparent} key={movie.id}>
-              <P>{movie.name}</P>
-            </Button>
-          ))}
-          {personMatch.slice(0, 15).map((person) => (
-            <Button onClick={() => redirect(person)} appearance={BtnA.transparent} key={person.id}>
-              <P>{person.name}</P>
-            </Button>
-          ))}
+          {movieMatch?.length
+            ? movieMatch.slice(0, 15).map((movie) => (
+                <Button
+                  onClick={() => redirect(movie)}
+                  appearance={BtnA.transparent}
+                  key={movie.id}
+                >
+                  <BiMoviePlay />
+                  <P>{movie.name}</P>
+                </Button>
+              ))
+            : ''}
+          {personMatch?.length
+            ? personMatch.slice(0, 15).map((person) => (
+                <Button
+                  onClick={() => redirect(person)}
+                  appearance={BtnA.transparent}
+                  key={person.id}
+                >
+                  <BsPersonCircle />
+                  <P>{person.name}</P>
+                </Button>
+              ))
+            : ''}
         </div>
       </div>
     </FullScreenModal>
