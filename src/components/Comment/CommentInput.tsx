@@ -25,7 +25,9 @@ const CommentInput: FC = ({ id, parentId }): JSX.Element => {
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     const newComment = {
       id: self.crypto.randomUUID(),
-      user: user?.name ? user : { userId: `user${self.crypto.randomUUID()}`, name: 'Guest' },
+      user: user?.name
+        ? user
+        : { userId: `user${self.crypto.randomUUID()}`, name: `Guest-${self.crypto.randomUUID()}` },
       date: Date.now(),
       clause: query,
     };
@@ -40,19 +42,19 @@ const CommentInput: FC = ({ id, parentId }): JSX.Element => {
         id,
       });
     } else {
-      const cut = JSON.parse(JSON.stringify(comments.commentsData)).filter(
+      const oldComments = JSON.parse(JSON.stringify(comments.commentsData)).filter(
         (comment) => comment.id !== parentId
       );
-      const newCut = JSON.parse(JSON.stringify(comments.commentsData)).find(
+      const changedComment = JSON.parse(JSON.stringify(comments.commentsData)).find(
         (comment) => comment.id === parentId
       );
-      newCut?.children?.length
-        ? newCut.children.push(newComment)
-        : (newCut.children = [newComment]);
+      changedComment?.children
+        ? changedComment.children.push(newComment)
+        : (changedComment.children = [newComment]);
       addComment({
         comment: {
           id: personModalItem?.id,
-          commentsData: [...cut, newCut],
+          commentsData: [...oldComments, changedComment],
         },
         id,
       });

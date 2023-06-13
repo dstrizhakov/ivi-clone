@@ -17,7 +17,10 @@ const Movie = () => {
   const breadcrumbs = [
     { name: t('sections.movies'), path: '/movies' }, //t('sections.series') t('sections.animation')
     {
-      name: (i18n.language == 'ru' ? genres[0]?.genreName : genres[0]?.genreNameEn) || 'Жанры',
+      name:
+        (i18n.language == 'ru'
+          ? genres || genres[0]?.genreName
+          : genres[0]?.genreNameEn || genres) || 'Жанры',
       path: genres.length ? `/movies/${genres[0]}` : '/movies',
     },
   ];

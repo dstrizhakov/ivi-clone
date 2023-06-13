@@ -4,151 +4,34 @@
       "id": 1,
       "commentsData": [
         {
-          "id": 1,
+          "id": "b16013ce-bdcf-4617-a810-2cdcf9ff8e5c",
           "user": {
-            "userId": 1,
-            "name": "auser1"
+            "userId": "user057a332a-d8ac-4196-9e8b-098110c9f440",
+            "name": "Guest-88b2ffb5-55cd-45b6-9f69-a5612ebfd1f2"
           },
-          "date": "5 марта 2014",
-          "clause": "comment1!",
+          "date": 1686642860582,
+          "clause": "new comment",
           "children": [
             {
-              "id": "c1",
+              "id": "06c88283-960b-4121-b520-b3acc52d15ce",
               "user": {
-                "userId": 2,
-                "name": "inner1"
+                "userId": "user2db7e75b-fb43-466c-a0bb-3754f65d8e48",
+                "name": "Guest-5c64a62a-68ab-4087-8bd8-033183e31467"
               },
-              "date": "12 апреля 2023",
-              "clause": "comment2!",
-              "children": [
-                {
-                  "id": "cc1",
-                  "user": {
-                    "userId": 3,
-                    "name": "innerinner1"
-                  },
-                  "date": "13 июня 2016",
-                  "clause": "comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!comment3!"
-                }
-              ]
-            },
-            {
-              "id": "c2",
-              "user": {
-                "userId": 4,
-                "name": "inner2"
-              },
-              "date": "5 марта 2014",
-              "clause": "comment4!"
+              "date": 1686643020692,
+              "clause": "new answer"
             }
           ]
-        },
-        {
-          "id": 2,
-          "user": {
-            "userId": 5,
-            "name": "buser2"
-          },
-          "date": "5 марта 2014",
-          "clause": "comment2!"
-        },
-        {
-          "id": 3,
-          "user": {
-            "userId": 6,
-            "name": "cuser3"
-          },
-          "date": "5 марта 2014",
-          "clause": "comment3!"
-        },
-        {
-          "id": 4,
-          "user": {
-            "userId": 7,
-            "name": "duser4"
-          },
-          "date": "5 марта 2014",
-          "clause": "comment4!"
-        },
-        {
-          "id": 5,
-          "date": "5 марта 2014",
-          "clause": "comment4!"
         }
       ]
     },
     {
       "id": 11,
-      "commentsData": [
-        {
-          "id": "fca42e01-688d-4a32-9383-c4ed745ae0b7",
-          "user": {
-            "userId": "user679c5c37-1d11-48d3-9b22-889c814d3ccd",
-            "name": "Guest"
-          },
-          "date": "12.05.2023",
-          "clause": "Новый комментарий!"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "commentsData": [
-        {
-          "id": "a3cb6664-14e2-4282-915e-7e97fb993605",
-          "user": {
-            "userId": "useredf70cf6-04a1-4862-b300-adc268c29b54",
-            "name": "Guest"
-          },
-          "date": 1686595363669,
-          "clause": "asdfasdf"
-        },
-        {
-          "id": "516bef9d-de71-4444-80cc-342ebd52dc55",
-          "user": {
-            "userId": "user4d94bc7b-ed83-4f2b-b07f-db6646e96e90",
-            "name": "Guest"
-          },
-          "date": "12.06.2023",
-          "clause": "commmetm",
-          "children": [
-            {
-              "id": "51de15d2-ed6d-4d16-9b1a-ad7b6abe891c",
-              "user": {
-                "userId": "user60096dfd-2152-4662-b25c-719fefc37092",
-                "name": "Guest"
-              },
-              "date": 1686595366758,
-              "clause": "dasdas"
-            }
-          ]
-        }
-      ]
+      "commentsData": []
     },
     {
       "id": 3,
-      "commentsData": [
-        {
-          "id": "c89ca82e-1f03-4006-b10a-6d105c4936a4",
-          "user": {
-            "userId": "user7ff73a97-23f8-4f0a-b860-756f59f143be",
-            "name": "Guest"
-          },
-          "date": 1686595408447,
-          "clause": "dasfasdfdf",
-          "children": [
-            {
-              "id": "e5570f61-a05c-47f3-a358-aa8af2053b39",
-              "user": {
-                "userId": "user64b894ec-8f07-4156-88e9-3e263e91689e",
-                "name": "Guest"
-              },
-              "date": 1686595417732,
-              "clause": "asdfsdafd"
-            }
-          ]
-        }
-      ]
+      "commentsData": []
     },
     {
       "id": 4,
@@ -176,58 +59,11 @@
     },
     {
       "id": 10,
-      "commentsData": [
-        {
-          "id": "042e1bab-b50c-4db5-ac18-7f5fd436a6fa",
-          "user": {
-            "userId": "userb4cc9ba2-6ad8-4b08-9d76-a4cdd500d0ce",
-            "name": "Guest"
-          },
-          "date": "12.05.2023",
-          "clause": "zxczxczxcz"
-        },
-        {
-          "id": "fca42e01-688d-4a32-9383-c4ed745ae0b7",
-          "user": {
-            "userId": "user679c5c37-1d11-48d3-9b22-889c814d3ccd",
-            "name": "Guest"
-          },
-          "date": "12.05.2023",
-          "clause": "Новый комментарий!"
-        },
-        {
-          "id": "37fde16d-fe3e-4ecd-9146-50a30c715dee",
-          "user": {
-            "userId": "usere7f0650f-7bce-4a1c-9524-b0c3ed275a45",
-            "name": "Guest"
-          },
-          "date": "12.05.2023",
-          "clause": "asdasd"
-        }
-      ]
+      "commentsData": []
     },
     {
       "id": 12,
-      "commentsData": [
-        {
-          "id": "1df5e533-67fa-495c-ba5a-e6c5e6130d19",
-          "user": {
-            "userId": "user8c7d2eaa-f479-4209-be4b-492f571fb557",
-            "name": "Guest"
-          },
-          "date": "12.05.2023",
-          "clause": "asdfasdf"
-        },
-        {
-          "id": "2f80dccf-13cd-441f-832e-a238eacf9c11",
-          "user": {
-            "userId": "user964a268b-9ee0-4c2f-ab4f-0998bbe78b09",
-            "name": "Guest"
-          },
-          "date": "12.06.2023",
-          "clause": "qwerewrewrewre"
-        }
-      ]
+      "commentsData": []
     },
     {
       "id": 13,

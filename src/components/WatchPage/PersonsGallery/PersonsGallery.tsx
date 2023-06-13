@@ -33,7 +33,7 @@ export const PersonsGallery: FC<PersonsGalleryProps> = ({ list }) => {
                       <Image src={url} width={88} height={88} alt="" />
                     </div>
                     <div>
-                      {(i18n.language == 'en' ? fullName || name : fullNameEn || enName)
+                      {(i18n.language == 'en' ? fullNameEn || enName : fullName || name)
                         .split(' ')
                         .map((n) => (
                           <p key={id + n} className={styles.name}>
