@@ -248,7 +248,7 @@
         transform: translateY(8px);
       }
       &:focus ~ label {
-        transition: all $time-main;
+        transition: $time-main;
         transform: translateY(-10px);
         font-size: 14px;
       }

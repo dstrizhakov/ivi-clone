@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import styles from './Comment.module.scss';
 import { P } from '@/components/P/P';
 import { Button } from '@/components/Button/Button';
@@ -11,29 +11,32 @@ import { BtnA, BtnS } from '@/components/Button/Button.props';
 import { IComment } from '@/types/types';
 import { useAppSelector } from '@/hooks/redux';
 import { selectModal } from '@/store/reducers/modals.slice';
+import { writeDate } from '@/helpers/writeDate';
 
 interface iCommentComp {
   comment: IComment;
 }
 
 const Comment: FC<iCommentComp> = ({ comment }): JSX.Element => {
-  const [answer, setAnswer] = useState<boolean>(false);
-  const value = Math.round(Math.random() * 200 - 100);
   const { t } = useTranslation();
-  const { personModalItem } = useAppSelector(selectModal);
-  const writeDate = (date) => {
-    const now = new Date(date);
-    const day = now.getDate();
-    const month = now.getMonth() + 1;
-    const year = now.getFullYear();
-    return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}.${year}`;
+  const [answer, setAnswer] = useState<boolean>(false);
+  const { user, date, clause, children, id } = comment;
+  const value = useMemo(() => {
+    return Math.round(Math.random() * 200 - 100);
+  }, []);
+  const stringDate = useMemo(() => {
+    return writeDate(date);
+  }, [date]);
+  const switcher = () => {
+    setAnswer((ans) => !ans);
   };
+  const { personModalItem } = useAppSelector(selectModal);
   return (
     <li className={styles.comment}>
       <header className={styles.user_info}>
-        <CommentAvatar user={comment?.user} />
-        <cite className={styles.item_cite}>{comment?.user?.name}</cite>
-        <time className={styles.item_date}>{writeDate(comment?.date)}</time>
+        <CommentAvatar user={user} />
+        <cite className={styles.item_cite}>{user?.name || 'Guest'}</cite>
+        <time className={styles.item_date}>{stringDate}</time>
         <div className={styles.vote}>
           <LikeButton />
           <div
@@ -48,18 +51,18 @@ const Comment: FC<iCommentComp> = ({ comment }): JSX.Element => {
       </header>
       <div className={styles.clause}>
         <div className={styles.clause_text}>
-          <P color={'white'}>{comment?.clause}</P>
+          <P color={'white'}>{clause}</P>
         </div>
       </div>
       <div className={styles.interactions}>
-        <Button size={BtnS.S} appearance={BtnA.transparent} onClick={() => setAnswer((a) => !a)}>
+        <Button size={BtnS.S} appearance={BtnA.transparent} onClick={switcher}>
           {answer ? t('buttons.collapse') : t('buttons.answer')}
         </Button>
       </div>
-      {answer && <CommentInput id={personModalItem?.id} parentId={comment?.id} />}
-      {comment.children && (
+      {answer && <CommentInput id={personModalItem?.id} parentId={id} />}
+      {children && (
         <ul>
-          {comment.children.map((child) => (
+          {children.map((child) => (
             <Comment key={child.id} comment={child} />
           ))}
         </ul>
